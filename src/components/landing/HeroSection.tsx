@@ -23,17 +23,22 @@ export const HeroSection = () => {
           <span className="text-sm text-muted-foreground">100% Private • Browser-Based</span>
         </div>
 
-        {/* Main heading */}
+        {/* Main heading - SEO optimized */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 opacity-0 animate-fade-in delay-100">
-          Transform Dark PDFs
+          Convert Dark PDF Notes
           <br />
-          <span className="gradient-text-glow">Into Print-Ready Docs</span>
+          <span className="gradient-text-glow">For Easy Printing</span>
         </h1>
 
-        {/* Subheading */}
-        <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 opacity-0 animate-fade-in delay-200">
-          Convert dark-background lecture notes, code screenshots, and documents 
-          into clean, ink-saving PDFs in seconds. No uploads, no accounts, just results.
+        {/* Subheading - SEO optimized with keywords */}
+        <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-6 opacity-0 animate-fade-in delay-200">
+          Transform dark-background lecture notes from PW, Unacademy, Vedantu, and other coaching platforms 
+          into clean, ink-saving PDFs. Perfect for NEET & JEE preparation notes.
+        </p>
+
+        {/* Secondary description for more SEO content */}
+        <p className="text-base text-muted-foreground/80 max-w-xl mx-auto mb-10 opacity-0 animate-fade-in delay-250">
+          No uploads to servers, no accounts needed — convert dark notes to light instantly in your browser.
         </p>
 
         {/* CTA Buttons */}
@@ -61,6 +66,18 @@ export const HeroSection = () => {
           <TrustBadge icon={Shield} text="No Data Uploads" />
           <TrustBadge icon={Zap} text="Instant Processing" />
           <TrustBadge icon={Eye} text="No Account Needed" />
+        </div>
+
+        {/* SEO-friendly hidden text for search engines */}
+        <div className="sr-only">
+          <h2>Print Physics Wallah Notes | Print Unacademy Slides | Dark to Light PDF Converter</h2>
+          <p>
+            Printify Notes is the best free tool to convert dark background PDFs to print-friendly documents.
+            Perfect for students who want to print their coaching notes from Physics Wallah (PW), Unacademy, 
+            Vedantu, BYJU'S, Allen Digital, and other online learning platforms. Convert dark lecture slides, 
+            NEET preparation notes, JEE study material, and coaching PDFs to ink-saving printable format.
+            Works with all dark-themed PDFs including code screenshots, IDE exports, and presentation slides.
+          </p>
         </div>
       </div>
 
