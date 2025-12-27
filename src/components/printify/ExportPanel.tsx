@@ -136,7 +136,7 @@ export function ExportPanel({
           const offsetX = x + (cellWidth - finalWidth) / 2;
           const offsetY = y + (cellHeight - finalHeight) / 2;
 
-          pdf.addImage(img, 'PNG', offsetX, offsetY, finalWidth, finalHeight);
+          pdf.addImage(img, 'JPEG', offsetX, offsetY, finalWidth, finalHeight, undefined, 'MEDIUM');
         }
 
         currentPdfPage++;

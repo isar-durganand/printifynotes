@@ -85,7 +85,8 @@ export async function applyTransformations(
       }
 
       ctx.putImageData(imageData, 0, 0);
-      resolve(canvas.toDataURL('image/png'));
+      // Use JPEG with 85% quality for much smaller file size
+      resolve(canvas.toDataURL('image/jpeg', 0.85));
     };
 
     img.onerror = () => reject(new Error('Failed to load image'));
@@ -114,7 +115,7 @@ export function getTransformationPreview(
       }
 
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      const previewDataUrl = canvas.toDataURL('image/png');
+      const previewDataUrl = canvas.toDataURL('image/jpeg', 0.7);
       
       try {
         const transformed = await applyTransformations(previewDataUrl, settings);
