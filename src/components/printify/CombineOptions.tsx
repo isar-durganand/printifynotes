@@ -1,7 +1,7 @@
 import React from 'react';
-import { LayoutGrid, Square, Columns, Grid2X2, RectangleHorizontal, RectangleVertical } from 'lucide-react';
+import { LayoutGrid } from 'lucide-react';
 import { Label } from '@/components/ui/label';
-import { cn } from '@/lib/utils';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import type { CombineSettings } from '@/types/printify';
 
 interface CombineOptionsProps {
@@ -17,124 +17,81 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
     onChange({ ...settings, [key]: value });
   };
 
-  const pagesPerSheetOptions: { value: 1 | 2 | 4; label: string; icon: React.ReactNode }[] = [
-    { value: 1, label: '1 page', icon: <Square className="w-5 h-5" /> },
-    { value: 2, label: '2 pages', icon: <Columns className="w-5 h-5" /> },
-    { value: 4, label: '4 pages', icon: <Grid2X2 className="w-5 h-5" /> },
-  ];
-
-  const orientationOptions: { value: 'portrait' | 'landscape'; label: string; icon: React.ReactNode }[] = [
-    { value: 'portrait', label: 'Portrait', icon: <RectangleVertical className="w-5 h-5" /> },
-    { value: 'landscape', label: 'Landscape', icon: <RectangleHorizontal className="w-5 h-5" /> },
-  ];
-
-  const marginOptions: { value: 'small' | 'medium' | 'large'; label: string }[] = [
-    { value: 'small', label: 'Small' },
-    { value: 'medium', label: 'Medium' },
-    { value: 'large', label: 'Large' },
-  ];
-
-  const spacingOptions: { value: 'none' | 'small' | 'medium'; label: string }[] = [
-    { value: 'none', label: 'None' },
-    { value: 'small', label: 'Small' },
-    { value: 'medium', label: 'Medium' },
-  ];
-
   return (
-    <div className="glass-card rounded-xl p-6 space-y-6">
-      <div className="flex items-center gap-3 pb-4 border-b border-border/50">
-        <div className="p-2 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg">
-          <LayoutGrid className="w-5 h-5 text-primary" />
-        </div>
-        <div>
-          <h3 className="font-semibold text-foreground">Page Layout</h3>
-          <p className="text-sm text-muted-foreground">Combine multiple pages per sheet</p>
-        </div>
+    <div className="border border-border rounded-lg p-4 bg-card space-y-4">
+      <div className="flex items-center gap-2 pb-3 border-b border-border">
+        <LayoutGrid className="w-4 h-4 text-muted-foreground" />
+        <h3 className="font-medium text-foreground text-sm">Layout Options</h3>
       </div>
 
-      <div className="space-y-3">
-        <Label className="text-sm font-medium">Pages per sheet</Label>
-        <div className="grid grid-cols-3 gap-2">
-          {pagesPerSheetOptions.map((option) => (
-            <button
-              key={option.value}
-              onClick={() => updateSetting('pagesPerSheet', option.value)}
-              className={cn(
-                'flex flex-col items-center gap-2 p-3 rounded-lg border transition-all duration-300',
-                settings.pagesPerSheet === option.value
-                  ? 'border-primary/50 bg-primary/10 text-primary glow'
-                  : 'glass-button text-muted-foreground hover:text-foreground'
-              )}
-            >
-              {option.icon}
-              <span className="text-xs font-medium">{option.label}</span>
-            </button>
-          ))}
+      <div className="space-y-4">
+        <div className="space-y-2">
+          <Label className="text-sm">Pages per Sheet</Label>
+          <Select
+            value={settings.pagesPerSheet.toString()}
+            onValueChange={(value) => updateSetting('pagesPerSheet', parseInt(value) as 1 | 2 | 4)}
+          >
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="1">1 page</SelectItem>
+              <SelectItem value="2">2 pages</SelectItem>
+              <SelectItem value="4">4 pages</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="space-y-2">
+          <Label className="text-sm">Orientation</Label>
+          <Select
+            value={settings.orientation}
+            onValueChange={(value) => updateSetting('orientation', value as 'portrait' | 'landscape')}
+          >
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="portrait">Portrait</SelectItem>
+              <SelectItem value="landscape">Landscape</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="space-y-2">
+          <Label className="text-sm">Margins</Label>
+          <Select
+            value={settings.marginSize}
+            onValueChange={(value) => updateSetting('marginSize', value as 'small' | 'medium' | 'large')}
+          >
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="small">Small</SelectItem>
+              <SelectItem value="medium">Medium</SelectItem>
+              <SelectItem value="large">Large</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="space-y-2">
+          <Label className="text-sm">Spacing</Label>
+          <Select
+            value={settings.spacing}
+            onValueChange={(value) => updateSetting('spacing', value as 'none' | 'small' | 'medium')}
+          >
+            <SelectTrigger>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="none">None</SelectItem>
+              <SelectItem value="small">Small</SelectItem>
+              <SelectItem value="medium">Medium</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </div>
-
-      <div className="space-y-3">
-        <Label className="text-sm font-medium">Orientation</Label>
-        <div className="grid grid-cols-2 gap-2">
-          {orientationOptions.map((option) => (
-            <button
-              key={option.value}
-              onClick={() => updateSetting('orientation', option.value)}
-              className={cn(
-                'flex items-center justify-center gap-2 p-3 rounded-lg border transition-all duration-300',
-                settings.orientation === option.value
-                  ? 'border-primary/50 bg-primary/10 text-primary glow'
-                  : 'glass-button text-muted-foreground hover:text-foreground'
-              )}
-            >
-              {option.icon}
-              <span className="text-sm font-medium">{option.label}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="space-y-3">
-        <Label className="text-sm font-medium">Margins</Label>
-        <div className="grid grid-cols-3 gap-2">
-          {marginOptions.map((option) => (
-            <button
-              key={option.value}
-              onClick={() => updateSetting('marginSize', option.value)}
-              className={cn(
-                'p-2 rounded-lg border text-sm font-medium transition-all duration-300',
-                settings.marginSize === option.value
-                  ? 'border-primary/50 bg-primary/10 text-primary glow'
-                  : 'glass-button text-muted-foreground hover:text-foreground'
-              )}
-            >
-              {option.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {settings.pagesPerSheet > 1 && (
-        <div className="space-y-3 animate-fade-in">
-          <Label className="text-sm font-medium">Spacing between pages</Label>
-          <div className="grid grid-cols-3 gap-2">
-            {spacingOptions.map((option) => (
-              <button
-                key={option.value}
-                onClick={() => updateSetting('spacing', option.value)}
-                className={cn(
-                  'p-2 rounded-lg border text-sm font-medium transition-all duration-300',
-                  settings.spacing === option.value
-                    ? 'border-primary/50 bg-primary/10 text-primary glow'
-                    : 'glass-button text-muted-foreground hover:text-foreground'
-                )}
-              >
-                {option.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   );
 }

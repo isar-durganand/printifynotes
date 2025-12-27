@@ -15,45 +15,34 @@ export function PageGallery({ pages, transformations, onPagesChange }: PageGalle
   const [previewPage, setPreviewPage] = useState<PageData | null>(null);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
 
-  const selectedCount = pages.filter((p) => p.isSelected).length;
-  const allSelected = selectedCount === pages.length;
-
-  const handleToggleSelect = useCallback(
-    (id: string) => {
-      onPagesChange(
-        pages.map((page) =>
-          page.id === id ? { ...page, isSelected: !page.isSelected } : page
-        )
-      );
-    },
-    [pages, onPagesChange]
-  );
+  const handleToggleSelect = useCallback((pageId: string) => {
+    onPagesChange(
+      pages.map((p) => (p.id === pageId ? { ...p, isSelected: !p.isSelected } : p))
+    );
+  }, [pages, onPagesChange]);
 
   const handleSelectAll = useCallback(() => {
-    onPagesChange(pages.map((page) => ({ ...page, isSelected: true })));
+    onPagesChange(pages.map((p) => ({ ...p, isSelected: true })));
   }, [pages, onPagesChange]);
 
   const handleDeselectAll = useCallback(() => {
-    onPagesChange(pages.map((page) => ({ ...page, isSelected: false })));
+    onPagesChange(pages.map((p) => ({ ...p, isSelected: false })));
   }, [pages, onPagesChange]);
 
   const handleDragStart = useCallback((index: number) => {
     setDraggedIndex(index);
   }, []);
 
-  const handleDragOver = useCallback(
-    (e: React.DragEvent, targetIndex: number) => {
-      e.preventDefault();
-      if (draggedIndex === null || draggedIndex === targetIndex) return;
+  const handleDragOver = useCallback((e: React.DragEvent, index: number) => {
+    e.preventDefault();
+    if (draggedIndex === null || draggedIndex === index) return;
 
-      const newPages = [...pages];
-      const [draggedPage] = newPages.splice(draggedIndex, 1);
-      newPages.splice(targetIndex, 0, draggedPage);
-      onPagesChange(newPages);
-      setDraggedIndex(targetIndex);
-    },
-    [draggedIndex, pages, onPagesChange]
-  );
+    const newPages = [...pages];
+    const [draggedPage] = newPages.splice(draggedIndex, 1);
+    newPages.splice(index, 0, draggedPage);
+    onPagesChange(newPages);
+    setDraggedIndex(index);
+  }, [draggedIndex, pages, onPagesChange]);
 
   const handleDragEnd = useCallback(() => {
     setDraggedIndex(null);
@@ -64,66 +53,46 @@ export function PageGallery({ pages, transformations, onPagesChange }: PageGalle
     onPagesChange(sorted);
   }, [pages, onPagesChange]);
 
+  const selectedCount = pages.filter((p) => p.isSelected).length;
+
   return (
     <div className="space-y-4">
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 glass-card rounded-xl">
-        <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-foreground">
-            {selectedCount} of {pages.length} pages selected
-          </span>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={allSelected ? handleDeselectAll : handleSelectAll}
-            className="gap-2 glass-button border-0 text-foreground"
-          >
-            {allSelected ? (
-              <>
-                <Square className="w-4 h-4" />
-                Deselect All
-              </>
-            ) : (
-              <>
-                <CheckSquare className="w-4 h-4" />
-                Select All
-              </>
-            )}
+      <div className="flex items-center justify-between">
+        <p className="text-sm text-muted-foreground">
+          {selectedCount} of {pages.length} selected
+        </p>
+        <div className="flex gap-2">
+          <Button variant="ghost" size="sm" onClick={handleSelectAll}>
+            <CheckSquare className="w-4 h-4 mr-1" />
+            All
           </Button>
-
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleResetOrder}
-            className="gap-2 text-muted-foreground hover:text-foreground"
-          >
-            <RotateCcw className="w-4 h-4" />
-            Reset Order
+          <Button variant="ghost" size="sm" onClick={handleDeselectAll}>
+            <Square className="w-4 h-4 mr-1" />
+            None
+          </Button>
+          <Button variant="ghost" size="sm" onClick={handleResetOrder}>
+            <RotateCcw className="w-4 h-4 mr-1" />
+            Reset
           </Button>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
         {pages.map((page, index) => (
-          <div
+          <PageThumbnail
             key={page.id}
-            draggable
-            onDragStart={() => handleDragStart(index)}
-            onDragOver={(e) => handleDragOver(e, index)}
-            onDragEnd={handleDragEnd}
-            className="animate-fade-in"
-            style={{ animationDelay: `${index * 50}ms` }}
-          >
-            <PageThumbnail
-              page={page}
-              transformations={transformations}
-              onToggleSelect={handleToggleSelect}
-              onPreview={setPreviewPage}
-              isDragging={draggedIndex === index}
-            />
-          </div>
+            page={page}
+            transformations={transformations}
+            onToggleSelect={() => handleToggleSelect(page.id)}
+            onPreview={() => setPreviewPage(page)}
+            isDragging={draggedIndex === index}
+            dragHandleProps={{
+              draggable: true,
+              onDragStart: () => handleDragStart(index),
+              onDragOver: (e: React.DragEvent) => handleDragOver(e, index),
+              onDragEnd: handleDragEnd,
+            }}
+          />
         ))}
       </div>
 

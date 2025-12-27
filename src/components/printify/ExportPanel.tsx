@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Download, FileCheck, RefreshCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
 import { jsPDF } from 'jspdf';
 import type { PageData, TransformationSettings, CombineSettings } from '@/types/printify';
 import { applyTransformations } from '@/lib/imageTransformations';
@@ -155,92 +156,56 @@ export function ExportPanel({
   }, [selectedPages, transformations, combineSettings]);
 
   return (
-    <div className="glass-card rounded-xl p-6 space-y-4">
-      <div className="flex items-center gap-3 pb-4 border-b border-border/50">
-        <div className="p-2 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg">
-          <Download className="w-5 h-5 text-primary" />
-        </div>
+    <div className="border border-border rounded-lg p-4 bg-card space-y-4">
+      <div className="flex items-center gap-2 pb-3 border-b border-border">
+        <Download className="w-4 h-4 text-muted-foreground" />
         <div>
-          <h3 className="font-semibold text-foreground">Export PDF</h3>
-          <p className="text-sm text-muted-foreground">
+          <h3 className="font-medium text-foreground text-sm">Export PDF</h3>
+          <p className="text-xs text-muted-foreground">
             {selectedPages.length} page{selectedPages.length !== 1 ? 's' : ''} selected
           </p>
         </div>
       </div>
 
       {isComplete ? (
-        <div className="text-center py-4 animate-scale-in">
-          <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-success/20 flex items-center justify-center glow">
-            <FileCheck className="w-6 h-6 text-success" />
+        <div className="text-center py-2 space-y-3">
+          <div className="w-10 h-10 mx-auto rounded-full bg-success/20 flex items-center justify-center">
+            <FileCheck className="w-5 h-5 text-success" />
           </div>
-          <p className="font-medium text-foreground mb-1">Export Complete!</p>
-          <p className="text-sm text-muted-foreground mb-4">
-            Your printable PDF has been downloaded
-          </p>
+          <p className="font-medium text-foreground text-sm">Export Complete!</p>
           <div className="flex gap-2 justify-center">
-            <Button variant="outline" size="sm" onClick={onReset} className="gap-2 glass-button border-0">
-              <RefreshCw className="w-4 h-4" />
-              Start New
+            <Button variant="outline" size="sm" onClick={onReset}>
+              <RefreshCw className="w-4 h-4 mr-1" />
+              New
             </Button>
-            <Button size="sm" onClick={() => setIsComplete(false)} className="gap-2">
-              <Download className="w-4 h-4" />
-              Export Again
+            <Button size="sm" onClick={() => setIsComplete(false)}>
+              <Download className="w-4 h-4 mr-1" />
+              Again
             </Button>
           </div>
         </div>
       ) : isExporting ? (
-        <div className="text-center py-4">
-          <div className="relative w-16 h-16 mx-auto mb-3">
-            <svg className="w-16 h-16 transform -rotate-90" viewBox="0 0 100 100">
-              <circle
-                cx="50"
-                cy="50"
-                r="40"
-                fill="none"
-                stroke="hsl(var(--muted))"
-                strokeWidth="6"
-              />
-              <circle
-                cx="50"
-                cy="50"
-                r="40"
-                fill="none"
-                stroke="url(#exportGradient)"
-                strokeWidth="6"
-                strokeDasharray={`${progress * 2.51} 251`}
-                strokeLinecap="round"
-                className="transition-all duration-300"
-              />
-              <defs>
-                <linearGradient id="exportGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="hsl(var(--primary))" />
-                  <stop offset="100%" stopColor="hsl(var(--secondary))" />
-                </linearGradient>
-              </defs>
-            </svg>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-sm font-bold gradient-text">{progress}%</span>
-            </div>
-          </div>
-          <p className="font-medium text-foreground">
-            {progress < 50 ? 'Applying transformations...' : 'Generating PDF...'}
+        <div className="py-2 space-y-3">
+          <Progress value={progress} className="h-2" />
+          <p className="text-sm text-center text-muted-foreground">
+            {progress < 50 ? 'Transforming...' : 'Generating PDF...'} {progress}%
           </p>
         </div>
       ) : (
         <Button
           onClick={handleExport}
           disabled={selectedPages.length === 0}
-          className="w-full gap-2 bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity"
-          size="lg"
+          className="w-full"
+          size="sm"
         >
-          <Download className="w-5 h-5" />
-          Generate Printable PDF
+          <Download className="w-4 h-4 mr-2" />
+          Generate PDF
         </Button>
       )}
 
       {!isComplete && !isExporting && selectedPages.length === 0 && (
-        <p className="text-sm text-center text-muted-foreground">
-          Select at least one page to export
+        <p className="text-xs text-center text-muted-foreground">
+          Select at least one page
         </p>
       )}
     </div>
