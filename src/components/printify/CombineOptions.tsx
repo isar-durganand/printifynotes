@@ -1,5 +1,5 @@
 import React from 'react';
-import { LayoutGrid, Square, Columns, Grid2X2, RectangleHorizontal, RectangleVertical, Maximize2 } from 'lucide-react';
+import { LayoutGrid, Square, Columns, Grid2X2, RectangleHorizontal, RectangleVertical } from 'lucide-react';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
 import type { CombineSettings } from '@/types/printify';
@@ -41,9 +41,9 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
   ];
 
   return (
-    <div className="bg-card rounded-xl p-6 shadow-sm space-y-6">
-      <div className="flex items-center gap-3 pb-4 border-b border-border">
-        <div className="p-2 bg-primary/10 rounded-lg">
+    <div className="glass-card rounded-xl p-6 space-y-6">
+      <div className="flex items-center gap-3 pb-4 border-b border-border/50">
+        <div className="p-2 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg">
           <LayoutGrid className="w-5 h-5 text-primary" />
         </div>
         <div>
@@ -52,7 +52,6 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
         </div>
       </div>
 
-      {/* Pages per sheet */}
       <div className="space-y-3">
         <Label className="text-sm font-medium">Pages per sheet</Label>
         <div className="grid grid-cols-3 gap-2">
@@ -61,10 +60,10 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
               key={option.value}
               onClick={() => updateSetting('pagesPerSheet', option.value)}
               className={cn(
-                'flex flex-col items-center gap-2 p-3 rounded-lg border-2 transition-all duration-200',
+                'flex flex-col items-center gap-2 p-3 rounded-lg border transition-all duration-300',
                 settings.pagesPerSheet === option.value
-                  ? 'border-primary bg-primary/5 text-primary'
-                  : 'border-border hover:border-primary/50 text-muted-foreground hover:text-foreground'
+                  ? 'border-primary/50 bg-primary/10 text-primary glow'
+                  : 'glass-button text-muted-foreground hover:text-foreground'
               )}
             >
               {option.icon}
@@ -74,7 +73,6 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
         </div>
       </div>
 
-      {/* Orientation */}
       <div className="space-y-3">
         <Label className="text-sm font-medium">Orientation</Label>
         <div className="grid grid-cols-2 gap-2">
@@ -83,10 +81,10 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
               key={option.value}
               onClick={() => updateSetting('orientation', option.value)}
               className={cn(
-                'flex items-center justify-center gap-2 p-3 rounded-lg border-2 transition-all duration-200',
+                'flex items-center justify-center gap-2 p-3 rounded-lg border transition-all duration-300',
                 settings.orientation === option.value
-                  ? 'border-primary bg-primary/5 text-primary'
-                  : 'border-border hover:border-primary/50 text-muted-foreground hover:text-foreground'
+                  ? 'border-primary/50 bg-primary/10 text-primary glow'
+                  : 'glass-button text-muted-foreground hover:text-foreground'
               )}
             >
               {option.icon}
@@ -96,7 +94,6 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
         </div>
       </div>
 
-      {/* Margins */}
       <div className="space-y-3">
         <Label className="text-sm font-medium">Margins</Label>
         <div className="grid grid-cols-3 gap-2">
@@ -105,10 +102,10 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
               key={option.value}
               onClick={() => updateSetting('marginSize', option.value)}
               className={cn(
-                'p-2 rounded-lg border-2 text-sm font-medium transition-all duration-200',
+                'p-2 rounded-lg border text-sm font-medium transition-all duration-300',
                 settings.marginSize === option.value
-                  ? 'border-primary bg-primary/5 text-primary'
-                  : 'border-border hover:border-primary/50 text-muted-foreground hover:text-foreground'
+                  ? 'border-primary/50 bg-primary/10 text-primary glow'
+                  : 'glass-button text-muted-foreground hover:text-foreground'
               )}
             >
               {option.label}
@@ -117,9 +114,8 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
         </div>
       </div>
 
-      {/* Spacing (only for 2+ pages) */}
       {settings.pagesPerSheet > 1 && (
-        <div className="space-y-3">
+        <div className="space-y-3 animate-fade-in">
           <Label className="text-sm font-medium">Spacing between pages</Label>
           <div className="grid grid-cols-3 gap-2">
             {spacingOptions.map((option) => (
@@ -127,10 +123,10 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
                 key={option.value}
                 onClick={() => updateSetting('spacing', option.value)}
                 className={cn(
-                  'p-2 rounded-lg border-2 text-sm font-medium transition-all duration-200',
+                  'p-2 rounded-lg border text-sm font-medium transition-all duration-300',
                   settings.spacing === option.value
-                    ? 'border-primary bg-primary/5 text-primary'
-                    : 'border-border hover:border-primary/50 text-muted-foreground hover:text-foreground'
+                    ? 'border-primary/50 bg-primary/10 text-primary glow'
+                    : 'glass-button text-muted-foreground hover:text-foreground'
                 )}
               >
                 {option.label}

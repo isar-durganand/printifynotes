@@ -19,9 +19,9 @@ export function TransformationControls({ settings, onChange }: TransformationCon
   };
 
   return (
-    <div className="bg-card rounded-xl p-6 shadow-sm space-y-6">
-      <div className="flex items-center gap-3 pb-4 border-b border-border">
-        <div className="p-2 bg-primary/10 rounded-lg">
+    <div className="glass-card rounded-xl p-6 space-y-6">
+      <div className="flex items-center gap-3 pb-4 border-b border-border/50">
+        <div className="p-2 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg">
           <Palette className="w-5 h-5 text-primary" />
         </div>
         <div>
@@ -30,12 +30,10 @@ export function TransformationControls({ settings, onChange }: TransformationCon
         </div>
       </div>
 
-      {/* Toggle controls */}
       <div className="space-y-4">
-        {/* Invert Colors */}
-        <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+        <div className="flex items-center justify-between p-3 glass-button rounded-lg">
           <div className="flex items-center gap-3">
-            <Moon className="w-5 h-5 text-muted-foreground" />
+            <Moon className="w-5 h-5 text-primary" />
             <div>
               <Label htmlFor="invert" className="text-sm font-medium">
                 Invert Colors
@@ -50,10 +48,9 @@ export function TransformationControls({ settings, onChange }: TransformationCon
           />
         </div>
 
-        {/* Force White Background */}
-        <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+        <div className="flex items-center justify-between p-3 glass-button rounded-lg">
           <div className="flex items-center gap-3">
-            <Sun className="w-5 h-5 text-muted-foreground" />
+            <Sun className="w-5 h-5 text-primary" />
             <div>
               <Label htmlFor="white-bg" className="text-sm font-medium">
                 Force White Background
@@ -68,10 +65,9 @@ export function TransformationControls({ settings, onChange }: TransformationCon
           />
         </div>
 
-        {/* Grayscale */}
-        <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+        <div className="flex items-center justify-between p-3 glass-button rounded-lg">
           <div className="flex items-center gap-3">
-            <Eye className="w-5 h-5 text-muted-foreground" />
+            <Eye className="w-5 h-5 text-primary" />
             <div>
               <Label htmlFor="grayscale" className="text-sm font-medium">
                 Grayscale Mode
@@ -87,16 +83,14 @@ export function TransformationControls({ settings, onChange }: TransformationCon
         </div>
       </div>
 
-      {/* Slider controls */}
-      <div className="space-y-6 pt-4 border-t border-border">
-        {/* Brightness */}
+      <div className="space-y-6 pt-4 border-t border-border/50">
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Sun className="w-4 h-4 text-muted-foreground" />
+              <Sun className="w-4 h-4 text-primary" />
               <Label className="text-sm font-medium">Brightness</Label>
             </div>
-            <span className="text-sm font-mono text-muted-foreground">
+            <span className="text-sm font-mono text-primary">
               {settings.brightness}%
             </span>
           </div>
@@ -110,14 +104,13 @@ export function TransformationControls({ settings, onChange }: TransformationCon
           />
         </div>
 
-        {/* Contrast */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Contrast className="w-4 h-4 text-muted-foreground" />
+              <Contrast className="w-4 h-4 text-primary" />
               <Label className="text-sm font-medium">Contrast</Label>
             </div>
-            <span className="text-sm font-mono text-muted-foreground">
+            <span className="text-sm font-mono text-primary">
               {settings.contrast}%
             </span>
           </div>

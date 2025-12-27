@@ -2,8 +2,8 @@ import { useState, useCallback } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import type { PageData } from '@/types/printify';
 
-// Set up the worker
-pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+// Use the worker from unpkg CDN with proper CORS support
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://unpkg.com/pdfjs-dist@4.4.168/build/pdf.worker.min.mjs';
 
 interface UsePdfProcessorReturn {
   pages: PageData[];
@@ -60,7 +60,7 @@ export function usePdfProcessor(): UsePdfProcessorReturn {
           id: `page-${i}`,
           pageNumber: i,
           originalImage: imageDataUrl,
-          isSelected: true, // Select all by default
+          isSelected: true,
           width: viewport.width,
           height: viewport.height,
         });
