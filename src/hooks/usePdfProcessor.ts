@@ -38,8 +38,8 @@ export function usePdfProcessor(): UsePdfProcessorReturn {
       for (let i = 1; i <= totalPages; i++) {
         const page = await pdf.getPage(i);
         
-        // Render at 2x scale for quality
-        const scale = 2;
+        // Render at 1.5x scale (good balance of quality vs performance)
+        const scale = 1.5;
         const viewport = page.getViewport({ scale });
         
         const canvas = document.createElement('canvas');
@@ -57,7 +57,8 @@ export function usePdfProcessor(): UsePdfProcessorReturn {
           viewport: viewport,
         }).promise;
 
-        const imageDataUrl = canvas.toDataURL('image/png');
+        // Use JPEG for smaller file size
+        const imageDataUrl = canvas.toDataURL('image/jpeg', 0.85);
 
         loadedPages.push({
           id: `page-${i}`,
