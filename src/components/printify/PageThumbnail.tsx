@@ -19,7 +19,6 @@ export function PageThumbnail({
   onToggleSelect,
   onPreview,
   isDragging,
-  dragHandleProps,
 }: PageThumbnailProps) {
   const [previewImage, setPreviewImage] = useState<string>(page.originalImage);
   const [isLoadingPreview, setIsLoadingPreview] = useState(false);
@@ -56,46 +55,38 @@ export function PageThumbnail({
   return (
     <div
       className={cn(
-        'group relative bg-card rounded-xl overflow-hidden transition-all duration-200 shadow-sm',
-        page.isSelected ? 'ring-2 ring-primary shadow-md' : 'hover:shadow-md',
+        'group relative glass-card rounded-xl overflow-hidden transition-all duration-300',
+        page.isSelected ? 'ring-2 ring-primary glow' : 'hover:ring-1 hover:ring-primary/30',
         isDragging && 'opacity-50 scale-95'
       )}
     >
-      {/* Drag handle */}
-      <div
-        {...dragHandleProps}
-        className="absolute top-2 left-2 z-10 p-1.5 bg-background/80 backdrop-blur-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity cursor-grab active:cursor-grabbing"
-      >
-        <GripVertical className="w-4 h-4 text-muted-foreground" />
+      <div className="absolute top-2 left-2 z-10 p-1.5 glass rounded-lg opacity-0 group-hover:opacity-100 transition-opacity cursor-grab active:cursor-grabbing">
+        <GripVertical className="w-4 h-4 text-foreground/70" />
       </div>
 
-      {/* Selection checkbox */}
       <button
         onClick={() => onToggleSelect(page.id)}
         className={cn(
-          'absolute top-2 right-2 z-10 w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-200',
+          'absolute top-2 right-2 z-10 w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-300',
           page.isSelected
-            ? 'bg-primary text-primary-foreground'
-            : 'bg-background/80 backdrop-blur-sm border border-border hover:border-primary'
+            ? 'bg-gradient-to-br from-primary to-secondary text-primary-foreground glow'
+            : 'glass hover:ring-1 hover:ring-primary/50'
         )}
       >
         {page.isSelected && <Check className="w-4 h-4" />}
       </button>
 
-      {/* Preview button */}
       <button
         onClick={() => onPreview(page)}
-        className="absolute bottom-2 right-2 z-10 p-2 bg-background/80 backdrop-blur-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity hover:bg-background"
+        className="absolute bottom-2 right-2 z-10 p-2 glass rounded-lg opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary/20"
       >
         <Eye className="w-4 h-4 text-foreground" />
       </button>
 
-      {/* Page number */}
-      <div className="absolute bottom-2 left-2 z-10 px-2 py-1 bg-background/80 backdrop-blur-sm rounded-lg text-sm font-medium text-foreground">
+      <div className="absolute bottom-2 left-2 z-10 px-2 py-1 glass rounded-lg text-sm font-medium text-foreground">
         {page.pageNumber}
       </div>
 
-      {/* Thumbnail image */}
       <div
         onClick={() => onToggleSelect(page.id)}
         className="aspect-[3/4] cursor-pointer relative"
@@ -107,7 +98,7 @@ export function PageThumbnail({
           src={previewImage}
           alt={`Page ${page.pageNumber}`}
           className={cn(
-            'w-full h-full object-contain bg-muted transition-opacity duration-200',
+            'w-full h-full object-contain bg-muted/50 transition-opacity duration-200',
             isLoadingPreview && 'opacity-50'
           )}
         />

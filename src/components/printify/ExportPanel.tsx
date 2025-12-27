@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { Download, Loader2, FileCheck, RefreshCw } from 'lucide-react';
+import { Download, FileCheck, RefreshCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { jsPDF } from 'jspdf';
 import type { PageData, TransformationSettings, CombineSettings } from '@/types/printify';
@@ -50,7 +50,6 @@ export function ExportPanel({
     setIsComplete(false);
 
     try {
-      // Apply transformations to all selected pages
       const transformedImages: string[] = [];
       
       for (let i = 0; i < selectedPages.length; i++) {
@@ -62,7 +61,6 @@ export function ExportPanel({
         setProgress(Math.round(((i + 1) / selectedPages.length) * 50));
       }
 
-      // Create PDF
       const isLandscape = combineSettings.orientation === 'landscape';
       const pdf = new jsPDF({
         orientation: isLandscape ? 'landscape' : 'portrait',
@@ -99,7 +97,6 @@ export function ExportPanel({
             x = margin;
             y = margin;
           } else if (pagesPerSheet === 2) {
-            // 2 pages stacked vertically in portrait, side by side in landscape
             if (isLandscape) {
               cellWidth = (contentWidth - spacing) / 2;
               cellHeight = contentHeight;
@@ -112,21 +109,18 @@ export function ExportPanel({
               y = margin + (j % 2) * (cellHeight + spacing);
             }
           } else {
-            // 4 pages in 2x2 grid
             cellWidth = (contentWidth - spacing) / 2;
             cellHeight = (contentHeight - spacing) / 2;
             x = margin + (j % 2) * (cellWidth + spacing);
             y = margin + Math.floor(j / 2) * (cellHeight + spacing);
           }
 
-          // Load image to get dimensions
           const imgElement = new Image();
           await new Promise<void>((resolve) => {
             imgElement.onload = () => resolve();
             imgElement.src = img;
           });
 
-          // Calculate aspect ratio fit
           const imgAspect = imgElement.width / imgElement.height;
           const cellAspect = cellWidth / cellHeight;
 
@@ -139,7 +133,6 @@ export function ExportPanel({
             finalWidth = cellHeight * imgAspect;
           }
 
-          // Center in cell
           const offsetX = x + (cellWidth - finalWidth) / 2;
           const offsetY = y + (cellHeight - finalHeight) / 2;
 
@@ -150,7 +143,6 @@ export function ExportPanel({
         setProgress(50 + Math.round(((i + pagesPerSheet) / transformedImages.length) * 50));
       }
 
-      // Download
       const timestamp = new Date().toISOString().split('T')[0];
       pdf.save(`printify-notes-${timestamp}.pdf`);
       
@@ -163,9 +155,9 @@ export function ExportPanel({
   }, [selectedPages, transformations, combineSettings]);
 
   return (
-    <div className="bg-card rounded-xl p-6 shadow-sm space-y-4">
-      <div className="flex items-center gap-3 pb-4 border-b border-border">
-        <div className="p-2 bg-primary/10 rounded-lg">
+    <div className="glass-card rounded-xl p-6 space-y-4">
+      <div className="flex items-center gap-3 pb-4 border-b border-border/50">
+        <div className="p-2 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg">
           <Download className="w-5 h-5 text-primary" />
         </div>
         <div>
@@ -177,8 +169,8 @@ export function ExportPanel({
       </div>
 
       {isComplete ? (
-        <div className="text-center py-4">
-          <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-success/10 flex items-center justify-center">
+        <div className="text-center py-4 animate-scale-in">
+          <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-success/20 flex items-center justify-center glow">
             <FileCheck className="w-6 h-6 text-success" />
           </div>
           <p className="font-medium text-foreground mb-1">Export Complete!</p>
@@ -186,7 +178,7 @@ export function ExportPanel({
             Your printable PDF has been downloaded
           </p>
           <div className="flex gap-2 justify-center">
-            <Button variant="outline" size="sm" onClick={onReset} className="gap-2">
+            <Button variant="outline" size="sm" onClick={onReset} className="gap-2 glass-button border-0">
               <RefreshCw className="w-4 h-4" />
               Start New
             </Button>
@@ -206,22 +198,28 @@ export function ExportPanel({
                 r="40"
                 fill="none"
                 stroke="hsl(var(--muted))"
-                strokeWidth="8"
+                strokeWidth="6"
               />
               <circle
                 cx="50"
                 cy="50"
                 r="40"
                 fill="none"
-                stroke="hsl(var(--primary))"
-                strokeWidth="8"
+                stroke="url(#exportGradient)"
+                strokeWidth="6"
                 strokeDasharray={`${progress * 2.51} 251`}
                 strokeLinecap="round"
                 className="transition-all duration-300"
               />
+              <defs>
+                <linearGradient id="exportGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="hsl(var(--primary))" />
+                  <stop offset="100%" stopColor="hsl(var(--secondary))" />
+                </linearGradient>
+              </defs>
             </svg>
             <div className="absolute inset-0 flex items-center justify-center">
-              <span className="text-sm font-bold text-foreground">{progress}%</span>
+              <span className="text-sm font-bold gradient-text">{progress}%</span>
             </div>
           </div>
           <p className="font-medium text-foreground">
@@ -232,7 +230,7 @@ export function ExportPanel({
         <Button
           onClick={handleExport}
           disabled={selectedPages.length === 0}
-          className="w-full gap-2"
+          className="w-full gap-2 bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity"
           size="lg"
         >
           <Download className="w-5 h-5" />
