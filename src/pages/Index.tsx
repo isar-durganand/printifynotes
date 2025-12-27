@@ -36,7 +36,7 @@ const Index = () => {
   const hasPages = localPages.length > 0;
 
   return (
-    <div className="min-h-screen bg-background dark">
+    <div className="min-h-screen bg-background text-foreground">
       <header className="border-b border-border sticky top-0 z-40 bg-background">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
