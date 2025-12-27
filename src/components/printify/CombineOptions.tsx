@@ -37,6 +37,7 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
             <SelectContent>
               <SelectItem value="1">1 page</SelectItem>
               <SelectItem value="2">2 pages</SelectItem>
+              <SelectItem value="3">3 pages</SelectItem>
               <SelectItem value="4">4 pages</SelectItem>
             </SelectContent>
           </Select>

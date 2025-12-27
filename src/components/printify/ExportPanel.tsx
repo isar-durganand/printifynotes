@@ -109,7 +109,28 @@ export function ExportPanel({
               x = margin;
               y = margin + (j % 2) * (cellHeight + spacing);
             }
+          } else if (pagesPerSheet === 3) {
+            // 3 pages: 1 on top, 2 on bottom (portrait) or 2 left, 1 right (landscape)
+            if (isLandscape) {
+              cellWidth = (contentWidth - spacing * 2) / 3;
+              cellHeight = contentHeight;
+              x = margin + j * (cellWidth + spacing);
+              y = margin;
+            } else {
+              if (j === 0) {
+                cellWidth = contentWidth;
+                cellHeight = (contentHeight - spacing) / 2;
+                x = margin;
+                y = margin;
+              } else {
+                cellWidth = (contentWidth - spacing) / 2;
+                cellHeight = (contentHeight - spacing) / 2;
+                x = margin + ((j - 1) % 2) * (cellWidth + spacing);
+                y = margin + (contentHeight + spacing) / 2;
+              }
+            }
           } else {
+            // 4 pages: 2x2 grid
             cellWidth = (contentWidth - spacing) / 2;
             cellHeight = (contentHeight - spacing) / 2;
             x = margin + (j % 2) * (cellWidth + spacing);
