@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, ArrowRight } from 'lucide-react';
+import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import type { PageData, TransformationSettings } from '@/types/printify';
 import { applyTransformations } from '@/lib/imageTransformations';
@@ -18,23 +18,18 @@ export function PagePreviewModal({ page, transformations, onClose }: PagePreview
   useEffect(() => {
     let cancelled = false;
 
-    const generatePreview = async () => {
-      setIsLoading(true);
-      try {
-        const result = await applyTransformations(page.originalImage, transformations);
+    applyTransformations(page.originalImage, transformations)
+      .then((result) => {
         if (!cancelled) {
           setTransformedImage(result);
+          setIsLoading(false);
         }
-      } catch (error) {
-        console.error('Failed to apply transformations:', error);
-      } finally {
+      })
+      .catch(() => {
         if (!cancelled) {
           setIsLoading(false);
         }
-      }
-    };
-
-    generatePreview();
+      });
 
     return () => {
       cancelled = true;
@@ -49,55 +44,43 @@ export function PagePreviewModal({ page, transformations, onClose }: PagePreview
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur-md p-4"
+      className="fixed inset-0 z-50 bg-background/80 flex items-center justify-center p-4"
       onClick={handleBackdropClick}
     >
-      <div className="relative glass-card rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden animate-scale-in">
-        <div className="flex items-center justify-between p-4 border-b border-border/50">
-          <div className="flex items-center gap-4">
-            <h3 className="text-lg font-semibold text-foreground">
-              Page {page.pageNumber} Preview
-            </h3>
-            <div className="flex items-center gap-2 text-sm">
-              <button
-                onClick={() => setShowOriginal(true)}
-                className={`px-3 py-1.5 rounded-lg transition-all duration-300 ${
-                  showOriginal
-                    ? 'bg-gradient-to-r from-primary to-secondary text-primary-foreground'
-                    : 'glass-button text-muted-foreground hover:text-foreground'
-                }`}
-              >
-                Original
-              </button>
-              <ArrowRight className="w-4 h-4 text-muted-foreground" />
-              <button
+      <div className="bg-card border border-border rounded-lg max-w-3xl w-full max-h-[90vh] overflow-hidden">
+        <div className="flex items-center justify-between p-3 border-b border-border">
+          <div className="flex items-center gap-3">
+            <span className="text-sm font-medium">Page {page.pageNumber}</span>
+            <div className="flex gap-1">
+              <Button
+                size="sm"
+                variant={showOriginal ? 'secondary' : 'default'}
                 onClick={() => setShowOriginal(false)}
-                className={`px-3 py-1.5 rounded-lg transition-all duration-300 ${
-                  !showOriginal
-                    ? 'bg-gradient-to-r from-primary to-secondary text-primary-foreground'
-                    : 'glass-button text-muted-foreground hover:text-foreground'
-                }`}
               >
                 Transformed
-              </button>
+              </Button>
+              <Button
+                size="sm"
+                variant={showOriginal ? 'default' : 'secondary'}
+                onClick={() => setShowOriginal(true)}
+              >
+                Original
+              </Button>
             </div>
           </div>
-
-          <Button variant="ghost" size="icon" onClick={onClose} className="hover:bg-primary/20">
-            <X className="w-5 h-5" />
+          <Button size="icon" variant="ghost" onClick={onClose}>
+            <X className="w-4 h-4" />
           </Button>
         </div>
 
-        <div className="p-4 overflow-auto max-h-[calc(90vh-80px)] flex items-center justify-center bg-muted/30">
+        <div className="p-4 flex items-center justify-center bg-muted max-h-[70vh] overflow-auto">
           {isLoading && !showOriginal ? (
-            <div className="w-full aspect-[3/4] max-w-2xl glass-card rounded-lg animate-pulse-soft flex items-center justify-center">
-              <span className="text-muted-foreground">Applying transformations...</span>
-            </div>
+            <div className="text-muted-foreground text-sm">Loading...</div>
           ) : (
             <img
               src={showOriginal ? page.originalImage : (transformedImage || page.originalImage)}
               alt={`Page ${page.pageNumber}`}
-              className="max-w-full max-h-full object-contain rounded-lg shadow-glass"
+              className="max-w-full max-h-full object-contain"
             />
           )}
         </div>

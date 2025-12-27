@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { FileText, Sparkles } from 'lucide-react';
+import { FileText } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { UploadZone } from '@/components/printify/UploadZone';
 import { PageGallery } from '@/components/printify/PageGallery';
 import { TransformationControls } from '@/components/printify/TransformationControls';
@@ -35,45 +36,38 @@ const Index = () => {
   const hasPages = localPages.length > 0;
 
   return (
-    <div className="min-h-screen">
-      {/* Header */}
-      <header className="glass border-b border-border/50 sticky top-0 z-40">
+    <div className="min-h-screen bg-background dark">
+      <header className="border-b border-border sticky top-0 z-40 bg-background">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 border border-primary/20 glow">
-              <FileText className="w-6 h-6 text-primary" />
+            <div className="p-2 rounded-lg bg-primary">
+              <FileText className="w-5 h-5 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-xl font-bold gradient-text">Printify Notes</h1>
+              <h1 className="text-lg font-semibold text-foreground">Printify Notes</h1>
               <p className="text-xs text-muted-foreground">Dark → Print-Ready</p>
             </div>
           </div>
           {hasPages && (
-            <button
-              onClick={handleReset}
-              className="glass-button px-4 py-2 rounded-lg text-sm text-foreground/80 hover:text-foreground transition-all duration-300"
-            >
+            <Button variant="outline" size="sm" onClick={handleReset}>
               Start Over
-            </button>
+            </Button>
           )}
         </div>
       </header>
 
       <main className="container mx-auto px-4 py-8">
         {!hasPages ? (
-          <div className="max-w-2xl mx-auto space-y-8">
-            <div className="text-center space-y-4">
-              <div className="inline-flex items-center gap-2 px-4 py-2 glass-card rounded-full text-primary text-sm font-medium">
-                <Sparkles className="w-4 h-4" />
+          <div className="max-w-xl mx-auto space-y-6">
+            <div className="text-center space-y-3">
+              <p className="text-sm text-muted-foreground">
                 100% Private • Processed in your browser
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold">
-                Transform dark notes into{' '}
-                <span className="gradient-text glow-text">print-ready PDFs</span>
+              </p>
+              <h2 className="text-2xl font-semibold text-foreground">
+                Transform dark notes into print-ready PDFs
               </h2>
-              <p className="text-muted-foreground max-w-md mx-auto">
-                Upload your dark-background PDFs and we'll convert them to clean, 
-                ink-saving documents perfect for printing.
+              <p className="text-muted-foreground text-sm">
+                Upload your dark-background PDFs and convert them to clean, ink-saving documents.
               </p>
             </div>
 
@@ -84,14 +78,14 @@ const Index = () => {
             />
 
             {error && (
-              <div className="glass-card p-4 rounded-xl border-destructive/30 text-center">
-                <p className="text-destructive">{error}</p>
+              <div className="p-4 rounded-lg border border-destructive/50 bg-destructive/10 text-center">
+                <p className="text-destructive text-sm">{error}</p>
               </div>
             )}
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-            <div className="lg:col-span-1 space-y-6 order-2 lg:order-1">
+            <div className="lg:col-span-1 space-y-4 order-2 lg:order-1">
               <TransformationControls
                 settings={transformations}
                 onChange={setTransformations}

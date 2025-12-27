@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Check, GripVertical, Eye } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { Check, Eye, GripVertical } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import type { PageData, TransformationSettings } from '@/types/printify';
 import { getTransformationPreview } from '@/lib/imageTransformations';
 
 interface PageThumbnailProps {
   page: PageData;
   transformations: TransformationSettings;
-  onToggleSelect: (id: string) => void;
-  onPreview: (page: PageData) => void;
-  isDragging?: boolean;
-  dragHandleProps?: React.HTMLAttributes<HTMLDivElement>;
+  onToggleSelect: () => void;
+  onPreview: () => void;
+  isDragging: boolean;
+  dragHandleProps: {
+    draggable: boolean;
+    onDragStart: () => void;
+    onDragOver: (e: React.DragEvent) => void;
+    onDragEnd: () => void;
+  };
 }
 
 export function PageThumbnail({
@@ -19,33 +24,27 @@ export function PageThumbnail({
   onToggleSelect,
   onPreview,
   isDragging,
+  dragHandleProps,
 }: PageThumbnailProps) {
   const [previewImage, setPreviewImage] = useState<string>(page.originalImage);
   const [isLoadingPreview, setIsLoadingPreview] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
+    setIsLoadingPreview(true);
 
-    const updatePreview = async () => {
-      setIsLoadingPreview(true);
-      try {
-        const transformed = await getTransformationPreview(page.originalImage, transformations, 300);
+    getTransformationPreview(page.originalImage, transformations, 150)
+      .then((preview) => {
         if (!cancelled) {
-          setPreviewImage(transformed);
+          setPreviewImage(preview);
+          setIsLoadingPreview(false);
         }
-      } catch (error) {
-        console.error('Failed to generate preview:', error);
-        if (!cancelled) {
-          setPreviewImage(page.originalImage);
-        }
-      } finally {
+      })
+      .catch(() => {
         if (!cancelled) {
           setIsLoadingPreview(false);
         }
-      }
-    };
-
-    updatePreview();
+      });
 
     return () => {
       cancelled = true;
@@ -54,54 +53,54 @@ export function PageThumbnail({
 
   return (
     <div
-      className={cn(
-        'group relative glass-card rounded-xl overflow-hidden transition-all duration-300',
-        page.isSelected ? 'ring-2 ring-primary glow' : 'hover:ring-1 hover:ring-primary/30',
-        isDragging && 'opacity-50 scale-95'
-      )}
+      {...dragHandleProps}
+      className={`
+        relative group rounded-lg border overflow-hidden cursor-move transition-all
+        ${page.isSelected ? 'border-primary ring-1 ring-primary' : 'border-border'}
+        ${isDragging ? 'opacity-50 scale-95' : ''}
+      `}
     >
-      <div className="absolute top-2 left-2 z-10 p-1.5 glass rounded-lg opacity-0 group-hover:opacity-100 transition-opacity cursor-grab active:cursor-grabbing">
-        <GripVertical className="w-4 h-4 text-foreground/70" />
-      </div>
-
-      <button
-        onClick={() => onToggleSelect(page.id)}
-        className={cn(
-          'absolute top-2 right-2 z-10 w-7 h-7 rounded-lg flex items-center justify-center transition-all duration-300',
-          page.isSelected
-            ? 'bg-gradient-to-br from-primary to-secondary text-primary-foreground glow'
-            : 'glass hover:ring-1 hover:ring-primary/50'
-        )}
-      >
-        {page.isSelected && <Check className="w-4 h-4" />}
-      </button>
-
-      <button
-        onClick={() => onPreview(page)}
-        className="absolute bottom-2 right-2 z-10 p-2 glass rounded-lg opacity-0 group-hover:opacity-100 transition-opacity hover:bg-primary/20"
-      >
-        <Eye className="w-4 h-4 text-foreground" />
-      </button>
-
-      <div className="absolute bottom-2 left-2 z-10 px-2 py-1 glass rounded-lg text-sm font-medium text-foreground">
-        {page.pageNumber}
-      </div>
-
-      <div
-        onClick={() => onToggleSelect(page.id)}
-        className="aspect-[3/4] cursor-pointer relative"
-      >
-        {isLoadingPreview && (
-          <div className="absolute inset-0 bg-muted animate-pulse-soft" />
-        )}
+      <div className="aspect-[3/4] bg-muted">
         <img
           src={previewImage}
           alt={`Page ${page.pageNumber}`}
-          className={cn(
-            'w-full h-full object-contain bg-muted/50 transition-opacity duration-200',
-            isLoadingPreview && 'opacity-50'
-          )}
+          className={`w-full h-full object-contain ${isLoadingPreview ? 'opacity-50' : ''}`}
         />
+      </div>
+
+      <div className="absolute top-1 left-1">
+        <div className="p-1 rounded bg-background/80">
+          <GripVertical className="w-3 h-3 text-muted-foreground" />
+        </div>
+      </div>
+
+      <div className="absolute top-1 right-1 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+        <Button
+          size="icon"
+          variant={page.isSelected ? 'default' : 'secondary'}
+          className="w-6 h-6"
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggleSelect();
+          }}
+        >
+          <Check className="w-3 h-3" />
+        </Button>
+        <Button
+          size="icon"
+          variant="secondary"
+          className="w-6 h-6"
+          onClick={(e) => {
+            e.stopPropagation();
+            onPreview();
+          }}
+        >
+          <Eye className="w-3 h-3" />
+        </Button>
+      </div>
+
+      <div className="absolute bottom-0 inset-x-0 p-1 bg-background/80 text-center">
+        <span className="text-xs text-muted-foreground">Page {page.pageNumber}</span>
       </div>
     </div>
   );
