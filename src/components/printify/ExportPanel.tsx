@@ -2,9 +2,13 @@ import React, { useState, useCallback } from 'react';
 import { Download, FileCheck, RefreshCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { jsPDF } from 'jspdf';
 import type { PageData, TransformationSettings, CombineSettings } from '@/types/printify';
 import { applyTransformations } from '@/lib/imageTransformations';
+
+type ExportQuality = 'medium' | 'high' | 'very-high';
 
 interface ExportPanelProps {
   pages: PageData[];
@@ -22,6 +26,7 @@ export function ExportPanel({
   const [isExporting, setIsExporting] = useState(false);
   const [progress, setProgress] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
+  const [exportQuality, setExportQuality] = useState<ExportQuality>('high');
 
   const selectedPages = pages.filter((p) => p.isSelected);
 
@@ -158,7 +163,8 @@ export function ExportPanel({
           const offsetX = x + (cellWidth - finalWidth) / 2;
           const offsetY = y + (cellHeight - finalHeight) / 2;
 
-          pdf.addImage(img, 'JPEG', offsetX, offsetY, finalWidth, finalHeight, undefined, 'MEDIUM');
+          const compressionLevel = exportQuality === 'medium' ? 'MEDIUM' : exportQuality === 'high' ? 'SLOW' : 'NONE';
+          pdf.addImage(img, 'JPEG', offsetX, offsetY, finalWidth, finalHeight, undefined, compressionLevel);
         }
 
         currentPdfPage++;
@@ -174,7 +180,7 @@ export function ExportPanel({
     } finally {
       setIsExporting(false);
     }
-  }, [selectedPages, transformations, combineSettings]);
+  }, [selectedPages, transformations, combineSettings, exportQuality]);
 
   return (
     <div className="border border-border rounded-lg p-4 bg-card space-y-4">
@@ -186,6 +192,20 @@ export function ExportPanel({
             {selectedPages.length} page{selectedPages.length !== 1 ? 's' : ''} selected
           </p>
         </div>
+      </div>
+
+      <div className="space-y-2">
+        <Label className="text-sm">Export Quality</Label>
+        <Select value={exportQuality} onValueChange={(v) => setExportQuality(v as ExportQuality)}>
+          <SelectTrigger className="w-full">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="medium">Medium (smaller file)</SelectItem>
+            <SelectItem value="high">High (balanced)</SelectItem>
+            <SelectItem value="very-high">Very High (best quality)</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
       {isComplete ? (
