@@ -2,8 +2,11 @@ import { useState, useCallback } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
 import type { PageData } from '@/types/printify';
 
-// Use the worker from unpkg CDN with proper CORS support
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://unpkg.com/pdfjs-dist@4.4.168/build/pdf.worker.min.mjs';
+// Configure the worker using import.meta.url for proper bundler resolution
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.mjs',
+  import.meta.url
+).toString();
 
 interface UsePdfProcessorReturn {
   pages: PageData[];
