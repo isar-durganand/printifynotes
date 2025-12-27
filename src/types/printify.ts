@@ -17,7 +17,7 @@ export interface TransformationSettings {
 }
 
 export interface CombineSettings {
-  pagesPerSheet: 1 | 2 | 4;
+  pagesPerSheet: 1 | 2 | 3 | 4;
   orientation: 'portrait' | 'landscape';
   marginSize: 'small' | 'medium' | 'large';
   spacing: 'none' | 'small' | 'medium';
