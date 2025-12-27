@@ -1,12 +1,17 @@
 import React from 'react';
 import { FileText, Heart } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { ref: footerRef, isVisible: footerVisible } = useScrollAnimation({ threshold: 0.3 });
 
   return (
     <footer className="border-t border-border bg-card/30">
-      <div className="container-wide py-12 md:py-16">
+      <div 
+        ref={footerRef}
+        className={`container-wide py-12 md:py-16 scroll-hidden ${footerVisible ? 'scroll-visible' : ''}`}
+      >
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo and tagline */}
           <div className="flex flex-col items-center md:items-start gap-3">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Upload, Sliders, Download } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const steps = [
   {
@@ -23,32 +24,42 @@ const steps = [
 ];
 
 export const HowItWorks = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: stepsRef, isVisible: stepsVisible } = useScrollAnimation({ threshold: 0.2 });
+
   return (
     <section id="how-it-works" className="section-padding relative overflow-hidden">
       <div className="absolute inset-0 dot-pattern opacity-20" />
       
       <div className="container-wide relative z-10">
         {/* Section header */}
-        <div className="text-center mb-16 md:mb-20">
-          <span className="inline-block text-sm text-glow font-medium mb-4 opacity-0 animate-fade-in">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-16 md:mb-20 scroll-hidden ${headerVisible ? 'scroll-visible' : ''}`}
+        >
+          <span className="inline-block text-sm text-glow font-medium mb-4">
             SIMPLE PROCESS
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 opacity-0 animate-fade-in delay-100">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             How It Works
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto opacity-0 animate-fade-in delay-200">
+          <p className="text-muted-foreground max-w-xl mx-auto">
             Transform your dark PDFs in three simple steps. No learning curve, no complications.
           </p>
         </div>
 
         {/* Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 lg:gap-12">
+        <div 
+          ref={stepsRef}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 lg:gap-12"
+        >
           {steps.map((step, index) => (
             <StepCard 
               key={step.step} 
               {...step} 
               isLast={index === steps.length - 1}
-              delay={index * 100 + 300}
+              isVisible={stepsVisible}
+              index={index}
             />
           ))}
         </div>
@@ -63,18 +74,19 @@ const StepCard = ({
   title, 
   description, 
   isLast,
-  delay 
+  isVisible,
+  index
 }: {
   icon: React.ElementType;
   step: string;
   title: string;
   description: string;
   isLast: boolean;
-  delay: number;
+  isVisible: boolean;
+  index: number;
 }) => (
   <div 
-    className="relative opacity-0 animate-fade-in-up"
-    style={{ animationDelay: `${delay}ms` }}
+    className={`relative scroll-hidden ${isVisible ? 'scroll-visible' : ''} stagger-${index + 1}`}
   >
     {/* Connector line (hidden on mobile and last item) */}
     {!isLast && (

@@ -1,5 +1,6 @@
 import React from 'react';
 import { GraduationCap, Code2, Presentation, Palette } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const useCases = [
   {
@@ -29,29 +30,39 @@ const useCases = [
 ];
 
 export const UseCases = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation({ threshold: 0.15 });
+
   return (
     <section className="section-padding bg-card/30">
       <div className="container-wide">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <span className="inline-block text-sm text-glow font-medium mb-4 opacity-0 animate-fade-in">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-16 scroll-hidden ${headerVisible ? 'scroll-visible' : ''}`}
+        >
+          <span className="inline-block text-sm text-glow font-medium mb-4">
             WHO IT'S FOR
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 opacity-0 animate-fade-in delay-100">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             Perfect For Everyone
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto opacity-0 animate-fade-in delay-200">
+          <p className="text-muted-foreground max-w-xl mx-auto">
             Whether you're a student, developer, or professional — Printify Notes has you covered.
           </p>
         </div>
 
         {/* Use case cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div 
+          ref={cardsRef}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {useCases.map((useCase, index) => (
             <UseCaseCard 
               key={useCase.title} 
               {...useCase} 
-              delay={index * 100}
+              isVisible={cardsVisible}
+              index={index}
             />
           ))}
         </div>
@@ -65,17 +76,18 @@ const UseCaseCard = ({
   title, 
   description,
   color,
-  delay 
+  isVisible,
+  index
 }: {
   icon: React.ElementType;
   title: string;
   description: string;
   color: string;
-  delay: number;
+  isVisible: boolean;
+  index: number;
 }) => (
   <div 
-    className="feature-card group hover-lift text-center opacity-0 animate-fade-in-up"
-    style={{ animationDelay: `${delay}ms` }}
+    className={`feature-card group hover-lift text-center scroll-hidden ${isVisible ? 'scroll-visible' : ''} stagger-${index + 1}`}
   >
     <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${color} border border-border/50 flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform duration-300`}>
       <Icon className="w-7 h-7 text-foreground" />
