@@ -20,6 +20,7 @@ import {
   FAQ,
   Footer,
 } from '@/components/landing';
+import { FloatingCTA } from '@/components/landing/FloatingCTA';
 
 const Index = () => {
   const { pages, isLoading, progress, error, loadPdf, reset } = usePdfProcessor();
@@ -156,6 +157,9 @@ const Index = () => {
 
       {/* Footer */}
       <Footer />
+
+      {/* Floating CTA */}
+      <FloatingCTA />
     </div>
   );
 };
