@@ -1,21 +1,29 @@
 import React from 'react';
 import { ArrowRight, Moon, Sun } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export const BeforeAfter = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: beforeRef, isVisible: beforeVisible } = useScrollAnimation({ threshold: 0.3 });
+  const { ref: afterRef, isVisible: afterVisible } = useScrollAnimation({ threshold: 0.3 });
+
   return (
     <section className="section-padding relative overflow-hidden">
       <div className="absolute inset-0 hero-pattern" />
       
       <div className="container-wide relative z-10">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <span className="inline-block text-sm text-glow font-medium mb-4 opacity-0 animate-fade-in">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-16 scroll-hidden ${headerVisible ? 'scroll-visible' : ''}`}
+        >
+          <span className="inline-block text-sm text-glow font-medium mb-4">
             SEE THE DIFFERENCE
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 opacity-0 animate-fade-in delay-100">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             Before & After
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto opacity-0 animate-fade-in delay-200">
+          <p className="text-muted-foreground max-w-xl mx-auto">
             See how Printify Notes transforms dark PDFs into print-ready documents.
           </p>
         </div>
@@ -24,7 +32,10 @@ export const BeforeAfter = () => {
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
             {/* Before */}
-            <div className="opacity-0 animate-slide-in-left delay-300">
+            <div 
+              ref={beforeRef}
+              className={`scroll-hidden-left ${beforeVisible ? 'scroll-visible-x' : ''}`}
+            >
               <div className="relative group">
                 <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-border to-transparent opacity-50" />
                 <div className="relative glass rounded-2xl p-4 md:p-6">
@@ -68,7 +79,10 @@ export const BeforeAfter = () => {
             </div>
 
             {/* After */}
-            <div className="opacity-0 animate-slide-in-right delay-400">
+            <div 
+              ref={afterRef}
+              className={`scroll-hidden-right ${afterVisible ? 'scroll-visible-x' : ''}`}
+            >
               <div className="relative group">
                 <div className="absolute -inset-1 rounded-2xl bg-gradient-to-l from-glow/30 to-transparent opacity-50" />
                 <div className="relative glass rounded-2xl p-4 md:p-6">

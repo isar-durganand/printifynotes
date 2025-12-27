@@ -7,6 +7,7 @@ import {
   Leaf, 
   Lock 
 } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const features = [
   {
@@ -42,29 +43,39 @@ const features = [
 ];
 
 export const FeaturesGrid = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
     <section className="section-padding bg-card/30">
       <div className="container-wide">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <span className="inline-block text-sm text-glow font-medium mb-4 opacity-0 animate-fade-in">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-16 scroll-hidden ${headerVisible ? 'scroll-visible' : ''}`}
+        >
+          <span className="inline-block text-sm text-glow font-medium mb-4">
             POWERFUL FEATURES
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 opacity-0 animate-fade-in delay-100">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             Everything You Need
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto opacity-0 animate-fade-in delay-200">
+          <p className="text-muted-foreground max-w-xl mx-auto">
             Packed with features to transform your documents exactly how you need them.
           </p>
         </div>
 
         {/* Features grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div 
+          ref={gridRef}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {features.map((feature, index) => (
             <FeatureCard 
               key={feature.title} 
               {...feature} 
-              delay={index * 100}
+              isVisible={gridVisible}
+              index={index}
             />
           ))}
         </div>
@@ -77,16 +88,17 @@ const FeatureCard = ({
   icon: Icon, 
   title, 
   description,
-  delay 
+  isVisible,
+  index
 }: {
   icon: React.ElementType;
   title: string;
   description: string;
-  delay: number;
+  isVisible: boolean;
+  index: number;
 }) => (
   <div 
-    className="feature-card group hover-lift opacity-0 animate-fade-in"
-    style={{ animationDelay: `${delay}ms` }}
+    className={`feature-card group hover-lift scroll-hidden-scale ${isVisible ? 'scroll-visible-scale' : ''} stagger-${index + 1}`}
   >
     <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-5 group-hover:bg-glow/20 transition-colors duration-300">
       <Icon className="w-6 h-6 text-foreground group-hover:text-glow transition-colors duration-300" />

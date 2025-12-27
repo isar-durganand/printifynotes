@@ -5,6 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const faqs = [
   {
@@ -42,24 +43,33 @@ const faqs = [
 ];
 
 export const FAQ = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: accordionRef, isVisible: accordionVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
     <section className="section-padding bg-card/30">
       <div className="container-tight">
         {/* Section header */}
-        <div className="text-center mb-12">
-          <span className="inline-block text-sm text-glow font-medium mb-4 opacity-0 animate-fade-in">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-12 scroll-hidden ${headerVisible ? 'scroll-visible' : ''}`}
+        >
+          <span className="inline-block text-sm text-glow font-medium mb-4">
             FAQ
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 opacity-0 animate-fade-in delay-100">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             Common Questions
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto opacity-0 animate-fade-in delay-200">
+          <p className="text-muted-foreground max-w-xl mx-auto">
             Everything you need to know about Printify Notes.
           </p>
         </div>
 
         {/* FAQ Accordion */}
-        <div className="max-w-3xl mx-auto opacity-0 animate-fade-in delay-300">
+        <div 
+          ref={accordionRef}
+          className={`max-w-3xl mx-auto scroll-hidden ${accordionVisible ? 'scroll-visible' : ''}`}
+        >
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
               <AccordionItem 
