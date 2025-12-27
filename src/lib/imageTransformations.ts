@@ -1,5 +1,50 @@
 import type { TransformationSettings } from '@/types/printify';
 
+// Convolution kernel for edge enhancement (sharpening)
+function applyConvolution(
+  imageData: ImageData,
+  kernel: number[],
+  strength: number
+): void {
+  const data = imageData.data;
+  const width = imageData.width;
+  const height = imageData.height;
+  const output = new Uint8ClampedArray(data);
+  
+  const kernelSize = 3;
+  const half = Math.floor(kernelSize / 2);
+
+  for (let y = half; y < height - half; y++) {
+    for (let x = half; x < width - half; x++) {
+      let rSum = 0, gSum = 0, bSum = 0;
+      
+      for (let ky = 0; ky < kernelSize; ky++) {
+        for (let kx = 0; kx < kernelSize; kx++) {
+          const px = x + kx - half;
+          const py = y + ky - half;
+          const idx = (py * width + px) * 4;
+          const kVal = kernel[ky * kernelSize + kx];
+          
+          rSum += data[idx] * kVal;
+          gSum += data[idx + 1] * kVal;
+          bSum += data[idx + 2] * kVal;
+        }
+      }
+      
+      const idx = (y * width + x) * 4;
+      // Blend original with sharpened based on strength
+      output[idx] = data[idx] + (rSum - data[idx]) * strength;
+      output[idx + 1] = data[idx + 1] + (gSum - data[idx + 1]) * strength;
+      output[idx + 2] = data[idx + 2] + (bSum - data[idx + 2]) * strength;
+    }
+  }
+  
+  // Copy output back to data
+  for (let i = 0; i < data.length; i++) {
+    data[i] = output[i];
+  }
+}
+
 export async function applyTransformations(
   imageDataUrl: string,
   settings: TransformationSettings
@@ -82,6 +127,18 @@ export async function applyTransformations(
         data[i] = Math.max(0, Math.min(255, r));
         data[i + 1] = Math.max(0, Math.min(255, g));
         data[i + 2] = Math.max(0, Math.min(255, b));
+      }
+
+      // Apply edge enhancement (sharpening) if enabled
+      if (settings.edgeEnhancement > 0) {
+        // Unsharp mask kernel for edge enhancement
+        const sharpenKernel = [
+          0, -1, 0,
+          -1, 5, -1,
+          0, -1, 0
+        ];
+        const strength = settings.edgeEnhancement / 100;
+        applyConvolution(imageData, sharpenKernel, strength);
       }
 
       ctx.putImageData(imageData, 0, 0);

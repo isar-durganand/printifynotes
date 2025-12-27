@@ -1,5 +1,5 @@
 import React from 'react';
-import { Settings } from 'lucide-react';
+import { Settings, Sparkles } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
@@ -79,6 +79,24 @@ export function TransformationControls({ settings, onChange }: TransformationCon
             max={150}
             step={5}
           />
+        </div>
+
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-glow" />
+              <Label className="text-sm">Edge Enhancement</Label>
+            </div>
+            <span className="text-xs text-muted-foreground">{settings.edgeEnhancement}%</span>
+          </div>
+          <Slider
+            value={[settings.edgeEnhancement]}
+            onValueChange={([value]) => updateSetting('edgeEnhancement', value)}
+            min={0}
+            max={100}
+            step={10}
+          />
+          <p className="text-xs text-muted-foreground">Sharpens text and edges for clearer prints</p>
         </div>
       </div>
     </div>

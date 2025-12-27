@@ -14,6 +14,7 @@ export interface TransformationSettings {
   brightness: number; // 0-200, 100 is default
   contrast: number; // 0-200, 100 is default
   grayscale: boolean;
+  edgeEnhancement: number; // 0-100, 0 is off, 100 is maximum
 }
 
 export interface CombineSettings {
@@ -39,6 +40,7 @@ export const DEFAULT_TRANSFORMATIONS: TransformationSettings = {
   brightness: 100,
   contrast: 110,
   grayscale: false,
+  edgeEnhancement: 30,
 };
 
 export const DEFAULT_COMBINE_SETTINGS: CombineSettings = {
