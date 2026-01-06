@@ -23,6 +23,7 @@ import {
 import { Navbar } from '@/components/landing/Navbar';
 import { StickyUpload } from '@/components/landing/StickyUpload';
 import { FloatingCTA } from '@/components/landing/FloatingCTA';
+import { FloatingSocial } from '@/components/FloatingSocial';
 
 // Background decoration component
 const BackgroundDecorations = () => (
@@ -31,10 +32,9 @@ const BackgroundDecorations = () => (
     <div className="noise-overlay" />
 
     {/* Gradient orbs */}
-    <div className="gradient-orb gradient-orb-emerald w-[600px] h-[600px] -top-[200px] -left-[200px] fixed" />
-    <div className="gradient-orb gradient-orb-blue w-[500px] h-[500px] top-[40%] -right-[150px] fixed animate-float-slow" />
-    <div className="gradient-orb gradient-orb-purple w-[400px] h-[400px] bottom-[10%] left-[10%] fixed animate-float-medium" />
-    <div className="gradient-orb gradient-orb-emerald w-[300px] h-[300px] top-[60%] left-[40%] fixed opacity-20" />
+    <div className="gradient-orb gradient-orb-emerald w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] -top-[100px] sm:-top-[200px] -left-[100px] sm:-left-[200px] fixed" />
+    <div className="gradient-orb gradient-orb-blue w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] top-[40%] -right-[100px] sm:-right-[150px] fixed animate-float-slow" />
+    <div className="gradient-orb gradient-orb-purple w-[250px] sm:w-[400px] h-[250px] sm:h-[400px] bottom-[10%] left-[5%] sm:left-[10%] fixed animate-float-medium" />
   </>
 );
 
@@ -68,24 +68,24 @@ const Index = () => {
     return (
       <div className="min-h-screen bg-background text-foreground">
         <header className="border-b border-border sticky top-0 z-40 bg-background/80 backdrop-blur-xl">
-          <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-emerald-500">
-                <FileText className="w-5 h-5 text-white" />
+          <div className="container mx-auto px-4 py-3 sm:py-4 flex items-center justify-between">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="p-1.5 sm:p-2 rounded-lg bg-emerald-500">
+                <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
               </div>
               <div>
-                <h1 className="text-lg font-semibold text-foreground">Printify Notes</h1>
-                <p className="text-xs text-muted-foreground">Dark → Print-Ready</p>
+                <h1 className="text-base sm:text-lg font-semibold text-foreground">Printify Notes</h1>
+                <p className="text-xs text-muted-foreground hidden sm:block">Dark → Print-Ready</p>
               </div>
             </div>
-            <Button variant="outline" size="sm" onClick={handleReset}>
+            <Button variant="outline" size="sm" onClick={handleReset} className="text-xs sm:text-sm">
               Start Over
             </Button>
           </div>
         </header>
 
-        <main className="container mx-auto px-4 py-6 md:py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <main className="container mx-auto px-3 sm:px-4 py-4 sm:py-6 md:py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6">
             <div className="lg:col-span-1 space-y-4 order-2 lg:order-1">
               <TransformationControls
                 settings={transformations}
@@ -125,7 +125,7 @@ const Index = () => {
       {/* Floating Navbar */}
       <Navbar />
 
-      {/* Sticky Upload on right side */}
+      {/* Sticky Upload on right side - desktop only */}
       <StickyUpload
         onFileSelect={handleFileSelect}
         isLoading={isLoading}
@@ -136,7 +136,9 @@ const Index = () => {
       <HeroSection />
 
       {/* How It Works */}
-      <HowItWorks />
+      <section id="how-it-works">
+        <HowItWorks />
+      </section>
 
       {/* Features Grid */}
       <section id="features">
@@ -155,14 +157,14 @@ const Index = () => {
       {/* Upload Section */}
       <section id="upload-section" className="section-padding">
         <div className="container-tight">
-          <div className="text-center mb-10">
+          <div className="text-center mb-8 sm:mb-10">
             <span className="inline-block text-sm text-emerald-500 font-medium mb-4">
               GET STARTED
             </span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Ready to Transform?
             </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">
+            <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
               Upload your PDF and see the magic happen. It's free, private, and takes just seconds.
             </p>
           </div>
@@ -189,10 +191,13 @@ const Index = () => {
       {/* Footer */}
       <Footer />
 
-      {/* Floating CTA - only visible on mobile since desktop has sticky upload */}
+      {/* Floating CTA - mobile only */}
       <div className="lg:hidden">
         <FloatingCTA />
       </div>
+
+      {/* Floating Social - all devices */}
+      <FloatingSocial />
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { FileText, ArrowLeft } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { Footer } from '@/components/landing/Footer';
+import { FloatingSocial } from '@/components/FloatingSocial';
 
 interface PageLayoutProps {
     title: string;
@@ -38,25 +39,25 @@ export const PageLayout = ({ title, description, keywords, children }: PageLayou
 
             <div className="min-h-screen bg-background text-foreground">
                 {/* Header */}
-                <header className="sticky top-0 z-40 py-4 px-4">
+                <header className="sticky top-0 z-40 py-3 sm:py-4 px-3 sm:px-4">
                     <div className="max-w-4xl mx-auto">
-                        <nav className="rounded-full px-4 py-3 bg-background/90 backdrop-blur-xl shadow-lg shadow-black/20 border border-border">
+                        <nav className="rounded-full px-3 sm:px-4 py-2.5 sm:py-3 bg-background/90 backdrop-blur-xl shadow-lg shadow-black/20 border border-border">
                             <div className="flex items-center justify-between">
-                                <Link to="/" className="flex items-center gap-3">
-                                    <div className="p-2 rounded-lg bg-emerald-500">
-                                        <FileText className="w-5 h-5 text-white" />
+                                <Link to="/" className="flex items-center gap-2 sm:gap-3">
+                                    <div className="p-1.5 sm:p-2 rounded-lg bg-emerald-500">
+                                        <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                                     </div>
                                     <div>
-                                        <h1 className="text-lg font-semibold text-foreground">Printify Notes</h1>
+                                        <h1 className="text-base sm:text-lg font-semibold text-foreground">Printify Notes</h1>
                                         <p className="text-xs text-muted-foreground hidden sm:block">Dark → Print-Ready</p>
                                     </div>
                                 </Link>
                                 <Link
                                     to="/"
-                                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                                    className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors"
                                 >
-                                    <ArrowLeft className="w-4 h-4" />
-                                    <span className="hidden sm:inline">Back to Home</span>
+                                    <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                                    <span className="hidden xs:inline">Home</span>
                                 </Link>
                             </div>
                         </nav>
@@ -64,15 +65,18 @@ export const PageLayout = ({ title, description, keywords, children }: PageLayou
                 </header>
 
                 {/* Content */}
-                <main className="container mx-auto px-4 py-12 max-w-4xl">
-                    <h1 className="text-3xl md:text-4xl font-bold mb-8">{title}</h1>
-                    <div className="prose prose-invert prose-emerald max-w-none">
+                <main className="container mx-auto px-4 py-8 sm:py-12 max-w-4xl">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8">{title}</h1>
+                    <div className="prose prose-invert prose-emerald max-w-none prose-sm sm:prose-base">
                         {children}
                     </div>
                 </main>
 
                 {/* Footer */}
                 <Footer />
+
+                {/* Floating Social */}
+                <FloatingSocial />
             </div>
         </>
     );
