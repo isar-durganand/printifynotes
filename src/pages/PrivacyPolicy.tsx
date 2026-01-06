@@ -111,7 +111,7 @@ const PrivacyPolicy = () => {
                     If you have any questions about this Privacy Policy, please contact us at:
                 </p>
                 <p className="text-muted-foreground">
-                    Email: privacy@printifynotes.com
+                    Email: isardurganand@gmail.com
                 </p>
             </section>
         </PageLayout>

@@ -1,16 +1,18 @@
+# Printify Notes - Robots.txt
+# https://printifynotes.com
+
+User-agent: *
+Allow: /
+
+# Allow all crawlers to access all content
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: *
-Allow: /
-
+# Sitemap location
 Sitemap: https://printifynotes.com/sitemap.xml
+
+# Disallow admin or private paths (none currently)
+# Disallow: /admin/

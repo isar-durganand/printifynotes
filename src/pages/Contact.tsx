@@ -17,7 +17,7 @@ const Contact = () => {
         const formData = new FormData(form);
 
         try {
-            const response = await fetch('https://formspree.io/f/xwpkvzye', {
+            const response = await fetch('https://formspree.io/f/mkgrljqp', {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -56,10 +56,10 @@ const Contact = () => {
                         </div>
                         <h3 className="font-semibold mb-2">Email Us</h3>
                         <a
-                            href="mailto:hello@printifynotes.com"
+                            href="mailto:isardurganand@gmail.com"
                             className="text-muted-foreground hover:text-emerald-500 transition-colors"
                         >
-                            hello@printifynotes.com
+                            isardurganand@gmail.com
                         </a>
                     </div>
 

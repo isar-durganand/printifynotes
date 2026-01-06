@@ -210,6 +210,253 @@ const blogContent: Record<string, {
             </>
         ),
     },
+    'convert-unacademy-slides-for-printing': {
+        title: 'Step-by-Step: Converting Unacademy Slides for Printing',
+        date: 'December 28, 2025',
+        readTime: '7 min read',
+        category: 'Tutorial',
+        content: (
+            <>
+                <p className="text-lg text-muted-foreground mb-6">
+                    Unacademy is one of India's leading ed-tech platforms, offering courses for UPSC, NEET, JEE, and various
+                    competitive exams. While their digital slides look great on screen, converting them for printing can be
+                    tricky. This guide walks you through the complete process.
+                </p>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Why Unacademy Slides Need Conversion</h2>
+                <p className="text-muted-foreground mb-4">
+                    Unacademy's slides are designed for digital viewing with:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li>Dark backgrounds optimized for screens</li>
+                    <li>Vibrant colors that don't translate well to print</li>
+                    <li>High-contrast themes that consume excessive ink</li>
+                    <li>Animations and transitions (lost in PDF form)</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Step 1: Download Slides from Unacademy</h2>
+                <p className="text-muted-foreground mb-4">
+                    First, access your course materials on Unacademy. Navigate to the lesson you want to print and look
+                    for the download option. Most courses allow PDF downloads of lecture slides.
+                </p>
+                <p className="text-muted-foreground mb-4">
+                    <strong>Pro tip:</strong> Download all related slides at once to batch process them later.
+                </p>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Step 2: Convert Using Printify Notes</h2>
+                <p className="text-muted-foreground mb-4">
+                    Open <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a> and upload your
+                    downloaded Unacademy PDF. The tool will render each slide as a preview.
+                </p>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Step 3: Apply Optimal Settings</h2>
+                <p className="text-muted-foreground mb-4">
+                    For Unacademy slides, these settings work best:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li><strong>Invert Colors:</strong> ON - Converts dark backgrounds to light</li>
+                    <li><strong>Brightness:</strong> +10 to +20 for clearer text</li>
+                    <li><strong>Contrast:</strong> +5 to improve readability</li>
+                    <li><strong>Grayscale:</strong> Optional but saves significant ink</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Step 4: Arrange Multiple Pages</h2>
+                <p className="text-muted-foreground mb-4">
+                    Since lecture slides often have less content per page, consider using the multi-page layout feature
+                    to fit 2 or 4 slides per printed page. This saves paper without sacrificing readability.
+                </p>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Step 5: Export and Print</h2>
+                <p className="text-muted-foreground mb-4">
+                    Review your converted slides in the preview, then click "Export PDF" to download. Print using your
+                    preferred settings - we recommend draft mode for study copies.
+                </p>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Troubleshooting Common Issues</h2>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li><strong>Diagrams look weird after inversion:</strong> Try reducing brightness or excluding specific pages</li>
+                    <li><strong>Text too faint:</strong> Increase contrast setting</li>
+                    <li><strong>Colors important for understanding:</strong> Skip grayscale mode for those pages</li>
+                </ul>
+            </>
+        ),
+    },
+    'eco-friendly-printing-for-students': {
+        title: "Eco-Friendly Printing: A Student's Guide to Sustainable Study",
+        date: 'December 25, 2025',
+        readTime: '5 min read',
+        category: 'Sustainability',
+        content: (
+            <>
+                <p className="text-lg text-muted-foreground mb-6">
+                    As students, we print thousands of pages during our academic journey. From lecture notes to practice
+                    papers, the environmental impact adds up quickly. Here's how you can study effectively while being
+                    kind to the planet.
+                </p>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">The Environmental Impact of Printing</h2>
+                <p className="text-muted-foreground mb-4">
+                    Consider these statistics:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li>One tree produces about 8,333 sheets of paper</li>
+                    <li>Producing one ton of paper uses 24,000 gallons of water</li>
+                    <li>Printer ink is one of the most expensive liquids on Earth</li>
+                    <li>Most ink cartridges end up in landfills</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">1. Convert Dark PDFs Before Printing</h2>
+                <p className="text-muted-foreground mb-4">
+                    Dark-background PDFs waste enormous amounts of ink. By using tools like Printify Notes to convert
+                    them to light backgrounds, you can reduce ink usage by up to 60%.
+                </p>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">2. Print Only What You Need</h2>
+                <p className="text-muted-foreground mb-4">
+                    Before printing an entire document:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li>Preview the document completely</li>
+                    <li>Select only the pages you'll actually use</li>
+                    <li>Consider whether digital notes might work instead</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">3. Use Recycled Paper</h2>
+                <p className="text-muted-foreground mb-4">
+                    Switch to recycled paper for your printing needs. It's becoming increasingly affordable and performs
+                    just as well as virgin paper for study materials.
+                </p>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">4. Print Double-Sided</h2>
+                <p className="text-muted-foreground mb-4">
+                    This simple habit cuts your paper usage in half. Most modern printers support automatic duplex
+                    printing - enable it in your printer settings.
+                </p>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">5. Use Multiple Pages Per Sheet</h2>
+                <p className="text-muted-foreground mb-4">
+                    For review materials and notes, printing 2 or 4 pages per sheet is often perfectly readable while
+                    significantly reducing paper consumption.
+                </p>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">6. Recycle Ink Cartridges</h2>
+                <p className="text-muted-foreground mb-4">
+                    Many office supply stores offer cartridge recycling programs. Some even provide discounts on new
+                    purchases when you bring in empty cartridges.
+                </p>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">The Bigger Picture</h2>
+                <p className="text-muted-foreground mb-4">
+                    Every small action adds up. By adopting eco-friendly printing habits, students across India can
+                    save millions of sheets of paper and gallons of ink annually. It's good for your wallet and
+                    great for the environment.
+                </p>
+            </>
+        ),
+    },
+    'neet-jee-notes-printing-guide': {
+        title: 'Ultimate Guide to Printing NEET & JEE Preparation Notes',
+        date: 'December 20, 2025',
+        readTime: '10 min read',
+        category: 'Guide',
+        content: (
+            <>
+                <p className="text-lg text-muted-foreground mb-6">
+                    Preparing for NEET or JEE requires extensive note-taking and study material management. Whether you're
+                    using notes from Physics Wallah, Unacademy, Allen, or Aakash, this comprehensive guide covers everything
+                    you need to know about printing your preparation materials efficiently.
+                </p>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Why Printed Notes Still Matter</h2>
+                <p className="text-muted-foreground mb-4">
+                    Despite digital alternatives, printed notes offer unique advantages:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li>Better retention - studies show handwritten annotations improve memory</li>
+                    <li>No distractions from notifications</li>
+                    <li>Easier to flip between topics during revision</li>
+                    <li>Reduced screen time for eye health</li>
+                    <li>Can be used during power outages</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Understanding Different Note Types</h2>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Lecture Notes (PW, Unacademy, Vedantu)</h3>
+                <p className="text-muted-foreground mb-4">
+                    These typically have dark backgrounds and colorful highlights. Always convert to light background
+                    using Printify Notes before printing. Recommended settings: Invert ON, Brightness +10-15.
+                </p>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Practice Sheets</h3>
+                <p className="text-muted-foreground mb-4">
+                    Usually already printer-friendly but may have unnecessary headers. Use "Pages Per Sheet" feature
+                    to fit more questions on each page when doing timed practice.
+                </p>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Formula Sheets</h3>
+                <p className="text-muted-foreground mb-4">
+                    Often colorful and compact. Consider printing at full size for wall charts, or standard size
+                    for portable reference.
+                </p>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Subject-Specific Tips</h2>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Physics</h3>
+                <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+                    <li>Keep diagrams in color when they show vector directions</li>
+                    <li>Circuit diagrams work fine in grayscale</li>
+                    <li>Leave margin space for worked examples</li>
+                </ul>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Chemistry</h3>
+                <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+                    <li>Organic mechanism arrows need clear visibility - use color for important reactions</li>
+                    <li>Periodic table references should stay in color</li>
+                    <li>Inorganic reactions can be printed in grayscale</li>
+                </ul>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Mathematics</h3>
+                <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+                    <li>Grayscale works perfectly for most math content</li>
+                    <li>Graphs may need color for multiple function visualization</li>
+                </ul>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Biology (NEET)</h3>
+                <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+                    <li>Diagrams often require color for tissue and cell identification</li>
+                    <li>Text-heavy sections work great in grayscale</li>
+                    <li>Consider separate color prints for key diagrams only</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Cost-Saving Strategies</h2>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li>Convert all dark PDFs before printing (saves 60% ink)</li>
+                    <li>Use draft mode for first-pass reading materials</li>
+                    <li>Print final revision notes in higher quality</li>
+                    <li>Buy compatible ink cartridges (much cheaper)</li>
+                    <li>Print at college/coaching centers when possible</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Organizing Your Printed Notes</h2>
+                <p className="text-muted-foreground mb-4">
+                    Create a system that works for revision:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li>Use color-coded folders for each subject</li>
+                    <li>Maintain a "Quick Revision" folder with important formulas</li>
+                    <li>Mark difficult topics with tabs for easy access</li>
+                    <li>Keep past year questions separate from theory notes</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Conclusion</h2>
+                <p className="text-muted-foreground mb-4">
+                    Smart printing is about making informed choices. Use Printify Notes to convert dark PDFs, choose
+                    appropriate quality settings for different materials, and organize effectively. These habits will
+                    save you money while ensuring you have the materials you need for exam success.
+                </p>
+            </>
+        ),
+    },
 };
 
 const BlogPost = () => {

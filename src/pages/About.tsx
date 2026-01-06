@@ -105,8 +105,8 @@ const About = () => {
                 <h2 className="text-2xl font-semibold mb-4">Get in Touch</h2>
                 <p className="text-muted-foreground">
                     Have feedback or suggestions? We'd love to hear from you! Reach out at{' '}
-                    <a href="mailto:hello@printifynotes.com" className="text-emerald-500 hover:underline">
-                        hello@printifynotes.com
+                    <a href="mailto:isardurganand@gmail.com" className="text-emerald-500 hover:underline">
+                        isardurganand@gmail.com
                     </a>
                 </p>
             </section>

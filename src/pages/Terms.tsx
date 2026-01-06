@@ -112,7 +112,7 @@ const Terms = () => {
                     If you have any questions about these Terms, please contact us at:
                 </p>
                 <p className="text-muted-foreground">
-                    Email: legal@printifynotes.com
+                    Email: isardurganand@gmail.com
                 </p>
             </section>
         </PageLayout>
