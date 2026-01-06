@@ -17,7 +17,7 @@ const PrivacyPolicy = () => {
                 <p className="text-muted-foreground mb-4">
                     Welcome to Printify Notes ("we," "our," or "us"). We are committed to protecting your privacy
                     and ensuring you have a positive experience when using our PDF conversion tool. This Privacy Policy
-                    explains how we handle information when you use our website at printifynotes.com.
+                    explains how we handle information when you use our website at printifynotes.vercel.app.
                 </p>
             </section>
 

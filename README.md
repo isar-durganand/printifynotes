@@ -4,7 +4,7 @@
 
 Convert dark-background lecture notes from Physics Wallah, Unacademy, Vedantu, and other coaching platforms into print-friendly PDFs. Save up to 60% on ink costs while keeping your study materials private.
 
-🌐 **Live Site:** [printifynotes.com](https://printifynotes.com)
+🌐 **Live Site:** [printifynotes.vercel.app](https://printifynotes.vercel.app)
 
 ## Features
 

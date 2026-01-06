@@ -1,5 +1,5 @@
 # Printify Notes - Robots.txt
-# https://printifynotes.com
+# https://printifynotes.vercel.app
 
 User-agent: *
 Allow: /
@@ -12,7 +12,7 @@ User-agent: Bingbot
 Allow: /
 
 # Sitemap location
-Sitemap: https://printifynotes.com/sitemap.xml
+Sitemap: https://printifynotes.vercel.app/sitemap.xml
 
 # Disallow admin or private paths (none currently)
 # Disallow: /admin/
