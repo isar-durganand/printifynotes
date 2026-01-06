@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDown, Shield, Zap, Eye } from 'lucide-react';
+import { ArrowDown, Shield, Zap, Eye, Hexagon, Triangle, Circle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export const HeroSection = () => {
@@ -8,18 +8,28 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center hero-pattern overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center hero-pattern overflow-hidden pt-24">
       {/* Background grid */}
-      <div className="absolute inset-0 grid-pattern opacity-30" />
-      
-      {/* Floating orbs */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-glow/10 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-glow-muted/10 rounded-full blur-3xl animate-float delay-500" />
+      <div className="absolute inset-0 grid-pattern opacity-20" />
+
+      {/* Decorative floating shapes */}
+      <div className="absolute top-32 left-[10%] animate-float-slow opacity-20">
+        <Hexagon className="w-16 h-16 text-emerald-500 stroke-1" />
+      </div>
+      <div className="absolute top-[40%] right-[15%] animate-float-medium opacity-15">
+        <Triangle className="w-12 h-12 text-blue-500 stroke-1" />
+      </div>
+      <div className="absolute bottom-[25%] left-[20%] animate-float-slow opacity-20" style={{ animationDelay: '2s' }}>
+        <Circle className="w-10 h-10 text-purple-500 stroke-1" />
+      </div>
+      <div className="absolute top-[60%] right-[8%] animate-float-medium opacity-15" style={{ animationDelay: '1s' }}>
+        <Hexagon className="w-8 h-8 text-emerald-400 stroke-1" />
+      </div>
 
       <div className="container-tight relative z-10 text-center">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 opacity-0 animate-fade-in">
-          <Shield className="w-4 h-4 text-glow" />
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-border mb-8 opacity-0 animate-fade-in">
+          <Shield className="w-4 h-4 text-emerald-500" />
           <span className="text-sm text-muted-foreground">100% Private • Browser-Based</span>
         </div>
 
@@ -27,12 +37,12 @@ export const HeroSection = () => {
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 opacity-0 animate-fade-in delay-100">
           Convert Dark PDF Notes
           <br />
-          <span className="gradient-text-glow">For Easy Printing</span>
+          <span className="text-muted-foreground">For Easy Printing</span>
         </h1>
 
         {/* Subheading - SEO optimized with keywords */}
         <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-6 opacity-0 animate-fade-in delay-200">
-          Transform dark-background lecture notes from PW, Unacademy, Vedantu, and other coaching platforms 
+          Transform dark-background lecture notes from PW, Unacademy, Vedantu, and other coaching platforms
           into clean, ink-saving PDFs. Perfect for NEET & JEE preparation notes.
         </p>
 
@@ -43,19 +53,19 @@ export const HeroSection = () => {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 opacity-0 animate-fade-in delay-300">
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             onClick={scrollToUpload}
-            className="btn-glow text-base px-8 py-6 glow-sm hover:glow-md transition-shadow"
+            className="text-base px-8 py-6 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white"
           >
             Start Converting — Free
             <ArrowDown className="w-4 h-4 ml-2" />
           </Button>
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             size="lg"
             onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
-            className="text-base px-8 py-6"
+            className="text-base px-8 py-6 rounded-full"
           >
             See How It Works
           </Button>
@@ -73,8 +83,8 @@ export const HeroSection = () => {
           <h2>Print Physics Wallah Notes | Print Unacademy Slides | Dark to Light PDF Converter</h2>
           <p>
             Printify Notes is the best free tool to convert dark background PDFs to print-friendly documents.
-            Perfect for students who want to print their coaching notes from Physics Wallah (PW), Unacademy, 
-            Vedantu, BYJU'S, Allen Digital, Aakash, Etoos, Competishun, and other online learning platforms. 
+            Perfect for students who want to print their coaching notes from Physics Wallah (PW), Unacademy,
+            Vedantu, BYJU'S, Allen Digital, Aakash, Etoos, Competishun, and other online learning platforms.
             Convert dark lecture slides, NEET preparation notes, JEE study material, Class 11 notes, Class 12 notes,
             Board exam preparation material, and coaching PDFs to ink-saving printable format.
             Works with all dark-themed PDFs including code screenshots, IDE exports, and presentation slides.
@@ -132,7 +142,7 @@ export const HeroSection = () => {
 
 const TrustBadge = ({ icon: Icon, text }: { icon: React.ElementType; text: string }) => (
   <div className="flex items-center gap-2 text-muted-foreground">
-    <Icon className="w-4 h-4 text-glow" />
+    <Icon className="w-4 h-4 text-emerald-500" />
     <span className="text-sm">{text}</span>
   </div>
 );

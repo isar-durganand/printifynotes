@@ -1,11 +1,11 @@
 import React from 'react';
-import { 
-  Sun, 
-  Palette, 
-  LayoutGrid, 
-  Layers, 
-  Leaf, 
-  Lock 
+import {
+  Sun,
+  Palette,
+  LayoutGrid,
+  Layers,
+  Leaf,
+  Lock
 } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
@@ -50,11 +50,11 @@ export const FeaturesGrid = () => {
     <section className="section-padding bg-card/30">
       <div className="container-wide">
         {/* Section header */}
-        <div 
+        <div
           ref={headerRef}
           className={`text-center mb-16 scroll-hidden ${headerVisible ? 'scroll-visible' : ''}`}
         >
-          <span className="inline-block text-sm text-glow font-medium mb-4">
+          <span className="inline-block text-sm text-emerald-500 font-medium mb-4">
             POWERFUL FEATURES
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
@@ -66,14 +66,14 @@ export const FeaturesGrid = () => {
         </div>
 
         {/* Features grid */}
-        <div 
+        <div
           ref={gridRef}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {features.map((feature, index) => (
-            <FeatureCard 
-              key={feature.title} 
-              {...feature} 
+            <FeatureCard
+              key={feature.title}
+              {...feature}
               isVisible={gridVisible}
               index={index}
             />
@@ -84,9 +84,9 @@ export const FeaturesGrid = () => {
   );
 };
 
-const FeatureCard = ({ 
-  icon: Icon, 
-  title, 
+const FeatureCard = ({
+  icon: Icon,
+  title,
   description,
   isVisible,
   index
@@ -97,11 +97,11 @@ const FeatureCard = ({
   isVisible: boolean;
   index: number;
 }) => (
-  <div 
+  <div
     className={`feature-card group hover-lift scroll-hidden-scale ${isVisible ? 'scroll-visible-scale' : ''} stagger-${index + 1}`}
   >
-    <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-5 group-hover:bg-glow/20 transition-colors duration-300">
-      <Icon className="w-6 h-6 text-foreground group-hover:text-glow transition-colors duration-300" />
+    <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-5 group-hover:bg-secondary/80 transition-colors duration-300">
+      <Icon className="w-6 h-6 text-foreground group-hover:text-emerald-500 transition-colors duration-300" />
     </div>
     <h3 className="text-lg font-semibold mb-2">{title}</h3>
     <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>

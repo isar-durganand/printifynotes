@@ -21,16 +21,15 @@ export const FloatingCTA = () => {
 
   return (
     <div
-      className={`fixed bottom-8 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ${
-        isVisible 
-          ? 'opacity-100 translate-y-0' 
+      className={`fixed bottom-8 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ${isVisible
+          ? 'opacity-100 translate-y-0'
           : 'opacity-0 translate-y-4 pointer-events-none'
-      }`}
+        }`}
     >
       <Button
         onClick={scrollToUpload}
         size="lg"
-        className="btn-glow glow-lg shadow-2xl rounded-full px-10 py-7 text-base font-semibold gap-3"
+        className="shadow-2xl shadow-black/50 rounded-full px-10 py-7 text-base font-semibold gap-3"
       >
         <ArrowUp className="w-5 h-5" />
         Start Converting

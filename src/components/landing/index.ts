@@ -6,3 +6,5 @@ export { UseCases } from './UseCases';
 export { PrivacySection } from './PrivacySection';
 export { FAQ } from './FAQ';
 export { Footer } from './Footer';
+export { Navbar } from './Navbar';
+export { StickyUpload } from './StickyUpload';

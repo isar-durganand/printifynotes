@@ -20,7 +20,23 @@ import {
   FAQ,
   Footer,
 } from '@/components/landing';
+import { Navbar } from '@/components/landing/Navbar';
+import { StickyUpload } from '@/components/landing/StickyUpload';
 import { FloatingCTA } from '@/components/landing/FloatingCTA';
+
+// Background decoration component
+const BackgroundDecorations = () => (
+  <>
+    {/* Noise overlay */}
+    <div className="noise-overlay" />
+
+    {/* Gradient orbs */}
+    <div className="gradient-orb gradient-orb-emerald w-[600px] h-[600px] -top-[200px] -left-[200px] fixed" />
+    <div className="gradient-orb gradient-orb-blue w-[500px] h-[500px] top-[40%] -right-[150px] fixed animate-float-slow" />
+    <div className="gradient-orb gradient-orb-purple w-[400px] h-[400px] bottom-[10%] left-[10%] fixed animate-float-medium" />
+    <div className="gradient-orb gradient-orb-emerald w-[300px] h-[300px] top-[60%] left-[40%] fixed opacity-20" />
+  </>
+);
 
 const Index = () => {
   const { pages, isLoading, progress, error, loadPdf, reset } = usePdfProcessor();
@@ -54,8 +70,8 @@ const Index = () => {
         <header className="border-b border-border sticky top-0 z-40 bg-background/80 backdrop-blur-xl">
           <div className="container mx-auto px-4 py-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-primary">
-                <FileText className="w-5 h-5 text-primary-foreground" />
+              <div className="p-2 rounded-lg bg-emerald-500">
+                <FileText className="w-5 h-5 text-white" />
               </div>
               <div>
                 <h1 className="text-lg font-semibold text-foreground">Printify Notes</h1>
@@ -102,7 +118,20 @@ const Index = () => {
 
   // Landing page
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+      {/* Background decorations */}
+      <BackgroundDecorations />
+
+      {/* Floating Navbar */}
+      <Navbar />
+
+      {/* Sticky Upload on right side */}
+      <StickyUpload
+        onFileSelect={handleFileSelect}
+        isLoading={isLoading}
+        progress={progress}
+      />
+
       {/* Hero Section */}
       <HeroSection />
 
@@ -110,7 +139,9 @@ const Index = () => {
       <HowItWorks />
 
       {/* Features Grid */}
-      <FeaturesGrid />
+      <section id="features">
+        <FeaturesGrid />
+      </section>
 
       {/* Before/After */}
       <BeforeAfter />
@@ -125,7 +156,7 @@ const Index = () => {
       <section id="upload-section" className="section-padding">
         <div className="container-tight">
           <div className="text-center mb-10">
-            <span className="inline-block text-sm text-glow font-medium mb-4">
+            <span className="inline-block text-sm text-emerald-500 font-medium mb-4">
               GET STARTED
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
@@ -158,8 +189,10 @@ const Index = () => {
       {/* Footer */}
       <Footer />
 
-      {/* Floating CTA */}
-      <FloatingCTA />
+      {/* Floating CTA - only visible on mobile since desktop has sticky upload */}
+      <div className="lg:hidden">
+        <FloatingCTA />
+      </div>
     </div>
   );
 };

@@ -6,42 +6,41 @@
 
 @layer base {
   :root {
-    --background: 240 10% 6%;
-    --foreground: 0 0% 95%;
+    --background: 240 6% 6%;
+    --foreground: 0 0% 98%;
 
-    --card: 240 10% 9%;
-    --card-foreground: 0 0% 95%;
+    --card: 240 6% 9%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 240 10% 9%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 240 6% 9%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 0 0% 100%;
-    --primary-foreground: 240 10% 6%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 6% 6%;
 
-    --secondary: 240 5% 18%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 240 4% 14%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 5% 18%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 240 4% 14%;
+    --muted-foreground: 240 4% 55%;
 
-    --accent: 240 5% 18%;
-    --accent-foreground: 0 0% 95%;
+    --accent: 240 4% 14%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 5% 20%;
-    --input: 240 5% 20%;
-    --ring: 0 0% 100%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 0 0% 98%;
 
     --radius: 0.75rem;
 
-    --success: 142 72% 45%;
+    --success: 160 84% 39%;
     --success-foreground: 0 0% 100%;
 
-    /* Glow colors for accents */
-    --glow: 262 83% 65%;
-    --glow-muted: 200 80% 55%;
+    /* Accent color for highlights */
+    --accent-highlight: 160 84% 39%;
   }
 
   * {
@@ -59,50 +58,32 @@
 }
 
 @layer components {
-  /* Gradient text */
-  .gradient-text {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--foreground)) 0%, hsl(var(--muted-foreground)) 100%);
+
+  /* Clean text emphasis */
+  .text-accent {
+    color: hsl(var(--accent-highlight));
   }
 
-  .gradient-text-glow {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--glow)) 0%, hsl(var(--glow-muted)) 50%, hsl(var(--foreground)) 100%);
-  }
-
-  /* Glass effect */
+  /* Subtle glass effect */
   .glass {
-    @apply bg-card/50 backdrop-blur-xl border border-border/50;
+    @apply bg-card/60 backdrop-blur-xl border border-border/50;
   }
 
   .glass-hover {
-    @apply glass transition-all duration-300 hover:bg-card/70 hover:border-border;
+    @apply glass transition-all duration-300 hover:bg-card/80 hover:border-border;
   }
 
-  /* Glow effects */
-  .glow-sm {
-    box-shadow: 0 0 20px hsl(var(--glow) / 0.2);
-  }
-
-  .glow-md {
-    box-shadow: 0 0 40px hsl(var(--glow) / 0.3);
-  }
-
-  .glow-lg {
-    box-shadow: 0 0 60px hsl(var(--glow) / 0.4);
-  }
-
-  /* Hero background pattern */
+  /* Enhanced background patterns */
   .hero-pattern {
-    background-image: 
-      radial-gradient(circle at 20% 80%, hsl(var(--glow) / 0.15) 0%, transparent 40%),
-      radial-gradient(circle at 80% 20%, hsl(var(--glow-muted) / 0.1) 0%, transparent 40%),
-      radial-gradient(circle at 50% 50%, hsl(var(--background)) 0%, hsl(var(--background)) 100%);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse 40% 60% at 0% 80%, rgba(59, 130, 246, 0.06) 0%, transparent 50%);
   }
 
   /* Grid pattern */
   .grid-pattern {
-    background-image: 
+    background-image:
       linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
       linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
     background-size: 60px 60px;
@@ -112,6 +93,40 @@
   .dot-pattern {
     background-image: radial-gradient(hsl(var(--border) / 0.5) 1px, transparent 1px);
     background-size: 24px 24px;
+  }
+
+  /* Decorative gradient orbs */
+  .gradient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .gradient-orb-emerald {
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%);
+  }
+
+  .gradient-orb-blue {
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+  }
+
+  .gradient-orb-purple {
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, transparent 70%);
+  }
+
+  /* Noise texture overlay */
+  .noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 
   /* Card styles */
@@ -134,31 +149,75 @@
   }
 
   /* Animation delays */
-  .delay-100 { animation-delay: 100ms; }
-  .delay-200 { animation-delay: 200ms; }
-  .delay-300 { animation-delay: 300ms; }
-  .delay-400 { animation-delay: 400ms; }
-  .delay-500 { animation-delay: 500ms; }
-  .delay-600 { animation-delay: 600ms; }
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .delay-600 {
+    animation-delay: 600ms;
+  }
 
   /* Hover lift */
   .hover-lift {
     @apply transition-transform duration-300 hover:-translate-y-1;
   }
 
-  /* Button glow */
-  .btn-glow {
-    @apply relative overflow-hidden;
+  /* Clean button style */
+  .btn-clean {
+    @apply relative overflow-hidden transition-all duration-200;
   }
 
-  .btn-glow::before {
-    content: '';
-    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
-    background: linear-gradient(135deg, hsl(var(--glow) / 0.2), hsl(var(--glow-muted) / 0.2));
+  .btn-clean:hover {
+    @apply shadow-lg shadow-white/5;
   }
 
-  .btn-glow:hover::before {
-    @apply opacity-100;
+  /* Floating shapes animation */
+  @keyframes float-slow {
+
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+      transform: translateY(-20px) rotate(5deg);
+    }
+  }
+
+  @keyframes float-medium {
+
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+      transform: translateY(-15px) rotate(-3deg);
+    }
+  }
+
+  .animate-float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+  }
+
+  .animate-float-medium {
+    animation: float-medium 6s ease-in-out infinite;
   }
 
   /* Step connector line */
@@ -172,8 +231,8 @@
 .scroll-hidden {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-visible {
@@ -184,15 +243,15 @@
 .scroll-hidden-left {
   opacity: 0;
   transform: translateX(-60px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-hidden-right {
   opacity: 0;
   transform: translateX(60px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-visible-x {
@@ -203,8 +262,8 @@
 .scroll-hidden-scale {
   opacity: 0;
   transform: scale(0.9);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-visible-scale {
@@ -213,9 +272,26 @@
 }
 
 /* Staggered animation delays */
-.stagger-1 { transition-delay: 100ms; }
-.stagger-2 { transition-delay: 200ms; }
-.stagger-3 { transition-delay: 300ms; }
-.stagger-4 { transition-delay: 400ms; }
-.stagger-5 { transition-delay: 500ms; }
-.stagger-6 { transition-delay: 600ms; }
+.stagger-1 {
+  transition-delay: 100ms;
+}
+
+.stagger-2 {
+  transition-delay: 200ms;
+}
+
+.stagger-3 {
+  transition-delay: 300ms;
+}
+
+.stagger-4 {
+  transition-delay: 400ms;
+}
+
+.stagger-5 {
+  transition-delay: 500ms;
+}
+
+.stagger-6 {
+  transition-delay: 600ms;
+}

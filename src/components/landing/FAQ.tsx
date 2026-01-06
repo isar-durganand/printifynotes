@@ -66,31 +66,31 @@ export const FAQ = () => {
     <section className="section-padding bg-card/30" id="faq">
       <div className="container-tight">
         {/* Section header */}
-        <div 
+        <div
           ref={headerRef}
           className={`text-center mb-12 scroll-hidden ${headerVisible ? 'scroll-visible' : ''}`}
         >
-          <span className="inline-block text-sm text-glow font-medium mb-4">
+          <span className="inline-block text-sm text-emerald-500 font-medium mb-4">
             FAQ
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
             Frequently Asked Questions
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Everything you need to know about converting dark PDFs for printing — 
+            Everything you need to know about converting dark PDFs for printing —
             from PW notes to Unacademy slides and more.
           </p>
         </div>
 
         {/* FAQ Accordion */}
-        <div 
+        <div
           ref={accordionRef}
           className={`max-w-3xl mx-auto scroll-hidden ${accordionVisible ? 'scroll-visible' : ''}`}
         >
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
-              <AccordionItem 
-                key={index} 
+              <AccordionItem
+                key={index}
                 value={`item-${index}`}
                 className="glass rounded-xl px-6 border-none"
               >

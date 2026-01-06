@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://printifynotes.lovable.app/sitemap.xml
+Sitemap: https://printifynotes.com/sitemap.xml

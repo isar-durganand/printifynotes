@@ -10,14 +10,14 @@ export const BeforeAfter = () => {
   return (
     <section className="section-padding relative overflow-hidden">
       <div className="absolute inset-0 hero-pattern" />
-      
+
       <div className="container-wide relative z-10">
         {/* Section header */}
-        <div 
+        <div
           ref={headerRef}
           className={`text-center mb-16 scroll-hidden ${headerVisible ? 'scroll-visible' : ''}`}
         >
-          <span className="inline-block text-sm text-glow font-medium mb-4">
+          <span className="inline-block text-sm text-emerald-500 font-medium mb-4">
             SEE THE DIFFERENCE
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
@@ -32,12 +32,11 @@ export const BeforeAfter = () => {
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
             {/* Before */}
-            <div 
+            <div
               ref={beforeRef}
               className={`scroll-hidden-left ${beforeVisible ? 'scroll-visible-x' : ''}`}
             >
               <div className="relative group">
-                <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-border to-transparent opacity-50" />
                 <div className="relative glass rounded-2xl p-4 md:p-6">
                   <div className="flex items-center gap-2 mb-4">
                     <Moon className="w-4 h-4 text-muted-foreground" />
@@ -66,29 +65,28 @@ export const BeforeAfter = () => {
 
             {/* Arrow indicator */}
             <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-              <div className="w-12 h-12 rounded-full bg-glow flex items-center justify-center glow-md">
-                <ArrowRight className="w-5 h-5 text-primary-foreground" />
+              <div className="w-12 h-12 rounded-full bg-foreground flex items-center justify-center shadow-lg">
+                <ArrowRight className="w-5 h-5 text-background" />
               </div>
             </div>
 
             {/* Mobile arrow */}
             <div className="flex md:hidden justify-center -my-2">
-              <div className="w-10 h-10 rounded-full bg-glow flex items-center justify-center rotate-90">
-                <ArrowRight className="w-4 h-4 text-primary-foreground" />
+              <div className="w-10 h-10 rounded-full bg-foreground flex items-center justify-center rotate-90">
+                <ArrowRight className="w-4 h-4 text-background" />
               </div>
             </div>
 
             {/* After */}
-            <div 
+            <div
               ref={afterRef}
               className={`scroll-hidden-right ${afterVisible ? 'scroll-visible-x' : ''}`}
             >
               <div className="relative group">
-                <div className="absolute -inset-1 rounded-2xl bg-gradient-to-l from-glow/30 to-transparent opacity-50" />
-                <div className="relative glass rounded-2xl p-4 md:p-6">
+                <div className="relative glass rounded-2xl p-4 md:p-6 border-emerald-500/20">
                   <div className="flex items-center gap-2 mb-4">
-                    <Sun className="w-4 h-4 text-glow" />
-                    <span className="text-sm font-medium text-glow">After</span>
+                    <Sun className="w-4 h-4 text-emerald-500" />
+                    <span className="text-sm font-medium text-emerald-500">After</span>
                   </div>
                   {/* Mock light PDF */}
                   <div className="aspect-[4/3] rounded-xl bg-[#fafafa] p-4 md:p-6 font-mono text-xs overflow-hidden">
@@ -105,7 +103,7 @@ export const BeforeAfter = () => {
                   </div>
                   <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground">
                     <span>Clean background</span>
-                    <span className="text-success">60% less ink</span>
+                    <span className="text-emerald-500">60% less ink</span>
                   </div>
                 </div>
               </div>
