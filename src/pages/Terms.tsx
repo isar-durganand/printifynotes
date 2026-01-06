@@ -3,7 +3,11 @@ import { PageLayout } from '@/components/PageLayout';
 
 const Terms = () => {
     return (
-        <PageLayout title="Terms of Service">
+        <PageLayout
+            title="Terms of Service"
+            description="Read Printify Notes terms of service. Understand the terms and conditions for using our free PDF converter tool for students."
+            keywords="printify notes terms, pdf converter terms of service, free tool terms, educational tools terms"
+        >
             <p className="text-muted-foreground mb-6">
                 <strong>Last updated:</strong> January 6, 2026
             </p>

@@ -5,7 +5,11 @@ import { Upload, Sliders, Download, FileText, Palette, LayoutGrid, HelpCircle } 
 
 const Documentation = () => {
     return (
-        <PageLayout title="Documentation">
+        <PageLayout
+            title="Documentation"
+            description="Complete guide to using Printify Notes. Learn how to convert dark PDF notes to print-friendly format, adjust settings, and export documents."
+            keywords="printify notes documentation, pdf converter guide, how to convert dark pdf, print coaching notes tutorial"
+        >
             <section className="mb-12">
                 <p className="text-lg text-muted-foreground mb-6">
                     Welcome to the Printify Notes documentation. Learn how to use our tool effectively to convert

@@ -1,18 +1,49 @@
 import React, { useState } from 'react';
 import { PageLayout } from '@/components/PageLayout';
-import { Mail, MessageSquare, HelpCircle, Send } from 'lucide-react';
+import { Mail, MessageSquare, HelpCircle, Send, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Contact = () => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setSubmitted(true);
+        setIsSubmitting(true);
+        setError(null);
+
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch('https://formspree.io/f/xwpkvzye', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                setSubmitted(true);
+                form.reset();
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (err) {
+            setError('Failed to send message. Please try again or email us directly.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
-        <PageLayout title="Contact Us">
+        <PageLayout
+            title="Contact Us"
+            description="Get in touch with the Printify Notes team. We'd love to hear your feedback, suggestions, or answer any questions about our PDF converter tool."
+            keywords="contact printify notes, pdf converter support, student tools feedback, physics wallah notes help"
+        >
             <section className="mb-12">
                 <p className="text-lg text-muted-foreground mb-8">
                     Have a question, suggestion, or just want to say hello? We'd love to hear from you!
@@ -60,12 +91,19 @@ const Contact = () => {
                 {submitted ? (
                     <div className="p-8 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-center">
                         <div className="w-16 h-16 rounded-full bg-emerald-500 flex items-center justify-center mx-auto mb-4">
-                            <Send className="w-8 h-8 text-white" />
+                            <CheckCircle className="w-8 h-8 text-white" />
                         </div>
                         <h3 className="text-xl font-semibold mb-2">Message Sent!</h3>
-                        <p className="text-muted-foreground">
+                        <p className="text-muted-foreground mb-4">
                             Thank you for reaching out. We'll get back to you as soon as possible.
                         </p>
+                        <Button
+                            variant="outline"
+                            onClick={() => setSubmitted(false)}
+                            className="rounded-xl"
+                        >
+                            Send Another Message
+                        </Button>
                     </div>
                 ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
@@ -76,6 +114,7 @@ const Contact = () => {
                             <input
                                 type="text"
                                 id="name"
+                                name="name"
                                 required
                                 className="w-full px-4 py-3 rounded-xl bg-secondary border border-border focus:border-emerald-500 focus:outline-none transition-colors"
                                 placeholder="Enter your name"
@@ -89,6 +128,7 @@ const Contact = () => {
                             <input
                                 type="email"
                                 id="email"
+                                name="email"
                                 required
                                 className="w-full px-4 py-3 rounded-xl bg-secondary border border-border focus:border-emerald-500 focus:outline-none transition-colors"
                                 placeholder="Enter your email"
@@ -101,16 +141,17 @@ const Contact = () => {
                             </label>
                             <select
                                 id="subject"
+                                name="subject"
                                 required
                                 className="w-full px-4 py-3 rounded-xl bg-secondary border border-border focus:border-emerald-500 focus:outline-none transition-colors"
                             >
                                 <option value="">Select a subject</option>
-                                <option value="feedback">General Feedback</option>
-                                <option value="bug">Report a Bug</option>
-                                <option value="feature">Feature Request</option>
-                                <option value="support">Technical Support</option>
-                                <option value="business">Business Inquiry</option>
-                                <option value="other">Other</option>
+                                <option value="General Feedback">General Feedback</option>
+                                <option value="Bug Report">Report a Bug</option>
+                                <option value="Feature Request">Feature Request</option>
+                                <option value="Technical Support">Technical Support</option>
+                                <option value="Business Inquiry">Business Inquiry</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
 
@@ -120,6 +161,7 @@ const Contact = () => {
                             </label>
                             <textarea
                                 id="message"
+                                name="message"
                                 required
                                 rows={6}
                                 className="w-full px-4 py-3 rounded-xl bg-secondary border border-border focus:border-emerald-500 focus:outline-none transition-colors resize-none"
@@ -127,9 +169,29 @@ const Contact = () => {
                             />
                         </div>
 
-                        <Button type="submit" size="lg" className="w-full rounded-xl">
-                            <Send className="w-4 h-4 mr-2" />
-                            Send Message
+                        {error && (
+                            <div className="p-4 rounded-xl bg-destructive/10 border border-destructive/20 text-destructive text-sm">
+                                {error}
+                            </div>
+                        )}
+
+                        <Button
+                            type="submit"
+                            size="lg"
+                            className="w-full rounded-xl bg-emerald-500 hover:bg-emerald-600"
+                            disabled={isSubmitting}
+                        >
+                            {isSubmitting ? (
+                                <>
+                                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                                    Sending...
+                                </>
+                            ) : (
+                                <>
+                                    <Send className="w-4 h-4 mr-2" />
+                                    Send Message
+                                </>
+                            )}
                         </Button>
                     </form>
                 )}

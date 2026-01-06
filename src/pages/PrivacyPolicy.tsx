@@ -3,7 +3,11 @@ import { PageLayout } from '@/components/PageLayout';
 
 const PrivacyPolicy = () => {
     return (
-        <PageLayout title="Privacy Policy">
+        <PageLayout
+            title="Privacy Policy"
+            description="Read Printify Notes privacy policy. Learn how we protect your data - all PDF processing happens locally in your browser with no file uploads to servers."
+            keywords="printify notes privacy, pdf converter privacy policy, no upload pdf tool, private pdf converter"
+        >
             <p className="text-muted-foreground mb-6">
                 <strong>Last updated:</strong> January 6, 2026
             </p>

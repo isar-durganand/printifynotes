@@ -66,7 +66,11 @@ const blogPosts: BlogPost[] = [
 
 const Blog = () => {
     return (
-        <PageLayout title="Blog">
+        <PageLayout
+            title="Blog"
+            description="Tips, tutorials, and guides for printing study materials efficiently. Learn how to print Physics Wallah notes, Unacademy slides, and save ink on coaching PDFs."
+            keywords="printify notes blog, print pw notes tutorial, save ink printing, unacademy notes printing guide, neet jee study material printing"
+        >
             <section className="mb-12">
                 <p className="text-lg text-muted-foreground mb-8">
                     Tips, tutorials, and guides to help you print study materials efficiently.

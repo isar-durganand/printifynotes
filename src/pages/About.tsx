@@ -4,7 +4,11 @@ import { FileText, Users, Target, Heart } from 'lucide-react';
 
 const About = () => {
     return (
-        <PageLayout title="About Printify Notes">
+        <PageLayout
+            title="About Us"
+            description="Learn about Printify Notes - the free, privacy-focused tool that helps students convert dark-background PDF notes for eco-friendly printing. Built by students, for students."
+            keywords="about printify notes, pdf converter team, student tools, india education technology, physics wallah notes converter"
+        >
             <section className="mb-12">
                 <p className="text-lg text-muted-foreground mb-6">
                     Printify Notes is a free, privacy-focused tool designed to help students and professionals

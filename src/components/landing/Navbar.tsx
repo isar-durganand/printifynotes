@@ -1,10 +1,12 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { FileText, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const [isScrolled, setIsScrolled] = React.useState(false);
+    const location = useLocation();
 
     React.useEffect(() => {
         const handleScroll = () => {
@@ -14,10 +16,12 @@ export const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const scrollToSection = (id: string) => {
-        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    // Close menu when route changes
+    React.useEffect(() => {
         setIsMenuOpen(false);
-    };
+    }, [location]);
+
+    const isActive = (path: string) => location.pathname === path;
 
     return (
         <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-4xl px-4">
@@ -32,40 +36,38 @@ export const Navbar = () => {
             >
                 <div className="flex items-center justify-between">
                     {/* Logo */}
-                    <a href="/" className="flex items-center gap-2">
+                    <Link to="/" className="flex items-center gap-2">
                         <div className="p-1.5 rounded-lg bg-emerald-500">
                             <FileText className="w-4 h-4 text-white" />
                         </div>
                         <span className="font-semibold text-foreground">Printify Notes</span>
-                    </a>
+                    </Link>
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center gap-6">
-                        <button
-                            onClick={() => scrollToSection('how-it-works')}
-                            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        <Link
+                            to="/about"
+                            className={`text-sm transition-colors ${isActive('/about') ? 'text-emerald-500' : 'text-muted-foreground hover:text-foreground'}`}
                         >
-                            How It Works
-                        </button>
-                        <button
-                            onClick={() => scrollToSection('features')}
-                            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                            About
+                        </Link>
+                        <Link
+                            to="/blog"
+                            className={`text-sm transition-colors ${isActive('/blog') ? 'text-emerald-500' : 'text-muted-foreground hover:text-foreground'}`}
                         >
-                            Features
-                        </button>
-                        <button
-                            onClick={() => scrollToSection('faq')}
-                            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                            Blog
+                        </Link>
+                        <Link
+                            to="/contact"
+                            className={`text-sm transition-colors ${isActive('/contact') ? 'text-emerald-500' : 'text-muted-foreground hover:text-foreground'}`}
                         >
-                            FAQ
-                        </button>
-                        <Button
-                            size="sm"
-                            onClick={() => scrollToSection('upload-section')}
-                            className="rounded-full px-6"
-                        >
-                            Convert PDF
-                        </Button>
+                            Contact
+                        </Link>
+                        <Link to="/#upload-section">
+                            <Button size="sm" className="rounded-full px-6 bg-emerald-500 hover:bg-emerald-600">
+                                Convert PDF
+                            </Button>
+                        </Link>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -81,31 +83,29 @@ export const Navbar = () => {
                 {isMenuOpen && (
                     <div className="md:hidden mt-4 pt-4 border-t border-border">
                         <div className="flex flex-col gap-3">
-                            <button
-                                onClick={() => scrollToSection('how-it-works')}
-                                className="text-sm text-muted-foreground hover:text-foreground transition-colors text-left py-2"
+                            <Link
+                                to="/about"
+                                className={`text-sm py-2 ${isActive('/about') ? 'text-emerald-500' : 'text-muted-foreground hover:text-foreground'}`}
                             >
-                                How It Works
-                            </button>
-                            <button
-                                onClick={() => scrollToSection('features')}
-                                className="text-sm text-muted-foreground hover:text-foreground transition-colors text-left py-2"
+                                About
+                            </Link>
+                            <Link
+                                to="/blog"
+                                className={`text-sm py-2 ${isActive('/blog') ? 'text-emerald-500' : 'text-muted-foreground hover:text-foreground'}`}
                             >
-                                Features
-                            </button>
-                            <button
-                                onClick={() => scrollToSection('faq')}
-                                className="text-sm text-muted-foreground hover:text-foreground transition-colors text-left py-2"
+                                Blog
+                            </Link>
+                            <Link
+                                to="/contact"
+                                className={`text-sm py-2 ${isActive('/contact') ? 'text-emerald-500' : 'text-muted-foreground hover:text-foreground'}`}
                             >
-                                FAQ
-                            </button>
-                            <Button
-                                size="sm"
-                                onClick={() => scrollToSection('upload-section')}
-                                className="rounded-full mt-2"
-                            >
-                                Convert PDF
-                            </Button>
+                                Contact
+                            </Link>
+                            <Link to="/#upload-section">
+                                <Button size="sm" className="rounded-full mt-2 w-full bg-emerald-500 hover:bg-emerald-600">
+                                    Convert PDF
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 )}
