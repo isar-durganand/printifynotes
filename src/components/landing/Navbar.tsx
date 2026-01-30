@@ -52,8 +52,17 @@ export const Navbar = () => {
                             About
                         </Link>
                         <Link
+                            to="/tools"
+                            className={`text-sm transition-colors flex items-center gap-1.5 ${isActive('/tools') || location.pathname.startsWith('/tools/') ? 'text-emerald-500' : 'text-muted-foreground hover:text-foreground'}`}
+                        >
+                            Tools
+                            <span className="px-1.5 py-0.5 text-[10px] font-medium bg-blue-500 text-white rounded-full animate-pulse">
+                                New
+                            </span>
+                        </Link>
+                        <Link
                             to="/blog"
-                            className={`text-sm transition-colors ${isActive('/blog') ? 'text-emerald-500' : 'text-muted-foreground hover:text-foreground'}`}
+                            className={`text-sm transition-colors ${isActive('/blog') || location.pathname.startsWith('/blog/') ? 'text-emerald-500' : 'text-muted-foreground hover:text-foreground'}`}
                         >
                             Blog
                         </Link>
@@ -90,8 +99,17 @@ export const Navbar = () => {
                                 About
                             </Link>
                             <Link
+                                to="/tools"
+                                className={`text-sm py-2 flex items-center gap-1.5 ${isActive('/tools') || location.pathname.startsWith('/tools/') ? 'text-emerald-500' : 'text-muted-foreground hover:text-foreground'}`}
+                            >
+                                Tools
+                                <span className="px-1.5 py-0.5 text-[10px] font-medium bg-blue-500 text-white rounded-full animate-pulse">
+                                    New
+                                </span>
+                            </Link>
+                            <Link
                                 to="/blog"
-                                className={`text-sm py-2 ${isActive('/blog') ? 'text-emerald-500' : 'text-muted-foreground hover:text-foreground'}`}
+                                className={`text-sm py-2 ${isActive('/blog') || location.pathname.startsWith('/blog/') ? 'text-emerald-500' : 'text-muted-foreground hover:text-foreground'}`}
                             >
                                 Blog
                             </Link>

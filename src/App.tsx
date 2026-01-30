@@ -14,6 +14,11 @@ import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Documentation from "./pages/Documentation";
+import Tools from "./pages/Tools";
+import MergePdf from "./pages/MergePdf";
+import ImageToPdfPage from "./pages/ImageToPdfPage";
+import CompressPdf from "./pages/CompressPdf";
+import ExtractPages from "./pages/ExtractPages";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +50,11 @@ const App = () => (
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/docs" element={<Documentation />} />
+            <Route path="/tools" element={<Tools />} />
+            <Route path="/tools/merge-pdf" element={<MergePdf />} />
+            <Route path="/tools/image-to-pdf" element={<ImageToPdfPage />} />
+            <Route path="/tools/compress-pdf" element={<CompressPdf />} />
+            <Route path="/tools/extract-pages" element={<ExtractPages />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
@@ -55,3 +65,4 @@ const App = () => (
 );
 
 export default App;
+

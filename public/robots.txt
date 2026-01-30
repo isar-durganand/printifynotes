@@ -1,18 +1,96 @@
 # Printify Notes - Robots.txt
 # https://www.printifynotes.in
+# Last Updated: 2026-01-30
 
+# Allow all well-behaved crawlers
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
 
-# Allow all crawlers to access all content
+# Google Bot - Full access
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
-User-agent: Bingbot
+# Google Image Bot
+User-agent: Googlebot-Image
 Allow: /
 
-# Sitemap location
+# Bing Bot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Bing Preview Bot
+User-agent: BingPreview
+Allow: /
+
+# Yahoo Bot
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# DuckDuckGo Bot
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# Baidu Bot
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+# Yandex Bot
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+# Social Media Crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+# SEO Tools
+User-agent: AhrefsBot
+Allow: /
+Crawl-delay: 5
+
+User-agent: SemrushBot
+Allow: /
+Crawl-delay: 5
+
+User-agent: MJ12bot
+Allow: /
+Crawl-delay: 10
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /private/
+
+User-agent: MJ12bot
+Disallow: /private/
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: SemrushBot-SA
+Disallow: /
+
+# Sitemaps
 Sitemap: https://www.printifynotes.in/sitemap.xml
 
-# Disallow admin or private paths (none currently)
-# Disallow: /admin/
+# Host directive (for Yandex)
+Host: https://www.printifynotes.in

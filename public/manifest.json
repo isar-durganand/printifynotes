@@ -1,0 +1,81 @@
+{
+    "name": "Printify Notes - Free PDF Tools for Students",
+    "short_name": "Printify Notes",
+    "description": "Free online PDF tools - merge, compress, convert images to PDF, extract pages, and convert dark notes to printable format. 100% private.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#09090b",
+    "theme_color": "#10b981",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "en-IN",
+    "dir": "ltr",
+    "categories": [
+        "education",
+        "productivity",
+        "utilities"
+    ],
+    "icons": [
+        {
+            "src": "/logo.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/screenshot.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Printify Notes - PDF Converter"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Convert PDF",
+            "short_name": "Convert",
+            "description": "Convert dark PDF to printable format",
+            "url": "/#upload-section",
+            "icons": [
+                {
+                    "src": "/logo.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Merge PDFs",
+            "short_name": "Merge",
+            "description": "Combine multiple PDF files",
+            "url": "/tools/merge-pdf",
+            "icons": [
+                {
+                    "src": "/logo.png",
+                    "sizes": "96x96"
+                }
+            ]
+        },
+        {
+            "name": "Compress PDF",
+            "short_name": "Compress",
+            "description": "Reduce PDF file size",
+            "url": "/tools/compress-pdf",
+            "icons": [
+                {
+                    "src": "/logo.png",
+                    "sizes": "96x96"
+                }
+            ]
+        }
+    ],
+    "related_applications": [],
+    "prefer_related_applications": false
+}
