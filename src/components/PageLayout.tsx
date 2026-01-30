@@ -34,7 +34,7 @@ export const PageLayout = ({ title, description, keywords, children }: PageLayou
                 <meta property="og:type" content="website" />
                 <meta name="twitter:title" content={`${title} | Printify Notes`} />
                 <meta name="twitter:description" content={description || defaultDescription} />
-                <link rel="canonical" href={`https://printifynotes.vercel.app${location.pathname}`} />
+                <link rel="canonical" href={`https://www.printifynotes.in${location.pathname}`} />
             </Helmet>
 
             <div className="min-h-screen bg-background text-foreground">
