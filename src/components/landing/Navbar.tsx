@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FileText, Menu, X } from 'lucide-react';
+import { ScrollLink } from '@/components/ui/ScrollLink';
 import { Button } from '@/components/ui/button';
 
 export const Navbar = () => {
@@ -72,11 +73,11 @@ export const Navbar = () => {
                         >
                             Contact
                         </Link>
-                        <Link to="/#upload-section">
+                        <ScrollLink to="/#upload-section">
                             <Button size="sm" className="rounded-full px-6 bg-emerald-500 hover:bg-emerald-600">
                                 Convert PDF
                             </Button>
-                        </Link>
+                        </ScrollLink>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -119,11 +120,11 @@ export const Navbar = () => {
                             >
                                 Contact
                             </Link>
-                            <Link to="/#upload-section">
+                            <ScrollLink to="/#upload-section">
                                 <Button size="sm" className="rounded-full mt-2 w-full bg-emerald-500 hover:bg-emerald-600">
                                     Convert PDF
                                 </Button>
-                            </Link>
+                            </ScrollLink>
                         </div>
                     </div>
                 )}

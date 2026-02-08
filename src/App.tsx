@@ -22,13 +22,26 @@ import ExtractPages from "./pages/ExtractPages";
 
 const queryClient = new QueryClient();
 
-// Scroll to top on route change
+// Scroll to top on route change, or scroll to hash if present
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    // If there's a hash, scroll to the element with that id
+    if (hash) {
+      // Small delay to ensure the page has rendered
+      const timeoutId = setTimeout(() => {
+        const element = document.getElementById(hash.slice(1));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+      return () => clearTimeout(timeoutId);
+    } else {
+      // No hash, scroll to top
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
 
   return null;
 };

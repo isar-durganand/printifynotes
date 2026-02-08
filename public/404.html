@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Not Found - Printify Notes</title>
+    <meta name="description"
+        content="The page you're looking for doesn't exist. Visit Printify Notes for free PDF tools - merge, compress, convert images to PDF, and more.">
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/png" href="/logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e2e8f0;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .error-code {
+            font-size: 120px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #10b981, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 16px;
+            color: #f8fafc;
+        }
+
+        p {
+            font-size: 18px;
+            color: #94a3b8;
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin: 8px;
+        }
+
+        .btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #475569;
+            color: #e2e8f0;
+        }
+
+        .btn-outline:hover {
+            background: #334155;
+            border-color: #10b981;
+        }
+
+        .tools {
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid #334155;
+        }
+
+        .tools h2 {
+            font-size: 18px;
+            color: #94a3b8;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .tools-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .tool-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .tool-link:hover {
+            border-color: #10b981;
+            background: #334155;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="error-code">404</div>
+        <h1>Page Not Found</h1>
+        <p>
+            Oops! The page you're looking for doesn't exist or has been moved.
+            Let's get you back on track with our free PDF tools.
+        </p>
+
+        <div>
+            <a href="/" class="btn">Go to Homepage</a>
+            <a href="/tools" class="btn btn-outline">View All Tools</a>
+        </div>
+
+        <div class="tools">
+            <h2>Or try one of our popular tools:</h2>
+            <div class="tools-grid">
+                <a href="/tools/merge-pdf" class="tool-link">Merge PDF</a>
+                <a href="/tools/compress-pdf" class="tool-link">Compress PDF</a>
+                <a href="/tools/image-to-pdf" class="tool-link">Image to PDF</a>
+                <a href="/tools/extract-pages" class="tool-link">Extract Pages</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Redirect to React app after a short delay so content is indexed
+        // This allows search engines to see the 404 content while still supporting SPA
+        if (window.history && window.history.replaceState) {
+            // Store the attempted path for the React app
+            sessionStorage.setItem('redirectPath', window.location.pathname);
+        }
+    </script>
+</body>
+
+</html>

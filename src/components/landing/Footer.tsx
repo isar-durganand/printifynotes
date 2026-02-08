@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FileText, Heart } from 'lucide-react';
+import { ScrollLink } from '@/components/ui/ScrollLink';
 
 // Social media icons
 const LinkedInIcon = () => (
@@ -75,19 +76,19 @@ export const Footer = () => {
               <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Product</h4>
               <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-muted-foreground">
                 <li>
-                  <Link to="/#how-it-works" className="hover:text-foreground transition-colors">
+                  <ScrollLink to="/#how-it-works" className="hover:text-foreground transition-colors">
                     How It Works
-                  </Link>
+                  </ScrollLink>
                 </li>
                 <li>
-                  <Link to="/#features" className="hover:text-foreground transition-colors">
+                  <ScrollLink to="/#features" className="hover:text-foreground transition-colors">
                     Features
-                  </Link>
+                  </ScrollLink>
                 </li>
                 <li>
-                  <Link to="/#faq" className="hover:text-foreground transition-colors">
+                  <ScrollLink to="/#faq" className="hover:text-foreground transition-colors">
                     FAQ
-                  </Link>
+                  </ScrollLink>
                 </li>
                 <li>
                   <Link to="/docs" className="hover:text-foreground transition-colors">

@@ -10,7 +10,13 @@ import {
     Scissors,
     FileText,
     ArrowRight,
-    Sparkles
+    Sparkles,
+    Shield,
+    Zap,
+    Users,
+    GraduationCap,
+    Briefcase,
+    Check
 } from 'lucide-react';
 
 const tools = [
@@ -154,7 +160,7 @@ const Tools: React.FC = () => {
                 ))}
             </div>
 
-            {/* Features */}
+            {/* Key Features */}
             <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
                 <div>
                     <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
@@ -167,7 +173,7 @@ const Tools: React.FC = () => {
                 </div>
                 <div>
                     <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
-                        <FileText className="w-6 h-6 text-emerald-500" />
+                        <Shield className="w-6 h-6 text-emerald-500" />
                     </div>
                     <h3 className="font-semibold mb-2">100% Private</h3>
                     <p className="text-sm text-muted-foreground">
@@ -176,7 +182,7 @@ const Tools: React.FC = () => {
                 </div>
                 <div>
                     <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
-                        <Gauge className="w-6 h-6 text-emerald-500" />
+                        <Zap className="w-6 h-6 text-emerald-500" />
                     </div>
                     <h3 className="font-semibold mb-2">Fast & Free</h3>
                     <p className="text-sm text-muted-foreground">
@@ -184,9 +190,237 @@ const Tools: React.FC = () => {
                     </p>
                 </div>
             </div>
+
+            {/* What Can You Do Section */}
+            <div className="mt-20">
+                <div className="text-center mb-10">
+                    <h2 className="text-2xl sm:text-3xl font-bold mb-4">What Can You Do With These PDF Tools?</h2>
+                    <p className="text-muted-foreground max-w-2xl mx-auto">
+                        Our comprehensive suite of PDF tools covers all your document needs, from combining files to optimizing for sharing.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="p-6 rounded-2xl bg-card border border-border">
+                        <h3 className="text-lg font-semibold mb-3">📚 Study Material Management</h3>
+                        <ul className="space-y-2 text-sm text-muted-foreground">
+                            <li className="flex items-start gap-2">
+                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <span>Combine chapter-wise PDFs into complete study guides</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <span>Extract specific topics from large textbooks</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <span>Convert dark-themed notes for affordable printing</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="p-6 rounded-2xl bg-card border border-border">
+                        <h3 className="text-lg font-semibold mb-3">💼 Professional Documents</h3>
+                        <ul className="space-y-2 text-sm text-muted-foreground">
+                            <li className="flex items-start gap-2">
+                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <span>Merge contracts, proposals, and reports into single files</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <span>Compress large documents for email attachments</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <span>Create PDF portfolios from images and screenshots</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="p-6 rounded-2xl bg-card border border-border">
+                        <h3 className="text-lg font-semibold mb-3">📱 Mobile & Tablet Friendly</h3>
+                        <ul className="space-y-2 text-sm text-muted-foreground">
+                            <li className="flex items-start gap-2">
+                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <span>Works on any device with a modern web browser</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <span>Convert phone photos to PDFs on the go</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <span>Quick document fixes without installing apps</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="p-6 rounded-2xl bg-card border border-border">
+                        <h3 className="text-lg font-semibold mb-3">🔒 Privacy Protection</h3>
+                        <ul className="space-y-2 text-sm text-muted-foreground">
+                            <li className="flex items-start gap-2">
+                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <span>Confidential documents stay on your device</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <span>No cloud storage or third-party access</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <span>Process sensitive legal and financial documents safely</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            {/* Who Uses These Tools */}
+            <div className="mt-20 p-8 rounded-2xl bg-muted/50">
+                <h2 className="text-2xl font-bold mb-8 text-center">Who Uses Our PDF Tools?</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="text-center">
+                        <div className="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center mx-auto mb-3">
+                            <GraduationCap className="w-7 h-7 text-blue-500" />
+                        </div>
+                        <h3 className="font-semibold mb-1">Students</h3>
+                        <p className="text-sm text-muted-foreground">
+                            JEE, NEET, and board exam preparation with organized study materials
+                        </p>
+                    </div>
+                    <div className="text-center">
+                        <div className="w-14 h-14 rounded-full bg-purple-500/10 flex items-center justify-center mx-auto mb-3">
+                            <Users className="w-7 h-7 text-purple-500" />
+                        </div>
+                        <h3 className="font-semibold mb-1">Teachers</h3>
+                        <p className="text-sm text-muted-foreground">
+                            Creating course materials and combining resources for classes
+                        </p>
+                    </div>
+                    <div className="text-center">
+                        <div className="w-14 h-14 rounded-full bg-orange-500/10 flex items-center justify-center mx-auto mb-3">
+                            <Briefcase className="w-7 h-7 text-orange-500" />
+                        </div>
+                        <h3 className="font-semibold mb-1">Professionals</h3>
+                        <p className="text-sm text-muted-foreground">
+                            Managing business documents, proposals, and client files
+                        </p>
+                    </div>
+                    <div className="text-center">
+                        <div className="w-14 h-14 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-3">
+                            <FileText className="w-7 h-7 text-emerald-500" />
+                        </div>
+                        <h3 className="font-semibold mb-1">Researchers</h3>
+                        <p className="text-sm text-muted-foreground">
+                            Compiling research papers and organizing academic literature
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            {/* FAQ Section */}
+            <div className="mt-20">
+                <h2 className="text-2xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="p-5 rounded-xl border bg-card">
+                        <h3 className="font-semibold mb-2">Are these tools really free?</h3>
+                        <p className="text-sm text-muted-foreground">
+                            Yes, completely free with no hidden charges. We don't have premium tiers or paid features. All tools work fully without any payment or subscription.
+                        </p>
+                    </div>
+                    <div className="p-5 rounded-xl border bg-card">
+                        <h3 className="font-semibold mb-2">Do you store my files?</h3>
+                        <p className="text-sm text-muted-foreground">
+                            No. All processing happens in your browser using JavaScript. Your files never leave your device and are never uploaded to any server. When you close the tab, everything is gone.
+                        </p>
+                    </div>
+                    <div className="p-5 rounded-xl border bg-card">
+                        <h3 className="font-semibold mb-2">Is there a file size limit?</h3>
+                        <p className="text-sm text-muted-foreground">
+                            Since processing happens on your device, the limit depends on your device's memory. Most devices can handle files up to 50-100MB easily. For very large files, try splitting them first.
+                        </p>
+                    </div>
+                    <div className="p-5 rounded-xl border bg-card">
+                        <h3 className="font-semibold mb-2">Do I need to create an account?</h3>
+                        <p className="text-sm text-muted-foreground">
+                            No account required! Just open the tool and start using it. We believe tools should be accessible without barriers like registrations or email verification.
+                        </p>
+                    </div>
+                    <div className="p-5 rounded-xl border bg-card">
+                        <h3 className="font-semibold mb-2">Will the output have watermarks?</h3>
+                        <p className="text-sm text-muted-foreground">
+                            Never. Your output PDFs are clean without any watermarks, logos, or branding. The files you create are entirely yours.
+                        </p>
+                    </div>
+                    <div className="p-5 rounded-xl border bg-card">
+                        <h3 className="font-semibold mb-2">Which browsers are supported?</h3>
+                        <p className="text-sm text-muted-foreground">
+                            All modern browsers including Chrome, Firefox, Safari, Edge, and Opera. We recommend Chrome or Firefox for the best experience. Works on both desktop and mobile.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Comparison with alternatives */}
+            <div className="mt-20 p-8 rounded-2xl border bg-card">
+                <h2 className="text-2xl font-bold mb-6 text-center">Why Choose Printify Notes Over Other PDF Tools?</h2>
+                <div className="overflow-x-auto">
+                    <table className="w-full text-sm">
+                        <thead>
+                            <tr className="border-b">
+                                <th className="text-left py-3 px-4">Feature</th>
+                                <th className="text-center py-3 px-4 text-emerald-500">Printify Notes</th>
+                                <th className="text-center py-3 px-4 text-muted-foreground">Other Tools</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr className="border-b">
+                                <td className="py-3 px-4">Privacy (No Upload)</td>
+                                <td className="text-center py-3 px-4">✅</td>
+                                <td className="text-center py-3 px-4">❌</td>
+                            </tr>
+                            <tr className="border-b">
+                                <td className="py-3 px-4">Completely Free</td>
+                                <td className="text-center py-3 px-4">✅</td>
+                                <td className="text-center py-3 px-4">Limited</td>
+                            </tr>
+                            <tr className="border-b">
+                                <td className="py-3 px-4">No Account Required</td>
+                                <td className="text-center py-3 px-4">✅</td>
+                                <td className="text-center py-3 px-4">❌</td>
+                            </tr>
+                            <tr className="border-b">
+                                <td className="py-3 px-4">No Watermarks</td>
+                                <td className="text-center py-3 px-4">✅</td>
+                                <td className="text-center py-3 px-4">Free tier has</td>
+                            </tr>
+                            <tr className="border-b">
+                                <td className="py-3 px-4">Dark PDF Conversion</td>
+                                <td className="text-center py-3 px-4">✅</td>
+                                <td className="text-center py-3 px-4">❌</td>
+                            </tr>
+                            <tr>
+                                <td className="py-3 px-4">Works Offline</td>
+                                <td className="text-center py-3 px-4">✅ (after load)</td>
+                                <td className="text-center py-3 px-4">❌</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {/* CTA Section */}
+            <div className="mt-20 text-center p-8 rounded-2xl bg-emerald-500/5 border border-emerald-500/20">
+                <h2 className="text-2xl font-bold mb-4">Ready to Get Started?</h2>
+                <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+                    Choose a tool above and start working with your PDFs. No signup, no uploads, just results.
+                </p>
+                <Link to="/">
+                    <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600">
+                        Try Dark PDF Converter
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                </Link>
+            </div>
         </PageLayout>
     );
 };
 
 export default Tools;
-
