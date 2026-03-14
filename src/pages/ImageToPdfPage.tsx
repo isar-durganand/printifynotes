@@ -155,6 +155,42 @@ const ImageToPdfPage: React.FC = () => {
                     </div>
                 </div>
 
+                {/* Best Practices */}
+                <div className="mt-12 p-6 rounded-xl border bg-card">
+                    <h2 className="text-xl font-semibold mb-4">Best Practices for Image to PDF Conversion</h2>
+                    <div className="space-y-4 text-sm text-muted-foreground">
+                        <p>
+                            Converting images to PDF is straightforward, but a few best practices can significantly improve
+                            the quality and usability of your final document.
+                        </p>
+                        <p>
+                            <strong className="text-foreground">Image Resolution Matters:</strong> For documents you plan to print,
+                            aim for images with at least 150 DPI (dots per inch). Phone camera photos are typically 72 DPI but at very
+                            high pixel counts, so they print well. Screenshots, however, are usually 72-96 DPI and may appear
+                            pixelated when printed at large sizes. For screen-only viewing, any resolution works fine.
+                        </p>
+                        <p>
+                            <strong className="text-foreground">Choosing the Right Format:</strong> JPG is best for photographs
+                            with natural colors and gradients — it uses lossy compression that works well for complex images.
+                            PNG is ideal for screenshots, diagrams, or any image with text, sharp edges, or transparency — it
+                            preserves fine details without compression artifacts. WebP offers the best of both worlds with smaller
+                            file sizes, though it's a newer format.
+                        </p>
+                        <p>
+                            <strong className="text-foreground">Page Size Selection:</strong> A4 is the standard paper size in
+                            India and most countries outside the US. Choose Letter if you're sharing with US-based recipients.
+                            "Fit to Image" is perfect for photo albums where you want zero margins and the page sized exactly
+                            to your image. For mixing portrait and landscape photos, consider converting them separately and
+                            then merging with our <a href="/tools/merge-pdf" className="text-emerald-500 hover:underline">PDF Merger</a>.
+                        </p>
+                        <p>
+                            <strong className="text-foreground">Organizing Before Converting:</strong> Since the images appear in
+                            your PDF in the order you add them, naming your files numerically (01.jpg, 02.jpg, etc.) before
+                            selecting them helps maintain the right sequence. You can also drag to reorder after uploading.
+                        </p>
+                    </div>
+                </div>
+
                 {/* Tips */}
                 <div className="mt-12 p-6 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
                     <h2 className="text-xl font-semibold mb-4 text-emerald-600 dark:text-emerald-400">💡 Pro Tips for Better PDFs</h2>

@@ -145,6 +145,41 @@ const CompressPdf: React.FC = () => {
                     </div>
                 </div>
 
+                {/* Understanding Compression */}
+                <div className="mt-12 p-6 rounded-xl border bg-card">
+                    <h2 className="text-xl font-semibold mb-4">Understanding PDF Compression</h2>
+                    <div className="space-y-4 text-sm text-muted-foreground">
+                        <p>
+                            PDF files can become large primarily because of embedded images. A scanned document, for example,
+                            stores each page as a high-resolution image, which can easily make a 10-page PDF grow to 50MB or more.
+                            Understanding how compression works helps you make better choices about quality vs. file size.
+                        </p>
+                        <p>
+                            <strong className="text-foreground">Image Quality Reduction:</strong> Our compressor works by
+                            re-encoding the images within your PDF at a lower quality setting. This is similar to saving a JPEG
+                            photo at lower quality — the text remains perfectly sharp, but photographs and illustrations may show
+                            slight quality reduction at aggressive compression levels.
+                        </p>
+                        <p>
+                            <strong className="text-foreground">DPI (Dots Per Inch) Optimization:</strong> Many PDFs contain
+                            images at 300+ DPI, which is great for professional printing but unnecessary for screen viewing or
+                            basic printing. Our tool can reduce the effective DPI to a level that still looks good on screen
+                            and in standard print, significantly reducing file size.
+                        </p>
+                        <p>
+                            <strong className="text-foreground">Why Text Stays Sharp:</strong> Text in PDFs is typically stored
+                            as vector data (font outlines and positions), not as images. This means text takes very little space
+                            and is unaffected by image compression. Your compressed PDF will have the same crisp, searchable text
+                            as the original.
+                        </p>
+                        <p>
+                            <strong className="text-foreground">When Compression Helps Most:</strong> PDFs with many photographs,
+                            scanned pages, or high-resolution graphics benefit the most from compression. Text-heavy academic papers
+                            or documents with vector diagrams are already quite compact and may see only modest size reduction.
+                        </p>
+                    </div>
+                </div>
+
                 {/* Tips */}
                 <div className="mt-12 p-6 rounded-xl border border-emerald-500/20 bg-emerald-500/5">
                     <h2 className="text-xl font-semibold text-emerald-600 dark:text-emerald-400 mb-4">💡 Pro Tips for PDF Compression</h2>

@@ -165,25 +165,25 @@ const About = () => {
                 </div>
             </section>
 
-            {/* Impact Section */}
+            {/* What We Offer */}
             <section className="mb-16">
-                <h2 className="text-2xl font-semibold mb-6">Our Impact</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div className="p-6 rounded-xl border bg-card text-center">
-                        <div className="text-3xl font-bold text-emerald-500 mb-1">10,000+</div>
-                        <p className="text-sm text-muted-foreground">PDFs Converted</p>
+                <h2 className="text-2xl font-semibold mb-6">What We Offer</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="p-6 rounded-xl border bg-card">
+                        <h3 className="font-semibold text-emerald-500 mb-2">Dark PDF Conversion</h3>
+                        <p className="text-sm text-muted-foreground">Convert dark-background coaching PDFs to print-friendly, light-background format. Designed to help students save ink when printing notes from platforms like Physics Wallah, Unacademy, and Vedantu.</p>
                     </div>
-                    <div className="p-6 rounded-xl border bg-card text-center">
-                        <div className="text-3xl font-bold text-blue-500 mb-1">5,000+</div>
-                        <p className="text-sm text-muted-foreground">Happy Students</p>
+                    <div className="p-6 rounded-xl border bg-card">
+                        <h3 className="font-semibold text-blue-500 mb-2">Complete PDF Toolkit</h3>
+                        <p className="text-sm text-muted-foreground">Merge multiple PDFs, compress large files for email, extract specific pages, and convert images to PDF — all free, all processed locally in your browser.</p>
                     </div>
-                    <div className="p-6 rounded-xl border bg-card text-center">
-                        <div className="text-3xl font-bold text-purple-500 mb-1">₹50L+</div>
-                        <p className="text-sm text-muted-foreground">Ink Saved</p>
+                    <div className="p-6 rounded-xl border bg-card">
+                        <h3 className="font-semibold text-purple-500 mb-2">Privacy by Design</h3>
+                        <p className="text-sm text-muted-foreground">Every tool runs entirely in your browser. Your files are never uploaded to any server. When you close the tab, all data is gone — true privacy protection.</p>
                     </div>
-                    <div className="p-6 rounded-xl border bg-card text-center">
-                        <div className="text-3xl font-bold text-orange-500 mb-1">100%</div>
-                        <p className="text-sm text-muted-foreground">Privacy Protected</p>
+                    <div className="p-6 rounded-xl border bg-card">
+                        <h3 className="font-semibold text-orange-500 mb-2">Ink & Paper Savings</h3>
+                        <p className="text-sm text-muted-foreground">By converting dark backgrounds to light, students can significantly reduce ink usage when printing. Combined with our multi-page layouts, you save both ink and paper.</p>
                     </div>
                 </div>
             </section>

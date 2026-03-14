@@ -159,6 +159,36 @@ const ExtractPages: React.FC = () => {
                     </div>
                 </div>
 
+                {/* Understanding Page Extraction */}
+                <div className="mt-12 p-6 rounded-xl border bg-card">
+                    <h2 className="text-xl font-semibold mb-4">When Should You Extract PDF Pages?</h2>
+                    <div className="space-y-4 text-sm text-muted-foreground">
+                        <p>
+                            Page extraction creates a new, smaller PDF containing only the pages you select from an original document.
+                            Unlike splitting (which divides a PDF into equal parts), extraction gives you precise control over exactly
+                            which pages go into your new document.
+                        </p>
+                        <p>
+                            <strong className="text-foreground">For Students:</strong> Coaching institutes and online platforms often
+                            provide entire course materials as single large PDFs. If you only need chapters 5 and 7 for tomorrow's
+                            revision, extracting those specific pages saves you from carrying or printing the entire 200-page document.
+                            This is especially useful during exam preparation when you want to create focused study packs.
+                        </p>
+                        <p>
+                            <strong className="text-foreground">For Professionals:</strong> When sharing documents with clients or
+                            colleagues, you often need to send only specific sections — such as the executive summary, a particular
+                            table, or selected diagrams. Extracting those pages creates a clean, professional document without
+                            exposing the full internal document.
+                        </p>
+                        <p>
+                            <strong className="text-foreground">How It Works Under the Hood:</strong> Our extractor uses pdf-lib to
+                            read the original PDF structure and copy only the selected page objects into a new PDF. This is a direct
+                            copy operation — no re-rendering or re-encoding takes place, which means the extracted pages are
+                            byte-for-byte identical to the originals in terms of quality.
+                        </p>
+                    </div>
+                </div>
+
                 {/* Tips */}
                 <div className="mt-12 p-6 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
                     <h2 className="text-xl font-semibold mb-4 text-emerald-600 dark:text-emerald-400">💡 Pro Tips for Extracting Pages</h2>

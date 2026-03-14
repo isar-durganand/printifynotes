@@ -145,6 +145,35 @@ const MergePdf: React.FC = () => {
                     </div>
                 </div>
 
+                {/* Understanding PDF Merging */}
+                <div className="mt-12 p-6 rounded-xl border bg-card">
+                    <h2 className="text-xl font-semibold mb-4">How Does PDF Merging Work?</h2>
+                    <div className="space-y-4 text-sm text-muted-foreground">
+                        <p>
+                            PDF (Portable Document Format) files are structured documents that contain pages, fonts, images, and metadata.
+                            When you merge PDFs, the process involves reading the internal structure of each PDF and combining their page
+                            trees into a single document while preserving all formatting, hyperlinks, and embedded resources.
+                        </p>
+                        <p>
+                            <strong className="text-foreground">Client-Side Processing:</strong> Unlike most online PDF tools that upload
+                            your files to remote servers, our merger uses <strong className="text-foreground">pdf-lib</strong>, a JavaScript
+                            library that runs entirely in your browser. This means the merging happens on your device's processor — your
+                            files never travel over the internet, making it both faster and more secure.
+                        </p>
+                        <p>
+                            <strong className="text-foreground">What Gets Preserved:</strong> When merging PDFs, all original content is
+                            maintained exactly as it was — text formatting, images, vector graphics, hyperlinks, form fields, and embedded
+                            fonts. The merged document is a faithful combination of all source files without any quality loss or re-encoding.
+                        </p>
+                        <p>
+                            <strong className="text-foreground">Page Order Control:</strong> Our drag-and-drop interface lets you arrange
+                            files in any order before merging. This is especially useful when combining chapter-wise study materials,
+                            where the correct sequence matters for effective studying. You can also remove unwanted files from the queue
+                            before merging.
+                        </p>
+                    </div>
+                </div>
+
                 {/* Educational Content */}
                 <div className="mt-12 p-6 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
                     <h2 className="text-xl font-semibold mb-4 text-emerald-600 dark:text-emerald-400">Pro Tips for Merging PDFs</h2>

@@ -205,22 +205,20 @@ const Blog = () => {
                 </div>
             </section>
 
-            {/* Newsletter CTA */}
+            {/* Explore Tools CTA */}
             <section className="mt-16 p-8 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-center">
-                <h2 className="text-2xl font-bold mb-4">Stay Updated</h2>
+                <h2 className="text-2xl font-bold mb-4">Ready to Try Our Tools?</h2>
                 <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-                    Get the latest tips, tutorials, and updates about PDF conversion and printing
-                    delivered directly to your inbox.
+                    Put these tips into practice with our free PDF tools. Convert dark PDFs,
+                    merge files, compress documents, and more — all in your browser.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                    <input
-                        type="email"
-                        placeholder="Enter your email"
-                        className="flex-1 px-4 py-3 rounded-xl bg-background border border-border focus:border-emerald-500 focus:outline-none transition-colors"
-                    />
-                    <button className="px-6 py-3 rounded-xl bg-emerald-500 text-white font-medium hover:bg-emerald-600 transition-colors">
-                        Subscribe
-                    </button>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                    <Link to="/" className="px-6 py-3 rounded-xl bg-emerald-500 text-white font-medium hover:bg-emerald-600 transition-colors">
+                        Try Dark PDF Converter
+                    </Link>
+                    <Link to="/tools" className="px-6 py-3 rounded-xl bg-background border border-border text-foreground font-medium hover:border-emerald-500 transition-colors">
+                        View All Tools
+                    </Link>
                 </div>
             </section>
         </PageLayout>
