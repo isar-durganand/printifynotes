@@ -19,6 +19,7 @@ import {
   PrivacySection,
   FAQ,
   Footer,
+  JeeCollegeBanner,
 } from '@/components/landing';
 import { Navbar } from '@/components/landing/Navbar';
 import { StickyUpload } from '@/components/landing/StickyUpload';
@@ -134,6 +135,9 @@ const Index = () => {
 
       {/* Hero Section */}
       <HeroSection />
+
+      {/* JEE Mains College Predictor Banner */}
+      <JeeCollegeBanner />
 
       {/* How It Works */}
       <section id="how-it-works">
