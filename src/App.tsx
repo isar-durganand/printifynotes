@@ -19,6 +19,8 @@ import MergePdf from "./pages/MergePdf";
 import ImageToPdfPage from "./pages/ImageToPdfPage";
 import CompressPdf from "./pages/CompressPdf";
 import ExtractPages from "./pages/ExtractPages";
+import Donate from "./pages/Donate";
+import ThankYou from "./pages/ThankYou";
 
 const queryClient = new QueryClient();
 
@@ -68,6 +70,8 @@ const App = () => (
             <Route path="/tools/image-to-pdf" element={<ImageToPdfPage />} />
             <Route path="/tools/compress-pdf" element={<CompressPdf />} />
             <Route path="/tools/extract-pages" element={<ExtractPages />} />
+            <Route path="/donate" element={<Donate />} />
+            <Route path="/thank-you" element={<ThankYou />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

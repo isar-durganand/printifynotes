@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FileText, Menu, X } from 'lucide-react';
+import { FileText, Menu, X, Heart } from 'lucide-react';
 import { ScrollLink } from '@/components/ui/ScrollLink';
 import { Button } from '@/components/ui/button';
 
@@ -73,6 +73,13 @@ export const Navbar = () => {
                         >
                             Contact
                         </Link>
+                        <Link
+                            to="/donate"
+                            className={`text-sm transition-colors flex items-center gap-1 ${isActive('/donate') ? 'text-rose-400' : 'text-rose-400/80 hover:text-rose-400'}`}
+                        >
+                            <Heart className="w-3.5 h-3.5 fill-current" />
+                            Donate
+                        </Link>
                         <ScrollLink to="/#upload-section">
                             <Button size="sm" className="rounded-full px-6 bg-emerald-500 hover:bg-emerald-600">
                                 Convert PDF
@@ -119,6 +126,13 @@ export const Navbar = () => {
                                 className={`text-sm py-2 ${isActive('/contact') ? 'text-emerald-500' : 'text-muted-foreground hover:text-foreground'}`}
                             >
                                 Contact
+                            </Link>
+                            <Link
+                                to="/donate"
+                                className={`text-sm py-2 flex items-center gap-1 ${isActive('/donate') ? 'text-rose-400' : 'text-rose-400/80 hover:text-rose-400'}`}
+                            >
+                                <Heart className="w-3.5 h-3.5 fill-current" />
+                                Donate
                             </Link>
                             <ScrollLink to="/#upload-section">
                                 <Button size="sm" className="rounded-full mt-2 w-full bg-emerald-500 hover:bg-emerald-600">
