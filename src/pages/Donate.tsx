@@ -29,7 +29,7 @@ const Donate = () => {
             description="Help us keep Printify Notes free for everyone. Your donation supports server costs, development, and helps students across India access free PDF tools."
             keywords="donate printify notes, support free pdf tools, help students india, contribute education"
         >
-            {/* Hero Section */}
+            {/* Hero Section with Donate Button */}
             <section className="mb-16 text-center relative">
                 {/* Animated floating hearts */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
@@ -52,45 +52,32 @@ const Donate = () => {
                     Support Our Mission
                 </div>
 
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-rose-400 via-pink-400 to-emerald-400 bg-clip-text text-transparent">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-rose-400 via-pink-400 to-emerald-400 bg-clip-text text-transparent">
                     Help Us Keep Education Free
                 </h1>
 
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
+                <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
                     Printify Notes is and always will be <strong className="text-foreground">100% free</strong> for every student.
-                    Your generous donation helps us cover server costs, develop new features,
-                    and continue serving thousands of students across India.
+                    Your donation helps us cover costs and serve thousands of students across India. 💛
                 </p>
 
-                <p className="text-sm text-muted-foreground max-w-xl mx-auto">
-                    Every rupee counts. Even a small contribution makes a big difference. 💛
-                </p>
-            </section>
-
-            {/* Donation Button Section */}
-            <section className="mb-16">
-                <div className="max-w-md mx-auto p-8 rounded-2xl bg-gradient-to-br from-rose-500/5 via-pink-500/5 to-emerald-500/5 border border-rose-500/20 text-center relative overflow-hidden">
-                    {/* Glow effect */}
+                {/* Donate Button — right in the hero for maximum impact */}
+                <div className="max-w-sm mx-auto p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-rose-500/5 via-pink-500/5 to-emerald-500/5 border border-rose-500/20 relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-rose-500/10 to-transparent rounded-2xl blur-xl" aria-hidden="true" />
-
                     <div className="relative z-10">
-                        <div className="w-16 h-16 rounded-full bg-rose-500/10 flex items-center justify-center mx-auto mb-5">
-                            <Gift className="w-8 h-8 text-rose-400" />
+                        <div className="w-14 h-14 rounded-full bg-rose-500/10 flex items-center justify-center mx-auto mb-4">
+                            <Gift className="w-7 h-7 text-rose-400" />
                         </div>
-
-                        <h2 className="text-xl font-semibold mb-2">Make a Donation</h2>
-                        <p className="text-sm text-muted-foreground mb-6">
-                            Secure payment via Razorpay. Choose any amount you're comfortable with.
+                        <h2 className="text-lg font-semibold mb-1">Donate Now</h2>
+                        <p className="text-xs text-muted-foreground mb-5">
+                            Secure payment via Razorpay — choose any amount.
                         </p>
-
-                        {/* Razorpay Payment Button Container */}
                         <div
                             ref={razorpayRef}
-                            className="flex justify-center items-center min-h-[60px]"
+                            className="flex justify-center items-center min-h-[80px] [&_form]:scale-125 [&_form]:origin-center"
                             id="razorpay-donate-button"
                         />
-
-                        <p className="text-xs text-muted-foreground mt-4 flex items-center justify-center gap-1">
+                        <p className="text-xs text-muted-foreground mt-3 flex items-center justify-center gap-1">
                             🔒 100% Secure • Powered by Razorpay
                         </p>
                     </div>
