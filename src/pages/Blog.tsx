@@ -15,6 +15,30 @@ interface BlogPost {
 
 const blogPosts: BlogPost[] = [
     {
+        slug: 'neet-2027-study-plan',
+        title: 'How to Prepare for NEET 2027: Complete Study Plan & Free Resources',
+        excerpt: 'A phase-by-phase study plan for NEET 2027 with daily schedules, subject strategies, free resources, and smart printing tips.',
+        date: 'August 5, 2026',
+        readTime: '14 min read',
+        category: 'Study Plan',
+    },
+    {
+        slug: 'pdf-vs-printed-notes-science',
+        title: 'PDF vs Printed Notes: The Science Behind Better Exam Performance',
+        excerpt: 'What does peer-reviewed research say about digital vs paper learning? Discover the encoding hypothesis, spatial memory advantage, and the optimal hybrid strategy.',
+        date: 'August 2, 2026',
+        readTime: '11 min read',
+        category: 'Research',
+    },
+    {
+        slug: 'choosing-paper-printing-notes',
+        title: 'Complete Guide to Choosing the Right Paper for Printing Study Notes',
+        excerpt: 'GSM, brightness, inkjet vs laser — learn which paper types work best for different study materials and save money with smart paper choices.',
+        date: 'July 28, 2026',
+        readTime: '9 min read',
+        category: 'Guide',
+    },
+    {
         slug: 'study-effectively-with-printed-notes',
         title: 'How to Study Effectively with Printed Notes: A Complete Guide',
         excerpt: 'Research shows printed notes lead to better retention. Learn active reading methods, annotation techniques, and study schedules that work.',

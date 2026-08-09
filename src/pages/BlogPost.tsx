@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { PageLayout } from '@/components/PageLayout';
 import { Calendar, Clock, ArrowLeft, Share2, Bookmark } from 'lucide-react';
+import { AuthorBio } from '@/components/AuthorBio';
 import { Button } from '@/components/ui/button';
 
 // Blog post content data
@@ -94,53 +95,172 @@ const blogContent: Record<string, {
     'best-pdf-converters-for-students': {
         title: 'Best PDF Converters for Students in 2026: Complete Guide',
         date: 'January 3, 2026',
-        readTime: '8 min read',
+        readTime: '12 min read',
         category: 'Guide',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
-                    As a student, you deal with countless PDFs - lecture notes, research papers, textbooks, and study
-                    materials. Having the right PDF tools can make a huge difference in your productivity. Here's our
-                    comprehensive guide to the best PDF converters and tools for students in 2026.
+                    As a student, you deal with countless PDFs — lecture notes, research papers, textbooks, and study
+                    materials. Having the right PDF tools can make a huge difference in your productivity and save you
+                    significant money on printing. Here's our comprehensive guide to the best PDF converters and tools
+                    for students in 2026, tested and compared by our team.
                 </p>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">What to Look for in a Student PDF Tool</h2>
-                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li><strong>Free or affordable:</strong> Students are on a budget</li>
-                    <li><strong>Privacy-focused:</strong> Your study materials should stay private</li>
-                    <li><strong>Easy to use:</strong> No steep learning curve</li>
-                    <li><strong>Works on any device:</strong> Desktop, tablet, or phone</li>
-                    <li><strong>No account required:</strong> Quick access when needed</li>
-                </ul>
-
-                <h2 className="text-2xl font-semibold mb-4 mt-8">Top PDF Converters for Students</h2>
-
-                <h3 className="text-xl font-medium mb-3 mt-6">1. Printify Notes - Best for Printing Coaching Notes</h3>
                 <p className="text-muted-foreground mb-4">
-                    Perfect for students who need to print dark-themed lecture notes from platforms like Physics Wallah,
-                    Unacademy, or Vedantu. Converts dark backgrounds to light for ink-efficient printing.
+                    Before diving into specific tools, let's establish the criteria that matter most for students:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li>✅ Completely free</li>
-                    <li>✅ No file uploads (100% private)</li>
-                    <li>✅ Color inversion and grayscale options</li>
-                    <li>✅ Multi-page layouts</li>
+                    <li><strong>Free or affordable:</strong> Students are on tight budgets — a tool that charges per conversion or has strict daily limits isn't practical for exam preparation</li>
+                    <li><strong>Privacy-focused:</strong> Your study materials should stay private. Some tools upload files to remote servers, which raises concerns about data security</li>
+                    <li><strong>Easy to use:</strong> No steep learning curve — you should be able to convert a PDF in under 2 minutes</li>
+                    <li><strong>Works on any device:</strong> Desktop, tablet, or phone — students study on multiple devices</li>
+                    <li><strong>No account required:</strong> Quick access when you need it, without wasting time on registration forms</li>
+                    <li><strong>Batch processing:</strong> Ability to handle multiple files at once, especially during exam season</li>
+                    <li><strong>Output quality:</strong> The converted PDF should maintain readability and formatting</li>
                 </ul>
 
-                <h3 className="text-xl font-medium mb-3 mt-6">2. Smallpdf - Best All-in-One Solution</h3>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Top PDF Converters for Students in 2026</h2>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">1. Printify Notes — Best for Printing Coaching Notes</h3>
                 <p className="text-muted-foreground mb-4">
-                    A versatile online tool for various PDF operations including conversion, compression, and editing.
+                    Printify Notes stands out as the only tool specifically designed for Indian students who need to print
+                    dark-themed lecture notes from coaching platforms. Unlike generic PDF tools, it understands the unique
+                    challenge of converting Physics Wallah, Unacademy, and Vedantu notes for affordable printing.
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+                    <li>✅ Completely free — no hidden charges or premium tiers</li>
+                    <li>✅ No file uploads — 100% browser-based processing (your files never leave your device)</li>
+                    <li>✅ Color inversion and grayscale options for maximum ink savings</li>
+                    <li>✅ Multi-page layouts (2-up, 4-up) to save paper</li>
+                    <li>✅ PDF merging, compression, image conversion, and page extraction</li>
+                    <li>✅ Works offline once loaded</li>
+                </ul>
+                <p className="text-muted-foreground mb-6">
+                    <strong>Best for:</strong> NEET/JEE students printing coaching notes. The dark-to-light converter alone
+                    can save ₹3,000-5,000 per year on ink costs.
                 </p>
 
-                <h3 className="text-xl font-medium mb-3 mt-6">3. PDF24 - Best Free Desktop Tool</h3>
+                <h3 className="text-xl font-medium mb-3 mt-6">2. Smallpdf — Best All-in-One Solution</h3>
                 <p className="text-muted-foreground mb-4">
-                    A comprehensive free desktop application with many PDF manipulation features.
+                    Smallpdf offers a comprehensive suite of 20+ PDF tools including conversion to/from Word, Excel,
+                    and PowerPoint. It has a clean interface and handles most common PDF operations well.
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+                    <li>✅ Wide range of conversion options (PDF to Word, Excel, PPT)</li>
+                    <li>✅ Clean, intuitive interface</li>
+                    <li>❌ Free tier limited to 2 tasks per day</li>
+                    <li>❌ Files are uploaded to their servers (privacy concern)</li>
+                    <li>❌ Pro plan costs $12/month</li>
+                </ul>
+                <p className="text-muted-foreground mb-6">
+                    <strong>Best for:</strong> Occasional PDF format conversions (e.g., converting a Word assignment to PDF).
                 </p>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">Choosing the Right Tool</h2>
+                <h3 className="text-xl font-medium mb-3 mt-6">3. PDF24 — Best Free Desktop Tool</h3>
                 <p className="text-muted-foreground mb-4">
-                    The best tool depends on your specific needs. For printing coaching notes with dark backgrounds,
-                    Printify Notes is the clear choice. For general PDF manipulation, consider Smallpdf or PDF24.
+                    PDF24 is a free desktop application for Windows that offers comprehensive PDF manipulation features
+                    including merge, split, compress, and convert. It also has an online version.
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+                    <li>✅ Completely free with no limits</li>
+                    <li>✅ Desktop app for offline use</li>
+                    <li>✅ Virtual PDF printer for any application</li>
+                    <li>❌ Windows only (no Mac or mobile)</li>
+                    <li>❌ Desktop app requires installation</li>
+                    <li>❌ No dark PDF conversion feature</li>
+                </ul>
+                <p className="text-muted-foreground mb-6">
+                    <strong>Best for:</strong> Windows users who need a general-purpose PDF toolkit on their laptop.
+                </p>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">4. iLovePDF — Best for Batch Processing</h3>
+                <p className="text-muted-foreground mb-4">
+                    iLovePDF is popular for batch operations and offers tools for merging, splitting, compressing, and
+                    converting PDFs. The free tier is more generous than Smallpdf.
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+                    <li>✅ Generous free tier with batch processing</li>
+                    <li>✅ Desktop and mobile apps available</li>
+                    <li>❌ Files uploaded to servers</li>
+                    <li>❌ Some advanced features require Premium ($7/month)</li>
+                </ul>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">5. Adobe Acrobat Online — Best for Professional Quality</h3>
+                <p className="text-muted-foreground mb-4">
+                    Adobe's online tools offer the highest quality PDF operations, as you'd expect from the company
+                    that created the PDF format. However, most features require a paid subscription.
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+                    <li>✅ Highest quality output</li>
+                    <li>✅ OCR text recognition</li>
+                    <li>❌ Very limited free usage</li>
+                    <li>❌ Expensive (₹1,500+/month)</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Comparison Table</h2>
+                <div className="overflow-x-auto mb-8">
+                    <table className="w-full text-sm border-collapse">
+                        <thead>
+                            <tr className="border-b border-border">
+                                <th className="text-left py-3 px-3">Feature</th>
+                                <th className="text-center py-3 px-3 text-emerald-500">Printify Notes</th>
+                                <th className="text-center py-3 px-3">Smallpdf</th>
+                                <th className="text-center py-3 px-3">PDF24</th>
+                                <th className="text-center py-3 px-3">iLovePDF</th>
+                            </tr>
+                        </thead>
+                        <tbody className="text-muted-foreground">
+                            <tr className="border-b border-border/50">
+                                <td className="py-2 px-3">Free Usage</td>
+                                <td className="text-center py-2 px-3">Unlimited</td>
+                                <td className="text-center py-2 px-3">2/day</td>
+                                <td className="text-center py-2 px-3">Unlimited</td>
+                                <td className="text-center py-2 px-3">Limited</td>
+                            </tr>
+                            <tr className="border-b border-border/50">
+                                <td className="py-2 px-3">Privacy (No Upload)</td>
+                                <td className="text-center py-2 px-3">✅</td>
+                                <td className="text-center py-2 px-3">❌</td>
+                                <td className="text-center py-2 px-3">✅ (desktop)</td>
+                                <td className="text-center py-2 px-3">❌</td>
+                            </tr>
+                            <tr className="border-b border-border/50">
+                                <td className="py-2 px-3">Dark PDF Converter</td>
+                                <td className="text-center py-2 px-3">✅</td>
+                                <td className="text-center py-2 px-3">❌</td>
+                                <td className="text-center py-2 px-3">❌</td>
+                                <td className="text-center py-2 px-3">❌</td>
+                            </tr>
+                            <tr className="border-b border-border/50">
+                                <td className="py-2 px-3">Mobile Friendly</td>
+                                <td className="text-center py-2 px-3">✅</td>
+                                <td className="text-center py-2 px-3">✅</td>
+                                <td className="text-center py-2 px-3">❌</td>
+                                <td className="text-center py-2 px-3">✅</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">How to Choose the Right Tool</h2>
+                <p className="text-muted-foreground mb-4">
+                    The best tool depends on your specific workflow:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li><strong>Printing coaching notes:</strong> Printify Notes is the clear winner — it's the only tool with dark PDF conversion</li>
+                    <li><strong>Converting Word to PDF:</strong> Smallpdf or iLovePDF work well for this</li>
+                    <li><strong>Heavy daily usage on Windows:</strong> Install PDF24 for unlimited offline processing</li>
+                    <li><strong>Professional/academic papers:</strong> Adobe Acrobat if budget allows, otherwise iLovePDF</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Final Recommendation</h2>
+                <p className="text-muted-foreground mb-4">
+                    For most Indian students preparing for competitive exams, we recommend using <strong>Printify Notes</strong> as
+                    your primary tool for printing-related tasks (dark PDF conversion, merging chapter notes, compressing
+                    files for sharing), and keeping <strong>iLovePDF</strong> or <strong>PDF24</strong> as a backup for
+                    format conversions. This combination gives you the best of both worlds — completely free, private,
+                    and covering all your PDF needs.
                 </p>
             </>
         ),
@@ -1003,6 +1123,333 @@ const blogContent: Record<string, {
             </>
         ),
     },
+    'neet-2027-study-plan': {
+        title: 'How to Prepare for NEET 2027: Complete Study Plan & Free Resources',
+        date: 'August 5, 2026',
+        readTime: '14 min read',
+        category: 'Study Plan',
+        content: (
+            <>
+                <p className="text-lg text-muted-foreground mb-6">
+                    NEET 2027 preparation requires a structured study plan that balances all three subjects — Physics,
+                    Chemistry, and Biology — while building both conceptual understanding and problem-solving speed.
+                    Whether you're starting early or looking to optimize your existing plan, this comprehensive guide
+                    covers everything you need to know.
+                </p>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Understanding the NEET 2027 Exam Pattern</h2>
+                <p className="text-muted-foreground mb-4">
+                    Before creating a study plan, understand what you're preparing for:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li><strong>Total Questions:</strong> 200 (180 to attempt)</li>
+                    <li><strong>Duration:</strong> 3 hours 20 minutes</li>
+                    <li><strong>Marking:</strong> +4 for correct, -1 for incorrect</li>
+                    <li><strong>Subjects:</strong> Physics (45Q), Chemistry (45Q), Botany (45Q), Zoology (45Q) — with 10 optional per subject</li>
+                    <li><strong>Syllabus base:</strong> NCERT Class 11 and 12</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Phase 1: Foundation Building (August 2026 – December 2026)</h2>
+                <p className="text-muted-foreground mb-4">
+                    The first phase focuses on building a rock-solid conceptual foundation. Don't rush through topics — understanding
+                    is more important than speed at this stage.
+                </p>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Physics Strategy</h3>
+                <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+                    <li>Start with Mechanics (Class 11) — it forms the base for everything else</li>
+                    <li>Focus on understanding derivations, not just memorizing formulas</li>
+                    <li>Solve 20-30 numerical problems per chapter from HC Verma or DC Pandey</li>
+                    <li>Use NCERT as your primary textbook — 70% of NEET Physics comes from NCERT</li>
+                </ul>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Chemistry Strategy</h3>
+                <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+                    <li><strong>Physical Chemistry:</strong> Master the math — mole concept, equilibrium, thermodynamics</li>
+                    <li><strong>Organic Chemistry:</strong> Focus on reaction mechanisms, not rote memorization</li>
+                    <li><strong>Inorganic Chemistry:</strong> Create tables and charts for comparison — print these for wall display</li>
+                    <li>NCERT Chemistry is absolutely essential — read line by line</li>
+                </ul>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Biology Strategy</h3>
+                <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+                    <li>Biology is the highest-scoring subject — it should get 40% of your total study time</li>
+                    <li>Read NCERT Biology 3 times minimum before the exam</li>
+                    <li>Make your own diagram-heavy notes for each chapter</li>
+                    <li>Focus on Class 12 Biology chapters — they carry more weightage</li>
+                    <li>Print important diagrams in color for visual memory using Printify Notes</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Phase 2: Deep Practice (January 2027 – April 2027)</h2>
+                <p className="text-muted-foreground mb-4">
+                    This phase is about solving problems intensively and identifying weak areas.
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li>Solve previous year NEET papers (2015-2026) — at least twice</li>
+                    <li>Take topic-wise tests every week</li>
+                    <li>Maintain an error log — write down every mistake and review weekly</li>
+                    <li>Start taking full-length mock tests (3 per week minimum)</li>
+                    <li>Print your error logs and important formulas for quick revision</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Phase 3: Revision & Mock Tests (May 2027 – Exam Day)</h2>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li>Full NCERT revision — at least one complete read-through</li>
+                    <li>One full-length mock test every day in the last 30 days</li>
+                    <li>Revise your Quick Revision binder (printed formula sheets and key points)</li>
+                    <li>Focus on accuracy over speed — the negative marking can be devastating</li>
+                    <li>Don't start new topics — consolidate what you know</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Free Resources for NEET 2027</h2>
+                <p className="text-muted-foreground mb-4">
+                    You don't need expensive coaching to crack NEET. Here are the best free resources:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li><strong>NCERT Textbooks:</strong> Available free at ncert.nic.in — your #1 resource</li>
+                    <li><strong>Physics Wallah (YouTube):</strong> Complete NEET syllabus covered — download and print notes using <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a></li>
+                    <li><strong>Vedantu Free Classes:</strong> Live sessions with doubt clearing</li>
+                    <li><strong>NTA Official Papers:</strong> Previous year papers at neet.nta.nic.in</li>
+                    <li><strong>Allen DLP Material:</strong> Shared in study groups — convert dark PDFs before printing</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Daily Study Schedule (Recommended)</h2>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li><strong>6:00 – 8:00 AM:</strong> Biology (fresh mind = better memorization)</li>
+                    <li><strong>8:30 – 10:30 AM:</strong> Physics (numerical practice)</li>
+                    <li><strong>11:00 AM – 1:00 PM:</strong> Chemistry</li>
+                    <li><strong>2:00 – 3:30 PM:</strong> Practice problems (mixed)</li>
+                    <li><strong>4:00 – 5:30 PM:</strong> Video lectures or doubt clearing</li>
+                    <li><strong>7:00 – 9:00 PM:</strong> Revision of the day's topics</li>
+                    <li><strong>Total:</strong> 10-11 hours of focused study with breaks</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Printing Tips for NEET Preparation</h2>
+                <p className="text-muted-foreground mb-4">
+                    Smart printing is a key part of effective preparation:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li>Use <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a> to convert dark coaching PDFs — save 60% on ink</li>
+                    <li>Print formula sheets and pin them on your study wall</li>
+                    <li>Create a "Last 30 Days" revision binder with essential printed notes</li>
+                    <li>Print previous year papers for timed practice (simulates real exam feel)</li>
+                    <li>Use 2-up printing for theory notes, full-size for diagrams</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Conclusion</h2>
+                <p className="text-muted-foreground mb-4">
+                    Cracking NEET 2027 is absolutely achievable with consistent effort and the right strategy. Focus on NCERT,
+                    practice previous year papers religiously, and maintain a healthy balance between study and rest. Use free
+                    resources effectively, print your essential study materials using Printify Notes, and trust the process.
+                    Good luck with your preparation!
+                </p>
+            </>
+        ),
+    },
+    'pdf-vs-printed-notes-science': {
+        title: 'PDF vs Printed Notes: The Science Behind Better Exam Performance',
+        date: 'August 2, 2026',
+        readTime: '11 min read',
+        category: 'Research',
+        content: (
+            <>
+                <p className="text-lg text-muted-foreground mb-6">
+                    The debate between digital PDFs and printed notes isn't just about personal preference — there's
+                    significant scientific research showing how each format affects learning, retention, and exam
+                    performance differently. In this article, we examine the research and help you build an optimal
+                    study strategy that leverages both formats.
+                </p>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">What the Research Says</h2>
+                <p className="text-muted-foreground mb-4">
+                    Multiple peer-reviewed studies have investigated how reading medium affects comprehension and retention:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li><strong>Mueller & Oppenheimer (2014, Princeton):</strong> Students who took handwritten notes on paper performed significantly better on conceptual questions than those who typed. This became known as the "laptop problem" in education.</li>
+                    <li><strong>Mangen et al. (2013, Stavanger University):</strong> Readers of printed text scored higher on reading comprehension tests compared to those reading the same text on screens, particularly for texts longer than one page.</li>
+                    <li><strong>Ackerman & Goldsmith (2011):</strong> Students studying on screens were more likely to engage in "shallow" processing — skimming rather than deep reading — leading to weaker recall.</li>
+                    <li><strong>Delgado et al. (2018, Meta-analysis):</strong> A review of 54 studies involving 170,000+ participants confirmed a significant advantage for paper-based reading in comprehension tasks.</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Why Paper Outperforms Screens for Deep Learning</h2>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">1. The Encoding Hypothesis</h3>
+                <p className="text-muted-foreground mb-4">
+                    When you read printed text and annotate by hand, your brain processes the information more deeply.
+                    The physical act of underlining, writing margin notes, and drawing arrows creates multiple neural
+                    pathways — visual, motor, and spatial — that reinforce memory. Digital interactions (scrolling,
+                    tapping) create fewer and weaker neural connections.
+                </p>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">2. Spatial Memory and "Mental Maps"</h3>
+                <p className="text-muted-foreground mb-4">
+                    With a physical book or printed notes, your brain creates a spatial map of information. You might
+                    remember that a formula was "near the bottom of the left page" or "right after the diagram."
+                    This spatial anchoring doesn't work with scrollable digital content, where text has no fixed
+                    position on screen.
+                </p>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">3. Reduced Distractions</h3>
+                <p className="text-muted-foreground mb-4">
+                    Studying from printed notes eliminates the constant temptation of notifications, social media,
+                    and multitasking. Research from the University of Connecticut found that students studying from
+                    paper were 30% less likely to engage in off-task activities compared to those studying from
+                    digital devices.
+                </p>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">4. Metacognitive Regulation</h3>
+                <p className="text-muted-foreground mb-4">
+                    Studies show that students reading on screens tend to overestimate their comprehension. They
+                    think they understand the material better than they actually do, leading to less effective
+                    study strategies. Physical text encourages more realistic self-assessment.
+                </p>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">When Digital PDFs Are Actually Better</h2>
+                <p className="text-muted-foreground mb-4">
+                    Print isn't always superior. Digital formats have clear advantages in specific scenarios:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li><strong>Search and lookup:</strong> Finding specific information in a 200-page PDF is instant with Ctrl+F</li>
+                    <li><strong>Multimedia content:</strong> Interactive diagrams, video links, and embedded animations can't exist on paper</li>
+                    <li><strong>Portability:</strong> Carrying thousands of pages digitally is practical; physically, it's not</li>
+                    <li><strong>Environmental consideration:</strong> Not printing everything saves paper and ink</li>
+                    <li><strong>Cost:</strong> Digital notes are free to store and access</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">The Optimal Hybrid Strategy</h2>
+                <p className="text-muted-foreground mb-4">
+                    The most effective approach combines both formats strategically:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li><strong>First exposure (Digital):</strong> Watch video lectures, read PDFs on screen for initial understanding</li>
+                    <li><strong>Active study (Print):</strong> Print key chapters, formulas, and diagrams. Annotate extensively by hand</li>
+                    <li><strong>Quick reference (Digital):</strong> Keep all PDFs organized for quick searches during problem-solving</li>
+                    <li><strong>Exam revision (Print):</strong> Use printed notes exclusively in the final 2-4 weeks. Print your "Quick Revision" sheets</li>
+                    <li><strong>Error logs (Print):</strong> Maintain a handwritten error log — the act of writing reinforces correction</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Cost-Effective Printing for Better Results</h2>
+                <p className="text-muted-foreground mb-4">
+                    The biggest barrier to printing is cost. Here's how to make it affordable:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li>Use <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a> to convert dark coaching PDFs — saves 60% on ink</li>
+                    <li>Print in grayscale for text-heavy content</li>
+                    <li>Use 2 pages per sheet for revision notes</li>
+                    <li>Invest in an ink tank printer (₹15,000 upfront saves ₹50,000 over 4 years)</li>
+                    <li>Print selectively — only chapters and topics you struggle with</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Conclusion</h2>
+                <p className="text-muted-foreground mb-4">
+                    The science is clear: for deep learning and exam preparation, printed notes give you a measurable
+                    advantage. But digital resources remain essential for initial learning and reference. The smart
+                    student uses both strategically. Print what matters, annotate by hand, and watch your retention
+                    and exam scores improve.
+                </p>
+            </>
+        ),
+    },
+    'choosing-paper-printing-notes': {
+        title: 'Complete Guide to Choosing the Right Paper for Printing Study Notes',
+        date: 'July 28, 2026',
+        readTime: '9 min read',
+        category: 'Guide',
+        content: (
+            <>
+                <p className="text-lg text-muted-foreground mb-6">
+                    The type of paper you use for printing study notes can significantly affect readability,
+                    durability, and even your study experience. Most students use whatever paper is cheapest
+                    or most available — but spending a few minutes understanding paper types can save you money
+                    and improve your study materials.
+                </p>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Understanding Paper Weight (GSM)</h2>
+                <p className="text-muted-foreground mb-4">
+                    Paper weight is measured in GSM (grams per square meter). Higher GSM = thicker paper. Here's
+                    what matters for students:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li><strong>60-70 GSM:</strong> Economy paper — cheap but ink can bleed through. Best for draft printing or temporary notes</li>
+                    <li><strong>75-80 GSM:</strong> Standard paper — the sweet spot for daily study notes. Good balance of cost, quality, and durability</li>
+                    <li><strong>90-100 GSM:</strong> Premium paper — excellent for important notes you'll keep long-term. No show-through with duplex printing</li>
+                    <li><strong>120+ GSM:</strong> Card stock — too thick for regular notes, but great for formula cards and flashcards</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Paper Brightness and Whiteness</h2>
+                <p className="text-muted-foreground mb-4">
+                    These two related but distinct properties affect how your printed notes look:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li><strong>Brightness:</strong> Measured on a scale of 1-100. Higher brightness (90+) means sharper contrast with black text. Ideal for text-heavy study notes</li>
+                    <li><strong>Whiteness (CIE):</strong> Affects how "white" the paper appears. Ultra-white papers (CIE 160+) look professional but can cause glare under direct light — not ideal for long study sessions</li>
+                    <li><strong>Recommendation:</strong> For study notes, aim for brightness 90-96 with moderate whiteness. This gives clear text without eye strain</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Best Paper for Different Study Materials</h2>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Theory Notes & Textbook Content</h3>
+                <p className="text-muted-foreground mb-4">
+                    Use standard 75 GSM paper. These are notes you'll read through multiple times but eventually replace
+                    with revision notes. No need to invest in premium paper for first-read notes.
+                </p>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Formula Sheets & Quick Revision</h3>
+                <p className="text-muted-foreground mb-4">
+                    Use 90-100 GSM paper. These get handled frequently during revision and need to survive months of
+                    use. Consider laminating critical formula sheets or using sheet protectors.
+                </p>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Practice Papers & Mock Tests</h3>
+                <p className="text-muted-foreground mb-4">
+                    Use the cheapest 60-70 GSM paper. You'll write on these once and likely discard them. Use economy
+                    paper and save your budget for important materials.
+                </p>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Diagrams & Color-Critical Content</h3>
+                <p className="text-muted-foreground mb-4">
+                    Use 80-90 GSM with good brightness. Color printing on cheap paper produces dull results. Better
+                    paper = better color reproduction = clearer diagrams.
+                </p>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Inkjet vs Laser Paper</h2>
+                <p className="text-muted-foreground mb-4">
+                    While most paper works with both printer types, there are optimized variants:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li><strong>Inkjet paper:</strong> Has a slightly coated surface that absorbs ink evenly. Prevents bleeding and feathering. If you have an ink tank printer, use inkjet-compatible paper for the best results</li>
+                    <li><strong>Laser paper:</strong> Smoother surface designed for toner adhesion. Works well with laser printers but doesn't absorb water-based ink as effectively</li>
+                    <li><strong>Multi-purpose:</strong> Works reasonably well with both types. This is what most students should buy</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Popular Paper Brands in India for Students</h2>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li><strong>JK Copier (75 GSM):</strong> Most popular and widely available. Good quality for the price (₹250-300/ream)</li>
+                    <li><strong>BILT Matrix (70 GSM):</strong> Budget-friendly option. Suitable for everyday printing (₹200-250/ream)</li>
+                    <li><strong>ITC Classmate Paper (75 GSM):</strong> Reliable quality, widely stocked (₹260-310/ream)</li>
+                    <li><strong>JK Easy Copier (70 GSM):</strong> Economy option for bulk printing (₹190-230/ream)</li>
+                    <li><strong>HP Everyday Paper (80 GSM):</strong> Premium feel at a reasonable price (₹350-400/ream)</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Money-Saving Tips</h2>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li>Buy paper in bulk (5-10 reams) during Amazon or Flipkart sales — savings of 15-25%</li>
+                    <li>Use <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a> to convert dark PDFs before printing — this alone saves more money than any paper choice</li>
+                    <li>Print duplex (both sides) on 80+ GSM paper to halve paper consumption</li>
+                    <li>Use draft mode for practice papers to save both ink and extend paper life</li>
+                    <li>Reuse one-side printed paper for rough work</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Conclusion</h2>
+                <p className="text-muted-foreground mb-4">
+                    Choosing the right paper is a small decision that compounds over thousands of printed pages.
+                    Use 75 GSM multi-purpose paper for most study notes, upgrade to 90+ GSM for revision materials,
+                    and go economy for practice papers. Combined with Printify Notes for ink-efficient printing,
+                    you'll have a cost-effective printing setup that supports better learning.
+                </p>
+            </>
+        ),
+    },
 };
 
 const BlogPost = () => {
@@ -1047,8 +1494,11 @@ const BlogPost = () => {
                 {post.content}
             </article>
 
+            {/* Author Bio */}
+            <AuthorBio publishDate={post.date} updateDate="August 9, 2026" />
+
             {/* Share/Save buttons */}
-            <div className="flex items-center gap-4 py-6 border-t border-border">
+            <div className="flex items-center gap-4 py-6 mt-8 border-t border-border">
                 <Button variant="outline" size="sm">
                     <Share2 className="w-4 h-4 mr-2" />
                     Share

@@ -21,6 +21,8 @@ import CompressPdf from "./pages/CompressPdf";
 import ExtractPages from "./pages/ExtractPages";
 import Donate from "./pages/Donate";
 import ThankYou from "./pages/ThankYou";
+import Disclaimer from "./pages/Disclaimer";
+import { CookieConsent } from "./components/CookieConsent";
 
 const queryClient = new QueryClient();
 
@@ -72,10 +74,12 @@ const App = () => (
             <Route path="/tools/extract-pages" element={<ExtractPages />} />
             <Route path="/donate" element={<Donate />} />
             <Route path="/thank-you" element={<ThankYou />} />
+            <Route path="/disclaimer" element={<Disclaimer />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
+        <CookieConsent />
       </TooltipProvider>
     </QueryClientProvider>
   </HelmetProvider>

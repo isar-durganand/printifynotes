@@ -9,7 +9,7 @@ const PrivacyPolicy = () => {
             keywords="printify notes privacy, pdf converter privacy policy, no upload pdf tool, private pdf converter"
         >
             <p className="text-muted-foreground mb-6">
-                <strong>Last updated:</strong> March 14, 2026
+                <strong>Last updated:</strong> August 9, 2026
             </p>
 
             <section className="mb-8">
@@ -131,6 +131,39 @@ const PrivacyPolicy = () => {
                     We do not knowingly collect personal information from children under 13. If you believe
                     we have inadvertently collected information from a child under 13, please contact us so
                     we can take appropriate action.
+                </p>
+            </section>
+
+            <section className="mb-8">
+                <h2 className="text-2xl font-semibold mb-4">Cookie Consent</h2>
+                <p className="text-muted-foreground mb-4">
+                    When you first visit our website, you will be presented with a cookie consent banner that
+                    allows you to accept or reject non-essential cookies. Your preference is stored locally
+                    in your browser and will be remembered for future visits.
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+                    <li><strong>If you accept:</strong> We will load analytics (Google Analytics) and advertising (Google AdSense) cookies to improve your experience and support our free service</li>
+                    <li><strong>If you reject:</strong> Only essential cookies required for the website to function will be used. No tracking or advertising cookies will be loaded</li>
+                    <li><strong>Changing your preference:</strong> You can clear your cookie preferences by clearing your browser's local storage for our website</li>
+                </ul>
+            </section>
+
+            <section className="mb-8">
+                <h2 className="text-2xl font-semibold mb-4">California Privacy Rights (CCPA)</h2>
+                <p className="text-muted-foreground mb-4">
+                    If you are a California resident, you have certain rights under the California Consumer Privacy Act (CCPA):
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+                    <li><strong>Right to know:</strong> You can request information about the categories of personal information we collect and how it is used</li>
+                    <li><strong>Right to delete:</strong> You can request deletion of your personal information. Since we don't store your documents or personal data, there is typically nothing to delete</li>
+                    <li><strong>Right to opt out:</strong> You can opt out of the sale of personal information. We do not sell personal information</li>
+                    <li><strong>Right to non-discrimination:</strong> We will not discriminate against you for exercising your CCPA rights</li>
+                </ul>
+                <p className="text-muted-foreground mb-4">
+                    To exercise any of these rights, please contact us at{' '}
+                    <a href="mailto:isardurganand@gmail.com" className="text-emerald-500 hover:underline">
+                        isardurganand@gmail.com
+                    </a>.
                 </p>
             </section>
 

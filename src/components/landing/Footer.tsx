@@ -145,6 +145,11 @@ export const Footer = () => {
                   </Link>
                 </li>
                 <li>
+                  <Link to="/disclaimer" className="hover:text-foreground transition-colors">
+                    Disclaimer
+                  </Link>
+                </li>
+                <li>
                   <Link to="/donate" className="hover:text-rose-400 transition-colors flex items-center gap-1">
                     ❤️ Donate
                   </Link>
