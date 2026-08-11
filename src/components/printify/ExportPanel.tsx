@@ -82,12 +82,29 @@ export function ExportPanel({
       const contentWidth = pageWidth - margin * 2;
       const contentHeight = pageHeight - margin * 2;
 
+      // Determine the page background color:
+      // When colors are inverted without forceWhiteBackground, margins should be black
+      // to match the inverted content (no white bleeding at edges).
+      const pageBgColor: [number, number, number] =
+        transformations.invertColors && !transformations.forceWhiteBackground
+          ? [0, 0, 0]
+          : [255, 255, 255];
+
+      const fillPageBackground = () => {
+        pdf.setFillColor(...pageBgColor);
+        pdf.rect(0, 0, pageWidth, pageHeight, 'F');
+      };
+
+      // Fill the background on the first (already created) page
+      fillPageBackground();
+
       let currentPdfPage = 0;
       const pagesPerSheet = combineSettings.pagesPerSheet;
 
       for (let i = 0; i < transformedImages.length; i += pagesPerSheet) {
         if (currentPdfPage > 0) {
           pdf.addPage();
+          fillPageBackground();
         }
 
         const pagesToPlace = transformedImages.slice(i, i + pagesPerSheet);
