@@ -91,58 +91,62 @@ export const Navbar = () => {
                     <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
+                        aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+                        aria-expanded={isMenuOpen}
                     >
                         {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
                     </button>
                 </div>
+            </nav>
 
-                {/* Mobile Menu */}
-                {isMenuOpen && (
-                    <div className="md:hidden mt-4 pt-4 border-t border-border">
-                        <div className="flex flex-col gap-3">
-                            <Link
-                                to="/about"
-                                className={`text-sm py-2 ${isActive('/about') ? 'text-emerald-500' : 'text-muted-foreground hover:text-foreground'}`}
-                            >
-                                About
-                            </Link>
-                            <Link
-                                to="/tools"
-                                className={`text-sm py-2 flex items-center gap-1.5 ${isActive('/tools') || location.pathname.startsWith('/tools/') ? 'text-emerald-500' : 'text-muted-foreground hover:text-foreground'}`}
-                            >
-                                Tools
-                                <span className="px-1.5 py-0.5 text-[10px] font-medium bg-blue-500 text-white rounded-full animate-pulse">
-                                    New
-                                </span>
-                            </Link>
-                            <Link
-                                to="/blog"
-                                className={`text-sm py-2 ${isActive('/blog') || location.pathname.startsWith('/blog/') ? 'text-emerald-500' : 'text-muted-foreground hover:text-foreground'}`}
-                            >
-                                Blog
-                            </Link>
-                            <Link
-                                to="/contact"
-                                className={`text-sm py-2 ${isActive('/contact') ? 'text-emerald-500' : 'text-muted-foreground hover:text-foreground'}`}
-                            >
-                                Contact
-                            </Link>
-                            <Link
-                                to="/donate"
-                                className={`text-sm py-2 flex items-center gap-1 ${isActive('/donate') ? 'text-rose-400' : 'text-rose-400/80 hover:text-rose-400'}`}
-                            >
-                                <Heart className="w-3.5 h-3.5 fill-current" />
-                                Donate
-                            </Link>
+            {/* Mobile Menu — rendered OUTSIDE the pill nav to avoid breaking its shape */}
+            {isMenuOpen && (
+                <div className="md:hidden mt-2 rounded-2xl bg-background/95 backdrop-blur-xl border border-border shadow-xl shadow-black/20 px-4 py-4">
+                    <div className="flex flex-col gap-1">
+                        <Link
+                            to="/about"
+                            className={`text-sm py-2.5 px-3 rounded-xl transition-colors ${isActive('/about') ? 'text-emerald-500 bg-emerald-500/10' : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}`}
+                        >
+                            About
+                        </Link>
+                        <Link
+                            to="/tools"
+                            className={`text-sm py-2.5 px-3 rounded-xl transition-colors flex items-center gap-1.5 ${isActive('/tools') || location.pathname.startsWith('/tools/') ? 'text-emerald-500 bg-emerald-500/10' : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}`}
+                        >
+                            Tools
+                            <span className="px-1.5 py-0.5 text-[10px] font-medium bg-blue-500 text-white rounded-full animate-pulse">
+                                New
+                            </span>
+                        </Link>
+                        <Link
+                            to="/blog"
+                            className={`text-sm py-2.5 px-3 rounded-xl transition-colors ${isActive('/blog') || location.pathname.startsWith('/blog/') ? 'text-emerald-500 bg-emerald-500/10' : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}`}
+                        >
+                            Blog
+                        </Link>
+                        <Link
+                            to="/contact"
+                            className={`text-sm py-2.5 px-3 rounded-xl transition-colors ${isActive('/contact') ? 'text-emerald-500 bg-emerald-500/10' : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}`}
+                        >
+                            Contact
+                        </Link>
+                        <Link
+                            to="/donate"
+                            className={`text-sm py-2.5 px-3 rounded-xl transition-colors flex items-center gap-1 ${isActive('/donate') ? 'text-rose-400 bg-rose-400/10' : 'text-rose-400/80 hover:text-rose-400 hover:bg-rose-400/10'}`}
+                        >
+                            <Heart className="w-3.5 h-3.5 fill-current" />
+                            Donate
+                        </Link>
+                        <div className="pt-2 border-t border-border mt-1">
                             <ScrollLink to="/#upload-section">
-                                <Button size="sm" className="rounded-full mt-2 w-full bg-emerald-500 hover:bg-emerald-600">
+                                <Button size="sm" className="rounded-full w-full bg-emerald-500 hover:bg-emerald-600">
                                     Convert PDF
                                 </Button>
                             </ScrollLink>
                         </div>
                     </div>
-                )}
-            </nav>
+                </div>
+            )}
         </header>
     );
 };
