@@ -27,7 +27,8 @@ export const StickyUpload = ({ onFileSelect, isLoading, progress }: StickyUpload
             e.preventDefault();
             setIsDragging(false);
             const file = e.dataTransfer.files[0];
-            if (file && file.type === 'application/pdf') {
+            const allowed = ['application/pdf', 'image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+            if (file && allowed.includes(file.type)) {
                 onFileSelect(file);
             }
         },
@@ -80,7 +81,7 @@ export const StickyUpload = ({ onFileSelect, isLoading, progress }: StickyUpload
             >
                 <input
                     type="file"
-                    accept=".pdf"
+                    accept=".pdf,.jpg,.jpeg,.png,.webp,.gif"
                     onChange={handleFileChange}
                     className="hidden"
                     id="sticky-pdf-upload"
@@ -105,10 +106,10 @@ export const StickyUpload = ({ onFileSelect, isLoading, progress }: StickyUpload
                         {/* Text */}
                         <div className="text-center">
                             <p className="font-medium text-foreground mb-1">
-                                Drop your PDF here
+                                Drop your file here
                             </p>
                             <p className="text-xs text-muted-foreground">
-                                or click to browse
+                                PDF · JPG · PNG · WEBP
                             </p>
                         </div>
 

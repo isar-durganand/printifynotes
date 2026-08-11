@@ -8,11 +8,14 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url
 ).toString();
 
+const IMAGE_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
+
 interface UsePdfProcessorReturn {
   pages: PageData[];
   isLoading: boolean;
   progress: number;
   error: string | null;
+  loadFile: (file: File) => Promise<void>;
   loadPdf: (file: File) => Promise<void>;
   reset: () => void;
 }
@@ -37,14 +40,14 @@ export function usePdfProcessor(): UsePdfProcessorReturn {
 
       for (let i = 1; i <= totalPages; i++) {
         const page = await pdf.getPage(i);
-        
+
         // Render at 1.5x scale (good balance of quality vs performance)
         const scale = 1.5;
         const viewport = page.getViewport({ scale });
-        
+
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
-        
+
         if (!context) {
           throw new Error('Could not get canvas context');
         }
@@ -81,6 +84,65 @@ export function usePdfProcessor(): UsePdfProcessorReturn {
     }
   }, []);
 
+  const loadImage = useCallback(async (file: File) => {
+    setIsLoading(true);
+    setError(null);
+    setProgress(0);
+    setPages([]);
+
+    try {
+      const objectUrl = URL.createObjectURL(file);
+
+      const img = await new Promise<HTMLImageElement>((resolve, reject) => {
+        const image = new Image();
+        image.onload = () => resolve(image);
+        image.onerror = () => reject(new Error('Failed to load image'));
+        image.src = objectUrl;
+      });
+
+      const canvas = document.createElement('canvas');
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+
+      const context = canvas.getContext('2d');
+      if (!context) throw new Error('Could not get canvas context');
+
+      context.drawImage(img, 0, 0);
+      URL.revokeObjectURL(objectUrl);
+
+      const imageDataUrl = canvas.toDataURL('image/jpeg', 0.92);
+
+      setProgress(100);
+      setPages([
+        {
+          id: 'page-1',
+          pageNumber: 1,
+          originalImage: imageDataUrl,
+          isSelected: true,
+          width: img.naturalWidth,
+          height: img.naturalHeight,
+        },
+      ]);
+    } catch (err) {
+      console.error('Error loading image:', err);
+      setError(err instanceof Error ? err.message : 'Failed to load image');
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  /** Unified entry: routes to loadPdf or loadImage based on file type */
+  const loadFile = useCallback(
+    async (file: File) => {
+      if (IMAGE_TYPES.has(file.type)) {
+        await loadImage(file);
+      } else {
+        await loadPdf(file);
+      }
+    },
+    [loadPdf, loadImage]
+  );
+
   const reset = useCallback(() => {
     setPages([]);
     setProgress(0);
@@ -93,6 +155,7 @@ export function usePdfProcessor(): UsePdfProcessorReturn {
     isLoading,
     progress,
     error,
+    loadFile,
     loadPdf,
     reset,
   };

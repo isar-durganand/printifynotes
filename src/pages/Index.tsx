@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { UploadZone } from '@/components/printify/UploadZone';
@@ -40,20 +40,27 @@ const BackgroundDecorations = () => (
 );
 
 const Index = () => {
-  const { pages, isLoading, progress, error, loadPdf, reset } = usePdfProcessor();
+  const { pages, isLoading, progress, error, loadFile, reset } = usePdfProcessor();
   const [localPages, setLocalPages] = useState<PageData[]>([]);
   const [transformations, setTransformations] = useState<TransformationSettings>(DEFAULT_TRANSFORMATIONS);
   const [combineSettings, setCombineSettings] = useState<CombineSettings>(DEFAULT_COMBINE_SETTINGS);
 
   const handleFileSelect = async (file: File) => {
-    await loadPdf(file);
+    await loadFile(file);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (pages.length > 0) {
       setLocalPages(pages);
     }
   }, [pages]);
+
+  // Scroll to top when editor view opens
+  useEffect(() => {
+    if (localPages.length > 0) {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }, [localPages.length > 0]);
 
   const handleReset = () => {
     reset();
@@ -161,27 +168,33 @@ const Index = () => {
       {/* Upload Section */}
       <section id="upload-section" className="section-padding">
         <div className="container-tight">
-          <div className="text-center mb-8 sm:mb-10">
-            <span className="inline-block text-sm text-emerald-500 font-medium mb-4">
-              GET STARTED
+          {/* Section header */}
+          <div className="text-center mb-10 sm:mb-14">
+            <span className="inline-block text-xs font-semibold tracking-widest uppercase text-emerald-500 mb-4">
+              Get Started
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight">
               Ready to Transform?
             </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto text-sm sm:text-base">
-              Upload your PDF and see the magic happen. It's free, private, and takes just seconds.
+            <p className="text-muted-foreground max-w-lg mx-auto text-sm sm:text-base leading-relaxed">
+              Upload your PDF or image and see the magic happen. Free, private, and instant — no signup needed.
             </p>
           </div>
 
-          <div className="max-w-xl mx-auto">
-            <UploadZone
-              onFileSelect={handleFileSelect}
-              isLoading={isLoading}
-              progress={progress}
-            />
+          {/* Upload card */}
+          <div className="max-w-lg mx-auto">
+            <div className="rounded-2xl border border-border bg-card p-1">
+              <div className="rounded-xl border border-border/60 bg-background p-6 sm:p-8">
+                <UploadZone
+                  onFileSelect={handleFileSelect}
+                  isLoading={isLoading}
+                  progress={progress}
+                />
+              </div>
+            </div>
 
             {error && (
-              <div className="mt-6 p-4 rounded-lg border border-destructive/50 bg-destructive/10 text-center">
+              <div className="mt-4 flex items-start gap-3 p-4 rounded-xl border border-destructive/40 bg-destructive/10">
                 <p className="text-destructive text-sm">{error}</p>
               </div>
             )}

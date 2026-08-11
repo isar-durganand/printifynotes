@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { Upload, FileText } from 'lucide-react';
+import { Upload, FileText, Image, AlertCircle } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 
 interface UploadZoneProps {
@@ -8,12 +8,26 @@ interface UploadZoneProps {
   progress: number;
 }
 
+const ACCEPTED_TYPES = {
+  'application/pdf': true,
+  'image/jpeg': true,
+  'image/png': true,
+  'image/webp': true,
+  'image/gif': true,
+};
+
+const ACCEPT_STRING = '.pdf,.jpg,.jpeg,.png,.webp,.gif';
+
+const FILE_CHIPS = ['PDF', 'JPG', 'PNG', 'WEBP'];
+
 export function UploadZone({ onFileSelect, isLoading, progress }: UploadZoneProps) {
   const [isDragging, setIsDragging] = useState(false);
+  const [typeError, setTypeError] = useState(false);
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     setIsDragging(true);
+    setTypeError(false);
   }, []);
 
   const handleDragLeave = useCallback((e: React.DragEvent) => {
@@ -26,8 +40,13 @@ export function UploadZone({ onFileSelect, isLoading, progress }: UploadZoneProp
       e.preventDefault();
       setIsDragging(false);
       const file = e.dataTransfer.files[0];
-      if (file && file.type === 'application/pdf') {
-        onFileSelect(file);
+      if (file) {
+        if (ACCEPTED_TYPES[file.type as keyof typeof ACCEPTED_TYPES]) {
+          setTypeError(false);
+          onFileSelect(file);
+        } else {
+          setTypeError(true);
+        }
       }
     },
     [onFileSelect]
@@ -37,6 +56,7 @@ export function UploadZone({ onFileSelect, isLoading, progress }: UploadZoneProp
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const file = e.target.files?.[0];
       if (file) {
+        setTypeError(false);
         onFileSelect(file);
       }
     },
@@ -45,13 +65,15 @@ export function UploadZone({ onFileSelect, isLoading, progress }: UploadZoneProp
 
   if (isLoading) {
     return (
-      <div className="border border-border rounded-lg p-8 bg-card">
-        <div className="flex flex-col items-center gap-4">
-          <FileText className="w-10 h-10 text-muted-foreground" />
-          <div className="w-full max-w-xs space-y-2">
-            <Progress value={progress} className="h-2" />
+      <div className="rounded-xl border border-border bg-card p-10">
+        <div className="flex flex-col items-center gap-5">
+          <div className="p-4 rounded-xl bg-secondary">
+            <FileText className="w-8 h-8 text-emerald-500 animate-pulse" />
+          </div>
+          <div className="w-full max-w-sm space-y-3">
+            <Progress value={progress} className="h-1.5" />
             <p className="text-sm text-center text-muted-foreground">
-              Processing PDF... {progress}%
+              Processing… {progress}%
             </p>
           </div>
         </div>
@@ -60,40 +82,85 @@ export function UploadZone({ onFileSelect, isLoading, progress }: UploadZoneProp
   }
 
   return (
-    <div
-      onDragOver={handleDragOver}
-      onDragLeave={handleDragLeave}
-      onDrop={handleDrop}
-      className={`
-        border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors
-        ${isDragging 
-          ? 'border-primary bg-primary/5' 
-          : 'border-border hover:border-muted-foreground'
-        }
-      `}
-    >
-      <input
-        type="file"
-        accept=".pdf"
-        onChange={handleFileChange}
-        className="hidden"
-        id="pdf-upload"
-      />
-      <label htmlFor="pdf-upload" className="cursor-pointer">
-        <div className="flex flex-col items-center gap-3">
-          <div className="p-3 rounded-full bg-secondary">
-            <Upload className="w-6 h-6 text-muted-foreground" />
+    <div className="space-y-3">
+      <div
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+        className={`
+          relative rounded-xl border-2 border-dashed transition-all duration-200 cursor-pointer
+          ${isDragging
+            ? 'border-emerald-500 bg-emerald-500/5'
+            : typeError
+              ? 'border-destructive/60 bg-destructive/5'
+              : 'border-border bg-card hover:border-muted-foreground/50 hover:bg-secondary/30'
+          }
+        `}
+      >
+        <input
+          type="file"
+          accept={ACCEPT_STRING}
+          onChange={handleFileChange}
+          className="hidden"
+          id="pdf-upload"
+        />
+        <label htmlFor="pdf-upload" className="cursor-pointer block p-10">
+          <div className="flex flex-col items-center gap-4 text-center">
+            {/* Icon area */}
+            <div className={`
+              p-4 rounded-xl border transition-colors duration-200
+              ${isDragging
+                ? 'border-emerald-500/40 bg-emerald-500/10'
+                : 'border-border bg-secondary'
+              }
+            `}>
+              {isDragging
+                ? <Upload className="w-7 h-7 text-emerald-500" />
+                : <Upload className="w-7 h-7 text-muted-foreground" />
+              }
+            </div>
+
+            {/* Text */}
+            <div>
+              <p className="text-base font-semibold text-foreground mb-1">
+                {isDragging ? 'Release to upload' : 'Drop your file here'}
+              </p>
+              <p className="text-sm text-muted-foreground">
+                or{' '}
+                <span className="text-foreground font-medium underline underline-offset-2">
+                  click to browse
+                </span>
+              </p>
+            </div>
+
+            {/* Accepted file type chips */}
+            <div className="flex items-center gap-2 flex-wrap justify-center">
+              {FILE_CHIPS.map((type) => (
+                <span
+                  key={type}
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-secondary border border-border text-xs font-medium text-muted-foreground"
+                >
+                  {type === 'PDF'
+                    ? <FileText className="w-3 h-3" />
+                    : <Image className="w-3 h-3" />
+                  }
+                  {type}
+                </span>
+              ))}
+            </div>
           </div>
-          <div>
-            <p className="font-medium text-foreground">
-              Drop your PDF here or click to browse
-            </p>
-            <p className="text-sm text-muted-foreground mt-1">
-              PDF files only
-            </p>
-          </div>
+        </label>
+      </div>
+
+      {/* Error message */}
+      {typeError && (
+        <div className="flex items-center gap-2 px-3 py-2.5 rounded-lg border border-destructive/40 bg-destructive/10">
+          <AlertCircle className="w-4 h-4 text-destructive shrink-0" />
+          <p className="text-sm text-destructive">
+            Unsupported file type. Please use PDF, JPG, PNG, or WEBP.
+          </p>
         </div>
-      </label>
+      )}
     </div>
   );
 }
