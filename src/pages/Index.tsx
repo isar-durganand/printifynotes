@@ -75,18 +75,28 @@ const Index = () => {
   if (hasPages) {
     return (
       <div className="min-h-screen bg-background text-foreground">
-        <header className="border-b border-border sticky top-0 z-40 bg-background/80 backdrop-blur-xl">
-          <div className="container mx-auto px-4 py-3 sm:py-4 flex items-center justify-between">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <div className="p-1.5 sm:p-2 rounded-lg bg-emerald-500">
-                <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+        <header className="border-b border-border sticky top-0 z-40 bg-background/95 backdrop-blur-xl">
+          <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="p-1.5 rounded-lg bg-emerald-500 shrink-0">
+                <FileText className="w-4 h-4 text-white" />
               </div>
-              <div>
-                <h1 className="text-base sm:text-lg font-semibold text-foreground">Printify Notes</h1>
-                <p className="text-xs text-muted-foreground hidden sm:block">Dark → Print-Ready</p>
+              <div className="min-w-0">
+                <div className="flex items-center gap-2">
+                  <h1 className="text-sm font-semibold text-foreground">Printify Notes</h1>
+                  <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-md bg-secondary border border-border text-xs text-muted-foreground font-medium">
+                    {localPages.length} {localPages.length === 1 ? 'page' : 'pages'}
+                  </span>
+                </div>
+                <p className="text-xs text-muted-foreground">Dark → Print-Ready</p>
               </div>
             </div>
-            <Button variant="outline" size="sm" onClick={handleReset} className="text-xs sm:text-sm">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleReset}
+              className="text-xs shrink-0 text-muted-foreground hover:text-destructive hover:border-destructive/50"
+            >
               Start Over
             </Button>
           </div>

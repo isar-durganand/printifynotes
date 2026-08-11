@@ -1,5 +1,5 @@
 import React from 'react';
-import { Settings, Sparkles } from 'lucide-react';
+import { Settings, Sparkles, Sun, Contrast } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
@@ -19,86 +19,137 @@ export function TransformationControls({ settings, onChange }: TransformationCon
   };
 
   return (
-    <div className="border border-border rounded-lg p-4 bg-card space-y-4">
-      <div className="flex items-center gap-2 pb-3 border-b border-border">
-        <Settings className="w-4 h-4 text-muted-foreground" />
-        <h3 className="font-medium text-foreground text-sm">Transformations</h3>
+    <div className="rounded-xl border border-border bg-card overflow-hidden">
+      {/* Panel header */}
+      <div className="flex items-center gap-2.5 px-4 py-3 border-b border-border bg-secondary/30">
+        <Settings className="w-4 h-4 text-emerald-500" />
+        <h3 className="font-semibold text-foreground text-sm tracking-tight">Transformations</h3>
       </div>
 
-      <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <Label htmlFor="invert" className="text-sm">Invert Colors</Label>
-          <Switch
+      <div className="p-4 space-y-5">
+        {/* Toggle switches */}
+        <div className="space-y-3">
+          <ToggleRow
             id="invert"
+            label="Invert Colors"
+            description="Flip dark → light"
             checked={settings.invertColors}
-            onCheckedChange={(checked) => updateSetting('invertColors', checked)}
+            onCheckedChange={(v) => updateSetting('invertColors', v)}
           />
-        </div>
-
-        <div className="flex items-center justify-between">
-          <Label htmlFor="whiteBg" className="text-sm">Force White Background</Label>
-          <Switch
+          <ToggleRow
             id="whiteBg"
+            label="Force White Background"
+            description="Snap near-white pixels to pure white"
             checked={settings.forceWhiteBackground}
-            onCheckedChange={(checked) => updateSetting('forceWhiteBackground', checked)}
+            onCheckedChange={(v) => updateSetting('forceWhiteBackground', v)}
           />
-        </div>
-
-        <div className="flex items-center justify-between">
-          <Label htmlFor="grayscale" className="text-sm">Grayscale</Label>
-          <Switch
+          <ToggleRow
             id="grayscale"
+            label="Grayscale"
+            description="Maximum ink savings"
             checked={settings.grayscale}
-            onCheckedChange={(checked) => updateSetting('grayscale', checked)}
+            onCheckedChange={(v) => updateSetting('grayscale', v)}
           />
         </div>
 
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <Label className="text-sm">Brightness</Label>
-            <span className="text-xs text-muted-foreground">{settings.brightness}%</span>
-          </div>
-          <Slider
-            value={[settings.brightness]}
-            onValueChange={([value]) => updateSetting('brightness', value)}
+        <div className="border-t border-border/60" />
+
+        {/* Sliders */}
+        <div className="space-y-4">
+          <SliderRow
+            icon={Sun}
+            label="Brightness"
+            value={settings.brightness}
             min={50}
             max={150}
             step={5}
+            onChange={(v) => updateSetting('brightness', v)}
           />
-        </div>
-
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <Label className="text-sm">Contrast</Label>
-            <span className="text-xs text-muted-foreground">{settings.contrast}%</span>
-          </div>
-          <Slider
-            value={[settings.contrast]}
-            onValueChange={([value]) => updateSetting('contrast', value)}
+          <SliderRow
+            icon={Contrast}
+            label="Contrast"
+            value={settings.contrast}
             min={50}
             max={150}
             step={5}
+            onChange={(v) => updateSetting('contrast', v)}
           />
-        </div>
-
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-glow" />
-              <Label className="text-sm">Edge Enhancement</Label>
-            </div>
-            <span className="text-xs text-muted-foreground">{settings.edgeEnhancement}%</span>
-          </div>
-          <Slider
-            value={[settings.edgeEnhancement]}
-            onValueChange={([value]) => updateSetting('edgeEnhancement', value)}
+          <SliderRow
+            icon={Sparkles}
+            label="Edge Enhancement"
+            value={settings.edgeEnhancement}
             min={0}
             max={100}
             step={10}
+            onChange={(v) => updateSetting('edgeEnhancement', v)}
+            hint="Sharpens text for clearer prints"
           />
-          <p className="text-xs text-muted-foreground">Sharpens text and edges for clearer prints</p>
         </div>
       </div>
+    </div>
+  );
+}
+
+function ToggleRow({
+  id,
+  label,
+  description,
+  checked,
+  onCheckedChange,
+}: {
+  id: string;
+  label: string;
+  description: string;
+  checked: boolean;
+  onCheckedChange: (v: boolean) => void;
+}) {
+  return (
+    <div className="flex items-center justify-between gap-3">
+      <div className="min-w-0">
+        <Label htmlFor={id} className="text-sm font-medium cursor-pointer">{label}</Label>
+        <p className="text-xs text-muted-foreground mt-0.5">{description}</p>
+      </div>
+      <Switch id={id} checked={checked} onCheckedChange={onCheckedChange} />
+    </div>
+  );
+}
+
+function SliderRow({
+  icon: Icon,
+  label,
+  value,
+  min,
+  max,
+  step,
+  onChange,
+  hint,
+}: {
+  icon: React.ElementType;
+  label: string;
+  value: number;
+  min: number;
+  max: number;
+  step: number;
+  onChange: (v: number) => void;
+  hint?: string;
+}) {
+  return (
+    <div className="space-y-2">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-1.5">
+          <Icon className="w-3.5 h-3.5 text-muted-foreground" />
+          <Label className="text-sm font-medium">{label}</Label>
+        </div>
+        <span className="text-xs font-mono text-emerald-500 tabular-nums">{value}%</span>
+      </div>
+      <Slider
+        value={[value]}
+        onValueChange={([v]) => onChange(v)}
+        min={min}
+        max={max}
+        step={step}
+      />
+      {hint && <p className="text-xs text-muted-foreground">{hint}</p>}
     </div>
   );
 }

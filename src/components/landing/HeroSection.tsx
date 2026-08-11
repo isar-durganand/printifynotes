@@ -40,15 +40,10 @@ export const HeroSection = () => {
           <span className="text-muted-foreground">For Easy Printing</span>
         </h1>
 
-        {/* Subheading - SEO optimized with keywords */}
-        <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-6 opacity-0 animate-fade-in delay-200">
+        {/* Subheading */}
+        <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 opacity-0 animate-fade-in delay-200">
           Transform dark-background lecture notes from PW, Unacademy, Vedantu, and other coaching platforms
           into clean, ink-saving PDFs. Perfect for NEET & JEE preparation notes.
-        </p>
-
-        {/* Secondary description for more SEO content */}
-        <p className="text-base text-muted-foreground/80 max-w-xl mx-auto mb-10 opacity-0 animate-fade-in delay-250">
-          No uploads to servers, no accounts needed — convert dark notes to light instantly in your browser.
         </p>
 
         {/* CTA Buttons */}
@@ -72,7 +67,7 @@ export const HeroSection = () => {
         </div>
 
         {/* Trust badges */}
-        <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 opacity-0 animate-fade-in delay-400">
+        <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 opacity-0 animate-fade-in delay-400">
           <TrustBadge icon={Shield} text="No Data Uploads" />
           <TrustBadge icon={Zap} text="Instant Processing" />
           <TrustBadge icon={Eye} text="No Account Needed" />
@@ -141,8 +136,8 @@ export const HeroSection = () => {
 };
 
 const TrustBadge = ({ icon: Icon, text }: { icon: React.ElementType; text: string }) => (
-  <div className="flex items-center gap-2 text-muted-foreground">
-    <Icon className="w-4 h-4 text-emerald-500" />
-    <span className="text-sm">{text}</span>
+  <div className="flex items-center gap-2 px-3.5 py-2 rounded-full border border-border bg-card/60 text-muted-foreground">
+    <Icon className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+    <span className="text-xs font-medium">{text}</span>
   </div>
 );

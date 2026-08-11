@@ -18,13 +18,13 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
   };
 
   return (
-    <div className="border border-border rounded-lg p-4 bg-card space-y-4">
-      <div className="flex items-center gap-2 pb-3 border-b border-border">
-        <LayoutGrid className="w-4 h-4 text-muted-foreground" />
-        <h3 className="font-medium text-foreground text-sm">Layout Options</h3>
+    <div className="rounded-xl border border-border bg-card overflow-hidden">
+      <div className="flex items-center gap-2.5 px-4 py-3 border-b border-border bg-secondary/30">
+        <LayoutGrid className="w-4 h-4 text-emerald-500" />
+        <h3 className="font-semibold text-foreground text-sm tracking-tight">Layout Options</h3>
       </div>
 
-      <div className="space-y-4">
+      <div className="p-4 space-y-4">
         <div className="space-y-2">
           <Label className="text-sm">Pages per Sheet</Label>
           <Select

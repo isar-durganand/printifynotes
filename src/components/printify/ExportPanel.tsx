@@ -200,16 +200,18 @@ export function ExportPanel({
   }, [selectedPages, transformations, combineSettings, exportQuality]);
 
   return (
-    <div className="border border-border rounded-lg p-4 bg-card space-y-4">
-      <div className="flex items-center gap-2 pb-3 border-b border-border">
-        <Download className="w-4 h-4 text-muted-foreground" />
+    <div className="rounded-xl border border-border bg-card overflow-hidden">
+      <div className="flex items-center gap-2.5 px-4 py-3 border-b border-border bg-secondary/30">
+        <Download className="w-4 h-4 text-emerald-500" />
         <div>
-          <h3 className="font-medium text-foreground text-sm">Export PDF</h3>
-          <p className="text-xs text-muted-foreground">
-            {selectedPages.length} page{selectedPages.length !== 1 ? 's' : ''} selected
-          </p>
+          <h3 className="font-semibold text-foreground text-sm tracking-tight">Export PDF</h3>
         </div>
+        <span className="ml-auto text-xs text-muted-foreground">
+          {selectedPages.length} / {pages.length} pages
+        </span>
       </div>
+
+      <div className="p-4 space-y-4">
 
       <div className="space-y-2">
         <Label className="text-sm">Export Quality</Label>
@@ -253,7 +255,7 @@ export function ExportPanel({
         <Button
           onClick={handleExport}
           disabled={selectedPages.length === 0}
-          className="w-full"
+          className="w-full rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white"
           size="sm"
         >
           <Download className="w-4 h-4 mr-2" />
@@ -266,6 +268,7 @@ export function ExportPanel({
           Select at least one page
         </p>
       )}
+      </div>
     </div>
   );
 }
