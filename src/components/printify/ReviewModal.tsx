@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { X, Star, Send, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { useReviews } from '@/hooks/useReviews';
+import { useSubmitReview } from '@/hooks/useSubmitReview';
+
+const SESSION_KEY = 'pn_review_shown';
 
 interface ReviewModalProps {
   onClose: () => void;
@@ -14,7 +16,7 @@ export function ReviewModal({ onClose }: ReviewModalProps) {
   const [comment, setComment] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [visible, setVisible] = useState(false);
-  const { submitReview, submitting } = useReviews();
+  const { submitReview, submitting } = useSubmitReview();
 
   // Animate in on mount
   useEffect(() => {
@@ -28,9 +30,11 @@ export function ReviewModal({ onClose }: ReviewModalProps) {
   };
 
   const handleSubmit = async () => {
-    if (rating === 0) return;
+    if (rating === 0 || submitting) return;
     const ok = await submitReview(rating, comment);
     if (ok) {
+      // Mark as shown for this session so it won't pop again
+      sessionStorage.setItem(SESSION_KEY, '1');
       setSubmitted(true);
       setTimeout(handleClose, 2000);
     }

@@ -30,9 +30,10 @@ export function ExportPanel({
   const [exportQuality, setExportQuality] = useState<ExportQuality>('high');
   const [showReview, setShowReview] = useState(false);
 
-  // Show review modal 2 seconds after export completes
+  // Show review modal 2 seconds after export completes (once per session)
   useEffect(() => {
     if (!isComplete) return;
+    if (sessionStorage.getItem('pn_review_shown')) return;
     const t = setTimeout(() => setShowReview(true), 2000);
     return () => clearTimeout(t);
   }, [isComplete]);

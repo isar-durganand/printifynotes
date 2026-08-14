@@ -23,9 +23,10 @@ export const PdfCompressor: React.FC = () => {
     const [compressedBlob, setCompressedBlob] = useState<Blob | null>(null);
     const [showReview, setShowReview] = useState(false);
 
-    // Show review modal 2 seconds after compression result appears
+    // Show review modal 2 seconds after compression result appears (once per session)
     useEffect(() => {
         if (!result) return;
+        if (sessionStorage.getItem('pn_review_shown')) return;
         const t = setTimeout(() => setShowReview(true), 2000);
         return () => clearTimeout(t);
     }, [result]);

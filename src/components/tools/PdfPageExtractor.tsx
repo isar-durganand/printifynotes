@@ -29,9 +29,10 @@ export const PdfPageExtractor: React.FC = () => {
     const [showReview, setShowReview] = useState(false);
     const [downloadCount, setDownloadCount] = useState(0);
 
-    // Show review modal 2 seconds after a successful extraction download
+    // Show review modal 2 seconds after a successful extraction download (once per session)
     useEffect(() => {
         if (downloadCount === 0) return;
+        if (sessionStorage.getItem('pn_review_shown')) return;
         const t = setTimeout(() => setShowReview(true), 2000);
         return () => clearTimeout(t);
     }, [downloadCount]);

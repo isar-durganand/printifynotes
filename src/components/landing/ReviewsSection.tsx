@@ -1,8 +1,11 @@
-import React from 'react';
-import { Star, MessageSquare } from 'lucide-react';
+import React, { useState } from 'react';
+import { Star, MessageSquare, ChevronDown, ChevronUp } from 'lucide-react';
 import { useReviews } from '@/hooks/useReviews';
+import { Button } from '@/components/ui/button';
 
-// Renders filled/half/empty stars for a given rating
+const DEFAULT_VISIBLE = 4;
+
+// Renders filled stars for a given rating
 function StarDisplay({ rating, size = 'sm' }: { rating: number; size?: 'sm' | 'lg' }) {
   const cls = size === 'lg' ? 'w-6 h-6' : 'w-4 h-4';
   return (
@@ -36,9 +39,12 @@ function timeAgo(date: Date): string {
 
 export function ReviewsSection() {
   const { reviews, loading, averageRating, totalReviews } = useReviews();
+  const [showAll, setShowAll] = useState(false);
 
-  // Only show reviews that have a comment
-  const featuredReviews = reviews.filter((r) => r.comment.trim().length > 0).slice(0, 6);
+  // Only display reviews that have a written comment
+  const withComments = reviews.filter((r) => r.comment.trim().length > 0);
+  const visibleReviews = showAll ? withComments : withComments.slice(0, DEFAULT_VISIBLE);
+  const hasMore = withComments.length > DEFAULT_VISIBLE;
 
   return (
     <section className="section-padding" id="reviews">
@@ -64,7 +70,8 @@ export function ReviewsSection() {
             </div>
             <StarDisplay rating={averageRating} size="lg" />
             <p className="text-sm text-muted-foreground">
-              Based on <span className="font-semibold text-foreground">{totalReviews}</span>{' '}
+              Based on{' '}
+              <span className="font-semibold text-foreground">{totalReviews}</span>{' '}
               {totalReviews === 1 ? 'review' : 'reviews'}
             </p>
           </div>
@@ -72,8 +79,8 @@ export function ReviewsSection() {
 
         {/* Loading skeleton */}
         {loading && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[...Array(3)].map((_, i) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[...Array(DEFAULT_VISIBLE)].map((_, i) => (
               <div key={i} className="rounded-xl border border-border bg-card p-5 animate-pulse">
                 <div className="flex gap-1 mb-3">
                   {[...Array(5)].map((__, j) => (
@@ -91,26 +98,53 @@ export function ReviewsSection() {
         )}
 
         {/* Review cards */}
-        {!loading && featuredReviews.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {featuredReviews.map((review) => (
-              <div
-                key={review.id}
-                className="group rounded-xl border border-border bg-card p-5 hover:border-emerald-500/40 hover:shadow-lg hover:shadow-emerald-500/5 transition-all duration-300"
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <StarDisplay rating={review.rating} />
-                  <span className="text-xs text-muted-foreground">{timeAgo(review.createdAt)}</span>
+        {!loading && visibleReviews.length > 0 && (
+          <>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {visibleReviews.map((review) => (
+                <div
+                  key={review.id}
+                  className="group rounded-xl border border-border bg-card p-5 hover:border-emerald-500/40 hover:shadow-lg hover:shadow-emerald-500/5 transition-all duration-300"
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <StarDisplay rating={review.rating} />
+                    <span className="text-xs text-muted-foreground shrink-0 ml-2">
+                      {timeAgo(review.createdAt)}
+                    </span>
+                  </div>
+                  <p className="text-sm text-foreground/90 leading-relaxed line-clamp-4">
+                    "{review.comment}"
+                  </p>
                 </div>
-                <p className="text-sm text-foreground/90 leading-relaxed line-clamp-4">
-                  "{review.comment}"
-                </p>
+              ))}
+            </div>
+
+            {/* Show all / collapse button */}
+            {hasMore && (
+              <div className="flex justify-center mt-8">
+                <Button
+                  variant="outline"
+                  onClick={() => setShowAll((v) => !v)}
+                  className="gap-2 rounded-xl border-border hover:border-emerald-500/50 hover:text-emerald-500 transition-colors"
+                >
+                  {showAll ? (
+                    <>
+                      <ChevronUp className="w-4 h-4" />
+                      Show less
+                    </>
+                  ) : (
+                    <>
+                      <ChevronDown className="w-4 h-4" />
+                      Show all {withComments.length} reviews
+                    </>
+                  )}
+                </Button>
               </div>
-            ))}
-          </div>
+            )}
+          </>
         )}
 
-        {/* Empty state — no reviews yet */}
+        {/* Empty state — no reviews at all */}
         {!loading && totalReviews === 0 && (
           <div className="text-center py-12 rounded-xl border border-dashed border-border">
             <MessageSquare className="w-10 h-10 text-muted-foreground/40 mx-auto mb-3" />
@@ -121,8 +155,8 @@ export function ReviewsSection() {
           </div>
         )}
 
-        {/* Empty comment state — reviews exist but none have comments */}
-        {!loading && totalReviews > 0 && featuredReviews.length === 0 && (
+        {/* Ratings exist but no written reviews */}
+        {!loading && totalReviews > 0 && withComments.length === 0 && (
           <div className="text-center py-8">
             <p className="text-muted-foreground text-sm">
               {totalReviews} {totalReviews === 1 ? 'rating' : 'ratings'} received — no written reviews yet.

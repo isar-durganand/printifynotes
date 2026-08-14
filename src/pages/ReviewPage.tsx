@@ -3,7 +3,7 @@ import { Star, Send, Loader2, CheckCircle2, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import { useReviews } from '@/hooks/useReviews';
+import { useSubmitReview } from '@/hooks/useSubmitReview';
 
 function StarPicker({ rating, onChange }: { rating: number; onChange: (r: number) => void }) {
   const [hover, setHover] = useState(0);
@@ -46,7 +46,7 @@ const ReviewPage: React.FC = () => {
   const [comment, setComment] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [visible, setVisible] = useState(false);
-  const { submitReview, submitting } = useReviews();
+  const { submitReview, submitting } = useSubmitReview();
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 50);
