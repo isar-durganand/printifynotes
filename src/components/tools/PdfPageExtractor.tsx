@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Upload, FileText, Download, Scissors, Check, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { PDFDocument } from 'pdf-lib';
 import * as pdfjsLib from 'pdfjs-dist';
+import { ReviewModal } from '@/components/printify/ReviewModal';
 
 // Configure worker for Vite
 pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
@@ -25,6 +26,15 @@ export const PdfPageExtractor: React.FC = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isExtracting, setIsExtracting] = useState(false);
     const [pageRange, setPageRange] = useState('');
+    const [showReview, setShowReview] = useState(false);
+    const [downloadCount, setDownloadCount] = useState(0);
+
+    // Show review modal 2 seconds after a successful extraction download
+    useEffect(() => {
+        if (downloadCount === 0) return;
+        const t = setTimeout(() => setShowReview(true), 2000);
+        return () => clearTimeout(t);
+    }, [downloadCount]);
 
     const handleFileSelect = useCallback(async (selectedFile: File | null) => {
         if (!selectedFile || selectedFile.type !== 'application/pdf') return;
@@ -154,6 +164,7 @@ export const PdfPageExtractor: React.FC = () => {
             link.href = url;
             link.download = file.name.replace('.pdf', '-extracted.pdf');
             link.click();
+            setDownloadCount(c => c + 1);
 
             URL.revokeObjectURL(url);
         } catch (error) {
@@ -172,6 +183,7 @@ export const PdfPageExtractor: React.FC = () => {
     };
 
     return (
+        <>
         <div className="space-y-6">
             {/* Upload Zone */}
             <Card>
@@ -314,5 +326,7 @@ export const PdfPageExtractor: React.FC = () => {
                 </Card>
             )}
         </div>
+        {showReview && <ReviewModal onClose={() => setShowReview(false)} />}
+    </>
     );
 };

@@ -1,8 +1,9 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Upload, FileText, GripVertical, Trash2, Download, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { PDFDocument } from 'pdf-lib';
+import { ReviewModal } from '@/components/printify/ReviewModal';
 
 interface PdfFile {
     id: string;
@@ -15,6 +16,15 @@ export const PdfMerger: React.FC = () => {
     const [files, setFiles] = useState<PdfFile[]>([]);
     const [isProcessing, setIsProcessing] = useState(false);
     const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+    const [showReview, setShowReview] = useState(false);
+    const [downloadCount, setDownloadCount] = useState(0);
+
+    // Show review modal 2 seconds after a successful download
+    useEffect(() => {
+        if (downloadCount === 0) return;
+        const t = setTimeout(() => setShowReview(true), 2000);
+        return () => clearTimeout(t);
+    }, [downloadCount]);
 
     const handleFileSelect = useCallback(async (selectedFiles: FileList | null) => {
         if (!selectedFiles) return;
@@ -95,6 +105,7 @@ export const PdfMerger: React.FC = () => {
             link.href = url;
             link.download = 'merged-document.pdf';
             link.click();
+            setDownloadCount(c => c + 1);
 
             URL.revokeObjectURL(url);
         } catch (error) {
@@ -107,6 +118,7 @@ export const PdfMerger: React.FC = () => {
     const totalPages = files.reduce((sum, f) => sum + f.pageCount, 0);
 
     return (
+        <>
         <div className="space-y-6">
             {/* Upload Zone */}
             <Card>
@@ -202,5 +214,7 @@ export const PdfMerger: React.FC = () => {
                 </Card>
             )}
         </div>
+        {showReview && <ReviewModal onClose={() => setShowReview(false)} />}
+    </>
     );
 };

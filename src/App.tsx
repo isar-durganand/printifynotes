@@ -22,6 +22,7 @@ import ExtractPages from "./pages/ExtractPages";
 import Donate from "./pages/Donate";
 import ThankYou from "./pages/ThankYou";
 import Disclaimer from "./pages/Disclaimer";
+import ReviewPage from "./pages/ReviewPage";
 import { CookieConsent } from "./components/CookieConsent";
 
 const queryClient = new QueryClient();
@@ -75,6 +76,7 @@ const App = () => (
             <Route path="/donate" element={<Donate />} />
             <Route path="/thank-you" element={<ThankYou />} />
             <Route path="/disclaimer" element={<Disclaimer />} />
+            <Route path="/review" element={<ReviewPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

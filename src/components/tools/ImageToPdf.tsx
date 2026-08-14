@@ -1,10 +1,11 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Upload, Image as ImageIcon, Trash2, Download, GripVertical, Plus, Settings } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import jsPDF from 'jspdf';
+import { ReviewModal } from '@/components/printify/ReviewModal';
 
 interface ImageFile {
     id: string;
@@ -24,6 +25,15 @@ export const ImageToPdf: React.FC = () => {
     const [pageSize, setPageSize] = useState<PageSize>('a4');
     const [orientation, setOrientation] = useState<Orientation>('auto');
     const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+    const [showReview, setShowReview] = useState(false);
+    const [downloadCount, setDownloadCount] = useState(0);
+
+    // Show review modal 2 seconds after successful PDF generation
+    useEffect(() => {
+        if (downloadCount === 0) return;
+        const t = setTimeout(() => setShowReview(true), 2000);
+        return () => clearTimeout(t);
+    }, [downloadCount]);
 
     const handleFileSelect = useCallback(async (selectedFiles: FileList | null) => {
         if (!selectedFiles) return;
@@ -165,6 +175,7 @@ export const ImageToPdf: React.FC = () => {
 
             if (pdf) {
                 pdf.save('images-to-pdf.pdf');
+                setDownloadCount(c => c + 1);
             }
         } catch (error) {
             console.error('Error converting to PDF:', error);
@@ -174,6 +185,7 @@ export const ImageToPdf: React.FC = () => {
     };
 
     return (
+        <>
         <div className="space-y-6">
             {/* Upload Zone */}
             <Card>
@@ -316,5 +328,7 @@ export const ImageToPdf: React.FC = () => {
                 </Card>
             )}
         </div>
+        {showReview && <ReviewModal onClose={() => setShowReview(false)} />}
+    </>
     );
 };

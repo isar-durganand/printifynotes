@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Upload, FileText, Download, Gauge, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -6,6 +6,7 @@ import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
 import { PDFDocument } from 'pdf-lib';
+import { ReviewModal } from '@/components/printify/ReviewModal';
 
 interface CompressionResult {
     originalSize: number;
@@ -20,6 +21,14 @@ export const PdfCompressor: React.FC = () => {
     const [progress, setProgress] = useState(0);
     const [result, setResult] = useState<CompressionResult | null>(null);
     const [compressedBlob, setCompressedBlob] = useState<Blob | null>(null);
+    const [showReview, setShowReview] = useState(false);
+
+    // Show review modal 2 seconds after compression result appears
+    useEffect(() => {
+        if (!result) return;
+        const t = setTimeout(() => setShowReview(true), 2000);
+        return () => clearTimeout(t);
+    }, [result]);
 
     const handleFileSelect = useCallback(async (selectedFile: File | null) => {
         if (!selectedFile || selectedFile.type !== 'application/pdf') return;
@@ -114,6 +123,7 @@ export const PdfCompressor: React.FC = () => {
     };
 
     return (
+        <>
         <div className="space-y-6">
             {/* Upload Zone */}
             <Card>
@@ -250,5 +260,7 @@ export const PdfCompressor: React.FC = () => {
                 </CardContent>
             </Card>
         </div>
+        {showReview && <ReviewModal onClose={() => setShowReview(false)} />}
+    </>
     );
 };
