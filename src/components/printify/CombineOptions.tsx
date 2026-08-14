@@ -29,7 +29,7 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
           <Label className="text-sm">Pages per Sheet</Label>
           <Select
             value={settings.pagesPerSheet.toString()}
-            onValueChange={(value) => updateSetting('pagesPerSheet', parseInt(value) as 1 | 2 | 4)}
+            onValueChange={(value) => updateSetting('pagesPerSheet', parseInt(value) as 1 | 2 | 3 | 4)}
           >
             <SelectTrigger>
               <SelectValue />
