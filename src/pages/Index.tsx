@@ -20,6 +20,7 @@ import {
   FAQ,
   Footer,
   JeeCollegeBanner,
+  ReviewsSection,
 } from '@/components/landing';
 import { Navbar } from '@/components/landing/Navbar';
 import { StickyUpload } from '@/components/landing/StickyUpload';
@@ -214,6 +215,9 @@ const Index = () => {
 
       {/* FAQ */}
       <FAQ />
+
+      {/* User Reviews */}
+      <ReviewsSection />
 
       {/* Footer */}
       <Footer />

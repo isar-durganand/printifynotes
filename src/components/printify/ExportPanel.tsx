@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Download, FileCheck, RefreshCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { jsPDF } from 'jspdf';
 import type { PageData, TransformationSettings, CombineSettings } from '@/types/printify';
 import { applyTransformations } from '@/lib/imageTransformations';
+import { ReviewModal } from '@/components/printify/ReviewModal';
 
 type ExportQuality = 'medium' | 'high' | 'very-high';
 
@@ -27,6 +28,14 @@ export function ExportPanel({
   const [progress, setProgress] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
   const [exportQuality, setExportQuality] = useState<ExportQuality>('high');
+  const [showReview, setShowReview] = useState(false);
+
+  // Show review modal 2 seconds after export completes
+  useEffect(() => {
+    if (!isComplete) return;
+    const t = setTimeout(() => setShowReview(true), 2000);
+    return () => clearTimeout(t);
+  }, [isComplete]);
 
   const selectedPages = pages.filter((p) => p.isSelected);
 
@@ -205,6 +214,7 @@ export function ExportPanel({
   }, [selectedPages, transformations, combineSettings, exportQuality]);
 
   return (
+    <>
     <div className="rounded-xl border border-border bg-card overflow-hidden">
       <div className="flex items-center gap-2.5 px-4 py-3 border-b border-border bg-secondary/30">
         <Download className="w-4 h-4 text-emerald-500" />
@@ -275,5 +285,10 @@ export function ExportPanel({
       )}
       </div>
     </div>
+
+    {/* Review modal — appears 2s after export completes */}
+    {showReview && <ReviewModal onClose={() => setShowReview(false)} />}
+  </>
   );
 }
+
