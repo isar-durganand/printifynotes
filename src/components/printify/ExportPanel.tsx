@@ -176,6 +176,17 @@ export function ExportPanel({
 
           const compressionLevel = exportQuality === 'medium' ? 'MEDIUM' : exportQuality === 'high' ? 'SLOW' : 'NONE';
           pdf.addImage(img, 'JPEG', offsetX, offsetY, finalWidth, finalHeight, undefined, compressionLevel);
+
+          // Draw a very thin border around the cell slot if the user enabled it
+          if (combineSettings.pageBorder) {
+            const borderColor: [number, number, number] =
+              transformations.invertColors && !transformations.forceWhiteBackground
+                ? [80, 80, 80]   // dark background → slightly lighter border
+                : [180, 180, 180]; // white background → light gray border
+            pdf.setDrawColor(...borderColor);
+            pdf.setLineWidth(0.2);
+            pdf.rect(x, y, cellWidth, cellHeight);
+          }
         }
 
         currentPdfPage++;

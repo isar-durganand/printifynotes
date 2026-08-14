@@ -22,6 +22,7 @@ export interface CombineSettings {
   orientation: 'portrait' | 'landscape';
   marginSize: 'small' | 'medium' | 'large';
   spacing: 'none' | 'small' | 'medium';
+  pageBorder: boolean; // Draw a thin border around each page slot
 }
 
 export interface AppState {
@@ -48,4 +49,5 @@ export const DEFAULT_COMBINE_SETTINGS: CombineSettings = {
   orientation: 'portrait',
   marginSize: 'medium',
   spacing: 'small',
+  pageBorder: false,
 };

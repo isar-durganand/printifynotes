@@ -1,6 +1,7 @@
 import React from 'react';
 import { LayoutGrid } from 'lucide-react';
 import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import type { CombineSettings } from '@/types/printify';
 
@@ -91,6 +92,21 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
               <SelectItem value="medium">Medium</SelectItem>
             </SelectContent>
           </Select>
+        </div>
+
+        {/* Page Border toggle — only useful when combining multiple pages */}
+        <div className="flex items-center justify-between gap-3 pt-1">
+          <div className="min-w-0">
+            <Label htmlFor="pageBorder" className="text-sm font-medium cursor-pointer">
+              Page Border
+            </Label>
+            <p className="text-xs text-muted-foreground mt-0.5">Thin border around each page</p>
+          </div>
+          <Switch
+            id="pageBorder"
+            checked={settings.pageBorder}
+            onCheckedChange={(v) => updateSetting('pageBorder', v)}
+          />
         </div>
       </div>
     </div>
