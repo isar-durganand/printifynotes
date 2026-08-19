@@ -9,15 +9,19 @@ import { Button } from '@/components/ui/button';
 const blogContent: Record<string, {
     title: string;
     date: string;
+    dateISO: string;
     readTime: string;
     category: string;
+    description: string;
     content: React.ReactNode;
 }> = {
     'how-to-print-physics-wallah-notes': {
         title: 'How to Print Physics Wallah (PW) Notes Without Wasting Ink',
         date: 'January 5, 2026',
+        dateISO: '2026-01-05',
         readTime: '5 min read',
         category: 'Tutorial',
+        description: 'Step-by-step guide to convert Physics Wallah dark-themed PDFs for ink-efficient printing. Save up to 60% ink costs when printing PW notes for NEET and JEE preparation.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
@@ -95,8 +99,10 @@ const blogContent: Record<string, {
     'best-pdf-converters-for-students': {
         title: 'Best PDF Converters for Students in 2026: Complete Guide',
         date: 'January 3, 2026',
+        dateISO: '2026-01-03',
         readTime: '12 min read',
         category: 'Guide',
+        description: 'Compare the top PDF conversion tools for students in 2026: Printify Notes, Smallpdf, PDF24, iLovePDF, and Adobe. Find the best free tool for printing coaching notes and managing study materials.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
@@ -268,64 +274,148 @@ const blogContent: Record<string, {
     'save-ink-printing-tips': {
         title: '10 Tips to Save Ink When Printing Study Notes',
         date: 'January 1, 2026',
-        readTime: '6 min read',
+        dateISO: '2026-01-01',
+        readTime: '8 min read',
         category: 'Tips',
+        description: '10 proven strategies to cut ink costs when printing study notes for NEET, JEE, and board exams. Save up to 80% on printing costs with these actionable ink-saving techniques.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
-                    Printer ink is expensive, and students often need to print hundreds of pages of study material.
-                    Here are 10 proven tips to significantly reduce your ink usage without sacrificing readability.
+                    Printer ink is one of the most expensive liquids on the planet — gram for gram, it can cost more than perfume or champagne.
+                    For students printing hundreds of pages of coaching notes, textbooks, and practice papers each semester, ink costs
+                    can easily add up to ₹5,000–10,000 per year. The good news? With a few smart habits, you can reduce your ink
+                    usage by 60–80% without sacrificing readability. Here are 10 proven, practical tips.
                 </p>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">1. Convert Dark PDFs to Light</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">1. Convert Dark PDFs to Light Before Printing</h2>
                 <p className="text-muted-foreground mb-4">
-                    Dark backgrounds consume up to 5 times more ink. Use tools like Printify Notes to invert colors
-                    before printing.
+                    This single tip can save more ink than all the others combined. When you print a PDF with a dark background
+                    (like Physics Wallah, Unacademy, or Vedantu notes), your printer fills every dark pixel with ink. A page with
+                    a black background uses approximately 5× more ink than a white-background page with the same text.
+                </p>
+                <p className="text-muted-foreground mb-6">
+                    The solution: use <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a> to invert the colors
+                    before printing. Upload your dark PDF, enable "Invert Colors," and download a print-ready version with a white
+                    background and dark text. This one step alone can save ₹3,000–5,000 per year for a typical NEET or JEE student.
                 </p>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">2. Print in Grayscale</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">2. Always Print in Grayscale for Text Content</h2>
                 <p className="text-muted-foreground mb-4">
-                    Color ink is more expensive than black. Unless color is essential, always print in grayscale.
+                    Color ink cartridges are significantly more expensive than black ink — and most study content doesn't need color.
+                    Physics formulas, chemistry equations, and biology text all read perfectly in black and white.
+                </p>
+                <p className="text-muted-foreground mb-6">
+                    Enable grayscale in your printer settings (usually under "Color" or "Quality" options). Save color printing
+                    only for biology diagrams where color is essential for understanding structures like cells, tissues, or
+                    ecological charts. This simple switch can reduce your color ink consumption by 90%.
                 </p>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">3. Use Draft Mode</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">3. Use Draft or Economy Mode for Study Copies</h2>
                 <p className="text-muted-foreground mb-4">
-                    Most printers have a draft or economy mode that uses less ink. Perfect for personal study notes.
+                    Most inkjet and laser printers have a "Draft" or "Economy" print mode. This mode uses 30–50% less ink by
+                    printing with a lighter density that's still perfectly readable for study purposes. You'll notice slightly
+                    lighter text, but for notes you'll annotate with a pen anyway, this is completely acceptable.
+                </p>
+                <p className="text-muted-foreground mb-6">
+                    Reserve high-quality mode only for final revision sheets you plan to laminate or keep long-term. For everyday
+                    reading copies, draft mode is ideal. On an Epson or Canon ink tank printer, this can effectively double your
+                    ink yield.
                 </p>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">4. Print Multiple Pages Per Sheet</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">4. Print 2 Pages Per Sheet (2-Up Layout)</h2>
                 <p className="text-muted-foreground mb-4">
-                    Printing 2 or 4 pages per sheet reduces both paper and ink usage significantly.
+                    Printing two PDF pages on a single A4 sheet doesn't just save paper — it also saves ink proportionally.
+                    Each page is printed at half size, so text and images require less ink. For coaching notes with normal font
+                    sizes (10pt+), 2-up layout remains completely readable and halves your per-page ink cost.
+                </p>
+                <p className="text-muted-foreground mb-6">
+                    Use Printify Notes to export a multi-page layout PDF before printing. For dense content or diagrams, stick
+                    with full-page printing. For text-heavy theory notes, 2-up is the sweet spot between savings and readability.
                 </p>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">5. Choose Ink-Efficient Fonts</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">5. Choose Ink-Efficient Fonts When Possible</h2>
                 <p className="text-muted-foreground mb-4">
-                    Some fonts use less ink than others. Garamond, Century Gothic, and Times New Roman are efficient choices.
+                    Not all fonts are created equal when it comes to ink usage. Thin, lightweight fonts use significantly less ink
+                    than bold, heavy fonts. Research by the University of Wisconsin found that switching from Arial to Century Gothic
+                    saves approximately 30% more ink.
+                </p>
+                <p className="text-muted-foreground mb-6">
+                    For notes you type yourself, use: <strong>Garamond</strong> (saves ~24% vs Arial), <strong>Century Gothic</strong>
+                    (saves ~30%), or <strong>Times New Roman</strong> (smaller ink footprint than sans-serif fonts at the same size).
+                    For coaching PDFs you download, this tip doesn't apply — use the dark-to-light conversion instead.
                 </p>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">6. Remove Unnecessary Images</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">6. Remove Unnecessary Headers, Footers, and Cover Pages</h2>
                 <p className="text-muted-foreground mb-4">
-                    Images consume a lot of ink. If they're not essential, consider removing them before printing.
+                    Many coaching PDFs contain decorative covers, institution logos in every header, and colorful footers on each page.
+                    Over a 200-page document, these elements can account for 15–25% of total ink usage.
+                </p>
+                <p className="text-muted-foreground mb-6">
+                    Use Printify Notes' page selection feature to exclude cover pages, blank pages, and logo-heavy pages from your
+                    export. You can select exactly which pages to include before downloading. For a typical PW notes PDF, excluding
+                    the first 2 pages (cover + course overview) and any blank separator pages can save noticeable amounts of ink.
                 </p>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">7. Avoid Printing Headers/Footers</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">7. Reduce Brightness Slightly Before Printing</h2>
                 <p className="text-muted-foreground mb-4">
-                    Unnecessary headers, footers, and page numbers add up over hundreds of pages.
+                    After inverting a dark PDF, the background is white but text might print slightly gray, which actually uses
+                    less ink. If you increase brightness too much (making the background overly white), the printer compensates by
+                    printing darker text — increasing ink use. Keep brightness at 0 to +10% for optimal ink efficiency.
                 </p>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">8. Preview Before Printing</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">8. Always Preview Before Printing</h2>
                 <p className="text-muted-foreground mb-4">
-                    Always preview to avoid printing unwanted pages or incorrect settings.
+                    Printing errors are expensive and irreversible. Before sending any document to your printer, use Print Preview
+                    to check: correct page range, proper orientation (portrait vs landscape), no blank pages in the middle, and
+                    correct layout (1-up vs 2-up). A single accidental duplicate print job at 100 pages wastes significant ink and paper.
+                </p>
+                <p className="text-muted-foreground mb-4">
+                    Also preview the converted PDF in Printify Notes before downloading — check that diagrams look correct after
+                    color inversion, text is readable, and no pages are missing.
                 </p>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">9. Keep Your Printer Maintained</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">9. Keep Your Printer Properly Maintained</h2>
                 <p className="text-muted-foreground mb-4">
-                    Regular nozzle cleaning and proper maintenance ensures efficient ink usage.
+                    A poorly maintained printer uses more ink than needed and produces subpar results. Key maintenance tips:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li><strong>Clean print heads monthly</strong> (or when you notice streaky prints) — clogged heads cause repeat printing</li>
+                    <li><strong>Don't let the printer sit idle for weeks</strong> — ink dries in the nozzles, wasting a cleaning cycle's worth of ink</li>
+                    <li><strong>Keep the printer in a dust-free area</strong> — dust causes paper jams and quality issues</li>
+                    <li><strong>Use original or high-quality compatible ink</strong> — cheap refills can damage print heads, leading to costly repairs</li>
+                    <li><strong>Print at least one page per week</strong> to keep the nozzles clear</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">10. Print Double-Sided (Duplex Printing)</h2>
+                <p className="text-muted-foreground mb-4">
+                    Duplex printing cuts paper usage in half, which indirectly saves money on both paper and storage. While it
+                    doesn't directly reduce ink per page, it reduces the number of print jobs you run — and every time you avoid
+                    printing a fresh page, you save ink that would have been used for headers, footers, and page backgrounds.
+                </p>
+                <p className="text-muted-foreground mb-4">
+                    Enable duplex printing in your printer properties (usually under "Paper/Output" or "Finishing" settings). Most
+                    modern ink tank printers support automatic duplex. For manual duplex, print odd pages first, then feed the paper
+                    back in reverse for even pages.
                 </p>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">10. Consider Duplex Printing</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Putting It All Together: Estimated Savings</h2>
                 <p className="text-muted-foreground mb-4">
-                    While this saves paper more than ink, it reduces overall printing costs.
+                    Here's a realistic estimate of savings for a NEET student printing 5,000 pages per year:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li>Dark PDF conversion (Tip 1): Saves ~60% ink = ~₹3,000/year</li>
+                    <li>Grayscale mode (Tip 2): Saves ~40% color ink = ~₹800/year</li>
+                    <li>Draft mode (Tip 3): Saves ~40% overall = ~₹1,500/year</li>
+                    <li>2-up printing (Tip 4): Saves ~50% paper and proportional ink = ~₹500/year</li>
+                    <li><strong>Combined realistic savings: ₹4,000–6,000 per year</strong></li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Conclusion</h2>
+                <p className="text-muted-foreground mb-4">
+                    Saving ink is about building consistent habits. The biggest single impact comes from converting dark PDFs
+                    to light backgrounds using <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a> — this
+                    alone can offset months of ink costs. Combine it with grayscale printing and draft mode, and you'll spend
+                    a fraction of what other students pay for the same study materials.
                 </p>
             </>
         ),
@@ -333,8 +423,10 @@ const blogContent: Record<string, {
     'convert-unacademy-slides-for-printing': {
         title: 'Step-by-Step: Converting Unacademy Slides for Printing',
         date: 'December 28, 2025',
+        dateISO: '2025-12-28',
         readTime: '7 min read',
         category: 'Tutorial',
+        description: 'Complete walkthrough to convert Unacademy dark-mode slides into print-friendly PDFs. Save 60% ink and make your study notes cleaner and more readable on paper.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
@@ -404,72 +496,137 @@ const blogContent: Record<string, {
     'eco-friendly-printing-for-students': {
         title: "Eco-Friendly Printing: A Student's Guide to Sustainable Study",
         date: 'December 25, 2025',
-        readTime: '5 min read',
+        dateISO: '2025-12-25',
+        readTime: '8 min read',
         category: 'Sustainability',
+        description: 'How students can study effectively while reducing their environmental footprint. Learn to cut paper waste by 50%, reduce ink usage by 60%, and recycle cartridges responsibly.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
-                    As students, we print thousands of pages during our academic journey. From lecture notes to practice
-                    papers, the environmental impact adds up quickly. Here's how you can study effectively while being
-                    kind to the planet.
+                    A student preparing for NEET or JEE prints an average of 3,000–8,000 pages per year. Across India's
+                    2+ million competitive exam aspirants, that's billions of pages annually — a staggering environmental
+                    cost. The good news: you can dramatically reduce your printing impact without compromising your
+                    study quality. In fact, the same techniques that help the environment also save you significant money.
                 </p>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">The Environmental Impact of Printing</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">The Real Environmental Cost of Student Printing</h2>
                 <p className="text-muted-foreground mb-4">
-                    Consider these statistics:
-                </p>
-                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li>One tree produces about 8,333 sheets of paper</li>
-                    <li>Producing one ton of paper uses 24,000 gallons of water</li>
-                    <li>Printer ink is one of the most expensive liquids on Earth</li>
-                    <li>Most ink cartridges end up in landfills</li>
-                </ul>
-
-                <h2 className="text-2xl font-semibold mb-4 mt-8">1. Convert Dark PDFs Before Printing</h2>
-                <p className="text-muted-foreground mb-4">
-                    Dark-background PDFs waste enormous amounts of ink. By using tools like Printify Notes to convert
-                    them to light backgrounds, you can reduce ink usage by up to 60%.
-                </p>
-
-                <h2 className="text-2xl font-semibold mb-4 mt-8">2. Print Only What You Need</h2>
-                <p className="text-muted-foreground mb-4">
-                    Before printing an entire document:
+                    Before we discuss solutions, let's understand the actual impact:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li>Preview the document completely</li>
-                    <li>Select only the pages you'll actually use</li>
-                    <li>Consider whether digital notes might work instead</li>
+                    <li><strong>Paper:</strong> One tree produces about 8,333 sheets of A4 paper. A single NEET aspirant printing 5,000 pages uses more than half a tree per year</li>
+                    <li><strong>Water:</strong> Producing one ton of paper requires approximately 10,000 liters of water</li>
+                    <li><strong>Ink:</strong> Standard printer cartridges contain plastic, metal, and chemical compounds — over 350 million end up in landfills globally each year</li>
+                    <li><strong>Carbon:</strong> Running a typical inkjet printer for 1 hour uses about 30–40 watts of electricity, adding to your carbon footprint</li>
+                    <li><strong>Dark PDF waste:</strong> Printing a dark-background coaching PDF uses 4–5× more ink than a white-background version — meaning 80% of the ink is unnecessary</li>
                 </ul>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">3. Use Recycled Paper</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">1. Convert Dark PDFs — The Highest-Impact Single Action</h2>
                 <p className="text-muted-foreground mb-4">
-                    Switch to recycled paper for your printing needs. It's becoming increasingly affordable and performs
-                    just as well as virgin paper for study materials.
+                    The single most impactful thing you can do is stop printing dark-background PDFs directly.
+                    Platforms like Physics Wallah, Unacademy, and Vedantu design their notes for screen viewing with
+                    dark themes. These look great on your laptop but are an environmental disaster to print.
+                </p>
+                <p className="text-muted-foreground mb-6">
+                    Use <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a> to convert dark PDFs
+                    to light backgrounds before printing. This reduces ink consumption by 60%, which means proportionally
+                    fewer ink cartridges purchased, less plastic waste, and fewer harmful chemicals entering landfills.
+                    If every NEET student in India did this, it would save an estimated 500,000+ ink cartridges per year.
                 </p>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">4. Print Double-Sided</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">2. Print Only What You'll Actually Use</h2>
                 <p className="text-muted-foreground mb-4">
-                    This simple habit cuts your paper usage in half. Most modern printers support automatic duplex
-                    printing - enable it in your printer settings.
+                    The most eco-friendly print is the one you never make. Before sending any document to your printer,
+                    ask yourself: Will I annotate this? Will I read it more than twice? Is digital access sufficient?
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li><strong>Print theory notes</strong> that you'll annotate heavily and review multiple times</li>
+                    <li><strong>Print formula sheets</strong> for wall display and quick revision</li>
+                    <li><strong>Skip printing</strong> for content you'll only read once or content that's easily searchable digitally</li>
+                    <li>Use Printify Notes' page selection feature to exclude cover pages, blank pages, and chapter dividers</li>
+                    <li>Combine multiple short PDFs into one print job using the PDF merger tool to reduce startup/warmup print waste</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">3. Choose Recycled or FSC-Certified Paper</h2>
+                <p className="text-muted-foreground mb-4">
+                    Recycled paper requires 45% less energy and 50% less water to produce compared to virgin paper.
+                    It also generates 74% less air pollution. In India, recycled paper options are increasingly available
+                    at competitive prices:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li><strong>Classmate Recycled Paper</strong> (ITC) — Available at major stationery stores, performs well for study notes</li>
+                    <li><strong>JK Eco Copier</strong> — FSC-certified, similar performance to regular JK Copier at a small price premium</li>
+                    <li><strong>Look for the FSC (Forest Stewardship Council) label</strong> — ensures paper comes from sustainably managed forests</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">4. Print Double-Sided (Duplex Printing)</h2>
+                <p className="text-muted-foreground mb-4">
+                    Duplex printing is perhaps the simplest habit with the most direct environmental impact — it literally
+                    cuts paper consumption in half. If you print 5,000 pages per year single-sided, switching to duplex
+                    reduces that to 2,500 physical sheets. That's approximately 0.3 trees saved per year from one student's
+                    change alone.
+                </p>
+                <p className="text-muted-foreground mb-4">
+                    Enable auto-duplex in your printer settings:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li><strong>Epson L series:</strong> Printer Properties → Paper/Quality → Print on Both Sides</li>
+                    <li><strong>Canon PIXMA:</strong> Preferences → Page Setup → Two-Sided Printing</li>
+                    <li><strong>HP printers:</strong> Properties → Finishing → Print on Both Sides</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">5. Use Multi-Page Layouts (2-Up or 4-Up)</h2>
+                <p className="text-muted-foreground mb-4">
+                    Printing 2 pages per sheet doesn't just save paper — it reduces ink usage proportionally and
+                    cuts your printing time in half (meaning less electricity consumed). For revision notes with
+                    normal-sized fonts, 2-up printing is perfectly readable and typically preferred by toppers who
+                    want compact, portable revision materials.
+                </p>
+                <p className="text-muted-foreground mb-4">
+                    Use Printify Notes to prepare a 2-up layout before downloading, or configure it in your printer's
+                    Page Layout settings. Combined with duplex printing, you can fit 4 original pages onto one sheet
+                    of paper — a 75% reduction in paper usage.
                 </p>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">5. Use Multiple Pages Per Sheet</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">6. Properly Recycle Ink Cartridges</h2>
                 <p className="text-muted-foreground mb-4">
-                    For review materials and notes, printing 2 or 4 pages per sheet is often perfectly readable while
-                    significantly reducing paper consumption.
+                    Ink cartridges contain heavy metals and plastics that are harmful in landfills. In India, several
+                    recycling options exist:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li><strong>HP Planet Partners:</strong> HP has drop-off recycling centers across India; check hp.com/in for locations</li>
+                    <li><strong>Epson Recycle:</strong> Epson service centers accept empty ink bottles from L-series printers</li>
+                    <li><strong>Canon Trade-In:</strong> Some Canon dealers offer discounts when you return empty cartridges</li>
+                    <li><strong>Local Refill Shops:</strong> Many local print shops refill cartridges, keeping them out of landfills for longer</li>
+                    <li><strong>Ink Tank Printers:</strong> Switching to an ink tank printer (Epson, Canon, HP) eliminates cartridge waste entirely — they use refillable bottles</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">7. Print in Grayscale Mode</h2>
+                <p className="text-muted-foreground mb-4">
+                    Color ink cartridges are filled with cyan, magenta, and yellow compounds that are more chemically
+                    complex to produce and recycle. For 90%+ of study content — text, equations, formulas, circuit diagrams
+                    — grayscale printing is identical in usefulness. Reserve color printing only for biology diagrams
+                    where color distinction is necessary for understanding.
                 </p>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">6. Recycle Ink Cartridges</h2>
-                <p className="text-muted-foreground mb-4">
-                    Many office supply stores offer cartridge recycling programs. Some even provide discounts on new
-                    purchases when you bring in empty cartridges.
-                </p>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Your Eco-Friendly Printing Checklist</h2>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li>☑ Convert dark PDFs with Printify Notes before every print job</li>
+                    <li>☑ Print in grayscale unless color is essential</li>
+                    <li>☑ Enable duplex printing as your default setting</li>
+                    <li>☑ Use 2-up layout for theory notes and revision materials</li>
+                    <li>☑ Select only necessary pages — exclude covers and blank pages</li>
+                    <li>☑ Recycle or refill ink cartridges instead of discarding</li>
+                    <li>☑ Buy FSC-certified or recycled paper when available</li>
+                    <li>☑ Turn off the printer (not just standby) when not in use for extended periods</li>
+                </ul>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">The Bigger Picture</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">The Compound Effect</h2>
                 <p className="text-muted-foreground mb-4">
-                    Every small action adds up. By adopting eco-friendly printing habits, students across India can
-                    save millions of sheets of paper and gallons of ink annually. It's good for your wallet and
-                    great for the environment.
+                    None of these tips require sacrifice. In fact, most of them also save you money:
+                    dark PDF conversion saves ₹3,000+/year, duplex printing cuts paper costs in half, and recycling
+                    cartridges sometimes earns you discounts. You can study smarter, spend less, and tread lighter on
+                    the planet — all at the same time.
                 </p>
             </>
         ),
@@ -477,8 +634,10 @@ const blogContent: Record<string, {
     'neet-jee-notes-printing-guide': {
         title: 'Ultimate Guide to Printing NEET & JEE Preparation Notes',
         date: 'December 20, 2025',
+        dateISO: '2025-12-20',
         readTime: '10 min read',
         category: 'Guide',
+        description: 'Everything you need to know about printing coaching notes for NEET and JEE preparation. Covers Physics Wallah, Unacademy, Allen, Aakash — with subject-wise tips and cost strategies.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
@@ -580,8 +739,10 @@ const blogContent: Record<string, {
     'study-effectively-with-printed-notes': {
         title: 'How to Study Effectively with Printed Notes: A Complete Guide',
         date: 'January 28, 2026',
+        dateISO: '2026-01-28',
         readTime: '8 min read',
         category: 'Study Tips',
+        description: 'Research-backed techniques to maximize learning with printed notes. Active reading methods, annotation systems, spaced repetition schedules, and study routines used by NEET and JEE toppers.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
@@ -647,69 +808,147 @@ const blogContent: Record<string, {
     'cbse-vs-icse-notes-printing': {
         title: 'CBSE vs ICSE: Which Board\'s Notes Should You Print?',
         date: 'January 25, 2026',
-        readTime: '7 min read',
+        dateISO: '2026-01-25',
+        readTime: '9 min read',
         category: 'Guide',
+        description: 'A complete guide to printing study materials for CBSE and ICSE boards. Subject-wise breakdown of what to print, what to read digitally, and how to reduce printing costs for both boards.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
-                    Both CBSE and ICSE have different approaches to education, and this affects how you should organize
-                    and print your study materials. Let's explore the differences and best practices for each.
+                    CBSE and ICSE have fundamentally different philosophies — CBSE is application-focused with
+                    concise, NCERT-based content, while ICSE emphasizes depth, analysis, and broad subject coverage.
+                    These differences directly impact how much you should print, what type of content deserves paper,
+                    and how to organize your physical study materials most effectively.
                 </p>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">CBSE Notes: What to Print</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Understanding the Core Difference</h2>
                 <p className="text-muted-foreground mb-4">
-                    CBSE follows NCERT textbooks which are concise and exam-focused:
+                    Before diving into what to print, understand the core structural difference:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li><strong>Must Print:</strong> NCERT chapter summaries and diagrams</li>
-                    <li><strong>Print:</strong> Previous year question papers (last 10 years)</li>
-                    <li><strong>Optional:</strong> Reference material for advanced topics</li>
-                    <li>Focus on NCERT exemplar problems for practice</li>
+                    <li><strong>CBSE</strong> is standardized, NCERT-based, and tests understanding of specific concepts with MCQs and short answers. Content is relatively concise.</li>
+                    <li><strong>ICSE</strong> follows a broader syllabus with more reference material, emphasizes English and analytical writing, and typically has longer, more detailed questions.</li>
+                    <li><strong>Implication:</strong> ICSE students generally need to print more material, but CBSE students need to print more selectively (NCERT is king).</li>
                 </ul>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">ICSE Notes: What to Print</h2>
-                <p className="text-muted-foreground mb-4">
-                    ICSE is more detailed and requires broader study:
-                </p>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">CBSE: What to Print and What to Skip</h2>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Must Print (High Priority)</h3>
+                <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+                    <li><strong>NCERT chapter summaries and key definitions:</strong> These form the backbone of every CBSE exam. Print them for each chapter and annotate with examples.</li>
+                    <li><strong>NCERT in-text questions and exercise solutions:</strong> CBSE board papers frequently lift questions directly from NCERT exercises. Print solved examples.</li>
+                    <li><strong>Previous year question papers (last 10 years):</strong> These are the most important things to print for CBSE. Do them under timed conditions on paper.</li>
+                    <li><strong>NCERT diagrams:</strong> Especially for Biology (Class 11 and 12), Chemistry lab apparatus, and Physics ray diagrams. Print in color when color matters.</li>
+                    <li><strong>Formula sheets (Physics and Chemistry):</strong> Create your own or print compiled formula PDFs for last-minute revision.</li>
+                </ul>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Optional to Print</h3>
+                <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+                    <li><strong>Reference books (HC Verma, SL Arora, etc.):</strong> These are thick — print only the chapters or sections you find most difficult.</li>
+                    <li><strong>Sample papers from CBSE website:</strong> Print 2–3 per subject for timed practice, not all of them.</li>
+                    <li><strong>DPPs (Daily Practice Problems) from coaching:</strong> Print if you're solving them by hand; digital if you're just reading solutions.</li>
+                </ul>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Skip Printing (Read Digitally)</h3>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li><strong>Must Print:</strong> Detailed notes with examples</li>
-                    <li><strong>Print:</strong> Application-based questions</li>
-                    <li><strong>Print:</strong> Internal assessment preparation materials</li>
-                    <li>Include practical experiment procedures for science subjects</li>
+                    <li>Full NCERT textbooks (you likely already have physical copies)</li>
+                    <li>Video lecture notes you've already transcribed by hand</li>
+                    <li>Practice sets you'll only refer to once</li>
                 </ul>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">Printing Strategy by Subject</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">ICSE: What to Print and What to Skip</h2>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Must Print (High Priority)</h3>
+                <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+                    <li><strong>Detailed chapter notes with examples:</strong> ICSE questions require nuanced understanding. Print comprehensive notes for each topic, not just summaries.</li>
+                    <li><strong>Previous year ICSE papers (last 10 years):</strong> Essential. ICSE questions often repeat with minor variations. Print and solve all of them.</li>
+                    <li><strong>Application-based question banks:</strong> ICSE exams test application. Print question banks for Mathematics, Physics, Chemistry, and Biology.</li>
+                    <li><strong>Practical experiment procedures (Science):</strong> ICSE has a practical component. Print all lab procedures, observation tables, and viva questions.</li>
+                    <li><strong>English grammar and literature notes:</strong> ICSE gives significant weight to English. Print grammar rules, essay outlines, and poem/prose analysis notes.</li>
+                </ul>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Optional to Print</h3>
+                <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
+                    <li><strong>Reference material (S. Chand, Frank, etc.):</strong> Print the solved examples section of chapters you struggle with.</li>
+                    <li><strong>Internal assessment preparation materials:</strong> Project reports, assignments — print final drafts before submission.</li>
+                    <li><strong>History and Geography timelines:</strong> Print as wall charts for visual memory.</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Subject-Wise Printing Strategy for Both Boards</h2>
 
                 <h3 className="text-xl font-medium mb-3 mt-6">Mathematics</h3>
                 <p className="text-muted-foreground mb-4">
-                    Both boards: Print formula sheets and solved examples. Leave space for working out problems.
+                    Both boards: Print formula sheets (single page per chapter) and 5–10 solved examples per topic type.
+                    Leave large margins for your own working. For CBSE, focus on NCERT examples; for ICSE, include solved
+                    examples from reference books. Practice papers must be printed and solved on paper to simulate exam conditions.
                 </p>
 
-                <h3 className="text-xl font-medium mb-3 mt-6">Science</h3>
+                <h3 className="text-xl font-medium mb-3 mt-6">Physics</h3>
                 <p className="text-muted-foreground mb-4">
-                    CBSE: Focus on NCERT diagrams in color. ICSE: Print detailed practical procedures.
+                    Print: Derivations (annotate each step), circuit diagrams, and formula compilations. For CBSE, NCERT
+                    intext and exercise numericals are critical. For ICSE, ISC-level numerical problems from reference books
+                    are important. Use Printify Notes to convert any dark-themed physics PDFs from coaching platforms.
                 </p>
 
-                <h3 className="text-xl font-medium mb-3 mt-6">Social Studies</h3>
+                <h3 className="text-xl font-medium mb-3 mt-6">Chemistry</h3>
                 <p className="text-muted-foreground mb-4">
-                    CBSE: Map outlines are essential. ICSE: Print timelines and flowcharts.
+                    Print reaction mechanisms and equations (these need handwriting practice). Periodic table and activity
+                    series should be wall-pinned for constant visual exposure. For ICSE, salt analysis charts and lab
+                    procedures are essential printed materials.
                 </p>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">Cost-Effective Printing Tips</h2>
+                <h3 className="text-xl font-medium mb-3 mt-6">Biology</h3>
+                <p className="text-muted-foreground mb-4">
+                    Print diagrams in color — cell structure, tissue types, plant and animal organs. Text-heavy content
+                    works in grayscale. For CBSE, NCERT diagrams are board-exam critical. For ICSE, ensure you have
+                    printed practical observation tables and specimen identification guides.
+                </p>
+
+                <h3 className="text-xl font-medium mb-3 mt-6">Social Studies / History / Geography</h3>
+                <p className="text-muted-foreground mb-4">
+                    CBSE: Print political map outlines for practice. ICSE: Print historical timelines and economic
+                    flowcharts. Both: Convert any dark-themed coaching notes to light backgrounds for printing.
+                </p>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Cost-Effective Printing Strategy for Both Boards</h2>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li>Use Printify Notes to convert dark PDFs and save ink</li>
-                    <li>Print 2 pages per sheet for revision materials</li>
-                    <li>Keep diagrams full-size for better understanding</li>
-                    <li>Use grayscale for text-heavy sections</li>
+                    <li>Use <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a> to convert any dark-background coaching PDFs — saves 60% ink regardless of board</li>
+                    <li>Print theory notes in 2-up layout (2 pages per sheet) to halve paper costs</li>
+                    <li>Keep diagrams at full size — compressed diagrams lose important details</li>
+                    <li>Use grayscale for all text content; color only for biology diagrams and maps</li>
+                    <li>Buy paper in bulk (10-ream packs during sales) — typically 20-25% cheaper per ream</li>
+                    <li>Print previous year papers single-sided so you have space to write answers</li>
                 </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Organizing Your Printed Notes</h2>
+                <p className="text-muted-foreground mb-4">
+                    Regardless of board, organize printed notes in a system that supports retrieval during revision:
+                </p>
+                <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
+                    <li>Use color-coded folders by subject (one color per subject)</li>
+                    <li>Within each folder, organize by chapter with tab dividers</li>
+                    <li>Keep a separate "Quick Revision" folder with formula sheets and summary notes</li>
+                    <li>Store solved previous year papers separately for reference</li>
+                </ul>
+
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Conclusion</h2>
+                <p className="text-muted-foreground mb-4">
+                    Both CBSE and ICSE students benefit from strategic printing. CBSE students should print
+                    selectively, focusing on NCERT content and previous year papers. ICSE students need more
+                    comprehensive printed materials due to the broader, more analytical syllabus. In both cases,
+                    converting dark coaching PDFs before printing and using 2-up layout for notes significantly
+                    reduces costs without compromising quality.
+                </p>
             </>
         ),
     },
     'free-jee-preparation-resources': {
         title: 'Top 10 Free Resources for JEE Preparation in 2026',
         date: 'January 22, 2026',
+        dateISO: '2026-01-22',
         readTime: '10 min read',
         category: 'Resources',
+        description: 'Complete list of free JEE Main and Advanced preparation resources: best YouTube channels, free PDFs, official NTA papers, and how to organize and print them effectively for offline study.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
@@ -782,8 +1021,10 @@ const blogContent: Record<string, {
     'organize-study-materials': {
         title: 'How to Organize Your Study Materials Like a Topper',
         date: 'January 18, 2026',
+        dateISO: '2026-01-18',
         readTime: '6 min read',
         category: 'Study Tips',
+        description: 'The folder system, three-binder method, and weekly routines used by top-ranked students to organize printed notes. Learn how toppers manage their study materials for efficient revision.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
@@ -844,8 +1085,10 @@ const blogContent: Record<string, {
     'digital-vs-physical-notes': {
         title: 'Digital vs Physical Notes: Which is Better for Learning?',
         date: 'January 15, 2026',
+        dateISO: '2026-01-15',
         readTime: '9 min read',
         category: 'Analysis',
+        description: 'Science-based comparison of digital vs physical notes for exam preparation. Princeton study findings, encoding hypothesis, spatial memory advantages, and the best hybrid strategy for NEET and JEE.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
@@ -908,8 +1151,10 @@ const blogContent: Record<string, {
     'best-printers-for-students-india': {
         title: 'Best Printers for Students in India 2026: Complete Buying Guide',
         date: 'January 12, 2026',
+        dateISO: '2026-01-12',
         readTime: '12 min read',
         category: 'Buying Guide',
+        description: 'Compare inkjet, ink tank, and laser printers for students in India. Canon G2020, Epson L3250, HP Smart Tank 580 — cost per page, features, and 4-year total cost analysis. Save ₹50,000 with the right choice.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
@@ -984,8 +1229,10 @@ const blogContent: Record<string, {
     'print-vedantu-notes': {
         title: 'How to Print Vedantu Notes: Complete Tutorial',
         date: 'January 8, 2026',
+        dateISO: '2026-01-08',
         readTime: '5 min read',
         category: 'Tutorial',
+        description: 'Step-by-step tutorial to download and print Vedantu study materials. Convert dark-themed Vedantu PDFs for ink-efficient printing with recommended settings for each subject.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
@@ -1053,8 +1300,10 @@ const blogContent: Record<string, {
     'reduce-eye-strain-when-studying': {
         title: 'Reducing Eye Strain: When to Print vs Read Digital',
         date: 'January 5, 2026',
+        dateISO: '2026-01-05',
         readTime: '7 min read',
         category: 'Health',
+        description: 'How to protect your eyes during long study sessions. When printed notes reduce eye strain vs digital screens, the 20-20-20 rule, and a balanced daily routine for NEET and JEE preparation.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
@@ -1126,8 +1375,10 @@ const blogContent: Record<string, {
     'neet-2027-study-plan': {
         title: 'How to Prepare for NEET 2027: Complete Study Plan & Free Resources',
         date: 'August 5, 2026',
+        dateISO: '2026-08-05',
         readTime: '14 min read',
         category: 'Study Plan',
+        description: 'Phase-by-phase study plan for NEET 2027: Foundation (Aug–Dec 2026), Deep Practice (Jan–Apr 2027), Revision (May 2027). Includes subject-wise strategies, daily schedule, free resources, and printing tips.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
@@ -1249,8 +1500,10 @@ const blogContent: Record<string, {
     'pdf-vs-printed-notes-science': {
         title: 'PDF vs Printed Notes: The Science Behind Better Exam Performance',
         date: 'August 2, 2026',
+        dateISO: '2026-08-02',
         readTime: '11 min read',
         category: 'Research',
+        description: 'Peer-reviewed research on digital vs paper learning: Mueller & Oppenheimer Princeton study, encoding hypothesis, spatial memory, and the optimal hybrid strategy for NEET and JEE students.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
@@ -1353,8 +1606,10 @@ const blogContent: Record<string, {
     'choosing-paper-printing-notes': {
         title: 'Complete Guide to Choosing the Right Paper for Printing Study Notes',
         date: 'July 28, 2026',
+        dateISO: '2026-07-28',
         readTime: '9 min read',
         category: 'Guide',
+        description: 'GSM explained, brightness ratings, inkjet vs laser paper, and brand comparison (JK Copier, Bilt, ITC, HP). Which paper to use for theory notes, formula sheets, diagrams, and practice papers.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
@@ -1452,6 +1707,27 @@ const blogContent: Record<string, {
     },
 };
 
+// Related articles map — slug -> 3 related slugs
+const relatedMap: Record<string, string[]> = {
+    'how-to-print-physics-wallah-notes': ['convert-unacademy-slides-for-printing', 'print-vedantu-notes', 'save-ink-printing-tips'],
+    'best-pdf-converters-for-students': ['how-to-print-physics-wallah-notes', 'convert-unacademy-slides-for-printing', 'save-ink-printing-tips'],
+    'save-ink-printing-tips': ['how-to-print-physics-wallah-notes', 'eco-friendly-printing-for-students', 'choosing-paper-printing-notes'],
+    'convert-unacademy-slides-for-printing': ['how-to-print-physics-wallah-notes', 'print-vedantu-notes', 'save-ink-printing-tips'],
+    'eco-friendly-printing-for-students': ['save-ink-printing-tips', 'choosing-paper-printing-notes', 'best-printers-for-students-india'],
+    'neet-jee-notes-printing-guide': ['neet-2027-study-plan', 'study-effectively-with-printed-notes', 'save-ink-printing-tips'],
+    'study-effectively-with-printed-notes': ['pdf-vs-printed-notes-science', 'digital-vs-physical-notes', 'organize-study-materials'],
+    'cbse-vs-icse-notes-printing': ['neet-jee-notes-printing-guide', 'study-effectively-with-printed-notes', 'organize-study-materials'],
+    'free-jee-preparation-resources': ['neet-2027-study-plan', 'neet-jee-notes-printing-guide', 'how-to-print-physics-wallah-notes'],
+    'organize-study-materials': ['study-effectively-with-printed-notes', 'digital-vs-physical-notes', 'neet-jee-notes-printing-guide'],
+    'digital-vs-physical-notes': ['pdf-vs-printed-notes-science', 'study-effectively-with-printed-notes', 'reduce-eye-strain-when-studying'],
+    'best-printers-for-students-india': ['save-ink-printing-tips', 'eco-friendly-printing-for-students', 'choosing-paper-printing-notes'],
+    'print-vedantu-notes': ['how-to-print-physics-wallah-notes', 'convert-unacademy-slides-for-printing', 'save-ink-printing-tips'],
+    'reduce-eye-strain-when-studying': ['digital-vs-physical-notes', 'pdf-vs-printed-notes-science', 'study-effectively-with-printed-notes'],
+    'neet-2027-study-plan': ['free-jee-preparation-resources', 'neet-jee-notes-printing-guide', 'study-effectively-with-printed-notes'],
+    'pdf-vs-printed-notes-science': ['digital-vs-physical-notes', 'study-effectively-with-printed-notes', 'reduce-eye-strain-when-studying'],
+    'choosing-paper-printing-notes': ['save-ink-printing-tips', 'eco-friendly-printing-for-students', 'best-printers-for-students-india'],
+};
+
 const BlogPost = () => {
     const { slug } = useParams<{ slug: string }>();
     const post = slug ? blogContent[slug] : null;
@@ -1472,21 +1748,42 @@ const BlogPost = () => {
         );
     }
 
+    // Build related articles
+    const relatedSlugs = slug ? (relatedMap[slug] || []) : [];
+    const relatedPosts = relatedSlugs
+        .map(s => blogContent[s] ? { slug: s, ...blogContent[s] } : null)
+        .filter(Boolean);
+
     return (
-        <PageLayout title={post.title}>
-            {/* Meta info */}
-            <div className="flex flex-wrap items-center gap-4 mb-8 pb-8 border-b border-border">
-                <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-500 text-sm font-medium">
-                    {post.category}
-                </span>
-                <span className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Calendar className="w-4 h-4" />
-                    {post.date}
-                </span>
-                <span className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Clock className="w-4 h-4" />
-                    {post.readTime}
-                </span>
+        <PageLayout
+            title={post.title}
+            description={post.description}
+            schemaType="Article"
+            datePublished={post.dateISO}
+            dateModified="2026-08-19"
+        >
+            {/* Author byline — visible at top for E-E-A-T */}
+            <div className="flex flex-wrap items-center gap-3 mb-6 p-4 rounded-xl bg-card border border-border">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center flex-shrink-0">
+                    <span className="text-white text-sm font-bold" aria-hidden="true">DI</span>
+                </div>
+                <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-foreground">Durganand Ishar</p>
+                    <p className="text-xs text-muted-foreground">BTech CSE Student, MRIIRS · Creator of Printify Notes</p>
+                </div>
+                <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
+                    <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-500 font-medium">
+                        {post.category}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                        <Calendar className="w-3.5 h-3.5" />
+                        {post.date}
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                        <Clock className="w-3.5 h-3.5" />
+                        {post.readTime}
+                    </span>
+                </div>
             </div>
 
             {/* Article content */}
@@ -1495,7 +1792,7 @@ const BlogPost = () => {
             </article>
 
             {/* Author Bio */}
-            <AuthorBio publishDate={post.date} updateDate="August 9, 2026" />
+            <AuthorBio publishDate={post.date} updateDate="August 19, 2026" />
 
             {/* Share/Save buttons */}
             <div className="flex items-center gap-4 py-6 mt-8 border-t border-border">
@@ -1508,6 +1805,31 @@ const BlogPost = () => {
                     Save
                 </Button>
             </div>
+
+            {/* Related Articles */}
+            {relatedPosts.length > 0 && (
+                <section className="mt-12 pt-8 border-t border-border">
+                    <h2 className="text-xl font-semibold mb-6">Related Articles</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        {relatedPosts.map((related: any) => (
+                            <Link
+                                key={related.slug}
+                                to={`/blog/${related.slug}`}
+                                className="block p-4 rounded-xl bg-card border border-border hover:border-emerald-500/50 transition-colors group"
+                            >
+                                <span className="text-xs text-emerald-500 font-medium mb-2 block">{related.category}</span>
+                                <h3 className="text-sm font-semibold mb-2 group-hover:text-emerald-500 transition-colors line-clamp-2">
+                                    {related.title}
+                                </h3>
+                                <span className="text-xs text-muted-foreground flex items-center gap-1.5">
+                                    <Clock className="w-3 h-3" />
+                                    {related.readTime}
+                                </span>
+                            </Link>
+                        ))}
+                    </div>
+                </section>
+            )}
 
             {/* Back to blog */}
             <div className="mt-8">

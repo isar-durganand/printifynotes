@@ -43,6 +43,57 @@ const About = () => {
                 </div>
             </section>
 
+            {/* Meet the Creator */}
+            <section className="mb-16">
+                <h2 className="text-2xl font-semibold mb-6">Meet the Creator</h2>
+                <div className="p-6 rounded-2xl bg-card border border-border">
+                    <div className="flex flex-col sm:flex-row items-start gap-5 mb-5">
+                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center flex-shrink-0">
+                            <span className="text-white text-2xl font-bold">DI</span>
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-semibold mb-1">Durganand Ishar</h3>
+                            <p className="text-sm text-emerald-500 font-medium mb-1">Founder & Developer, Printify Notes</p>
+                            <p className="text-sm text-muted-foreground">BTech CSE (First Year) · Manav Rachna International Institute of Research and Studies (MRIIRS), Faridabad</p>
+                            <div className="flex items-center gap-3 mt-3">
+                                <a href="https://www.linkedin.com/in/durganandishar/" target="_blank" rel="noopener noreferrer"
+                                    className="text-xs px-3 py-1.5 rounded-full bg-secondary border border-border text-muted-foreground hover:text-emerald-500 hover:border-emerald-500 transition-colors">
+                                    LinkedIn
+                                </a>
+                                <a href="https://github.com/isar-durganand" target="_blank" rel="noopener noreferrer"
+                                    className="text-xs px-3 py-1.5 rounded-full bg-secondary border border-border text-muted-foreground hover:text-emerald-500 hover:border-emerald-500 transition-colors">
+                                    GitHub
+                                </a>
+                                <a href="mailto:isardurganand@gmail.com"
+                                    className="text-xs px-3 py-1.5 rounded-full bg-secondary border border-border text-muted-foreground hover:text-emerald-500 hover:border-emerald-500 transition-colors">
+                                    Email
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="space-y-3 text-muted-foreground text-sm leading-relaxed">
+                        <p>
+                            Durganand built Printify Notes out of personal necessity. As a student preparing for competitive
+                            exams, he constantly faced the same problem: downloading lecture notes from Physics Wallah and
+                            Unacademy, only to find that printing them directly would consume five times more ink than necessary
+                            due to their dark backgrounds.
+                        </p>
+                        <p>
+                            Rather than accepting this as a permanent cost, he taught himself web development and built a
+                            browser-based tool that could invert PDF colors client-side — meaning no files ever leave your
+                            device. What started as a personal script evolved into a full-featured PDF toolkit that now serves
+                            students across India.
+                        </p>
+                        <p>
+                            Durganand is currently pursuing his BTech in Computer Science at MRIIRS, Faridabad. He is passionate
+                            about building tools that make quality education more accessible and affordable — and believes that
+                            the best software solves real problems for real people.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
             {/* Mission and Values */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
                 <div className="p-6 rounded-2xl bg-card border border-border">

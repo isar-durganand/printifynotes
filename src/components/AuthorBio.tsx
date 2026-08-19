@@ -47,10 +47,12 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({ publishDate, updateDate })
                         </span>
                     </div>
                     <p className="text-sm text-muted-foreground mb-3 leading-relaxed" itemProp="description">
-                        Durganand is the creator of Printify Notes — a student and developer passionate about
-                        making educational tools accessible and free. With experience in web development and a
-                        focus on solving real student problems, he builds tools that help thousands of NEET and
-                        JEE aspirants save money on printing their study materials.
+                        Durganand Ishar is a first-year BTech Computer Science student at Manav Rachna
+                        International Institute of Research and Studies (MRIIRS), Faridabad. He created
+                        Printify Notes to solve a real problem he faced as a student — the high ink cost
+                        of printing dark-themed coaching notes from platforms like Physics Wallah and
+                        Unacademy. The tool now helps thousands of NEET and JEE aspirants across India
+                        save money on printing their study materials.
                     </p>
 
                     {/* Dates */}
@@ -107,6 +109,30 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({ publishDate, updateDate })
                     <meta itemProp="url" content="https://www.printifynotes.in/about" />
                 </div>
             </div>
+            {/* Person schema for Google E-E-A-T */}
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "name": "Durganand Ishar",
+                "url": "https://www.printifynotes.in/about",
+                "jobTitle": "Student Developer & Creator of Printify Notes",
+                "description": "First-year BTech CSE student at MRIIRS, Faridabad. Creator of Printify Notes, a free PDF tool used by thousands of NEET and JEE students across India.",
+                "alumniOf": {
+                    "@type": "EducationalOrganization",
+                    "name": "Manav Rachna International Institute of Research and Studies (MRIIRS)",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Faridabad",
+                        "addressCountry": "IN"
+                    }
+                },
+                "sameAs": [
+                    "https://www.linkedin.com/in/durganandishar/",
+                    "https://github.com/isar-durganand",
+                    "https://x.com/Durganand_07"
+                ],
+                "knowsAbout": ["PDF tools", "Web development", "Student productivity", "NEET preparation", "JEE preparation"]
+            }) }} />
         </div>
     );
 };
