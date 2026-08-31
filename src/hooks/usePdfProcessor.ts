@@ -38,11 +38,12 @@ export function usePdfProcessor(): UsePdfProcessorReturn {
       const totalPages = pdf.numPages;
       const loadedPages: PageData[] = [];
 
+      // Adaptive scale: high quality for small PDFs, faster for large ones
+      const scale = totalPages <= 10 ? 1.5 : totalPages <= 30 ? 1.2 : 1.0;
+
       for (let i = 1; i <= totalPages; i++) {
         const page = await pdf.getPage(i);
 
-        // Render at 1.5x scale (good balance of quality vs performance)
-        const scale = 1.5;
         const viewport = page.getViewport({ scale });
 
         const canvas = document.createElement('canvas');
@@ -74,6 +75,7 @@ export function usePdfProcessor(): UsePdfProcessorReturn {
 
         setProgress(Math.round((i / totalPages) * 100));
       }
+
 
       setPages(loadedPages);
     } catch (err) {

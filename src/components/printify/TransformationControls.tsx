@@ -1,5 +1,5 @@
-import React from 'react';
-import { Settings, Sparkles, Sun, Contrast } from 'lucide-react';
+import React, { useEffect } from 'react';
+import { Settings, Sparkles, Sun, Contrast, Undo2, Redo2 } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
@@ -8,9 +8,13 @@ import type { TransformationSettings } from '@/types/printify';
 interface TransformationControlsProps {
   settings: TransformationSettings;
   onChange: (settings: TransformationSettings) => void;
+  onUndo: () => void;
+  onRedo: () => void;
+  canUndo: boolean;
+  canRedo: boolean;
 }
 
-export function TransformationControls({ settings, onChange }: TransformationControlsProps) {
+export function TransformationControls({ settings, onChange, onUndo, onRedo, canUndo, canRedo }: TransformationControlsProps) {
   const updateSetting = <K extends keyof TransformationSettings>(
     key: K,
     value: TransformationSettings[K]
@@ -18,12 +22,48 @@ export function TransformationControls({ settings, onChange }: TransformationCon
     onChange({ ...settings, [key]: value });
   };
 
+  // Keyboard shortcuts: Ctrl+Z = undo, Ctrl+Y / Ctrl+Shift+Z = redo
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey || e.metaKey) {
+        if (e.key === 'z' && !e.shiftKey) {
+          e.preventDefault();
+          onUndo();
+        } else if (e.key === 'y' || (e.key === 'z' && e.shiftKey)) {
+          e.preventDefault();
+          onRedo();
+        }
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onUndo, onRedo]);
+
   return (
     <div className="rounded-xl border border-border bg-card overflow-hidden">
       {/* Panel header */}
       <div className="flex items-center gap-2.5 px-4 py-3 border-b border-border bg-secondary/30">
         <Settings className="w-4 h-4 text-emerald-500" />
         <h3 className="font-semibold text-foreground text-sm tracking-tight">Transformations</h3>
+        {/* Undo / Redo buttons */}
+        <div className="ml-auto flex items-center gap-1">
+          <button
+            onClick={onUndo}
+            disabled={!canUndo}
+            title="Undo (Ctrl+Z)"
+            className="p-1 rounded-md hover:bg-secondary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          >
+            <Undo2 className="w-3.5 h-3.5 text-muted-foreground" />
+          </button>
+          <button
+            onClick={onRedo}
+            disabled={!canRedo}
+            title="Redo (Ctrl+Y)"
+            className="p-1 rounded-md hover:bg-secondary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+          >
+            <Redo2 className="w-3.5 h-3.5 text-muted-foreground" />
+          </button>
+        </div>
       </div>
 
       <div className="p-4 space-y-5">

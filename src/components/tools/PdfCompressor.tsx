@@ -5,8 +5,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
-import { PDFDocument } from 'pdf-lib';
+import * as pdfjsLib from 'pdfjs-dist';
+import { jsPDF } from 'jspdf';
 import { ReviewModal } from '@/components/printify/ReviewModal';
+
+// Configure pdf.js worker
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+    'pdfjs-dist/build/pdf.worker.mjs',
+    import.meta.url
+).toString();
 
 interface CompressionResult {
     originalSize: number;
@@ -54,6 +61,12 @@ export const PdfCompressor: React.FC = () => {
         return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
     };
 
+    /**
+     * Real compression: render each PDF page to canvas via pdf.js,
+     * then re-encode as JPEG at the chosen quality level, and bundle
+     * into a new PDF with jsPDF. The quality slider (10–100%) directly
+     * controls JPEG quality, giving a visible file-size reduction.
+     */
     const compressPdf = async () => {
         if (!file) return;
 
@@ -62,33 +75,66 @@ export const PdfCompressor: React.FC = () => {
 
         try {
             const arrayBuffer = await file.arrayBuffer();
-            setProgress(20);
+            setProgress(5);
 
-            const pdfDoc = await PDFDocument.load(arrayBuffer);
-            setProgress(40);
+            const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+            const totalPages = pdf.numPages;
+            const jpegQuality = quality[0] / 100; // 0.1 to 1.0
 
-            // Create a new PDF with optimized settings
-            const compressedPdf = await PDFDocument.create();
-            const pages = await compressedPdf.copyPages(pdfDoc, pdfDoc.getPageIndices());
+            // Render scale: lower quality → lower scale (faster, smaller)
+            const renderScale = jpegQuality > 0.7 ? 1.5 : jpegQuality > 0.4 ? 1.2 : 1.0;
 
-            setProgress(60);
+            // Render the first page to detect orientation
+            const firstPage = await pdf.getPage(1);
+            const firstViewport = firstPage.getViewport({ scale: renderScale });
+            const isLandscape = firstViewport.width > firstViewport.height;
 
-            pages.forEach(page => {
-                compressedPdf.addPage(page);
+            const jspdf = new jsPDF({
+                orientation: isLandscape ? 'landscape' : 'portrait',
+                unit: 'mm',
+                format: 'a4',
             });
 
-            setProgress(80);
+            const pdfWidth = isLandscape ? 297 : 210;
+            const pdfHeight = isLandscape ? 210 : 297;
 
-            // Save with compression options
-            const compressedBytes = await compressedPdf.save({
-                useObjectStreams: true,
-                addDefaultPage: false,
-            });
+            for (let i = 1; i <= totalPages; i++) {
+                const page = await pdf.getPage(i);
+                const viewport = page.getViewport({ scale: renderScale });
 
+                const canvas = document.createElement('canvas');
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+
+                const ctx = canvas.getContext('2d');
+                if (!ctx) throw new Error('Canvas context unavailable');
+
+                await page.render({ canvasContext: ctx, viewport }).promise;
+
+                // Re-encode at chosen JPEG quality — this is the real compression
+                const imgData = canvas.toDataURL('image/jpeg', jpegQuality);
+
+                if (i > 1) jspdf.addPage();
+
+                // Fit the image to the A4 page preserving aspect ratio
+                const imgAspect = viewport.width / viewport.height;
+                const pageAspect = pdfWidth / pdfHeight;
+                let w = pdfWidth, h = pdfHeight;
+                if (imgAspect > pageAspect) { h = pdfWidth / imgAspect; }
+                else { w = pdfHeight * imgAspect; }
+                const x = (pdfWidth - w) / 2;
+                const y = (pdfHeight - h) / 2;
+
+                jspdf.addImage(imgData, 'JPEG', x, y, w, h);
+
+                setProgress(Math.round((i / totalPages) * 90) + 5);
+            }
+
+            const compressedBytes = jspdf.output('arraybuffer');
             setProgress(100);
 
             const originalSize = file.size;
-            const compressedSize = compressedBytes.length;
+            const compressedSize = compressedBytes.byteLength;
             const savings = Math.round(((originalSize - compressedSize) / originalSize) * 100);
 
             const blob = new Blob([compressedBytes], { type: 'application/pdf' });
@@ -134,7 +180,7 @@ export const PdfCompressor: React.FC = () => {
                         Compress PDF
                     </CardTitle>
                     <CardDescription>
-                        Reduce PDF file size while maintaining quality
+                        Reduce PDF file size by re-encoding at your chosen quality level
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -181,16 +227,19 @@ export const PdfCompressor: React.FC = () => {
                                 </div>
                                 <Slider
                                     value={quality}
-                                    onValueChange={setQuality}
+                                    onValueChange={(v) => { setQuality(v); setResult(null); setCompressedBlob(null); }}
                                     min={10}
-                                    max={100}
-                                    step={10}
+                                    max={95}
+                                    step={5}
                                     className="w-full"
                                 />
                                 <div className="flex justify-between text-xs text-muted-foreground">
-                                    <span>Maximum Compression</span>
-                                    <span>Best Quality</span>
+                                    <span>Maximum Compression (smallest file)</span>
+                                    <span>Best Quality (larger file)</span>
                                 </div>
+                                <p className="text-xs text-muted-foreground italic">
+                                    Lower quality = smaller file size. Recommended: 50–70% for study notes.
+                                </p>
                             </div>
 
                             {/* Progress */}
@@ -215,7 +264,7 @@ export const PdfCompressor: React.FC = () => {
                                         <span className="font-medium text-emerald-500">{formatSize(result.compressedSize)}</span>
                                     </div>
                                     <div className="flex items-center justify-between pt-2 border-t border-emerald-500/20">
-                                        <span className="text-sm font-medium">Savings</span>
+                                        <span className="text-sm font-medium">Space Saved</span>
                                         <span className="font-bold text-emerald-500">{result.savings}%</span>
                                     </div>
                                 </div>
@@ -225,7 +274,7 @@ export const PdfCompressor: React.FC = () => {
                                 <div className="flex items-start gap-2 p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
                                     <AlertCircle className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
                                     <p className="text-sm text-yellow-600 dark:text-yellow-400">
-                                        This PDF is already well-optimized. Compression may not reduce file size significantly.
+                                        The compressed file is similar in size. Try a lower quality setting for more savings.
                                     </p>
                                 </div>
                             )}

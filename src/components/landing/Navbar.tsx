@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FileText, Menu, X, Heart } from 'lucide-react';
+import { FileText, Menu, X, Heart, Sun, Moon } from 'lucide-react';
 import { ScrollLink } from '@/components/ui/ScrollLink';
 import { Button } from '@/components/ui/button';
+import { useTheme } from '@/hooks/useTheme';
 
 export const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const [isScrolled, setIsScrolled] = React.useState(false);
     const location = useLocation();
+    const { theme, toggleTheme } = useTheme();
 
     React.useEffect(() => {
         const handleScroll = () => {
@@ -87,15 +89,31 @@ export const Navbar = () => {
                         </ScrollLink>
                     </div>
 
-                    {/* Mobile Menu Button */}
-                    <button
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
-                        aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-                        aria-expanded={isMenuOpen}
-                    >
-                        {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-                    </button>
+                    {/* Theme toggle + Mobile Menu Button */}
+                    <div className="flex items-center gap-2">
+                        {/* Theme toggle — desktop & mobile */}
+                        <button
+                            onClick={toggleTheme}
+                            className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary/60 transition-all"
+                            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                            title={theme === 'dark' ? 'Light mode' : 'Dark mode'}
+                        >
+                            {theme === 'dark'
+                                ? <Sun className="w-4 h-4" />
+                                : <Moon className="w-4 h-4" />
+                            }
+                        </button>
+
+                        {/* Mobile Menu Button */}
+                        <button
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            className="md:hidden p-2 text-muted-foreground hover:text-foreground transition-colors"
+                            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+                            aria-expanded={isMenuOpen}
+                        >
+                            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                        </button>
+                    </div>
                 </div>
             </nav>
 

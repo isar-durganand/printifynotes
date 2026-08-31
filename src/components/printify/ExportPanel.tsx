@@ -142,18 +142,26 @@ export function ExportPanel({
               y = margin + (j % 2) * (cellHeight + spacing);
             }
           } else if (pagesPerSheet === 3) {
-            // 3 pages: 3 equal columns side-by-side (landscape) or 3 equal rows stacked (portrait)
+            // 3 pages: landscape = 3 equal columns; portrait = page 0 top-full-width, pages 1+2 split bottom
             if (isLandscape) {
               cellWidth = (contentWidth - spacing * 2) / 3;
               cellHeight = contentHeight;
               x = margin + j * (cellWidth + spacing);
               y = margin;
             } else {
-              // Portrait: stack all 3 pages vertically in equal rows
-              cellWidth = contentWidth;
-              cellHeight = (contentHeight - spacing * 2) / 3;
-              x = margin;
-              y = margin + j * (cellHeight + spacing);
+              if (j === 0) {
+                // Top half: full width
+                cellWidth = contentWidth;
+                cellHeight = (contentHeight - spacing) / 2;
+                x = margin;
+                y = margin;
+              } else {
+                // Bottom half: two columns
+                cellWidth = (contentWidth - spacing) / 2;
+                cellHeight = (contentHeight - spacing) / 2;
+                x = margin + (j - 1) * (cellWidth + spacing);
+                y = margin + (contentHeight - spacing) / 2 + spacing;
+              }
             }
           } else {
             // 4 pages: 2x2 grid

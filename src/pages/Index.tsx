@@ -7,6 +7,7 @@ import { TransformationControls } from '@/components/printify/TransformationCont
 import { CombineOptions } from '@/components/printify/CombineOptions';
 import { ExportPanel } from '@/components/printify/ExportPanel';
 import { usePdfProcessor } from '@/hooks/usePdfProcessor';
+import { useUndoRedo } from '@/hooks/useUndoRedo';
 import type { PageData, TransformationSettings, CombineSettings } from '@/types/printify';
 import { DEFAULT_TRANSFORMATIONS, DEFAULT_COMBINE_SETTINGS } from '@/types/printify';
 
@@ -43,7 +44,14 @@ const BackgroundDecorations = () => (
 const Index = () => {
   const { pages, isLoading, progress, error, loadFile, reset } = usePdfProcessor();
   const [localPages, setLocalPages] = useState<PageData[]>([]);
-  const [transformations, setTransformations] = useState<TransformationSettings>(DEFAULT_TRANSFORMATIONS);
+  const {
+    state: transformations,
+    set: setTransformations,
+    undo: undoTransformations,
+    redo: redoTransformations,
+    canUndo,
+    canRedo,
+  } = useUndoRedo<TransformationSettings>(DEFAULT_TRANSFORMATIONS);
   const [combineSettings, setCombineSettings] = useState<CombineSettings>(DEFAULT_COMBINE_SETTINGS);
 
   const handleFileSelect = async (file: File) => {
@@ -109,6 +117,10 @@ const Index = () => {
               <TransformationControls
                 settings={transformations}
                 onChange={setTransformations}
+                onUndo={undoTransformations}
+                onRedo={redoTransformations}
+                canUndo={canUndo}
+                canRedo={canRedo}
               />
               <CombineOptions
                 settings={combineSettings}

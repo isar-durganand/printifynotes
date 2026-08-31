@@ -43,6 +43,42 @@
     --accent-highlight: 160 84% 39%;
   }
 
+  /* Light mode overrides — toggled by adding .light class to <html> */
+  :root.light {
+    --background: 0 0% 98%;
+    --foreground: 240 6% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 6% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 6% 10%;
+
+    --primary: 240 6% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 5% 94%;
+    --secondary-foreground: 240 6% 10%;
+
+    --muted: 240 5% 94%;
+    --muted-foreground: 240 4% 46%;
+
+    --accent: 240 5% 94%;
+    --accent-foreground: 240 6% 10%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 5% 85%;
+    --input: 240 5% 85%;
+    --ring: 240 6% 10%;
+
+    --success: 160 84% 32%;
+    --success-foreground: 0 0% 100%;
+
+    --accent-highlight: 160 84% 32%;
+  }
+
   * {
     @apply border-border;
   }
