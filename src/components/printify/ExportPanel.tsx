@@ -239,17 +239,30 @@ export function ExportPanel({
         // Sheet page number — printed at bottom-center of the full output page
         if (showPageNumbers) {
           const sheetNum = currentPdfPage + 1;
-          pdf.setFontSize(pagesPerSheet === 1 ? 9 : 7);
-          pdf.setTextColor(...pageNumColor);
+          
+          // Make it stand out: Bold, larger, and with dashes
+          pdf.setFont('helvetica', 'bold');
+          pdf.setFontSize(10);
+          
+          // Slightly darker/more prominent color than the cell numbers
+          const sheetNumColor: [number, number, number] =
+            transformations.invertColors && !transformations.forceWhiteBackground
+              ? [200, 200, 200]
+              : [60, 60, 60];
+              
+          pdf.setTextColor(...sheetNumColor);
           
           // Place it in the reserved 6mm space below the content area
-          const sheetNumY = margin + contentHeight + (sheetNumberSpace / 2) + 1;
+          const sheetNumY = margin + contentHeight + (sheetNumberSpace / 2) + 1.5;
           pdf.text(
-            String(sheetNum),
+            `- ${sheetNum} -`,
             pageWidth / 2,
             sheetNumY,
             { align: 'center' }
           );
+          
+          // Reset font to normal for the next loop
+          pdf.setFont('helvetica', 'normal');
         }
 
         currentPdfPage++;
