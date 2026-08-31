@@ -1,8 +1,9 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Download, FileCheck, RefreshCw } from 'lucide-react';
+import { Download, FileCheck, RefreshCw, Hash } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { jsPDF } from 'jspdf';
 import type { PageData, TransformationSettings, CombineSettings } from '@/types/printify';
@@ -28,6 +29,7 @@ export function ExportPanel({
   const [progress, setProgress] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
   const [exportQuality, setExportQuality] = useState<ExportQuality>('high');
+  const [showPageNumbers, setShowPageNumbers] = useState(false);
   const [showReview, setShowReview] = useState(false);
 
   // Show review modal 2 seconds after export completes (once per session)
@@ -94,11 +96,16 @@ export function ExportPanel({
 
       // Determine the page background color:
       // When colors are inverted without forceWhiteBackground, margins should be black
-      // to match the inverted content (no white bleeding at edges).
       const pageBgColor: [number, number, number] =
         transformations.invertColors && !transformations.forceWhiteBackground
           ? [0, 0, 0]
           : [255, 255, 255];
+
+      // Page number text color: contrasts with background
+      const pageNumColor: [number, number, number] =
+        transformations.invertColors && !transformations.forceWhiteBackground
+          ? [160, 160, 160]
+          : [100, 100, 100];
 
       const fillPageBackground = () => {
         pdf.setFillColor(...pageBgColor);
@@ -199,12 +206,42 @@ export function ExportPanel({
           if (combineSettings.pageBorder) {
             const borderColor: [number, number, number] =
               transformations.invertColors && !transformations.forceWhiteBackground
-                ? [80, 80, 80]   // dark background → slightly lighter border
-                : [180, 180, 180]; // white background → light gray border
+                ? [80, 80, 80]
+                : [180, 180, 180];
             pdf.setDrawColor(...borderColor);
             pdf.setLineWidth(0.2);
             pdf.rect(x, y, cellWidth, cellHeight);
           }
+
+          // Page number for this specific content page (original page number)
+          if (showPageNumbers && pagesPerSheet > 1) {
+            const contentPageIndex = i + j;
+            const sourcePageNum = selectedPages[contentPageIndex]?.pageNumber ?? (contentPageIndex + 1);
+            pdf.setFontSize(6);
+            pdf.setTextColor(...pageNumColor);
+            // Place at bottom-center of the cell
+            const numText = String(sourcePageNum);
+            const numX = x + cellWidth / 2;
+            const numY = y + cellHeight + 3.5;
+            // Only draw if there's space below the cell (within page margin area)
+            if (numY < pageHeight - 2) {
+              pdf.text(numText, numX, numY, { align: 'center' });
+            }
+          }
+        }
+
+        // Sheet page number — printed at bottom-center of the full output page
+        if (showPageNumbers) {
+          const sheetNum = currentPdfPage + 1;
+          pdf.setFontSize(pagesPerSheet === 1 ? 9 : 7);
+          pdf.setTextColor(...pageNumColor);
+          // Center of page, near the bottom margin
+          pdf.text(
+            String(sheetNum),
+            pageWidth / 2,
+            pageHeight - margin / 3,
+            { align: 'center' }
+          );
         }
 
         currentPdfPage++;
@@ -220,7 +257,7 @@ export function ExportPanel({
     } finally {
       setIsExporting(false);
     }
-  }, [selectedPages, transformations, combineSettings, exportQuality]);
+  }, [selectedPages, transformations, combineSettings, exportQuality, showPageNumbers]);
 
   return (
     <>
@@ -237,6 +274,7 @@ export function ExportPanel({
 
       <div className="p-4 space-y-4">
 
+      {/* Export Quality */}
       <div className="space-y-2">
         <Label className="text-sm">Export Quality</Label>
         <Select value={exportQuality} onValueChange={(v) => setExportQuality(v as ExportQuality)}>
@@ -249,6 +287,24 @@ export function ExportPanel({
             <SelectItem value="very-high">Very High (best quality)</SelectItem>
           </SelectContent>
         </Select>
+      </div>
+
+      {/* Page Numbers Toggle */}
+      <div className="flex items-center justify-between gap-3 pt-1">
+        <div className="min-w-0">
+          <Label htmlFor="page-numbers-toggle" className="text-sm font-medium cursor-pointer flex items-center gap-1.5">
+            <Hash className="w-3.5 h-3.5 text-muted-foreground" />
+            Page Numbers
+          </Label>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            Print sheet number at bottom center
+          </p>
+        </div>
+        <Switch
+          id="page-numbers-toggle"
+          checked={showPageNumbers}
+          onCheckedChange={setShowPageNumbers}
+        />
       </div>
 
       {isComplete ? (
@@ -300,4 +356,3 @@ export function ExportPanel({
   </>
   );
 }
-

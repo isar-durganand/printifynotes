@@ -5,11 +5,12 @@ import { Button } from '@/components/ui/button';
 
 interface StickyUploadProps {
     onFileSelect: (file: File) => void;
+    onFilesSelect?: (files: File[]) => void;
     isLoading: boolean;
     progress: number;
 }
 
-export const StickyUpload = ({ onFileSelect, isLoading, progress }: StickyUploadProps) => {
+export const StickyUpload = ({ onFileSelect, onFilesSelect, isLoading, progress }: StickyUploadProps) => {
     const [isDragging, setIsDragging] = useState(false);
 
     const handleDragOver = useCallback((e: React.DragEvent) => {
@@ -26,23 +27,36 @@ export const StickyUpload = ({ onFileSelect, isLoading, progress }: StickyUpload
         (e: React.DragEvent) => {
             e.preventDefault();
             setIsDragging(false);
-            const file = e.dataTransfer.files[0];
+            const files = Array.from(e.dataTransfer.files);
             const allowed = ['application/pdf', 'image/jpeg', 'image/png', 'image/webp', 'image/gif'];
-            if (file && allowed.includes(file.type)) {
-                onFileSelect(file);
+            const validFiles = files.filter(f => allowed.includes(f.type));
+            
+            if (validFiles.length > 0) {
+                if (onFilesSelect) {
+                    onFilesSelect(validFiles);
+                } else {
+                    onFileSelect(validFiles[0]);
+                }
             }
         },
-        [onFileSelect]
+        [onFileSelect, onFilesSelect]
     );
 
     const handleFileChange = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
-            const file = e.target.files?.[0];
-            if (file) {
-                onFileSelect(file);
+            const files = Array.from(e.target.files || []);
+            const allowed = ['application/pdf', 'image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+            const validFiles = files.filter(f => allowed.includes(f.type));
+            
+            if (validFiles.length > 0) {
+                if (onFilesSelect) {
+                    onFilesSelect(validFiles);
+                } else {
+                    onFileSelect(validFiles[0]);
+                }
             }
         },
-        [onFileSelect]
+        [onFileSelect, onFilesSelect]
     );
 
     if (isLoading) {
@@ -82,6 +96,7 @@ export const StickyUpload = ({ onFileSelect, isLoading, progress }: StickyUpload
                 <input
                     type="file"
                     accept=".pdf,.jpg,.jpeg,.png,.webp,.gif"
+                    multiple={!!onFilesSelect}
                     onChange={handleFileChange}
                     className="hidden"
                     id="sticky-pdf-upload"

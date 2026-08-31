@@ -4,6 +4,7 @@ import { Progress } from '@/components/ui/progress';
 
 interface UploadZoneProps {
   onFileSelect: (file: File) => void;
+  onFilesSelect?: (files: File[]) => void;
   isLoading: boolean;
   progress: number;
 }
@@ -20,7 +21,7 @@ const ACCEPT_STRING = '.pdf,.jpg,.jpeg,.png,.webp,.gif';
 
 const FILE_CHIPS = ['PDF', 'JPG', 'PNG', 'WEBP'];
 
-export function UploadZone({ onFileSelect, isLoading, progress }: UploadZoneProps) {
+export function UploadZone({ onFileSelect, onFilesSelect, isLoading, progress }: UploadZoneProps) {
   const [isDragging, setIsDragging] = useState(false);
   const [typeError, setTypeError] = useState(false);
 
@@ -39,28 +40,39 @@ export function UploadZone({ onFileSelect, isLoading, progress }: UploadZoneProp
     (e: React.DragEvent) => {
       e.preventDefault();
       setIsDragging(false);
-      const file = e.dataTransfer.files[0];
-      if (file) {
-        if (ACCEPTED_TYPES[file.type as keyof typeof ACCEPTED_TYPES]) {
-          setTypeError(false);
-          onFileSelect(file);
+      
+      const files = Array.from(e.dataTransfer.files);
+      const validFiles = files.filter(f => ACCEPTED_TYPES[f.type as keyof typeof ACCEPTED_TYPES]);
+      
+      if (validFiles.length > 0) {
+        setTypeError(false);
+        if (onFilesSelect) {
+          onFilesSelect(validFiles);
         } else {
-          setTypeError(true);
+          onFileSelect(validFiles[0]);
         }
+      } else if (files.length > 0) {
+        setTypeError(true);
       }
     },
-    [onFileSelect]
+    [onFileSelect, onFilesSelect]
   );
 
   const handleFileChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const file = e.target.files?.[0];
-      if (file) {
+      const files = Array.from(e.target.files || []);
+      const validFiles = files.filter(f => ACCEPTED_TYPES[f.type as keyof typeof ACCEPTED_TYPES]);
+      
+      if (validFiles.length > 0) {
         setTypeError(false);
-        onFileSelect(file);
+        if (onFilesSelect) {
+          onFilesSelect(validFiles);
+        } else {
+          onFileSelect(validFiles[0]);
+        }
       }
     },
-    [onFileSelect]
+    [onFileSelect, onFilesSelect]
   );
 
   if (isLoading) {
@@ -100,6 +112,7 @@ export function UploadZone({ onFileSelect, isLoading, progress }: UploadZoneProp
         <input
           type="file"
           accept={ACCEPT_STRING}
+          multiple={!!onFilesSelect}
           onChange={handleFileChange}
           className="hidden"
           id="pdf-upload"

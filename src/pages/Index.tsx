@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { FileText } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { FileText, FilePlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { UploadZone } from '@/components/printify/UploadZone';
 import { PageGallery } from '@/components/printify/PageGallery';
@@ -41,8 +41,10 @@ const BackgroundDecorations = () => (
   </>
 );
 
+const ACCEPTED_TYPES = '.pdf,.jpg,.jpeg,.png,.webp,.gif';
+
 const Index = () => {
-  const { pages, isLoading, progress, error, loadFile, reset } = usePdfProcessor();
+  const { pages, isLoading, progress, error, fileCount, loadFile, appendFile, reset } = usePdfProcessor();
   const [localPages, setLocalPages] = useState<PageData[]>([]);
   const {
     state: transformations,
@@ -53,6 +55,16 @@ const Index = () => {
     canRedo,
   } = useUndoRedo<TransformationSettings>(DEFAULT_TRANSFORMATIONS);
   const [combineSettings, setCombineSettings] = useState<CombineSettings>(DEFAULT_COMBINE_SETTINGS);
+  const [isAppending, setIsAppending] = useState(false);
+  const appendInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFilesSelect = async (files: File[]) => {
+    if (files.length === 0) return;
+    await loadFile(files[0]);
+    for (let i = 1; i < files.length; i++) {
+      await appendFile(files[i]);
+    }
+  };
 
   const handleFileSelect = async (file: File) => {
     await loadFile(file);
@@ -78,12 +90,45 @@ const Index = () => {
     setCombineSettings(DEFAULT_COMBINE_SETTINGS);
   };
 
+  /** Handle additional file(s) appended in the editor */
+  const handleAppendFiles = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
+    if (files.length === 0) return;
+
+    setIsAppending(true);
+    for (const file of files) {
+      await appendFile(file);
+    }
+    setIsAppending(false);
+
+    // Reset input so the same file can be added again if needed
+    if (appendInputRef.current) appendInputRef.current.value = '';
+  };
+
+  /** When pages update from appending, sync localPages */
+  useEffect(() => {
+    if (pages.length > localPages.length) {
+      setLocalPages(pages);
+    }
+  }, [pages]);
+
   const hasPages = localPages.length > 0;
 
   // If user has uploaded pages, show the app interface
   if (hasPages) {
     return (
       <div className="min-h-screen bg-background text-foreground">
+        {/* Hidden input for appending more files */}
+        <input
+          ref={appendInputRef}
+          type="file"
+          accept={ACCEPTED_TYPES}
+          multiple
+          onChange={handleAppendFiles}
+          className="hidden"
+          id="append-files-input"
+        />
+
         <header className="border-b border-border sticky top-0 z-40 bg-background/95 backdrop-blur-xl">
           <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
             <div className="flex items-center gap-2.5 min-w-0">
@@ -96,19 +141,50 @@ const Index = () => {
                   <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-md bg-secondary border border-border text-xs text-muted-foreground font-medium">
                     {localPages.length} {localPages.length === 1 ? 'page' : 'pages'}
                   </span>
+                  {fileCount > 1 && (
+                    <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-xs text-emerald-500 font-medium">
+                      {fileCount} files
+                    </span>
+                  )}
                 </div>
                 <p className="text-xs text-muted-foreground">Dark → Print-Ready</p>
               </div>
             </div>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={handleReset}
-              className="text-xs shrink-0 text-muted-foreground hover:text-destructive hover:border-destructive/50"
-            >
-              Start Over
-            </Button>
+
+            {/* Right-side header actions */}
+            <div className="flex items-center gap-2">
+              {/* Add More Files button */}
+              <Button
+                variant="outline"
+                size="sm"
+                disabled={isAppending || isLoading}
+                onClick={() => appendInputRef.current?.click()}
+                className="text-xs shrink-0 text-emerald-500 border-emerald-500/40 hover:bg-emerald-500/10 hover:border-emerald-500 transition-colors"
+              >
+                <FilePlus className="w-3.5 h-3.5 mr-1.5" />
+                {isAppending ? 'Loading…' : 'Add More Files'}
+              </Button>
+
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleReset}
+                className="text-xs shrink-0 text-muted-foreground hover:text-destructive hover:border-destructive/50"
+              >
+                Start Over
+              </Button>
+            </div>
           </div>
+
+          {/* Append progress bar */}
+          {(isAppending || isLoading) && progress > 0 && progress < 100 && (
+            <div className="h-0.5 bg-secondary">
+              <div
+                className="h-full bg-emerald-500 transition-all duration-200"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+          )}
         </header>
 
         <main className="container mx-auto px-3 sm:px-4 py-4 sm:py-6 md:py-8">
@@ -159,6 +235,7 @@ const Index = () => {
       {/* Sticky Upload on right side - desktop only */}
       <StickyUpload
         onFileSelect={handleFileSelect}
+        onFilesSelect={handleFilesSelect}
         isLoading={isLoading}
         progress={progress}
       />
@@ -200,7 +277,7 @@ const Index = () => {
               Ready to Transform?
             </h2>
             <p className="text-muted-foreground max-w-lg mx-auto text-sm sm:text-base leading-relaxed">
-              Upload your PDF or image and see the magic happen. Free, private, and instant — no signup needed.
+              Upload one or multiple PDFs or images and see the magic happen. Free, private, and instant — no signup needed.
             </p>
           </div>
 
@@ -210,6 +287,7 @@ const Index = () => {
               <div className="rounded-xl border border-border/60 bg-background p-6 sm:p-8">
                 <UploadZone
                   onFileSelect={handleFileSelect}
+                  onFilesSelect={handleFilesSelect}
                   isLoading={isLoading}
                   progress={progress}
                 />
