@@ -91,8 +91,8 @@ export function ExportPanel({
       const margin = getMarginSize();
       const spacing = getSpacing();
 
-      // Reserve 6mm at the bottom of the content area for the sheet number if enabled
-      const sheetNumberSpace = showPageNumbers ? 6 : 0;
+      // Reserve 8mm at the bottom of the content area for the sheet number if enabled
+      const sheetNumberSpace = showPageNumbers ? 8 : 0;
       const contentWidth = pageWidth - margin * 2;
       const contentHeight = pageHeight - margin * 2 - sheetNumberSpace;
 
@@ -228,10 +228,10 @@ export function ExportPanel({
             const sourcePageNum = selectedPages[contentPageIndex]?.pageNumber ?? (contentPageIndex + 1);
             pdf.setFontSize(6);
             pdf.setTextColor(...pageNumColor);
-            // Place inside the reserved 4mm area at the bottom of the cell
+            // Place just below the actual image to avoid floating at the cell border
             const numText = String(sourcePageNum);
             const numX = x + cellWidth / 2;
-            const numY = y + cellHeight - 1; // 1mm above the bottom edge of the cell
+            const numY = offsetY + finalHeight + 3.2; // ~3mm below the image
             pdf.text(numText, numX, numY, { align: 'center' });
           }
         }
@@ -252,8 +252,8 @@ export function ExportPanel({
               
           pdf.setTextColor(...sheetNumColor);
           
-          // Place it in the reserved 6mm space below the content area
-          const sheetNumY = margin + contentHeight + (sheetNumberSpace / 2) + 1.5;
+          // Place it in the reserved space, neatly below the content area
+          const sheetNumY = margin + contentHeight + 6;
           pdf.text(
             `- ${sheetNum} -`,
             pageWidth / 2,
