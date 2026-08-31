@@ -91,8 +91,10 @@ export function ExportPanel({
       const margin = getMarginSize();
       const spacing = getSpacing();
 
+      // Reserve 6mm at the bottom of the content area for the sheet number if enabled
+      const sheetNumberSpace = showPageNumbers ? 6 : 0;
       const contentWidth = pageWidth - margin * 2;
-      const contentHeight = pageHeight - margin * 2;
+      const contentHeight = pageHeight - margin * 2 - sheetNumberSpace;
 
       // Determine the page background color:
       // When colors are inverted without forceWhiteBackground, margins should be black
@@ -185,19 +187,26 @@ export function ExportPanel({
           });
 
           const imgAspect = imgElement.width / imgElement.height;
-          const cellAspect = cellWidth / cellHeight;
+          
+          // Reserve 4mm at the bottom of the cell for the source page number
+          let availableCellHeight = cellHeight;
+          if (showPageNumbers && pagesPerSheet > 1) {
+            availableCellHeight = cellHeight - 4;
+          }
+
+          const cellAspect = cellWidth / availableCellHeight;
 
           let finalWidth: number, finalHeight: number;
           if (imgAspect > cellAspect) {
             finalWidth = cellWidth;
             finalHeight = cellWidth / imgAspect;
           } else {
-            finalHeight = cellHeight;
-            finalWidth = cellHeight * imgAspect;
+            finalHeight = availableCellHeight;
+            finalWidth = availableCellHeight * imgAspect;
           }
 
           const offsetX = x + (cellWidth - finalWidth) / 2;
-          const offsetY = y + (cellHeight - finalHeight) / 2;
+          const offsetY = y + (availableCellHeight - finalHeight) / 2;
 
           const compressionLevel = exportQuality === 'medium' ? 'MEDIUM' : exportQuality === 'high' ? 'SLOW' : 'NONE';
           pdf.addImage(img, 'JPEG', offsetX, offsetY, finalWidth, finalHeight, undefined, compressionLevel);
@@ -219,14 +228,11 @@ export function ExportPanel({
             const sourcePageNum = selectedPages[contentPageIndex]?.pageNumber ?? (contentPageIndex + 1);
             pdf.setFontSize(6);
             pdf.setTextColor(...pageNumColor);
-            // Place at bottom-center of the cell
+            // Place inside the reserved 4mm area at the bottom of the cell
             const numText = String(sourcePageNum);
             const numX = x + cellWidth / 2;
-            const numY = y + cellHeight + 3.5;
-            // Only draw if there's space below the cell (within page margin area)
-            if (numY < pageHeight - 2) {
-              pdf.text(numText, numX, numY, { align: 'center' });
-            }
+            const numY = y + cellHeight - 1; // 1mm above the bottom edge of the cell
+            pdf.text(numText, numX, numY, { align: 'center' });
           }
         }
 
@@ -235,11 +241,13 @@ export function ExportPanel({
           const sheetNum = currentPdfPage + 1;
           pdf.setFontSize(pagesPerSheet === 1 ? 9 : 7);
           pdf.setTextColor(...pageNumColor);
-          // Center of page, near the bottom margin
+          
+          // Place it in the reserved 6mm space below the content area
+          const sheetNumY = margin + contentHeight + (sheetNumberSpace / 2) + 1;
           pdf.text(
             String(sheetNum),
             pageWidth / 2,
-            pageHeight - margin / 3,
+            sheetNumY,
             { align: 'center' }
           );
         }
