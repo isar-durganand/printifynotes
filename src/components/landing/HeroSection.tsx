@@ -18,13 +18,14 @@ export const HeroSection = () => {
       <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
 
       <div className="container-tight relative z-10 text-center">
-        {/* Badge — liquid glass pill */}
+        {/* Badge — liquid glass pill
         <div className="glass-pill mb-8 opacity-0 animate-fade-in border-emerald-500/[0.15] shadow-[0_4px_24px_rgba(16,185,129,0.08)]">
           <Shield className="w-4 h-4 text-emerald-400" />
           <span className="text-sm text-muted-foreground">100% Private · Browser-Based</span>
         </div>
-
+        */}
         {/* Main heading */}
+
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-6 opacity-0 animate-fade-in delay-100 tracking-tight">
           <span className="bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
             Convert Dark PDF Notes
