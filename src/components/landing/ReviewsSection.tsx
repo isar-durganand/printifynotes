@@ -46,6 +46,23 @@ export function ReviewsSection() {
   const isAdmin = searchParams.get('admin') !== null;
   const [replyingTo, setReplyingTo] = useState<string | null>(null);
   const [replyText, setReplyText] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleReplyClick = (reviewId: string) => {
+    if (!isAuthenticated) {
+      const pwd = window.prompt('Enter developer password:');
+      if (pwd === 'Printify@2026') {
+        setIsAuthenticated(true);
+        setReplyingTo(reviewId);
+        setReplyText('');
+      } else if (pwd !== null) {
+        alert('Incorrect password!');
+      }
+    } else {
+      setReplyingTo(reviewId);
+      setReplyText('');
+    }
+  };
 
   const handleReplySubmit = async (reviewId: string) => {
     if (!replyText.trim()) return;
@@ -181,10 +198,7 @@ export function ReviewsSection() {
                         </div>
                       ) : (
                         <button
-                          onClick={() => {
-                            setReplyingTo(review.id);
-                            setReplyText('');
-                          }}
+                          onClick={() => handleReplyClick(review.id)}
                           className="flex items-center gap-1.5 text-xs text-emerald-500 hover:text-emerald-400 font-medium transition-colors"
                         >
                           <Reply className="w-3.5 h-3.5" /> Reply to Review
