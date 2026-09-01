@@ -158,19 +158,11 @@ export function ExportPanel({
               x = margin + j * (cellWidth + spacing);
               y = margin;
             } else {
-              if (j === 0) {
-                // Top half: full width
-                cellWidth = contentWidth;
-                cellHeight = (contentHeight - spacing) / 2;
-                x = margin;
-                y = margin;
-              } else {
-                // Bottom half: two columns
-                cellWidth = (contentWidth - spacing) / 2;
-                cellHeight = (contentHeight - spacing) / 2;
-                x = margin + (j - 1) * (cellWidth + spacing);
-                y = margin + (contentHeight - spacing) / 2 + spacing;
-              }
+              // 3 equal rows vertically stacked
+              cellWidth = contentWidth;
+              cellHeight = (contentHeight - spacing * 2) / 3;
+              x = margin;
+              y = margin + j * (cellHeight + spacing);
             }
           } else {
             // 4 pages: 2x2 grid
