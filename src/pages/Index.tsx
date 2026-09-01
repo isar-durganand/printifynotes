@@ -20,7 +20,6 @@ import {
   PrivacySection,
   FAQ,
   Footer,
-  JeeCollegeBanner,
   ReviewsSection,
 } from '@/components/landing';
 import { Navbar } from '@/components/landing/Navbar';
@@ -238,8 +237,6 @@ const Index = () => {
       {/* Hero Section */}
       <HeroSection />
 
-      {/* JEE Mains College Predictor Banner */}
-      <JeeCollegeBanner />
 
       {/* How It Works */}
       <section id="how-it-works">

@@ -8,5 +8,4 @@ export { FAQ } from './FAQ';
 export { Footer } from './Footer';
 export { Navbar } from './Navbar';
 export { StickyUpload } from './StickyUpload';
-export { JeeCollegeBanner } from './JeeCollegeBanner';
 export { ReviewsSection } from './ReviewsSection';
