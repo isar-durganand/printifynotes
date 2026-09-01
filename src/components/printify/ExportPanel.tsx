@@ -282,13 +282,14 @@ export function ExportPanel({
 
   return (
     <>
-    <div className="rounded-xl border border-border bg-card overflow-hidden">
-      <div className="flex items-center gap-2.5 px-4 py-3 border-b border-border bg-secondary/30">
-        <Download className="w-4 h-4 text-emerald-500" />
+    <div className="rounded-xl liquid-glass overflow-hidden">
+      <div className="flex items-center gap-2.5 px-4 py-3 border-b border-white/[0.06] bg-white/[0.02] relative">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent pointer-events-none" />
+        <Download className="w-4 h-4 text-emerald-400" />
         <div>
-          <h3 className="font-semibold text-foreground text-sm tracking-tight">Export PDF</h3>
+          <h3 className="font-semibold text-foreground text-sm tracking-tight relative z-10">Export PDF</h3>
         </div>
-        <span className="ml-auto text-xs text-muted-foreground">
+        <span className="ml-auto text-xs text-muted-foreground relative z-10">
           {selectedPages.length} / {pages.length} pages
         </span>
       </div>
@@ -356,7 +357,7 @@ export function ExportPanel({
         <Button
           onClick={handleExport}
           disabled={selectedPages.length === 0}
-          className="w-full rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white"
+          className="w-full rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-white border border-emerald-400/30 shadow-[0_0_16px_rgba(16,185,129,0.2)] hover:shadow-[0_0_24px_rgba(16,185,129,0.3)] transition-all duration-300"
           size="sm"
         >
           <Download className="w-4 h-4 mr-2" />

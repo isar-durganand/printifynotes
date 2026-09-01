@@ -77,10 +77,10 @@ export function UploadZone({ onFileSelect, onFilesSelect, isLoading, progress }:
 
   if (isLoading) {
     return (
-      <div className="rounded-xl border border-border bg-card p-10">
-        <div className="flex flex-col items-center gap-5">
-          <div className="p-4 rounded-xl bg-secondary">
-            <FileText className="w-8 h-8 text-emerald-500 animate-pulse" />
+      <div className="rounded-xl liquid-glass p-10">
+        <div className="flex flex-col items-center gap-5 relative z-10">
+          <div className="p-4 rounded-xl bg-emerald-500/[0.08] border border-emerald-500/20">
+            <FileText className="w-8 h-8 text-emerald-400 animate-pulse" />
           </div>
           <div className="w-full max-w-sm space-y-3">
             <Progress value={progress} className="h-1.5" />
@@ -100,12 +100,12 @@ export function UploadZone({ onFileSelect, onFilesSelect, isLoading, progress }:
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         className={`
-          relative rounded-xl border-2 border-dashed transition-all duration-200 cursor-pointer
+          relative rounded-xl border-2 border-dashed transition-all duration-300 cursor-pointer
           ${isDragging
-            ? 'border-emerald-500 bg-emerald-500/5'
+            ? 'border-emerald-500/50 bg-emerald-500/[0.04] shadow-[0_0_24px_rgba(16,185,129,0.08)]'
             : typeError
-              ? 'border-destructive/60 bg-destructive/5'
-              : 'border-border bg-card hover:border-muted-foreground/50 hover:bg-secondary/30'
+              ? 'border-destructive/50 bg-destructive/[0.04]'
+              : 'border-white/[0.1] bg-white/[0.02] hover:border-white/[0.18] hover:bg-white/[0.03]'
           }
         `}
       >
@@ -121,10 +121,10 @@ export function UploadZone({ onFileSelect, onFilesSelect, isLoading, progress }:
           <div className="flex flex-col items-center gap-4 text-center">
             {/* Icon area */}
             <div className={`
-              p-4 rounded-xl border transition-colors duration-200
+              p-4 rounded-xl border transition-all duration-300
               ${isDragging
-                ? 'border-emerald-500/40 bg-emerald-500/10'
-                : 'border-border bg-secondary'
+                ? 'border-emerald-500/30 bg-emerald-500/[0.08] shadow-[0_0_16px_rgba(16,185,129,0.1)]'
+                : 'border-white/[0.08] bg-white/[0.04]'
               }
             `}>
               {isDragging
@@ -151,7 +151,7 @@ export function UploadZone({ onFileSelect, onFilesSelect, isLoading, progress }:
               {FILE_CHIPS.map((type) => (
                 <span
                   key={type}
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-secondary border border-border text-xs font-medium text-muted-foreground"
+                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/[0.06] text-xs font-medium text-muted-foreground"
                 >
                   {type === 'PDF'
                     ? <FileText className="w-3 h-3" />

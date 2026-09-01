@@ -47,20 +47,26 @@ export const FeaturesGrid = () => {
   const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation({ threshold: 0.1 });
 
   return (
-    <section className="section-padding bg-card/30">
-      <div className="container-wide">
+    <section className="section-padding relative">
+      {/* Subtle background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/3 w-[600px] h-[300px] bg-cyan-500/[0.02] rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[250px] bg-emerald-500/[0.02] rounded-full blur-[100px]" />
+      </div>
+
+      <div className="container-wide relative z-10">
         {/* Section header */}
         <div
           ref={headerRef}
           className={`text-center mb-16 scroll-hidden ${headerVisible ? 'scroll-visible' : ''}`}
         >
-          <span className="inline-block text-sm text-emerald-500 font-medium mb-4">
-            POWERFUL FEATURES
+          <span className="glass-pill text-emerald-400 text-xs font-semibold tracking-widest uppercase mb-6">
+            Powerful Features
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight">
             Everything You Need
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
+          <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
             Packed with features to transform your documents exactly how you need them.
           </p>
         </div>
@@ -68,7 +74,7 @@ export const FeaturesGrid = () => {
         {/* Features grid */}
         <div
           ref={gridRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
         >
           {features.map((feature, index) => (
             <FeatureCard
@@ -98,12 +104,13 @@ const FeatureCard = ({
   index: number;
 }) => (
   <div
-    className={`feature-card group hover-lift scroll-hidden-scale ${isVisible ? 'scroll-visible-scale' : ''} stagger-${index + 1}`}
+    className={`feature-card group prismatic-border scroll-hidden-scale ${isVisible ? 'scroll-visible-scale' : ''} stagger-${index + 1}`}
   >
-    <div className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center mb-5 group-hover:bg-secondary/80 transition-colors duration-300">
-      <Icon className="w-6 h-6 text-foreground group-hover:text-emerald-500 transition-colors duration-300" />
+    {/* Icon container — frosted glass */}
+    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 relative z-10 bg-white/[0.04] border border-white/[0.08] transition-all duration-400 group-hover:bg-emerald-500/[0.08] group-hover:border-emerald-500/20 group-hover:shadow-[0_0_20px_rgba(16,185,129,0.12)]">
+      <Icon className="w-6 h-6 text-foreground group-hover:text-emerald-400 transition-colors duration-300" />
     </div>
-    <h3 className="text-lg font-semibold mb-2">{title}</h3>
-    <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
+    <h3 className="text-lg font-semibold mb-2 relative z-10">{title}</h3>
+    <p className="text-muted-foreground text-sm leading-relaxed relative z-10">{description}</p>
   </div>
 );

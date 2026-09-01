@@ -40,18 +40,19 @@ export function TransformationControls({ settings, onChange, onUndo, onRedo, can
   }, [onUndo, onRedo]);
 
   return (
-    <div className="rounded-xl border border-border bg-card overflow-hidden">
+    <div className="rounded-xl liquid-glass overflow-hidden">
       {/* Panel header */}
-      <div className="flex items-center gap-2.5 px-4 py-3 border-b border-border bg-secondary/30">
-        <Settings className="w-4 h-4 text-emerald-500" />
-        <h3 className="font-semibold text-foreground text-sm tracking-tight">Transformations</h3>
+      <div className="flex items-center gap-2.5 px-4 py-3 border-b border-white/[0.06] bg-white/[0.02] relative">
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent pointer-events-none" />
+        <Settings className="w-4 h-4 text-emerald-400" />
+        <h3 className="font-semibold text-foreground text-sm tracking-tight relative z-10">Transformations</h3>
         {/* Undo / Redo buttons */}
-        <div className="ml-auto flex items-center gap-1">
+        <div className="ml-auto flex items-center gap-1 relative z-10">
           <button
             onClick={onUndo}
             disabled={!canUndo}
             title="Undo (Ctrl+Z)"
-            className="p-1 rounded-md hover:bg-secondary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+            className="p-1.5 rounded-lg hover:bg-white/[0.06] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
           >
             <Undo2 className="w-3.5 h-3.5 text-muted-foreground" />
           </button>
@@ -59,7 +60,7 @@ export function TransformationControls({ settings, onChange, onUndo, onRedo, can
             onClick={onRedo}
             disabled={!canRedo}
             title="Redo (Ctrl+Y)"
-            className="p-1 rounded-md hover:bg-secondary disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+            className="p-1.5 rounded-lg hover:bg-white/[0.06] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
           >
             <Redo2 className="w-3.5 h-3.5 text-muted-foreground" />
           </button>

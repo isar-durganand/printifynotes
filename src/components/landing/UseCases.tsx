@@ -35,20 +35,25 @@ export const UseCases = () => {
   const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation({ threshold: 0.15 });
 
   return (
-    <section className="section-padding bg-card/30">
-      <div className="container-wide">
+    <section className="section-padding relative">
+      {/* Background glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 right-1/4 w-[500px] h-[300px] bg-purple-500/[0.015] rounded-full blur-[100px]" />
+      </div>
+
+      <div className="container-wide relative z-10">
         {/* Section header */}
         <div
           ref={headerRef}
           className={`text-center mb-16 scroll-hidden ${headerVisible ? 'scroll-visible' : ''}`}
         >
-          <span className="inline-block text-sm text-emerald-500 font-medium mb-4">
-            WHO IT'S FOR
+          <span className="glass-pill text-emerald-400 text-xs font-semibold tracking-widest uppercase mb-6">
+            Who It's For
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight">
             Perfect For Students & Professionals
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Whether you're printing Physics Wallah notes, Unacademy slides, or dark-mode documents —
             Printify Notes converts them to clean, ink-saving PDFs instantly.
           </p>
@@ -57,7 +62,7 @@ export const UseCases = () => {
         {/* Use case cards */}
         <div
           ref={cardsRef}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5"
         >
           {useCases.map((useCase, index) => (
             <UseCaseCard
@@ -95,12 +100,13 @@ const UseCaseCard = ({
   index: number;
 }) => (
   <article
-    className={`feature-card group hover-lift text-center scroll-hidden ${isVisible ? 'scroll-visible' : ''} stagger-${index + 1}`}
+    className={`feature-card group prismatic-border text-center scroll-hidden ${isVisible ? 'scroll-visible' : ''} stagger-${index + 1}`}
   >
-    <div className="w-16 h-16 rounded-2xl bg-secondary border border-border/50 flex items-center justify-center mx-auto mb-5 group-hover:bg-secondary/80 group-hover:border-border transition-all duration-300">
-      <Icon className="w-7 h-7 text-foreground group-hover:text-emerald-500 transition-colors duration-300" />
+    {/* Icon — frosted glass circle */}
+    <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-5 relative z-10 bg-white/[0.04] border border-white/[0.08] transition-all duration-400 group-hover:bg-emerald-500/[0.08] group-hover:border-emerald-500/20 group-hover:shadow-[0_0_24px_rgba(16,185,129,0.12)]">
+      <Icon className="w-7 h-7 text-foreground group-hover:text-emerald-400 transition-colors duration-300" />
     </div>
-    <h3 className="text-lg font-semibold mb-2">{title}</h3>
-    <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
+    <h3 className="text-lg font-semibold mb-2 relative z-10">{title}</h3>
+    <p className="text-muted-foreground text-sm leading-relaxed relative z-10">{description}</p>
   </article>
 );

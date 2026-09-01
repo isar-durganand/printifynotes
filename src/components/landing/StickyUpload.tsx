@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { Upload, FileText, ArrowRight, Sparkles } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
-import { Button } from '@/components/ui/button';
 
 interface StickyUploadProps {
     onFileSelect: (file: File) => void;
@@ -62,10 +61,13 @@ export const StickyUpload = ({ onFileSelect, onFilesSelect, isLoading, progress 
     if (isLoading) {
         return (
             <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:block">
-                <div className="w-72 rounded-2xl bg-card/95 backdrop-blur-xl border border-border p-6 shadow-2xl shadow-black/40">
-                    <div className="flex flex-col items-center gap-4">
-                        <div className="p-3 rounded-full bg-emerald-500/10">
-                            <FileText className="w-8 h-8 text-emerald-500 animate-pulse" />
+                <div className="w-72 rounded-2xl liquid-glass-strong p-6">
+                    {/* Top highlight */}
+                    <div className="absolute inset-x-0 top-0 h-px rounded-t-2xl bg-gradient-to-r from-transparent via-white/[0.1] to-transparent pointer-events-none" />
+                    
+                    <div className="flex flex-col items-center gap-4 relative z-10">
+                        <div className="p-3 rounded-xl bg-emerald-500/[0.1] border border-emerald-500/20">
+                            <FileText className="w-8 h-8 text-emerald-400 animate-pulse" />
                         </div>
                         <div className="w-full space-y-2">
                             <Progress value={progress} className="h-2" />
@@ -86,13 +88,25 @@ export const StickyUpload = ({ onFileSelect, onFilesSelect, isLoading, progress 
                 onDragLeave={handleDragLeave}
                 onDrop={handleDrop}
                 className={`
-          w-72 rounded-2xl bg-card/95 backdrop-blur-xl border shadow-2xl shadow-black/40 transition-all duration-300
-          ${isDragging
-                        ? 'border-emerald-500 bg-emerald-500/5 scale-105'
-                        : 'border-border hover:border-muted-foreground'
+                    w-72 rounded-2xl transition-all duration-400 ease-[cubic-bezier(0.4,0,0.2,1)]
+                    ${isDragging
+                        ? 'liquid-glass-strong scale-[1.03] shadow-[0_16px_64px_rgba(0,0,0,0.4),0_0_30px_rgba(16,185,129,0.15)]'
+                        : 'liquid-glass-strong hover:shadow-[0_16px_64px_rgba(0,0,0,0.4),0_0_20px_rgba(16,185,129,0.08)]'
                     }
-        `}
+                `}
             >
+                {/* Top highlight */}
+                <div className="absolute inset-x-0 top-0 h-px rounded-t-2xl bg-gradient-to-r from-transparent via-white/[0.1] to-transparent pointer-events-none" />
+                
+                {/* Glow border on drag */}
+                {isDragging && (
+                    <div className="absolute inset-[-1px] rounded-2xl bg-gradient-to-br from-emerald-500/40 via-cyan-500/20 to-emerald-500/40 pointer-events-none" style={{
+                        mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                        maskComposite: 'exclude',
+                        padding: '1.5px',
+                    }} />
+                )}
+
                 <input
                     type="file"
                     accept=".pdf,.jpg,.jpeg,.png,.webp,.gif"
@@ -101,21 +115,24 @@ export const StickyUpload = ({ onFileSelect, onFilesSelect, isLoading, progress 
                     className="hidden"
                     id="sticky-pdf-upload"
                 />
-                <label htmlFor="sticky-pdf-upload" className="cursor-pointer block p-6">
+                <label htmlFor="sticky-pdf-upload" className="cursor-pointer block p-6 relative z-10">
                     <div className="flex flex-col items-center gap-4">
                         {/* Decorative top */}
-                        <div className="flex items-center gap-2 text-emerald-500">
+                        <div className="flex items-center gap-2 text-emerald-400">
                             <Sparkles className="w-4 h-4" />
-                            <span className="text-xs font-medium uppercase tracking-wider">Quick Convert</span>
+                            <span className="text-xs font-semibold uppercase tracking-wider">Quick Convert</span>
                             <Sparkles className="w-4 h-4" />
                         </div>
 
-                        {/* Upload icon */}
+                        {/* Upload icon — frosted glass */}
                         <div className={`
-              p-4 rounded-2xl transition-all duration-300
-              ${isDragging ? 'bg-emerald-500/20' : 'bg-secondary'}
-            `}>
-                            <Upload className={`w-8 h-8 ${isDragging ? 'text-emerald-500' : 'text-muted-foreground'}`} />
+                            p-4 rounded-2xl transition-all duration-400
+                            ${isDragging
+                                ? 'bg-emerald-500/[0.12] border border-emerald-500/25 shadow-[0_0_24px_rgba(16,185,129,0.15)]'
+                                : 'bg-white/[0.04] border border-white/[0.08]'
+                            }
+                        `}>
+                            <Upload className={`w-8 h-8 transition-colors duration-300 ${isDragging ? 'text-emerald-400' : 'text-muted-foreground'}`} />
                         </div>
 
                         {/* Text */}
@@ -128,11 +145,11 @@ export const StickyUpload = ({ onFileSelect, onFilesSelect, isLoading, progress 
                             </p>
                         </div>
 
-                        {/* CTA Button */}
-                        <Button size="sm" className="w-full rounded-full gap-2 mt-2">
+                        {/* CTA Button — glass emerald */}
+                        <button className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-gradient-to-r from-emerald-500 to-emerald-600 text-white border border-emerald-400/30 shadow-[0_0_16px_rgba(16,185,129,0.2)] hover:shadow-[0_0_24px_rgba(16,185,129,0.3)] transition-all duration-300">
                             Select File
                             <ArrowRight className="w-4 h-4" />
-                        </Button>
+                        </button>
                     </div>
                 </label>
             </div>

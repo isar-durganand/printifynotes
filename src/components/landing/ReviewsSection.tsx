@@ -17,6 +17,7 @@ function StarDisplay({ rating, size = 'sm' }: { rating: number; size?: 'sm' | 'l
           style={{
             fill: star <= Math.round(rating) ? '#10b981' : 'transparent',
             stroke: star <= Math.round(rating) ? '#10b981' : 'hsl(var(--muted-foreground))',
+            filter: star <= Math.round(rating) ? 'drop-shadow(0 0 3px rgba(16, 185, 129, 0.3))' : 'none',
           }}
         />
       ))}
@@ -51,7 +52,7 @@ export function ReviewsSection() {
       <div className="container-tight">
         {/* Section header */}
         <div className="text-center mb-10 sm:mb-14">
-          <span className="inline-block text-xs font-semibold tracking-widest uppercase text-emerald-500 mb-4">
+          <span className="glass-pill text-emerald-400 text-xs font-semibold tracking-widest uppercase mb-6">
             Community
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight">
@@ -81,16 +82,16 @@ export function ReviewsSection() {
         {loading && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[...Array(DEFAULT_VISIBLE)].map((_, i) => (
-              <div key={i} className="rounded-xl border border-border bg-card p-5 animate-pulse">
+              <div key={i} className="rounded-xl liquid-glass p-5 animate-pulse">
                 <div className="flex gap-1 mb-3">
                   {[...Array(5)].map((__, j) => (
-                    <div key={j} className="w-4 h-4 rounded-full bg-secondary" />
+                    <div key={j} className="w-4 h-4 rounded-full bg-white/[0.06]" />
                   ))}
                 </div>
                 <div className="space-y-2">
-                  <div className="h-3 bg-secondary rounded w-full" />
-                  <div className="h-3 bg-secondary rounded w-4/5" />
-                  <div className="h-3 bg-secondary rounded w-2/3" />
+                  <div className="h-3 bg-white/[0.06] rounded w-full" />
+                  <div className="h-3 bg-white/[0.06] rounded w-4/5" />
+                  <div className="h-3 bg-white/[0.06] rounded w-2/3" />
                 </div>
               </div>
             ))}
@@ -104,15 +105,15 @@ export function ReviewsSection() {
               {visibleReviews.map((review) => (
                 <div
                   key={review.id}
-                  className="group rounded-xl border border-border bg-card p-5 hover:border-emerald-500/40 hover:shadow-lg hover:shadow-emerald-500/5 transition-all duration-300"
+                  className="group liquid-glass-interactive prismatic-border rounded-xl p-5"
                 >
-                  <div className="flex items-start justify-between mb-3">
+                  <div className="flex items-start justify-between mb-3 relative z-10">
                     <StarDisplay rating={review.rating} />
                     <span className="text-xs text-muted-foreground shrink-0 ml-2">
                       {timeAgo(review.createdAt)}
                     </span>
                   </div>
-                  <p className="text-sm text-foreground/90 leading-relaxed line-clamp-4">
+                  <p className="text-sm text-foreground/90 leading-relaxed line-clamp-4 relative z-10">
                     "{review.comment}"
                   </p>
                 </div>
@@ -125,7 +126,7 @@ export function ReviewsSection() {
                 <Button
                   variant="outline"
                   onClick={() => setShowAll((v) => !v)}
-                  className="gap-2 rounded-xl border-border hover:border-emerald-500/50 hover:text-emerald-500 transition-colors"
+                  className="gap-2 rounded-xl border-white/[0.08] bg-white/[0.03] backdrop-blur-md hover:border-emerald-500/30 hover:text-emerald-400 hover:bg-white/[0.05] transition-all duration-300"
                 >
                   {showAll ? (
                     <>
@@ -144,9 +145,9 @@ export function ReviewsSection() {
           </>
         )}
 
-        {/* Empty state — no reviews at all */}
+        {/* Empty state */}
         {!loading && totalReviews === 0 && (
-          <div className="text-center py-12 rounded-xl border border-dashed border-border">
+          <div className="text-center py-12 rounded-xl liquid-glass border-dashed">
             <MessageSquare className="w-10 h-10 text-muted-foreground/40 mx-auto mb-3" />
             <p className="text-muted-foreground text-sm">No reviews yet.</p>
             <p className="text-muted-foreground/60 text-xs mt-1">

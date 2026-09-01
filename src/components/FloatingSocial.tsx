@@ -39,27 +39,28 @@ export const FloatingSocial = () => {
     return (
         <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
             {/* Social links - show when open */}
-            <div className={`flex flex-col gap-2 transition-all duration-300 ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
-                {socialLinks.map((social) => (
+            <div className={`flex flex-col gap-2 transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
+                {socialLinks.map((social, index) => (
                     <a
                         key={social.name}
                         href={social.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`w-12 h-12 rounded-full bg-card border border-border flex items-center justify-center text-foreground transition-all duration-200 ${social.color} hover:text-white hover:border-transparent hover:scale-110 shadow-lg`}
+                        className={`w-12 h-12 rounded-xl flex items-center justify-center text-foreground transition-all duration-300 ${social.color} hover:text-white hover:scale-110 bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.3)]`}
                         title={`Follow on ${social.name}`}
+                        style={{ transitionDelay: isOpen ? `${index * 50}ms` : '0ms' }}
                     >
                         <social.icon />
                     </a>
                 ))}
             </div>
 
-            {/* Toggle button */}
+            {/* Toggle button — liquid glass */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`w-14 h-14 rounded-full flex items-center justify-center shadow-2xl shadow-black/40 transition-all duration-300 ${isOpen
-                        ? 'bg-card border border-border text-foreground rotate-0'
-                        : 'bg-emerald-500 text-white rotate-0'
+                className={`w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${isOpen
+                        ? 'bg-white/[0.06] backdrop-blur-xl border border-white/[0.1] text-foreground shadow-[0_8px_32px_rgba(0,0,0,0.3)] rotate-90'
+                        : 'bg-gradient-to-br from-emerald-400 to-emerald-600 text-white shadow-[0_8px_32px_rgba(16,185,129,0.3)] rotate-0'
                     }`}
                 aria-label={isOpen ? 'Close social links' : 'Open social links'}
             >

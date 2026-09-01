@@ -41,137 +41,142 @@ export const Footer = () => {
   return (
     <footer className="py-6 sm:py-8 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="rounded-2xl sm:rounded-3xl bg-card/60 backdrop-blur-xl border border-border p-6 sm:p-8 md:p-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-10">
-            {/* Logo and tagline */}
-            <div className="col-span-2 md:col-span-1">
-              <Link to="/" className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-lg bg-emerald-500">
-                  <FileText className="w-5 h-5 text-white" />
+        <div className="rounded-2xl sm:rounded-3xl liquid-glass-strong p-6 sm:p-8 md:p-12">
+          {/* Top highlight */}
+          <div className="absolute inset-x-0 top-0 h-px rounded-t-3xl bg-gradient-to-r from-transparent via-white/[0.1] to-transparent pointer-events-none" />
+
+          <div className="relative z-10">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-10">
+              {/* Logo and tagline */}
+              <div className="col-span-2 md:col-span-1">
+                <Link to="/" className="flex items-center gap-3 mb-4 group">
+                  <div className="p-2 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-[0_0_16px_rgba(16,185,129,0.3)] transition-shadow duration-300 group-hover:shadow-[0_0_24px_rgba(16,185,129,0.5)]">
+                    <FileText className="w-5 h-5 text-white" />
+                  </div>
+                  <span className="text-lg font-semibold">Printify Notes</span>
+                </Link>
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  Transform dark PDFs into print-ready documents. Free, private, and eco-friendly.
+                </p>
+                {/* Social links — frosted glass circles */}
+                <div className="flex items-center gap-2.5">
+                  {socialLinks.map((social) => (
+                    <a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-9 h-9 rounded-xl flex items-center justify-center text-muted-foreground transition-all duration-300 bg-white/[0.04] border border-white/[0.06] hover:text-white hover:bg-emerald-500/20 hover:border-emerald-500/30 hover:shadow-[0_0_16px_rgba(16,185,129,0.15)]"
+                      title={social.name}
+                    >
+                      <social.icon />
+                    </a>
+                  ))}
                 </div>
-                <span className="text-lg font-semibold">Printify Notes</span>
-              </Link>
-              <p className="text-sm text-muted-foreground mb-4">
-                Transform dark PDFs into print-ready documents. Free, private, and eco-friendly.
-              </p>
-              {/* Social links */}
-              <div className="flex items-center gap-3">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.name}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-emerald-500 transition-all duration-200"
-                    title={social.name}
-                  >
-                    <social.icon />
-                  </a>
-                ))}
+              </div>
+
+              {/* Product */}
+              <div>
+                <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Product</h4>
+                <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-muted-foreground">
+                  <li>
+                    <ScrollLink to="/#how-it-works" className="hover:text-foreground transition-colors duration-200">
+                      How It Works
+                    </ScrollLink>
+                  </li>
+                  <li>
+                    <ScrollLink to="/#features" className="hover:text-foreground transition-colors duration-200">
+                      Features
+                    </ScrollLink>
+                  </li>
+                  <li>
+                    <ScrollLink to="/#faq" className="hover:text-foreground transition-colors duration-200">
+                      FAQ
+                    </ScrollLink>
+                  </li>
+                  <li>
+                    <Link to="/docs" className="hover:text-foreground transition-colors duration-200">
+                      Documentation
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Resources */}
+              <div>
+                <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Resources</h4>
+                <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-muted-foreground">
+                  <li>
+                    <Link to="/blog" className="hover:text-foreground transition-colors duration-200">
+                      Blog
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/blog/how-to-print-physics-wallah-notes" className="hover:text-foreground transition-colors duration-200">
+                      Print PW Notes
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/blog/save-ink-printing-tips" className="hover:text-foreground transition-colors duration-200">
+                      Ink Saving Tips
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Company */}
+              <div>
+                <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Company</h4>
+                <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-muted-foreground">
+                  <li>
+                    <Link to="/about" className="hover:text-foreground transition-colors duration-200">
+                      About Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/contact" className="hover:text-foreground transition-colors duration-200">
+                      Contact
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/privacy" className="hover:text-foreground transition-colors duration-200">
+                      Privacy Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/terms" className="hover:text-foreground transition-colors duration-200">
+                      Terms of Service
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/disclaimer" className="hover:text-foreground transition-colors duration-200">
+                      Disclaimer
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/donate" className="hover:text-rose-400 transition-colors duration-200 flex items-center gap-1">
+                      ❤️ Donate
+                    </Link>
+                  </li>
+                </ul>
               </div>
             </div>
 
-            {/* Product */}
-            <div>
-              <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Product</h4>
-              <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-muted-foreground">
-                <li>
-                  <ScrollLink to="/#how-it-works" className="hover:text-foreground transition-colors">
-                    How It Works
-                  </ScrollLink>
-                </li>
-                <li>
-                  <ScrollLink to="/#features" className="hover:text-foreground transition-colors">
-                    Features
-                  </ScrollLink>
-                </li>
-                <li>
-                  <ScrollLink to="/#faq" className="hover:text-foreground transition-colors">
-                    FAQ
-                  </ScrollLink>
-                </li>
-                <li>
-                  <Link to="/docs" className="hover:text-foreground transition-colors">
-                    Documentation
-                  </Link>
-                </li>
-              </ul>
+            {/* Bottom bar */}
+            <div className="pt-6 sm:pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
+              <p>© {currentYear} Printify Notes. All rights reserved.</p>
+              <p className="flex items-center gap-1 flex-wrap justify-center">
+                Made with <Heart className="w-4 h-4 text-destructive fill-destructive" /> by{' '}
+                <a
+                  href="https://www.linkedin.com/in/durganandishar/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-emerald-400 hover:underline font-medium"
+                >
+                  Durganand Ishar
+                </a>
+              </p>
             </div>
-
-            {/* Resources */}
-            <div>
-              <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Resources</h4>
-              <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-muted-foreground">
-                <li>
-                  <Link to="/blog" className="hover:text-foreground transition-colors">
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/blog/how-to-print-physics-wallah-notes" className="hover:text-foreground transition-colors">
-                    Print PW Notes
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/blog/save-ink-printing-tips" className="hover:text-foreground transition-colors">
-                    Ink Saving Tips
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Company */}
-            <div>
-              <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Company</h4>
-              <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-muted-foreground">
-                <li>
-                  <Link to="/about" className="hover:text-foreground transition-colors">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contact" className="hover:text-foreground transition-colors">
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/privacy" className="hover:text-foreground transition-colors">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/terms" className="hover:text-foreground transition-colors">
-                    Terms of Service
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/disclaimer" className="hover:text-foreground transition-colors">
-                    Disclaimer
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/donate" className="hover:text-rose-400 transition-colors flex items-center gap-1">
-                    ❤️ Donate
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Bottom bar */}
-          <div className="pt-6 sm:pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
-            <p>© {currentYear} Printify Notes. All rights reserved.</p>
-            <p className="flex items-center gap-1 flex-wrap justify-center">
-              Made with <Heart className="w-4 h-4 text-destructive fill-destructive" /> by{' '}
-              <a
-                href="https://www.linkedin.com/in/durganandishar/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-emerald-500 hover:underline font-medium"
-              >
-                Durganand Ishar
-              </a>
-            </p>
           </div>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import React from 'react';
-import { ArrowDown, Shield, Zap, Eye, Hexagon, Triangle, Circle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { ArrowDown, Shield, Zap, Eye } from 'lucide-react';
 
 export const HeroSection = () => {
   const scrollToUpload = () => {
@@ -8,65 +7,58 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center hero-pattern overflow-hidden pt-24">
-      {/* Background grid */}
-      <div className="absolute inset-0 grid-pattern opacity-20" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
+      {/* Gradient mesh background */}
+      <div className="gradient-mesh" />
 
-      {/* Decorative floating shapes */}
-      <div className="absolute top-32 left-[10%] animate-float-slow opacity-20">
-        <Hexagon className="w-16 h-16 text-emerald-500 stroke-1" />
-      </div>
-      <div className="absolute top-[40%] right-[15%] animate-float-medium opacity-15">
-        <Triangle className="w-12 h-12 text-blue-500 stroke-1" />
-      </div>
-      <div className="absolute bottom-[25%] left-[20%] animate-float-slow opacity-20" style={{ animationDelay: '2s' }}>
-        <Circle className="w-10 h-10 text-purple-500 stroke-1" />
-      </div>
-      <div className="absolute top-[60%] right-[8%] animate-float-medium opacity-15" style={{ animationDelay: '1s' }}>
-        <Hexagon className="w-8 h-8 text-emerald-400 stroke-1" />
-      </div>
+      {/* Aurora light streak */}
+      <div className="aurora-streak" />
+
+      {/* Subtle grid overlay */}
+      <div className="absolute inset-0 grid-pattern opacity-[0.08]" />
 
       <div className="container-tight relative z-10 text-center">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 border border-border mb-8 opacity-0 animate-fade-in">
-          <Shield className="w-4 h-4 text-emerald-500" />
-          <span className="text-sm text-muted-foreground">100% Private • Browser-Based</span>
+        {/* Badge — liquid glass pill */}
+        <div className="glass-pill mb-8 opacity-0 animate-fade-in border-emerald-500/[0.15] shadow-[0_4px_24px_rgba(16,185,129,0.08)]">
+          <Shield className="w-4 h-4 text-emerald-400" />
+          <span className="text-sm text-muted-foreground">100% Private · Browser-Based</span>
         </div>
 
-        {/* Main heading - SEO optimized */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 opacity-0 animate-fade-in delay-100">
-          Convert Dark PDF Notes
+        {/* Main heading */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-6 opacity-0 animate-fade-in delay-100 tracking-tight">
+          <span className="bg-gradient-to-b from-foreground to-foreground/70 bg-clip-text text-transparent">
+            Convert Dark PDF Notes
+          </span>
           <br />
-          <span className="text-muted-foreground">For Easy Printing</span>
+          <span className="bg-gradient-to-r from-emerald-400 via-emerald-300 to-cyan-400 bg-clip-text text-transparent">
+            For Easy Printing
+          </span>
         </h1>
 
         {/* Subheading */}
-        <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 opacity-0 animate-fade-in delay-200">
+        <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 opacity-0 animate-fade-in delay-200 leading-relaxed">
           Transform dark-background lecture notes from PW, Unacademy, Vedantu, and other coaching platforms
           into clean, ink-saving PDFs. Perfect for NEET & JEE preparation notes.
         </p>
 
-        {/* CTA Buttons */}
+        {/* CTA Buttons — glass styled */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 opacity-0 animate-fade-in delay-300">
-          <Button
-            size="lg"
+          <button
             onClick={scrollToUpload}
-            className="text-base px-8 py-6 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white"
+            className="btn-glass-emerald flex items-center gap-2"
           >
             Start Converting — Free
-            <ArrowDown className="w-4 h-4 ml-2" />
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
+            <ArrowDown className="w-4 h-4" />
+          </button>
+          <button
             onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
-            className="text-base px-8 py-6 rounded-full"
+            className="btn-glass-outline flex items-center gap-2"
           >
             See How It Works
-          </Button>
+          </button>
         </div>
 
-        {/* Trust badges */}
+        {/* Trust badges — glass pills */}
         <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 opacity-0 animate-fade-in delay-400">
           <TrustBadge icon={Shield} text="No Data Uploads" />
           <TrustBadge icon={Zap} text="Instant Processing" />
@@ -125,10 +117,10 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — refined glass */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in delay-600">
-        <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2">
-          <div className="w-1.5 h-3 bg-muted-foreground/50 rounded-full animate-bounce" />
+        <div className="w-7 h-11 rounded-full border border-white/[0.15] flex items-start justify-center p-2 shadow-[0_0_16px_rgba(255,255,255,0.03)]">
+          <div className="w-1.5 h-3 bg-emerald-400/60 rounded-full animate-bounce shadow-[0_0_8px_rgba(16,185,129,0.3)]" />
         </div>
       </div>
     </section>
@@ -136,8 +128,8 @@ export const HeroSection = () => {
 };
 
 const TrustBadge = ({ icon: Icon, text }: { icon: React.ElementType; text: string }) => (
-  <div className="flex items-center gap-2 px-3.5 py-2 rounded-full border border-border bg-card/60 text-muted-foreground">
-    <Icon className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+  <div className="glass-pill text-muted-foreground hover:border-emerald-500/20 transition-all duration-300">
+    <Icon className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
     <span className="text-xs font-medium">{text}</span>
   </div>
 );

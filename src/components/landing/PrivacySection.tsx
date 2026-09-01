@@ -26,28 +26,34 @@ export const PrivacySection = () => {
 
   return (
     <section className="section-padding relative overflow-hidden">
-      <div className="absolute inset-0 hero-pattern opacity-50" />
+      {/* Background glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[400px] bg-emerald-500/[0.025] rounded-full blur-[120px]" />
+      </div>
 
       <div className="container-tight relative z-10">
         <div
           ref={sectionRef}
-          className={`glass rounded-3xl p-8 md:p-12 lg:p-16 scroll-hidden-scale ${sectionVisible ? 'scroll-visible-scale' : ''}`}
+          className={`liquid-glass-strong rounded-3xl p-8 md:p-12 lg:p-16 scroll-hidden-scale ${sectionVisible ? 'scroll-visible-scale' : ''}`}
         >
-          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+          {/* Top highlight */}
+          <div className="absolute inset-x-0 top-0 h-px rounded-t-3xl bg-gradient-to-r from-transparent via-white/[0.12] to-transparent pointer-events-none" />
+
+          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 relative z-10">
             {/* Left side - Main message */}
             <div className="flex-1 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
-                <Shield className="w-4 h-4 text-emerald-500" />
-                <span className="text-sm text-emerald-500 font-medium">Privacy First</span>
+              <div className="glass-pill border-emerald-500/20 shadow-[0_4px_24px_rgba(16,185,129,0.08)] mb-6">
+                <Shield className="w-4 h-4 text-emerald-400" />
+                <span className="text-sm text-emerald-400 font-medium">Privacy First</span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4 tracking-tight">
                 Your Documents,
                 <br />
                 <span className="text-muted-foreground">Completely Private</span>
               </h2>
 
-              <p className="text-muted-foreground mb-6 max-w-md mx-auto lg:mx-0">
+              <p className="text-muted-foreground mb-6 max-w-md mx-auto lg:mx-0 leading-relaxed">
                 Unlike online converters, Printify Notes processes everything in your browser.
                 Your sensitive documents never leave your device.
               </p>
@@ -55,7 +61,7 @@ export const PrivacySection = () => {
 
             {/* Right side - Features */}
             <div ref={featuresRef} className="flex-1 w-full">
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {privacyFeatures.map((feature, index) => (
                   <PrivacyFeature
                     key={feature.title}
@@ -87,14 +93,14 @@ const PrivacyFeature = ({
   index: number;
 }) => (
   <div
-    className={`flex items-start gap-4 p-4 rounded-xl bg-background/50 scroll-hidden-right ${isVisible ? 'scroll-visible-x' : ''} stagger-${index + 1}`}
+    className={`flex items-start gap-4 p-4 rounded-xl liquid-glass-subtle scroll-hidden-right ${isVisible ? 'scroll-visible-x' : ''} stagger-${index + 1} transition-all duration-300 hover:bg-white/[0.04]`}
   >
-    <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
-      <Icon className="w-5 h-5 text-emerald-500" />
+    <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 bg-white/[0.04] border border-white/[0.08]">
+      <Icon className="w-5 h-5 text-emerald-400" />
     </div>
     <div>
       <h4 className="font-semibold mb-1">{title}</h4>
-      <p className="text-sm text-muted-foreground">{description}</p>
+      <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
     </div>
   </div>
 );

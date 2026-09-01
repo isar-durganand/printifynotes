@@ -63,20 +63,25 @@ export const FAQ = () => {
   const { ref: accordionRef, isVisible: accordionVisible } = useScrollAnimation({ threshold: 0.1 });
 
   return (
-    <section className="section-padding bg-card/30" id="faq">
-      <div className="container-tight">
+    <section className="section-padding relative" id="faq">
+      {/* Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute bottom-1/4 left-1/3 w-[500px] h-[300px] bg-cyan-500/[0.015] rounded-full blur-[100px]" />
+      </div>
+
+      <div className="container-tight relative z-10">
         {/* Section header */}
         <div
           ref={headerRef}
           className={`text-center mb-12 scroll-hidden ${headerVisible ? 'scroll-visible' : ''}`}
         >
-          <span className="inline-block text-sm text-emerald-500 font-medium mb-4">
+          <span className="glass-pill text-emerald-400 text-xs font-semibold tracking-widest uppercase mb-6">
             FAQ
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
+          <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
             Everything you need to know about converting dark PDFs for printing —
             from PW notes to Unacademy slides and more.
           </p>
@@ -87,17 +92,17 @@ export const FAQ = () => {
           ref={accordionRef}
           className={`max-w-3xl mx-auto scroll-hidden ${accordionVisible ? 'scroll-visible' : ''}`}
         >
-          <Accordion type="single" collapsible className="space-y-4">
+          <Accordion type="single" collapsible className="space-y-3">
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="glass rounded-xl px-6 border-none"
+                className="liquid-glass rounded-xl px-6 border-none transition-all duration-300 data-[state=open]:shadow-[0_0_24px_rgba(16,185,129,0.06)] data-[state=open]:border-emerald-500/10"
               >
                 <AccordionTrigger className="text-left hover:no-underline py-5">
                   <span className="font-medium">{faq.question}</span>
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-5">
+                <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
