@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Star, MessageSquare, ChevronDown, ChevronUp } from 'lucide-react';
+import { Star, MessageSquare, ChevronDown, ChevronUp, Reply, Check, X } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
 import { useReviews } from '@/hooks/useReviews';
 import { Button } from '@/components/ui/button';
 
@@ -39,8 +40,21 @@ function timeAgo(date: Date): string {
 }
 
 export function ReviewsSection() {
-  const { reviews, loading, averageRating, totalReviews } = useReviews();
+  const { reviews, loading, averageRating, totalReviews, submitReply, submitting } = useReviews();
   const [showAll, setShowAll] = useState(false);
+  const [searchParams] = useSearchParams();
+  const isAdmin = searchParams.get('admin') !== null;
+  const [replyingTo, setReplyingTo] = useState<string | null>(null);
+  const [replyText, setReplyText] = useState('');
+
+  const handleReplySubmit = async (reviewId: string) => {
+    if (!replyText.trim()) return;
+    const success = await submitReply(reviewId, replyText);
+    if (success) {
+      setReplyingTo(null);
+      setReplyText('');
+    }
+  };
 
   // Only display reviews that have a written comment
   const withComments = reviews.filter((r) => r.comment.trim().length > 0);
@@ -116,6 +130,68 @@ export function ReviewsSection() {
                   <p className="text-sm text-foreground/90 leading-relaxed line-clamp-4 relative z-10">
                     "{review.comment}"
                   </p>
+
+                  {/* Existing Reply Display */}
+                  {review.reply && (
+                    <div className="mt-4 pt-3 border-t border-white/[0.08] relative z-10">
+                      <div className="flex items-center gap-1.5 mb-1.5 text-emerald-400">
+                        <Reply className="w-3.5 h-3.5" />
+                        <span className="text-xs font-semibold tracking-wide">Developer Reply</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed pl-5">
+                        {review.reply}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Admin Reply UI */}
+                  {isAdmin && !review.reply && (
+                    <div className="mt-4 pt-3 border-t border-white/[0.08] relative z-10">
+                      {replyingTo === review.id ? (
+                        <div className="space-y-2">
+                          <textarea
+                            autoFocus
+                            value={replyText}
+                            onChange={(e) => setReplyText(e.target.value)}
+                            placeholder="Type your reply..."
+                            className="w-full text-sm bg-white/[0.04] border border-white/[0.1] rounded-lg p-2 text-foreground focus:outline-none focus:border-emerald-500/50 resize-none h-20 placeholder:text-muted-foreground/50"
+                          />
+                          <div className="flex justify-end gap-2">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="h-7 text-xs px-2 border-white/[0.1] hover:bg-white/[0.05]"
+                              onClick={() => {
+                                setReplyingTo(null);
+                                setReplyText('');
+                              }}
+                              disabled={submitting}
+                            >
+                              <X className="w-3 h-3 mr-1" /> Cancel
+                            </Button>
+                            <Button
+                              size="sm"
+                              className="h-7 text-xs px-2 bg-emerald-500 hover:bg-emerald-600 text-white"
+                              onClick={() => handleReplySubmit(review.id)}
+                              disabled={submitting || !replyText.trim()}
+                            >
+                              <Check className="w-3 h-3 mr-1" /> {submitting ? 'Saving...' : 'Save'}
+                            </Button>
+                          </div>
+                        </div>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            setReplyingTo(review.id);
+                            setReplyText('');
+                          }}
+                          className="flex items-center gap-1.5 text-xs text-emerald-500 hover:text-emerald-400 font-medium transition-colors"
+                        >
+                          <Reply className="w-3.5 h-3.5" /> Reply to Review
+                        </button>
+                      )}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
