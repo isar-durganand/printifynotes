@@ -43,7 +43,7 @@ const Donate = () => {
                         <Sparkles className="w-5 h-5 text-amber-400" />
                     </div>
                     <div className="absolute top-[10%] right-[8%] animate-float-slow opacity-15" style={{ animationDelay: '2s' }}>
-                        <Sparkles className="w-4 h-4 text-emerald-400" />
+                        <Sparkles className="w-4 h-4 text-[hsl(var(--accent-highlight))]" />
                     </div>
                 </div>
 
@@ -52,7 +52,7 @@ const Donate = () => {
                     Support Our Mission
                 </div>
 
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-rose-400 via-pink-400 to-emerald-400 bg-clip-text text-transparent">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-rose-400 via-pink-400 to-teal-400 bg-clip-text text-transparent">
                     Help Us Keep Education Free
                 </h1>
 
@@ -62,7 +62,7 @@ const Donate = () => {
                 </p>
 
                 {/* Donate Button — right in the hero for maximum impact */}
-                <div className="max-w-sm mx-auto p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-rose-500/5 via-pink-500/5 to-emerald-500/5 border border-rose-500/20 relative overflow-hidden">
+                <div className="max-w-sm mx-auto p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-rose-500/5 via-pink-500/5 to-[hsl(var(--accent-highlight))]/5 border border-rose-500/20 relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-rose-500/10 to-transparent rounded-2xl blur-xl" aria-hidden="true" />
                     <div className="relative z-10">
                         <div className="w-14 h-14 rounded-full bg-rose-500/10 flex items-center justify-center mx-auto mb-4">
@@ -103,8 +103,8 @@ const Donate = () => {
                     </div>
 
                     <div className="p-6 rounded-2xl bg-card border border-border hover-lift group">
-                        <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                            <Code className="w-6 h-6 text-emerald-400" />
+                        <div className="w-12 h-12 rounded-xl bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                            <Code className="w-6 h-6 text-[hsl(var(--accent-highlight))]" />
                         </div>
                         <h3 className="font-semibold mb-2">New Features</h3>
                         <p className="text-sm text-muted-foreground">
@@ -129,7 +129,7 @@ const Donate = () => {
                 <h2 className="text-2xl font-semibold mb-6">Your Impact Matters</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                     <div>
-                        <div className="text-3xl font-bold text-emerald-400 mb-1">🎓</div>
+                        <div className="text-3xl font-bold text-[hsl(var(--accent-highlight))] mb-1">🎓</div>
                         <p className="text-sm text-muted-foreground">
                             <strong className="text-foreground block mb-1">Students Helped</strong>
                             Thousands of NEET & JEE aspirants use our tools every month
@@ -186,7 +186,7 @@ const Donate = () => {
             </section>
 
             {/* Thank You Note */}
-            <section className="p-8 rounded-2xl bg-gradient-to-br from-rose-500/5 to-emerald-500/5 border border-rose-500/10 text-center">
+            <section className="p-8 rounded-2xl bg-gradient-to-br from-rose-500/5 to-[hsl(var(--accent-highlight))]/5 border border-rose-500/10 text-center">
                 <Heart className="w-8 h-8 text-rose-400 fill-rose-400 mx-auto mb-4" />
                 <h2 className="text-2xl font-semibold mb-3">Thank You for Caring</h2>
                 <p className="text-muted-foreground max-w-lg mx-auto mb-6">

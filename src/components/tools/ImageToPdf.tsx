@@ -192,7 +192,7 @@ export const ImageToPdf: React.FC = () => {
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                        <ImageIcon className="w-5 h-5 text-emerald-500" />
+                        <ImageIcon className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
                         Upload Images
                     </CardTitle>
                     <CardDescription>
@@ -203,7 +203,7 @@ export const ImageToPdf: React.FC = () => {
                     <div
                         onDrop={handleDrop}
                         onDragOver={handleDragOver}
-                        className="border-2 border-dashed border-border rounded-xl p-8 text-center hover:border-emerald-500/50 transition-colors cursor-pointer"
+                        className="border-2 border-dashed border-border rounded-xl p-8 text-center hover:border-[hsl(var(--accent-highlight)/0.4)] transition-colors cursor-pointer"
                     >
                         <input
                             type="file"
@@ -216,7 +216,7 @@ export const ImageToPdf: React.FC = () => {
                         <label htmlFor="image-upload" className="cursor-pointer">
                             <Plus className="w-12 h-12 mx-auto text-muted-foreground mb-4" />
                             <p className="text-muted-foreground">
-                                Drop images here or <span className="text-emerald-500">browse</span>
+                                Drop images here or <span className="text-[hsl(var(--accent-highlight))]">browse</span>
                             </p>
                         </label>
                     </div>
@@ -310,7 +310,7 @@ export const ImageToPdf: React.FC = () => {
                             <Button
                                 onClick={convertToPdf}
                                 disabled={images.length === 0 || isProcessing}
-                                className="flex-1 bg-emerald-500 hover:bg-emerald-600"
+                                className="flex-1 bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)]"
                             >
                                 <Download className="w-4 h-4 mr-2" />
                                 {isProcessing ? 'Converting...' : `Convert ${images.length} Images to PDF`}

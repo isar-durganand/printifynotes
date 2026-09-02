@@ -171,12 +171,12 @@ const Blog = () => {
                 <h2 className="text-xl font-semibold mb-6">Featured Article</h2>
                 <Link
                     to={`/blog/${blogPosts[0].slug}`}
-                    className="block p-6 md:p-8 rounded-2xl bg-card border border-border hover:border-emerald-500/50 transition-colors group"
+                    className="block p-6 md:p-8 rounded-2xl bg-card border border-border hover:border-[hsl(var(--accent-highlight))]/50 transition-colors group"
                 >
-                    <span className="inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-500 text-sm font-medium mb-4">
+                    <span className="inline-block px-3 py-1 rounded-full bg-[hsl(var(--accent-highlight))]/10 text-[hsl(var(--accent-highlight))] text-sm font-medium mb-4">
                         {blogPosts[0].category}
                     </span>
-                    <h3 className="text-2xl md:text-3xl font-bold mb-4 group-hover:text-emerald-500 transition-colors">
+                    <h3 className="text-2xl md:text-3xl font-bold mb-4 group-hover:text-[hsl(var(--accent-highlight))] transition-colors">
                         {blogPosts[0].title}
                     </h3>
                     <p className="text-muted-foreground mb-6">
@@ -203,13 +203,13 @@ const Blog = () => {
                         <Link
                             key={post.slug}
                             to={`/blog/${post.slug}`}
-                            className="block p-6 rounded-2xl bg-card border border-border hover:border-emerald-500/50 transition-colors group"
+                            className="block p-6 rounded-2xl bg-card border border-border hover:border-[hsl(var(--accent-highlight))]/50 transition-colors group"
                         >
                             <div className="flex items-center gap-2 mb-3">
-                                <Tag className="w-4 h-4 text-emerald-500" />
-                                <span className="text-sm text-emerald-500">{post.category}</span>
+                                <Tag className="w-4 h-4 text-[hsl(var(--accent-highlight))]" />
+                                <span className="text-sm text-[hsl(var(--accent-highlight))]">{post.category}</span>
                             </div>
-                            <h3 className="text-lg font-semibold mb-3 group-hover:text-emerald-500 transition-colors line-clamp-2">
+                            <h3 className="text-lg font-semibold mb-3 group-hover:text-[hsl(var(--accent-highlight))] transition-colors line-clamp-2">
                                 {post.title}
                             </h3>
                             <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
@@ -220,7 +220,7 @@ const Blog = () => {
                                     <Clock className="w-4 h-4" />
                                     {post.readTime}
                                 </span>
-                                <span className="flex items-center gap-1 text-emerald-500 group-hover:gap-2 transition-all">
+                                <span className="flex items-center gap-1 text-[hsl(var(--accent-highlight))] group-hover:gap-2 transition-all">
                                     Read <ArrowRight className="w-4 h-4" />
                                 </span>
                             </div>
@@ -230,17 +230,17 @@ const Blog = () => {
             </section>
 
             {/* Explore Tools CTA */}
-            <section className="mt-16 p-8 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-center">
+            <section className="mt-16 p-8 rounded-2xl bg-[hsl(var(--accent-highlight))]/10 border border-[hsl(var(--accent-highlight)/0.15)] text-center">
                 <h2 className="text-2xl font-bold mb-4">Ready to Try Our Tools?</h2>
                 <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
                     Put these tips into practice with our free PDF tools. Convert dark PDFs,
                     merge files, compress documents, and more — all in your browser.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                    <Link to="/" className="px-6 py-3 rounded-xl bg-emerald-500 text-white font-medium hover:bg-emerald-600 transition-colors">
+                    <Link to="/" className="px-6 py-3 rounded-xl bg-[hsl(var(--accent-highlight))] text-white font-medium hover:bg-[hsl(var(--accent-highlight)/0.9)] transition-colors">
                         Try Dark PDF Converter
                     </Link>
-                    <Link to="/tools" className="px-6 py-3 rounded-xl bg-background border border-border text-foreground font-medium hover:border-emerald-500 transition-colors">
+                    <Link to="/tools" className="px-6 py-3 rounded-xl bg-background border border-border text-foreground font-medium hover:border-[hsl(var(--accent-highlight))] transition-colors">
                         View All Tools
                     </Link>
                 </div>

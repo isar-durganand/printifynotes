@@ -28,15 +28,15 @@ const MergePdf: React.FC = () => {
                     <h2 className="text-xl font-semibold mb-4">How to Merge PDFs</h2>
                     <ol className="space-y-3 text-muted-foreground">
                         <li className="flex gap-3">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 text-white text-sm flex items-center justify-center">1</span>
+                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--accent-highlight))] text-white text-sm flex items-center justify-center">1</span>
                             <span>Drop or select multiple PDF files</span>
                         </li>
                         <li className="flex gap-3">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 text-white text-sm flex items-center justify-center">2</span>
+                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--accent-highlight))] text-white text-sm flex items-center justify-center">2</span>
                             <span>Drag to reorder files as needed</span>
                         </li>
                         <li className="flex gap-3">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 text-white text-sm flex items-center justify-center">3</span>
+                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--accent-highlight))] text-white text-sm flex items-center justify-center">3</span>
                             <span>Click "Merge PDFs" to combine and download</span>
                         </li>
                     </ol>
@@ -47,8 +47,8 @@ const MergePdf: React.FC = () => {
                     <h2 className="text-2xl font-bold mb-6 text-center">Why Use Our PDF Merger?</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div className="p-5 rounded-xl border bg-card">
-                            <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-3">
-                                <Shield className="w-5 h-5 text-emerald-500" />
+                            <div className="w-10 h-10 rounded-lg bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center mb-3">
+                                <Shield className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
                             </div>
                             <h3 className="font-semibold mb-2">100% Private & Secure</h3>
                             <p className="text-sm text-muted-foreground">
@@ -90,19 +90,19 @@ const MergePdf: React.FC = () => {
                     <h2 className="text-xl font-semibold mb-4">Common Uses for PDF Merging</h2>
                     <ul className="space-y-3 text-muted-foreground">
                         <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
                             <span><strong>Students:</strong> Combine lecture notes, assignments, and study materials into organized documents for exam preparation.</span>
                         </li>
                         <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
                             <span><strong>Professionals:</strong> Merge contracts, reports, and presentations for client submissions or archiving.</span>
                         </li>
                         <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
                             <span><strong>Job Seekers:</strong> Combine resume, cover letter, and certificates into a single application document.</span>
                         </li>
                         <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
                             <span><strong>Teachers:</strong> Compile worksheets, lesson plans, and resources into comprehensive teaching materials.</span>
                         </li>
                     </ul>
@@ -175,12 +175,12 @@ const MergePdf: React.FC = () => {
                 </div>
 
                 {/* Educational Content */}
-                <div className="mt-12 p-6 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
-                    <h2 className="text-xl font-semibold mb-4 text-emerald-600 dark:text-emerald-400">Pro Tips for Merging PDFs</h2>
+                <div className="mt-12 p-6 rounded-xl bg-[hsl(var(--accent-highlight))]/5 border border-[hsl(var(--accent-highlight)/0.15)]">
+                    <h2 className="text-xl font-semibold mb-4 text-[hsl(var(--accent-highlight))] dark:text-[hsl(var(--accent-highlight))]">Pro Tips for Merging PDFs</h2>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                         <li>• Organize your files in the order you want before selecting them for faster merging.</li>
-                        <li>• For very large documents, consider compressing individual PDFs first using our <a href="/tools/compress-pdf" className="text-emerald-500 hover:underline">PDF Compressor</a>.</li>
-                        <li>• If you only need specific pages, use our <a href="/tools/extract-pages" className="text-emerald-500 hover:underline">PDF Page Extractor</a> first.</li>
+                        <li>• For very large documents, consider compressing individual PDFs first using our <a href="/tools/compress-pdf" className="text-[hsl(var(--accent-highlight))] hover:underline">PDF Compressor</a>.</li>
+                        <li>• If you only need specific pages, use our <a href="/tools/extract-pages" className="text-[hsl(var(--accent-highlight))] hover:underline">PDF Page Extractor</a> first.</li>
                         <li>• The merged PDF maintains all hyperlinks, bookmarks, and interactive elements from the original files.</li>
                     </ul>
                 </div>

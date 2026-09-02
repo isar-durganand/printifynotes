@@ -190,7 +190,7 @@ export const PdfPageExtractor: React.FC = () => {
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                        <Scissors className="w-5 h-5 text-emerald-500" />
+                        <Scissors className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
                         Extract PDF Pages
                     </CardTitle>
                     <CardDescription>
@@ -202,7 +202,7 @@ export const PdfPageExtractor: React.FC = () => {
                         <div
                             onDrop={handleDrop}
                             onDragOver={handleDragOver}
-                            className="border-2 border-dashed border-border rounded-xl p-8 text-center hover:border-emerald-500/50 transition-colors cursor-pointer"
+                            className="border-2 border-dashed border-border rounded-xl p-8 text-center hover:border-[hsl(var(--accent-highlight)/0.4)] transition-colors cursor-pointer"
                         >
                             <input
                                 type="file"
@@ -214,13 +214,13 @@ export const PdfPageExtractor: React.FC = () => {
                             <label htmlFor="extract-upload" className="cursor-pointer">
                                 <Upload className="w-12 h-12 mx-auto text-muted-foreground mb-4" />
                                 <p className="text-muted-foreground">
-                                    Drop a PDF here or <span className="text-emerald-500">browse</span>
+                                    Drop a PDF here or <span className="text-[hsl(var(--accent-highlight))]">browse</span>
                                 </p>
                             </label>
                         </div>
                     ) : (
                         <div className="flex items-center gap-3 p-4 rounded-lg border bg-card">
-                            <FileText className="w-8 h-8 text-emerald-500" />
+                            <FileText className="w-8 h-8 text-[hsl(var(--accent-highlight))]" />
                             <div className="flex-1 min-w-0">
                                 <p className="font-medium truncate">{file.name}</p>
                                 <p className="text-sm text-muted-foreground">
@@ -239,7 +239,7 @@ export const PdfPageExtractor: React.FC = () => {
             {isLoading && (
                 <Card>
                     <CardContent className="py-8 text-center">
-                        <div className="animate-spin w-8 h-8 border-4 border-emerald-500 border-t-transparent rounded-full mx-auto mb-4" />
+                        <div className="animate-spin w-8 h-8 border-4 border-[hsl(var(--accent-highlight))] border-t-transparent rounded-full mx-auto mb-4" />
                         <p className="text-muted-foreground">Loading PDF pages...</p>
                     </CardContent>
                 </Card>
@@ -291,7 +291,7 @@ export const PdfPageExtractor: React.FC = () => {
                                     key={page.pageNumber}
                                     onClick={() => togglePage(page.pageNumber)}
                                     className={`relative aspect-[3/4] rounded-lg overflow-hidden border-2 transition-all ${page.selected
-                                        ? 'border-emerald-500 ring-2 ring-emerald-500/20'
+                                        ? 'border-[hsl(var(--accent-highlight))] ring-2 ring-[hsl(var(--accent-highlight)/0.15)]'
                                         : 'border-transparent opacity-50 hover:opacity-75'
                                         }`}
                                 >
@@ -304,7 +304,7 @@ export const PdfPageExtractor: React.FC = () => {
                                         {page.pageNumber}
                                     </div>
                                     {page.selected && (
-                                        <div className="absolute top-1 right-1 w-5 h-5 bg-emerald-500 rounded-full flex items-center justify-center">
+                                        <div className="absolute top-1 right-1 w-5 h-5 bg-[hsl(var(--accent-highlight))] rounded-full flex items-center justify-center">
                                             <Check className="w-3 h-3 text-white" />
                                         </div>
                                     )}
@@ -317,7 +317,7 @@ export const PdfPageExtractor: React.FC = () => {
                             <Button
                                 onClick={extractPages}
                                 disabled={selectedCount === 0 || isExtracting}
-                                className="w-full bg-emerald-500 hover:bg-emerald-600"
+                                className="w-full bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)]"
                             >
                                 <Download className="w-4 h-4 mr-2" />
                                 {isExtracting ? 'Extracting...' : `Extract ${selectedCount} Pages`}

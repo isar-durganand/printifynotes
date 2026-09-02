@@ -20,9 +20,8 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
 
   return (
     <div className="rounded-xl liquid-glass overflow-hidden">
-      <div className="flex items-center gap-2.5 px-4 py-3 border-b border-white/[0.06] bg-white/[0.02] relative">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent pointer-events-none" />
-        <LayoutGrid className="w-4 h-4 text-emerald-400" />
+      <div className="flex items-center gap-2.5 px-4 py-3 border-b border-foreground/[0.06] bg-foreground/[0.02] relative">
+        <LayoutGrid className="w-4 h-4 text-[hsl(var(--accent-highlight))]" />
         <h3 className="font-semibold text-foreground text-sm tracking-tight relative z-10">Layout Options</h3>
       </div>
 

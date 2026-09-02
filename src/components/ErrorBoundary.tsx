@@ -73,7 +73,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
               </Button>
               <Button
                 onClick={this.handleReload}
-                className="bg-emerald-500 hover:bg-emerald-600 text-white"
+                className="bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)] text-white"
               >
                 <RefreshCw className="w-4 h-4 mr-2" />
                 Reload Page

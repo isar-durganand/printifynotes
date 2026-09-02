@@ -28,15 +28,15 @@ const CompressPdf: React.FC = () => {
                     <h2 className="text-xl font-semibold mb-4">How to Compress PDF</h2>
                     <ol className="space-y-3 text-muted-foreground">
                         <li className="flex gap-3">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 text-white text-sm flex items-center justify-center">1</span>
+                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--accent-highlight))] text-white text-sm flex items-center justify-center">1</span>
                             <span>Upload your PDF file</span>
                         </li>
                         <li className="flex gap-3">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 text-white text-sm flex items-center justify-center">2</span>
+                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--accent-highlight))] text-white text-sm flex items-center justify-center">2</span>
                             <span>Adjust quality slider (lower = smaller file)</span>
                         </li>
                         <li className="flex gap-3">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 text-white text-sm flex items-center justify-center">3</span>
+                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--accent-highlight))] text-white text-sm flex items-center justify-center">3</span>
                             <span>Click "Compress PDF" and download the result</span>
                         </li>
                     </ol>
@@ -56,8 +56,8 @@ const CompressPdf: React.FC = () => {
                             </p>
                         </div>
                         <div className="p-5 rounded-xl border bg-card">
-                            <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-3">
-                                <Shield className="w-5 h-5 text-emerald-500" />
+                            <div className="w-10 h-10 rounded-lg bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center mb-3">
+                                <Shield className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
                             </div>
                             <h3 className="font-semibold mb-2">100% Private</h3>
                             <p className="text-sm text-muted-foreground">
@@ -90,19 +90,19 @@ const CompressPdf: React.FC = () => {
                     <h2 className="text-xl font-semibold mb-4">When to Compress PDFs</h2>
                     <ul className="space-y-3 text-muted-foreground">
                         <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
                             <span><strong>Email Attachments:</strong> Most email providers limit attachments to 10-25MB. Compress large PDFs to send via Gmail, Outlook, or Yahoo Mail.</span>
                         </li>
                         <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
                             <span><strong>Website Uploads:</strong> Reduce PDF size for faster uploads to job portals, college applications, and government forms.</span>
                         </li>
                         <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
                             <span><strong>Cloud Storage:</strong> Save space on Google Drive, Dropbox, or OneDrive by compressing PDFs before uploading.</span>
                         </li>
                         <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
                             <span><strong>Mobile Sharing:</strong> Smaller files are easier to share via WhatsApp, Telegram, or other messaging apps.</span>
                         </li>
                     </ul>
@@ -181,14 +181,14 @@ const CompressPdf: React.FC = () => {
                 </div>
 
                 {/* Tips */}
-                <div className="mt-12 p-6 rounded-xl border border-emerald-500/20 bg-emerald-500/5">
-                    <h2 className="text-xl font-semibold text-emerald-600 dark:text-emerald-400 mb-4">💡 Pro Tips for PDF Compression</h2>
+                <div className="mt-12 p-6 rounded-xl border border-[hsl(var(--accent-highlight)/0.15)] bg-[hsl(var(--accent-highlight))]/5">
+                    <h2 className="text-xl font-semibold text-[hsl(var(--accent-highlight))] dark:text-[hsl(var(--accent-highlight))] mb-4">💡 Pro Tips for PDF Compression</h2>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                         <li>• PDFs with lots of high-resolution images compress better than text-heavy documents.</li>
                         <li>• If your PDF is already optimized, you may see minimal size reduction.</li>
                         <li>• For best results, start with the highest quality setting and reduce gradually until you reach your target size.</li>
                         <li>• Scanned documents often have large file sizes - compression works great on these!</li>
-                        <li>• After compressing, use our <a href="/tools/merge-pdf" className="text-emerald-500 hover:underline">PDF Merger</a> to combine multiple compressed files if needed.</li>
+                        <li>• After compressing, use our <a href="/tools/merge-pdf" className="text-[hsl(var(--accent-highlight))] hover:underline">PDF Merger</a> to combine multiple compressed files if needed.</li>
                     </ul>
                 </div>
 
@@ -213,25 +213,25 @@ const CompressPdf: React.FC = () => {
                                     <td className="py-2 px-3">Scanned Notes</td>
                                     <td className="py-2 px-3">15 MB</td>
                                     <td className="py-2 px-3">3 MB</td>
-                                    <td className="py-2 px-3 text-emerald-500">80%</td>
+                                    <td className="py-2 px-3 text-[hsl(var(--accent-highlight))]">80%</td>
                                 </tr>
                                 <tr className="border-b">
                                     <td className="py-2 px-3">Photo Album</td>
                                     <td className="py-2 px-3">25 MB</td>
                                     <td className="py-2 px-3">6 MB</td>
-                                    <td className="py-2 px-3 text-emerald-500">76%</td>
+                                    <td className="py-2 px-3 text-[hsl(var(--accent-highlight))]">76%</td>
                                 </tr>
                                 <tr className="border-b">
                                     <td className="py-2 px-3">Presentation</td>
                                     <td className="py-2 px-3">8 MB</td>
                                     <td className="py-2 px-3">2.5 MB</td>
-                                    <td className="py-2 px-3 text-emerald-500">69%</td>
+                                    <td className="py-2 px-3 text-[hsl(var(--accent-highlight))]">69%</td>
                                 </tr>
                                 <tr>
                                     <td className="py-2 px-3">Text Document</td>
                                     <td className="py-2 px-3">2 MB</td>
                                     <td className="py-2 px-3">1.5 MB</td>
-                                    <td className="py-2 px-3 text-emerald-500">25%</td>
+                                    <td className="py-2 px-3 text-[hsl(var(--accent-highlight))]">25%</td>
                                 </tr>
                             </tbody>
                         </table>

@@ -49,8 +49,8 @@ export const CookieConsent: React.FC = () => {
                 <div className="rounded-2xl bg-card/95 backdrop-blur-xl border border-border shadow-2xl shadow-black/30 p-4 sm:p-6">
                     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                         {/* Icon */}
-                        <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                            <Cookie className="w-5 h-5 text-emerald-500" />
+                        <div className="w-10 h-10 rounded-xl bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center flex-shrink-0">
+                            <Cookie className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
                         </div>
 
                         {/* Text */}
@@ -64,7 +64,7 @@ export const CookieConsent: React.FC = () => {
                                 to show relevant ads. You can accept or reject non-essential cookies.{' '}
                                 <Link
                                     to="/privacy"
-                                    className="text-emerald-500 hover:underline"
+                                    className="text-[hsl(var(--accent-highlight))] hover:underline"
                                 >
                                     Read our Privacy Policy
                                 </Link>
@@ -82,7 +82,7 @@ export const CookieConsent: React.FC = () => {
                             </button>
                             <button
                                 onClick={handleAccept}
-                                className="flex-1 sm:flex-none px-4 py-2 text-xs sm:text-sm rounded-xl bg-emerald-500 text-white hover:bg-emerald-600 transition-colors font-medium"
+                                className="flex-1 sm:flex-none px-4 py-2 text-xs sm:text-sm rounded-xl bg-[hsl(var(--accent-highlight))] text-white hover:bg-[hsl(var(--accent-highlight)/0.9)] transition-colors font-medium"
                                 aria-label="Accept all cookies"
                             >
                                 Accept All

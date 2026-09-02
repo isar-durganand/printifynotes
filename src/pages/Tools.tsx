@@ -61,9 +61,9 @@ const tools = [
         description: 'Convert dark-themed PDFs to light backgrounds for printing. Save up to 60% on ink costs.',
         icon: FileText,
         href: '/',
-        color: 'text-emerald-500',
-        bgColor: 'bg-emerald-500/10',
-        highlightColor: 'shadow-emerald-500/30',
+        color: 'text-[hsl(var(--accent-highlight))]',
+        bgColor: 'bg-[hsl(var(--accent-highlight))]/10',
+        highlightColor: 'shadow-[hsl(var(--accent-highlight)/0.15)]',
         featured: true,
     },
 ];
@@ -99,7 +99,7 @@ const Tools: React.FC = () => {
         >
             {/* Hero */}
             <div className="text-center mb-12">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-500 text-sm font-medium mb-6 animate-pulse">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[hsl(var(--accent-highlight))]/10 text-[hsl(var(--accent-highlight))] text-sm font-medium mb-6 animate-pulse">
                     <Sparkles className="w-4 h-4" />
                     100% Free & Private
                 </div>
@@ -118,13 +118,13 @@ const Tools: React.FC = () => {
                     <Link key={tool.href} to={tool.href}>
                         <Card
                             className={`h-full transition-all duration-500 group
-                                ${tool.featured ? 'border-emerald-500/30 bg-emerald-500/5' : ''}
+                                ${tool.featured ? 'border-[hsl(var(--accent-highlight)/0.2)] bg-[hsl(var(--accent-highlight))]/5' : ''}
                                 ${animatedIndex >= index
                                     ? 'opacity-100 translate-y-0'
                                     : 'opacity-0 translate-y-4'}
                                 ${showHighlight && animatedIndex >= index
                                     ? `shadow-xl ${tool.highlightColor} border-2 border-opacity-50 scale-[1.02]`
-                                    : 'hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/5'}
+                                    : 'hover:border-[hsl(var(--accent-highlight))]/50 hover:shadow-lg hover:shadow-[hsl(var(--accent-highlight)/0.04)]'}
                             `}
                             style={{
                                 transitionDelay: showHighlight ? `${index * 150}ms` : '0ms'
@@ -137,7 +137,7 @@ const Tools: React.FC = () => {
                                 <CardTitle className="flex items-center gap-2">
                                     {tool.title}
                                     {tool.featured && (
-                                        <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-500 text-white">
+                                        <span className="text-xs px-2 py-0.5 rounded-full bg-[hsl(var(--accent-highlight))] text-white">
                                             Popular
                                         </span>
                                     )}
@@ -150,7 +150,7 @@ const Tools: React.FC = () => {
                                 <CardDescription>{tool.description}</CardDescription>
                             </CardHeader>
                             <CardContent>
-                                <Button variant="ghost" className="p-0 h-auto text-emerald-500 group-hover:text-emerald-600">
+                                <Button variant="ghost" className="p-0 h-auto text-[hsl(var(--accent-highlight))] group-hover:text-[hsl(var(--accent-highlight))]">
                                     Use Tool
                                     <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
                                 </Button>
@@ -163,8 +163,8 @@ const Tools: React.FC = () => {
             {/* Key Features */}
             <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
                 <div>
-                    <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
-                        <Sparkles className="w-6 h-6 text-emerald-500" />
+                    <div className="w-12 h-12 rounded-full bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center mx-auto mb-4">
+                        <Sparkles className="w-6 h-6 text-[hsl(var(--accent-highlight))]" />
                     </div>
                     <h3 className="font-semibold mb-2">No Sign-up Required</h3>
                     <p className="text-sm text-muted-foreground">
@@ -172,8 +172,8 @@ const Tools: React.FC = () => {
                     </p>
                 </div>
                 <div>
-                    <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
-                        <Shield className="w-6 h-6 text-emerald-500" />
+                    <div className="w-12 h-12 rounded-full bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center mx-auto mb-4">
+                        <Shield className="w-6 h-6 text-[hsl(var(--accent-highlight))]" />
                     </div>
                     <h3 className="font-semibold mb-2">100% Private</h3>
                     <p className="text-sm text-muted-foreground">
@@ -181,8 +181,8 @@ const Tools: React.FC = () => {
                     </p>
                 </div>
                 <div>
-                    <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
-                        <Zap className="w-6 h-6 text-emerald-500" />
+                    <div className="w-12 h-12 rounded-full bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center mx-auto mb-4">
+                        <Zap className="w-6 h-6 text-[hsl(var(--accent-highlight))]" />
                     </div>
                     <h3 className="font-semibold mb-2">Fast & Free</h3>
                     <p className="text-sm text-muted-foreground">
@@ -205,15 +205,15 @@ const Tools: React.FC = () => {
                         <h3 className="text-lg font-semibold mb-3">📚 Study Material Management</h3>
                         <ul className="space-y-2 text-sm text-muted-foreground">
                             <li className="flex items-start gap-2">
-                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <Check className="w-4 h-4 text-[hsl(var(--accent-highlight))] mt-0.5 flex-shrink-0" />
                                 <span>Combine chapter-wise PDFs into complete study guides</span>
                             </li>
                             <li className="flex items-start gap-2">
-                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <Check className="w-4 h-4 text-[hsl(var(--accent-highlight))] mt-0.5 flex-shrink-0" />
                                 <span>Extract specific topics from large textbooks</span>
                             </li>
                             <li className="flex items-start gap-2">
-                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <Check className="w-4 h-4 text-[hsl(var(--accent-highlight))] mt-0.5 flex-shrink-0" />
                                 <span>Convert dark-themed notes for affordable printing</span>
                             </li>
                         </ul>
@@ -222,15 +222,15 @@ const Tools: React.FC = () => {
                         <h3 className="text-lg font-semibold mb-3">💼 Professional Documents</h3>
                         <ul className="space-y-2 text-sm text-muted-foreground">
                             <li className="flex items-start gap-2">
-                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <Check className="w-4 h-4 text-[hsl(var(--accent-highlight))] mt-0.5 flex-shrink-0" />
                                 <span>Merge contracts, proposals, and reports into single files</span>
                             </li>
                             <li className="flex items-start gap-2">
-                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <Check className="w-4 h-4 text-[hsl(var(--accent-highlight))] mt-0.5 flex-shrink-0" />
                                 <span>Compress large documents for email attachments</span>
                             </li>
                             <li className="flex items-start gap-2">
-                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <Check className="w-4 h-4 text-[hsl(var(--accent-highlight))] mt-0.5 flex-shrink-0" />
                                 <span>Create PDF portfolios from images and screenshots</span>
                             </li>
                         </ul>
@@ -239,15 +239,15 @@ const Tools: React.FC = () => {
                         <h3 className="text-lg font-semibold mb-3">📱 Mobile & Tablet Friendly</h3>
                         <ul className="space-y-2 text-sm text-muted-foreground">
                             <li className="flex items-start gap-2">
-                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <Check className="w-4 h-4 text-[hsl(var(--accent-highlight))] mt-0.5 flex-shrink-0" />
                                 <span>Works on any device with a modern web browser</span>
                             </li>
                             <li className="flex items-start gap-2">
-                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <Check className="w-4 h-4 text-[hsl(var(--accent-highlight))] mt-0.5 flex-shrink-0" />
                                 <span>Convert phone photos to PDFs on the go</span>
                             </li>
                             <li className="flex items-start gap-2">
-                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <Check className="w-4 h-4 text-[hsl(var(--accent-highlight))] mt-0.5 flex-shrink-0" />
                                 <span>Quick document fixes without installing apps</span>
                             </li>
                         </ul>
@@ -256,15 +256,15 @@ const Tools: React.FC = () => {
                         <h3 className="text-lg font-semibold mb-3">🔒 Privacy Protection</h3>
                         <ul className="space-y-2 text-sm text-muted-foreground">
                             <li className="flex items-start gap-2">
-                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <Check className="w-4 h-4 text-[hsl(var(--accent-highlight))] mt-0.5 flex-shrink-0" />
                                 <span>Confidential documents stay on your device</span>
                             </li>
                             <li className="flex items-start gap-2">
-                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <Check className="w-4 h-4 text-[hsl(var(--accent-highlight))] mt-0.5 flex-shrink-0" />
                                 <span>No cloud storage or third-party access</span>
                             </li>
                             <li className="flex items-start gap-2">
-                                <Check className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
+                                <Check className="w-4 h-4 text-[hsl(var(--accent-highlight))] mt-0.5 flex-shrink-0" />
                                 <span>Process sensitive legal and financial documents safely</span>
                             </li>
                         </ul>
@@ -304,8 +304,8 @@ const Tools: React.FC = () => {
                         </p>
                     </div>
                     <div className="text-center">
-                        <div className="w-14 h-14 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-3">
-                            <FileText className="w-7 h-7 text-emerald-500" />
+                        <div className="w-14 h-14 rounded-full bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center mx-auto mb-3">
+                            <FileText className="w-7 h-7 text-[hsl(var(--accent-highlight))]" />
                         </div>
                         <h3 className="font-semibold mb-1">Researchers</h3>
                         <p className="text-sm text-muted-foreground">
@@ -366,7 +366,7 @@ const Tools: React.FC = () => {
                         <thead>
                             <tr className="border-b">
                                 <th className="text-left py-3 px-4">Feature</th>
-                                <th className="text-center py-3 px-4 text-emerald-500">Printify Notes</th>
+                                <th className="text-center py-3 px-4 text-[hsl(var(--accent-highlight))]">Printify Notes</th>
                                 <th className="text-center py-3 px-4 text-muted-foreground">Other Tools</th>
                             </tr>
                         </thead>
@@ -407,13 +407,13 @@ const Tools: React.FC = () => {
             </div>
 
             {/* CTA Section */}
-            <div className="mt-20 text-center p-8 rounded-2xl bg-emerald-500/5 border border-emerald-500/20">
+            <div className="mt-20 text-center p-8 rounded-2xl bg-[hsl(var(--accent-highlight))]/5 border border-[hsl(var(--accent-highlight)/0.15)]">
                 <h2 className="text-2xl font-bold mb-4">Ready to Get Started?</h2>
                 <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
                     Choose a tool above and start working with your PDFs. No signup, no uploads, just results.
                 </p>
                 <Link to="/">
-                    <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600">
+                    <Button size="lg" className="bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)]">
                         Try Dark PDF Converter
                         <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>

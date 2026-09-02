@@ -125,7 +125,7 @@ export const PdfMerger: React.FC = () => {
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                        <Upload className="w-5 h-5 text-emerald-500" />
+                        <Upload className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
                         Upload PDFs
                     </CardTitle>
                     <CardDescription>
@@ -136,7 +136,7 @@ export const PdfMerger: React.FC = () => {
                     <div
                         onDrop={handleDrop}
                         onDragOver={handleDragOver}
-                        className="border-2 border-dashed border-border rounded-xl p-8 text-center hover:border-emerald-500/50 transition-colors cursor-pointer"
+                        className="border-2 border-dashed border-border rounded-xl p-8 text-center hover:border-[hsl(var(--accent-highlight)/0.4)] transition-colors cursor-pointer"
                     >
                         <input
                             type="file"
@@ -149,7 +149,7 @@ export const PdfMerger: React.FC = () => {
                         <label htmlFor="pdf-upload" className="cursor-pointer">
                             <Plus className="w-12 h-12 mx-auto text-muted-foreground mb-4" />
                             <p className="text-muted-foreground">
-                                Drop PDF files here or <span className="text-emerald-500">browse</span>
+                                Drop PDF files here or <span className="text-[hsl(var(--accent-highlight))]">browse</span>
                             </p>
                         </label>
                     </div>
@@ -178,7 +178,7 @@ export const PdfMerger: React.FC = () => {
                                         }`}
                                 >
                                     <GripVertical className="w-4 h-4 text-muted-foreground cursor-grab" />
-                                    <FileText className="w-5 h-5 text-emerald-500" />
+                                    <FileText className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
                                     <div className="flex-1 min-w-0">
                                         <p className="text-sm font-medium truncate">{file.name}</p>
                                         <p className="text-xs text-muted-foreground">{file.pageCount} pages</p>
@@ -199,7 +199,7 @@ export const PdfMerger: React.FC = () => {
                             <Button
                                 onClick={mergePdfs}
                                 disabled={files.length < 2 || isProcessing}
-                                className="flex-1 bg-emerald-500 hover:bg-emerald-600"
+                                className="flex-1 bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)]"
                             >
                                 <Download className="w-4 h-4 mr-2" />
                                 {isProcessing ? 'Merging...' : `Merge ${files.length} PDFs`}

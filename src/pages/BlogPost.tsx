@@ -42,7 +42,7 @@ const BlogPost = () => {
         >
             {/* Author byline — visible at top for E-E-A-T */}
             <div className="flex flex-wrap items-center gap-3 mb-6 p-4 rounded-xl bg-card border border-border">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[hsl(var(--accent-highlight))] to-[hsl(var(--accent-highlight)/0.8)] flex items-center justify-center flex-shrink-0">
                     <span className="text-white text-sm font-bold" aria-hidden="true">DI</span>
                 </div>
                 <div className="flex-1 min-w-0">
@@ -50,7 +50,7 @@ const BlogPost = () => {
                     <p className="text-xs text-muted-foreground">BTech CSE Student, MRIIRS · Creator of Printify Notes</p>
                 </div>
                 <div className="flex flex-wrap items-center gap-4 text-xs text-muted-foreground">
-                    <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-500 font-medium">
+                    <span className="px-2.5 py-1 rounded-full bg-[hsl(var(--accent-highlight))]/10 text-[hsl(var(--accent-highlight))] font-medium">
                         {post.category}
                     </span>
                     <span className="flex items-center gap-1.5">
@@ -93,10 +93,10 @@ const BlogPost = () => {
                             <Link
                                 key={related.slug}
                                 to={`/blog/${related.slug}`}
-                                className="block p-4 rounded-xl bg-card border border-border hover:border-emerald-500/50 transition-colors group"
+                                className="block p-4 rounded-xl bg-card border border-border hover:border-[hsl(var(--accent-highlight))]/50 transition-colors group"
                             >
-                                <span className="text-xs text-emerald-500 font-medium mb-2 block">{related.category}</span>
-                                <h3 className="text-sm font-semibold mb-2 group-hover:text-emerald-500 transition-colors line-clamp-2">
+                                <span className="text-xs text-[hsl(var(--accent-highlight))] font-medium mb-2 block">{related.category}</span>
+                                <h3 className="text-sm font-semibold mb-2 group-hover:text-[hsl(var(--accent-highlight))] transition-colors line-clamp-2">
                                     {related.title}
                                 </h3>
                                 <span className="text-xs text-muted-foreground flex items-center gap-1.5">
@@ -111,7 +111,7 @@ const BlogPost = () => {
 
             {/* Back to blog */}
             <div className="mt-8">
-                <Link to="/blog" className="inline-flex items-center gap-2 text-emerald-500 hover:underline">
+                <Link to="/blog" className="inline-flex items-center gap-2 text-[hsl(var(--accent-highlight))] hover:underline">
                     <ArrowLeft className="w-4 h-4" />
                     Back to all articles
                 </Link>

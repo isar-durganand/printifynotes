@@ -21,7 +21,7 @@ const ThankYou = () => {
                         <Sparkles className="w-5 h-5 text-amber-400/30" />
                     </div>
                     <div className="absolute top-[15%] right-[12%] animate-float-medium" style={{ animationDelay: '0.5s' }}>
-                        <Star className="w-4 h-4 text-emerald-400/25 fill-emerald-400/25" />
+                        <Star className="w-4 h-4 text-[hsl(var(--accent-highlight))]/25 fill-[hsl(var(--accent-highlight)/0.2)]" />
                     </div>
                     <div className="absolute top-[35%] left-[5%] animate-float-slow" style={{ animationDelay: '1.5s' }}>
                         <Heart className="w-3 h-3 text-rose-400/20 fill-rose-400/20" />
@@ -86,19 +86,19 @@ const ThankYou = () => {
                     <h3 className="font-semibold mb-4 text-center">What Your Support Enables</h3>
                     <ul className="space-y-3 text-sm text-muted-foreground">
                         <li className="flex items-start gap-3">
-                            <span className="text-emerald-400 mt-0.5">✓</span>
+                            <span className="text-[hsl(var(--accent-highlight))] mt-0.5">✓</span>
                             <span>Free PDF conversion tools for all students</span>
                         </li>
                         <li className="flex items-start gap-3">
-                            <span className="text-emerald-400 mt-0.5">✓</span>
+                            <span className="text-[hsl(var(--accent-highlight))] mt-0.5">✓</span>
                             <span>New features and improvements regularly</span>
                         </li>
                         <li className="flex items-start gap-3">
-                            <span className="text-emerald-400 mt-0.5">✓</span>
+                            <span className="text-[hsl(var(--accent-highlight))] mt-0.5">✓</span>
                             <span>Fast, reliable servers available 24/7</span>
                         </li>
                         <li className="flex items-start gap-3">
-                            <span className="text-emerald-400 mt-0.5">✓</span>
+                            <span className="text-[hsl(var(--accent-highlight))] mt-0.5">✓</span>
                             <span>Privacy-first tools that respect student data</span>
                         </li>
                     </ul>
@@ -107,7 +107,7 @@ const ThankYou = () => {
                 {/* CTA Buttons */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                     <Link to="/">
-                        <Button className="rounded-full px-8 bg-emerald-500 hover:bg-emerald-600">
+                        <Button className="rounded-full px-8 bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)]">
                             <Home className="w-4 h-4 mr-2" />
                             Back to Home
                         </Button>

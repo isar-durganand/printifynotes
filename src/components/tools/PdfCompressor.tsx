@@ -176,7 +176,7 @@ export const PdfCompressor: React.FC = () => {
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                        <Gauge className="w-5 h-5 text-emerald-500" />
+                        <Gauge className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
                         Compress PDF
                     </CardTitle>
                     <CardDescription>
@@ -188,7 +188,7 @@ export const PdfCompressor: React.FC = () => {
                         <div
                             onDrop={handleDrop}
                             onDragOver={handleDragOver}
-                            className="border-2 border-dashed border-border rounded-xl p-8 text-center hover:border-emerald-500/50 transition-colors cursor-pointer"
+                            className="border-2 border-dashed border-border rounded-xl p-8 text-center hover:border-[hsl(var(--accent-highlight)/0.4)] transition-colors cursor-pointer"
                         >
                             <input
                                 type="file"
@@ -200,14 +200,14 @@ export const PdfCompressor: React.FC = () => {
                             <label htmlFor="compress-upload" className="cursor-pointer">
                                 <Upload className="w-12 h-12 mx-auto text-muted-foreground mb-4" />
                                 <p className="text-muted-foreground">
-                                    Drop a PDF here or <span className="text-emerald-500">browse</span>
+                                    Drop a PDF here or <span className="text-[hsl(var(--accent-highlight))]">browse</span>
                                 </p>
                             </label>
                         </div>
                     ) : (
                         <div className="space-y-4">
                             <div className="flex items-center gap-3 p-4 rounded-lg border bg-card">
-                                <FileText className="w-8 h-8 text-emerald-500" />
+                                <FileText className="w-8 h-8 text-[hsl(var(--accent-highlight))]" />
                                 <div className="flex-1 min-w-0">
                                     <p className="font-medium truncate">{file.name}</p>
                                     <p className="text-sm text-muted-foreground">
@@ -254,18 +254,18 @@ export const PdfCompressor: React.FC = () => {
 
                             {/* Result */}
                             {result && (
-                                <div className="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
+                                <div className="p-4 rounded-lg bg-[hsl(var(--accent-highlight))]/10 border border-[hsl(var(--accent-highlight)/0.15)]">
                                     <div className="flex items-center justify-between mb-2">
                                         <span className="text-sm">Original Size</span>
                                         <span className="font-medium">{formatSize(result.originalSize)}</span>
                                     </div>
                                     <div className="flex items-center justify-between mb-2">
                                         <span className="text-sm">Compressed Size</span>
-                                        <span className="font-medium text-emerald-500">{formatSize(result.compressedSize)}</span>
+                                        <span className="font-medium text-[hsl(var(--accent-highlight))]">{formatSize(result.compressedSize)}</span>
                                     </div>
-                                    <div className="flex items-center justify-between pt-2 border-t border-emerald-500/20">
+                                    <div className="flex items-center justify-between pt-2 border-t border-[hsl(var(--accent-highlight)/0.15)]">
                                         <span className="text-sm font-medium">Space Saved</span>
-                                        <span className="font-bold text-emerald-500">{result.savings}%</span>
+                                        <span className="font-bold text-[hsl(var(--accent-highlight))]">{result.savings}%</span>
                                     </div>
                                 </div>
                             )}
@@ -285,7 +285,7 @@ export const PdfCompressor: React.FC = () => {
                                     <Button
                                         onClick={compressPdf}
                                         disabled={isProcessing}
-                                        className="flex-1 bg-emerald-500 hover:bg-emerald-600"
+                                        className="flex-1 bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)]"
                                     >
                                         <Gauge className="w-4 h-4 mr-2" />
                                         {isProcessing ? 'Compressing...' : 'Compress PDF'}
@@ -294,7 +294,7 @@ export const PdfCompressor: React.FC = () => {
                                     <>
                                         <Button
                                             onClick={downloadCompressed}
-                                            className="flex-1 bg-emerald-500 hover:bg-emerald-600"
+                                            className="flex-1 bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)]"
                                         >
                                             <Download className="w-4 h-4 mr-2" />
                                             Download Compressed

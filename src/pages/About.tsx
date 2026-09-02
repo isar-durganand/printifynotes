@@ -48,24 +48,24 @@ const About = () => {
                 <h2 className="text-2xl font-semibold mb-6">Meet the Creator</h2>
                 <div className="p-6 rounded-2xl bg-card border border-border">
                     <div className="flex flex-col sm:flex-row items-start gap-5 mb-5">
-                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center flex-shrink-0">
+                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[hsl(var(--accent-highlight))] to-[hsl(var(--accent-highlight)/0.8)] flex items-center justify-center flex-shrink-0">
                             <span className="text-white text-2xl font-bold">DI</span>
                         </div>
                         <div>
                             <h3 className="text-xl font-semibold mb-1">Durganand Ishar</h3>
-                            <p className="text-sm text-emerald-500 font-medium mb-1">Founder & Developer, Printify Notes</p>
+                            <p className="text-sm text-[hsl(var(--accent-highlight))] font-medium mb-1">Founder & Developer, Printify Notes</p>
                             <p className="text-sm text-muted-foreground">BTech CSE (First Year) · Manav Rachna International Institute of Research and Studies (MRIIRS), Faridabad</p>
                             <div className="flex items-center gap-3 mt-3">
                                 <a href="https://www.linkedin.com/in/durganandishar/" target="_blank" rel="noopener noreferrer"
-                                    className="text-xs px-3 py-1.5 rounded-full bg-secondary border border-border text-muted-foreground hover:text-emerald-500 hover:border-emerald-500 transition-colors">
+                                    className="text-xs px-3 py-1.5 rounded-full bg-secondary border border-border text-muted-foreground hover:text-[hsl(var(--accent-highlight))] hover:border-[hsl(var(--accent-highlight))] transition-colors">
                                     LinkedIn
                                 </a>
                                 <a href="https://github.com/isar-durganand" target="_blank" rel="noopener noreferrer"
-                                    className="text-xs px-3 py-1.5 rounded-full bg-secondary border border-border text-muted-foreground hover:text-emerald-500 hover:border-emerald-500 transition-colors">
+                                    className="text-xs px-3 py-1.5 rounded-full bg-secondary border border-border text-muted-foreground hover:text-[hsl(var(--accent-highlight))] hover:border-[hsl(var(--accent-highlight))] transition-colors">
                                     GitHub
                                 </a>
                                 <a href="mailto:isardurganand@gmail.com"
-                                    className="text-xs px-3 py-1.5 rounded-full bg-secondary border border-border text-muted-foreground hover:text-emerald-500 hover:border-emerald-500 transition-colors">
+                                    className="text-xs px-3 py-1.5 rounded-full bg-secondary border border-border text-muted-foreground hover:text-[hsl(var(--accent-highlight))] hover:border-[hsl(var(--accent-highlight))] transition-colors">
                                     Email
                                 </a>
                             </div>
@@ -97,8 +97,8 @@ const About = () => {
             {/* Mission and Values */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
                 <div className="p-6 rounded-2xl bg-card border border-border">
-                    <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4">
-                        <Target className="w-6 h-6 text-emerald-500" />
+                    <div className="w-12 h-12 rounded-xl bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center mb-4">
+                        <Target className="w-6 h-6 text-[hsl(var(--accent-highlight))]" />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Our Mission</h3>
                     <p className="text-muted-foreground">
@@ -108,8 +108,8 @@ const About = () => {
                 </div>
 
                 <div className="p-6 rounded-2xl bg-card border border-border">
-                    <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4">
-                        <Heart className="w-6 h-6 text-emerald-500" />
+                    <div className="w-12 h-12 rounded-xl bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center mb-4">
+                        <Heart className="w-6 h-6 text-[hsl(var(--accent-highlight))]" />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Our Values</h3>
                     <p className="text-muted-foreground">
@@ -124,8 +124,8 @@ const About = () => {
                 <h2 className="text-2xl font-semibold mb-6">What Makes Us Different</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="flex items-start gap-4 p-5 rounded-xl border bg-card">
-                        <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                            <Shield className="w-5 h-5 text-emerald-500" />
+                        <div className="w-10 h-10 rounded-lg bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center flex-shrink-0">
+                            <Shield className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
                         </div>
                         <div>
                             <h4 className="font-medium mb-2">100% Browser-Based</h4>
@@ -221,7 +221,7 @@ const About = () => {
                 <h2 className="text-2xl font-semibold mb-6">What We Offer</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="p-6 rounded-xl border bg-card">
-                        <h3 className="font-semibold text-emerald-500 mb-2">Dark PDF Conversion</h3>
+                        <h3 className="font-semibold text-[hsl(var(--accent-highlight))] mb-2">Dark PDF Conversion</h3>
                         <p className="text-sm text-muted-foreground">Convert dark-background coaching PDFs to print-friendly, light-background format. Designed to help students save ink when printing notes from platforms like Physics Wallah, Unacademy, and Vedantu.</p>
                     </div>
                     <div className="p-6 rounded-xl border bg-card">
@@ -269,17 +269,17 @@ const About = () => {
             </section>
 
             {/* Contact CTA */}
-            <section className="p-8 rounded-2xl bg-emerald-500/5 border border-emerald-500/20 text-center">
+            <section className="p-8 rounded-2xl bg-[hsl(var(--accent-highlight))]/5 border border-[hsl(var(--accent-highlight)/0.15)] text-center">
                 <h2 className="text-2xl font-semibold mb-4">Get in Touch</h2>
                 <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
                     Have feedback or suggestions? We'd love to hear from you! Reach out at{' '}
-                    <a href="mailto:isardurganand@gmail.com" className="text-emerald-500 hover:underline">
+                    <a href="mailto:isardurganand@gmail.com" className="text-[hsl(var(--accent-highlight))] hover:underline">
                         isardurganand@gmail.com
                     </a>
                     {' '}or use our contact form.
                 </p>
                 <Link to="/contact">
-                    <Button className="bg-emerald-500 hover:bg-emerald-600">
+                    <Button className="bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)]">
                         Contact Us
                         <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>

@@ -73,10 +73,10 @@ const PrivacyPolicy = () => {
                 </ul>
                 <p className="text-muted-foreground mb-4">
                     You may opt out of personalized advertising by visiting{' '}
-                    <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-emerald-500 hover:underline">
+                    <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-[hsl(var(--accent-highlight))] hover:underline">
                         Google Ads Settings
                     </a>. Alternatively, you can opt out of third-party vendors' use of cookies for personalized advertising by visiting{' '}
-                    <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-emerald-500 hover:underline">
+                    <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" className="text-[hsl(var(--accent-highlight))] hover:underline">
                         www.aboutads.info/choices
                     </a>.
                 </p>
@@ -93,12 +93,12 @@ const PrivacyPolicy = () => {
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
                     <li><strong>Google Analytics:</strong> For anonymous website usage statistics. Google Analytics uses cookies to collect information about how visitors use our website. The information is used to compile reports and help us improve the site. For more information, see{' '}
-                        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-emerald-500 hover:underline">
+                        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[hsl(var(--accent-highlight))] hover:underline">
                             Google's Privacy Policy
                         </a>.
                     </li>
                     <li><strong>Google AdSense:</strong> For displaying advertisements. Google AdSense uses cookies to serve ads that are relevant to you. Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this website or other websites. For more information, see{' '}
-                        <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-emerald-500 hover:underline">
+                        <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-[hsl(var(--accent-highlight))] hover:underline">
                             How Google Uses Cookies in Advertising
                         </a>.
                     </li>
@@ -117,9 +117,9 @@ const PrivacyPolicy = () => {
                     You have the following rights regarding your data:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
-                    <li><strong>Opt out of personalized ads:</strong> Visit <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-emerald-500 hover:underline">Google Ads Settings</a> to manage your ad preferences</li>
+                    <li><strong>Opt out of personalized ads:</strong> Visit <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-[hsl(var(--accent-highlight))] hover:underline">Google Ads Settings</a> to manage your ad preferences</li>
                     <li><strong>Disable cookies:</strong> Use your browser settings to refuse or delete cookies</li>
-                    <li><strong>Opt out of analytics:</strong> Install the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-emerald-500 hover:underline">Google Analytics Opt-Out Browser Add-on</a></li>
+                    <li><strong>Opt out of analytics:</strong> Install the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-[hsl(var(--accent-highlight))] hover:underline">Google Analytics Opt-Out Browser Add-on</a></li>
                     <li><strong>Data deletion:</strong> Since we don't store your personal data or documents, there is nothing to delete. Your PDF files are processed locally and never stored.</li>
                 </ul>
             </section>
@@ -161,7 +161,7 @@ const PrivacyPolicy = () => {
                 </ul>
                 <p className="text-muted-foreground mb-4">
                     To exercise any of these rights, please contact us at{' '}
-                    <a href="mailto:isardurganand@gmail.com" className="text-emerald-500 hover:underline">
+                    <a href="mailto:isardurganand@gmail.com" className="text-[hsl(var(--accent-highlight))] hover:underline">
                         isardurganand@gmail.com
                     </a>.
                 </p>
@@ -183,7 +183,7 @@ const PrivacyPolicy = () => {
                 </p>
                 <p className="text-muted-foreground">
                     Email:{' '}
-                    <a href="mailto:isardurganand@gmail.com" className="text-emerald-500 hover:underline">
+                    <a href="mailto:isardurganand@gmail.com" className="text-[hsl(var(--accent-highlight))] hover:underline">
                         isardurganand@gmail.com
                     </a>
                 </p>

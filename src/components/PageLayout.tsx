@@ -249,7 +249,7 @@ export const PageLayout = ({
                         <meta itemProp="description" content={seoDescription} />
                         <meta itemProp="url" content={fullUrl} />
                         <div
-                            className="prose prose-invert prose-emerald max-w-none prose-sm sm:prose-base"
+                            className="prose prose-invert max-w-none prose-sm sm:prose-base"
                             itemProp="articleBody"
                         >
                             {children}

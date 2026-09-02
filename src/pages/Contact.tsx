@@ -58,13 +58,13 @@ const Contact = () => {
             <section className="mb-12">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="p-6 rounded-2xl bg-card border border-border text-center">
-                        <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
-                            <Mail className="w-6 h-6 text-emerald-500" />
+                        <div className="w-12 h-12 rounded-full bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center mx-auto mb-4">
+                            <Mail className="w-6 h-6 text-[hsl(var(--accent-highlight))]" />
                         </div>
                         <h3 className="font-semibold mb-2">Email Us</h3>
                         <a
                             href="mailto:isardurganand@gmail.com"
-                            className="text-muted-foreground hover:text-emerald-500 transition-colors text-sm"
+                            className="text-muted-foreground hover:text-[hsl(var(--accent-highlight))] transition-colors text-sm"
                         >
                             isardurganand@gmail.com
                         </a>
@@ -87,7 +87,7 @@ const Contact = () => {
                             <HelpCircle className="w-6 h-6 text-purple-500" />
                         </div>
                         <h3 className="font-semibold mb-2">FAQ</h3>
-                        <Link to="/#faq" className="text-muted-foreground hover:text-emerald-500 transition-colors text-sm">
+                        <Link to="/#faq" className="text-muted-foreground hover:text-[hsl(var(--accent-highlight))] transition-colors text-sm">
                             Check our FAQ first
                         </Link>
                         <p className="text-xs text-muted-foreground mt-2">Instant answers available</p>
@@ -169,8 +169,8 @@ const Contact = () => {
                 <h2 className="text-2xl font-semibold mb-6">Send us a Message</h2>
 
                 {submitted ? (
-                    <div className="p-8 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-center">
-                        <div className="w-16 h-16 rounded-full bg-emerald-500 flex items-center justify-center mx-auto mb-4">
+                    <div className="p-8 rounded-2xl bg-[hsl(var(--accent-highlight))]/10 border border-[hsl(var(--accent-highlight)/0.15)] text-center">
+                        <div className="w-16 h-16 rounded-full bg-[hsl(var(--accent-highlight))] flex items-center justify-center mx-auto mb-4">
                             <CheckCircle className="w-8 h-8 text-white" />
                         </div>
                         <h3 className="text-xl font-semibold mb-2">Message Sent!</h3>
@@ -196,7 +196,7 @@ const Contact = () => {
                                 id="name"
                                 name="name"
                                 required
-                                className="w-full px-4 py-3 rounded-xl bg-secondary border border-border focus:border-emerald-500 focus:outline-none transition-colors"
+                                className="w-full px-4 py-3 rounded-xl bg-secondary border border-border focus:border-[hsl(var(--accent-highlight))] focus:outline-none transition-colors"
                                 placeholder="Enter your name"
                             />
                         </div>
@@ -210,7 +210,7 @@ const Contact = () => {
                                 id="email"
                                 name="email"
                                 required
-                                className="w-full px-4 py-3 rounded-xl bg-secondary border border-border focus:border-emerald-500 focus:outline-none transition-colors"
+                                className="w-full px-4 py-3 rounded-xl bg-secondary border border-border focus:border-[hsl(var(--accent-highlight))] focus:outline-none transition-colors"
                                 placeholder="Enter your email"
                             />
                         </div>
@@ -223,7 +223,7 @@ const Contact = () => {
                                 id="subject"
                                 name="subject"
                                 required
-                                className="w-full px-4 py-3 rounded-xl bg-secondary border border-border focus:border-emerald-500 focus:outline-none transition-colors"
+                                className="w-full px-4 py-3 rounded-xl bg-secondary border border-border focus:border-[hsl(var(--accent-highlight))] focus:outline-none transition-colors"
                             >
                                 <option value="">Select a subject</option>
                                 <option value="General Feedback">General Feedback</option>
@@ -244,7 +244,7 @@ const Contact = () => {
                                 name="message"
                                 required
                                 rows={6}
-                                className="w-full px-4 py-3 rounded-xl bg-secondary border border-border focus:border-emerald-500 focus:outline-none transition-colors resize-none"
+                                className="w-full px-4 py-3 rounded-xl bg-secondary border border-border focus:border-[hsl(var(--accent-highlight))] focus:outline-none transition-colors resize-none"
                                 placeholder="Write your message here..."
                             />
                         </div>
@@ -258,7 +258,7 @@ const Contact = () => {
                         <Button
                             type="submit"
                             size="lg"
-                            className="w-full rounded-xl bg-emerald-500 hover:bg-emerald-600"
+                            className="w-full rounded-xl bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)]"
                             disabled={isSubmitting}
                         >
                             {isSubmitting ? (

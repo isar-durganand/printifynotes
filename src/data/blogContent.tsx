@@ -1,4 +1,4 @@
-Ôªøimport React from "react";
+import React from "react";
 
 export interface BlogPostData {
     title: string;
@@ -56,7 +56,7 @@ export const blogContent: Record<string, {
 
                 <h3 className="text-xl font-medium mb-3 mt-6">Step 2: Open Printify Notes</h3>
                 <p className="text-muted-foreground mb-4">
-                    Navigate to <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a> in your web browser.
+                    Navigate to <a href="/" className="text-[hsl(var(--accent-highlight))] hover:underline">Printify Notes</a> in your web browser.
                     The tool works entirely in your browser, so your notes never leave your device.
                 </p>
 
@@ -110,7 +110,7 @@ export const blogContent: Record<string, {
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
-                    As a student, you deal with countless PDFs ‚Äî lecture notes, research papers, textbooks, and study
+                    As a student, you deal with countless PDFs ó lecture notes, research papers, textbooks, and study
                     materials. Having the right PDF tools can make a huge difference in your productivity and save you
                     significant money on printing. Here's our comprehensive guide to the best PDF converters and tools
                     for students in 2026, tested and compared by our team.
@@ -121,10 +121,10 @@ export const blogContent: Record<string, {
                     Before diving into specific tools, let's establish the criteria that matter most for students:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li><strong>Free or affordable:</strong> Students are on tight budgets ‚Äî a tool that charges per conversion or has strict daily limits isn't practical for exam preparation</li>
+                    <li><strong>Free or affordable:</strong> Students are on tight budgets ó a tool that charges per conversion or has strict daily limits isn't practical for exam preparation</li>
                     <li><strong>Privacy-focused:</strong> Your study materials should stay private. Some tools upload files to remote servers, which raises concerns about data security</li>
-                    <li><strong>Easy to use:</strong> No steep learning curve ‚Äî you should be able to convert a PDF in under 2 minutes</li>
-                    <li><strong>Works on any device:</strong> Desktop, tablet, or phone ‚Äî students study on multiple devices</li>
+                    <li><strong>Easy to use:</strong> No steep learning curve ó you should be able to convert a PDF in under 2 minutes</li>
+                    <li><strong>Works on any device:</strong> Desktop, tablet, or phone ó students study on multiple devices</li>
                     <li><strong>No account required:</strong> Quick access when you need it, without wasting time on registration forms</li>
                     <li><strong>Batch processing:</strong> Ability to handle multiple files at once, especially during exam season</li>
                     <li><strong>Output quality:</strong> The converted PDF should maintain readability and formatting</li>
@@ -132,80 +132,80 @@ export const blogContent: Record<string, {
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">Top PDF Converters for Students in 2026</h2>
 
-                <h3 className="text-xl font-medium mb-3 mt-6">1. Printify Notes ‚Äî Best for Printing Coaching Notes</h3>
+                <h3 className="text-xl font-medium mb-3 mt-6">1. Printify Notes ó Best for Printing Coaching Notes</h3>
                 <p className="text-muted-foreground mb-4">
                     Printify Notes stands out as the only tool specifically designed for Indian students who need to print
                     dark-themed lecture notes from coaching platforms. Unlike generic PDF tools, it understands the unique
                     challenge of converting Physics Wallah, Unacademy, and Vedantu notes for affordable printing.
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
-                    <li>‚úÖ Completely free ‚Äî no hidden charges or premium tiers</li>
-                    <li>‚úÖ No file uploads ‚Äî 100% browser-based processing (your files never leave your device)</li>
-                    <li>‚úÖ Color inversion and grayscale options for maximum ink savings</li>
-                    <li>‚úÖ Multi-page layouts (2-up, 4-up) to save paper</li>
-                    <li>‚úÖ PDF merging, compression, image conversion, and page extraction</li>
-                    <li>‚úÖ Works offline once loaded</li>
+                    <li>? Completely free ó no hidden charges or premium tiers</li>
+                    <li>? No file uploads ó 100% browser-based processing (your files never leave your device)</li>
+                    <li>? Color inversion and grayscale options for maximum ink savings</li>
+                    <li>? Multi-page layouts (2-up, 4-up) to save paper</li>
+                    <li>? PDF merging, compression, image conversion, and page extraction</li>
+                    <li>? Works offline once loaded</li>
                 </ul>
                 <p className="text-muted-foreground mb-6">
                     <strong>Best for:</strong> NEET/JEE students printing coaching notes. The dark-to-light converter alone
-                    can save ‚Çπ3,000-5,000 per year on ink costs.
+                    can save ?3,000-5,000 per year on ink costs.
                 </p>
 
-                <h3 className="text-xl font-medium mb-3 mt-6">2. Smallpdf ‚Äî Best All-in-One Solution</h3>
+                <h3 className="text-xl font-medium mb-3 mt-6">2. Smallpdf ó Best All-in-One Solution</h3>
                 <p className="text-muted-foreground mb-4">
                     Smallpdf offers a comprehensive suite of 20+ PDF tools including conversion to/from Word, Excel,
                     and PowerPoint. It has a clean interface and handles most common PDF operations well.
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
-                    <li>‚úÖ Wide range of conversion options (PDF to Word, Excel, PPT)</li>
-                    <li>‚úÖ Clean, intuitive interface</li>
-                    <li>‚ùå Free tier limited to 2 tasks per day</li>
-                    <li>‚ùå Files are uploaded to their servers (privacy concern)</li>
-                    <li>‚ùå Pro plan costs $12/month</li>
+                    <li>? Wide range of conversion options (PDF to Word, Excel, PPT)</li>
+                    <li>? Clean, intuitive interface</li>
+                    <li>? Free tier limited to 2 tasks per day</li>
+                    <li>? Files are uploaded to their servers (privacy concern)</li>
+                    <li>? Pro plan costs $12/month</li>
                 </ul>
                 <p className="text-muted-foreground mb-6">
                     <strong>Best for:</strong> Occasional PDF format conversions (e.g., converting a Word assignment to PDF).
                 </p>
 
-                <h3 className="text-xl font-medium mb-3 mt-6">3. PDF24 ‚Äî Best Free Desktop Tool</h3>
+                <h3 className="text-xl font-medium mb-3 mt-6">3. PDF24 ó Best Free Desktop Tool</h3>
                 <p className="text-muted-foreground mb-4">
                     PDF24 is a free desktop application for Windows that offers comprehensive PDF manipulation features
                     including merge, split, compress, and convert. It also has an online version.
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
-                    <li>‚úÖ Completely free with no limits</li>
-                    <li>‚úÖ Desktop app for offline use</li>
-                    <li>‚úÖ Virtual PDF printer for any application</li>
-                    <li>‚ùå Windows only (no Mac or mobile)</li>
-                    <li>‚ùå Desktop app requires installation</li>
-                    <li>‚ùå No dark PDF conversion feature</li>
+                    <li>? Completely free with no limits</li>
+                    <li>? Desktop app for offline use</li>
+                    <li>? Virtual PDF printer for any application</li>
+                    <li>? Windows only (no Mac or mobile)</li>
+                    <li>? Desktop app requires installation</li>
+                    <li>? No dark PDF conversion feature</li>
                 </ul>
                 <p className="text-muted-foreground mb-6">
                     <strong>Best for:</strong> Windows users who need a general-purpose PDF toolkit on their laptop.
                 </p>
 
-                <h3 className="text-xl font-medium mb-3 mt-6">4. iLovePDF ‚Äî Best for Batch Processing</h3>
+                <h3 className="text-xl font-medium mb-3 mt-6">4. iLovePDF ó Best for Batch Processing</h3>
                 <p className="text-muted-foreground mb-4">
                     iLovePDF is popular for batch operations and offers tools for merging, splitting, compressing, and
                     converting PDFs. The free tier is more generous than Smallpdf.
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
-                    <li>‚úÖ Generous free tier with batch processing</li>
-                    <li>‚úÖ Desktop and mobile apps available</li>
-                    <li>‚ùå Files uploaded to servers</li>
-                    <li>‚ùå Some advanced features require Premium ($7/month)</li>
+                    <li>? Generous free tier with batch processing</li>
+                    <li>? Desktop and mobile apps available</li>
+                    <li>? Files uploaded to servers</li>
+                    <li>? Some advanced features require Premium ($7/month)</li>
                 </ul>
 
-                <h3 className="text-xl font-medium mb-3 mt-6">5. Adobe Acrobat Online ‚Äî Best for Professional Quality</h3>
+                <h3 className="text-xl font-medium mb-3 mt-6">5. Adobe Acrobat Online ó Best for Professional Quality</h3>
                 <p className="text-muted-foreground mb-4">
                     Adobe's online tools offer the highest quality PDF operations, as you'd expect from the company
                     that created the PDF format. However, most features require a paid subscription.
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
-                    <li>‚úÖ Highest quality output</li>
-                    <li>‚úÖ OCR text recognition</li>
-                    <li>‚ùå Very limited free usage</li>
-                    <li>‚ùå Expensive (‚Çπ1,500+/month)</li>
+                    <li>? Highest quality output</li>
+                    <li>? OCR text recognition</li>
+                    <li>? Very limited free usage</li>
+                    <li>? Expensive (?1,500+/month)</li>
                 </ul>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">Comparison Table</h2>
@@ -214,7 +214,7 @@ export const blogContent: Record<string, {
                         <thead>
                             <tr className="border-b border-border">
                                 <th className="text-left py-3 px-3">Feature</th>
-                                <th className="text-center py-3 px-3 text-emerald-500">Printify Notes</th>
+                                <th className="text-center py-3 px-3 text-[hsl(var(--accent-highlight))]">Printify Notes</th>
                                 <th className="text-center py-3 px-3">Smallpdf</th>
                                 <th className="text-center py-3 px-3">PDF24</th>
                                 <th className="text-center py-3 px-3">iLovePDF</th>
@@ -230,24 +230,24 @@ export const blogContent: Record<string, {
                             </tr>
                             <tr className="border-b border-border/50">
                                 <td className="py-2 px-3">Privacy (No Upload)</td>
-                                <td className="text-center py-2 px-3">‚úÖ</td>
-                                <td className="text-center py-2 px-3">‚ùå</td>
-                                <td className="text-center py-2 px-3">‚úÖ (desktop)</td>
-                                <td className="text-center py-2 px-3">‚ùå</td>
+                                <td className="text-center py-2 px-3">?</td>
+                                <td className="text-center py-2 px-3">?</td>
+                                <td className="text-center py-2 px-3">? (desktop)</td>
+                                <td className="text-center py-2 px-3">?</td>
                             </tr>
                             <tr className="border-b border-border/50">
                                 <td className="py-2 px-3">Dark PDF Converter</td>
-                                <td className="text-center py-2 px-3">‚úÖ</td>
-                                <td className="text-center py-2 px-3">‚ùå</td>
-                                <td className="text-center py-2 px-3">‚ùå</td>
-                                <td className="text-center py-2 px-3">‚ùå</td>
+                                <td className="text-center py-2 px-3">?</td>
+                                <td className="text-center py-2 px-3">?</td>
+                                <td className="text-center py-2 px-3">?</td>
+                                <td className="text-center py-2 px-3">?</td>
                             </tr>
                             <tr className="border-b border-border/50">
                                 <td className="py-2 px-3">Mobile Friendly</td>
-                                <td className="text-center py-2 px-3">‚úÖ</td>
-                                <td className="text-center py-2 px-3">‚úÖ</td>
-                                <td className="text-center py-2 px-3">‚ùå</td>
-                                <td className="text-center py-2 px-3">‚úÖ</td>
+                                <td className="text-center py-2 px-3">?</td>
+                                <td className="text-center py-2 px-3">?</td>
+                                <td className="text-center py-2 px-3">?</td>
+                                <td className="text-center py-2 px-3">?</td>
                             </tr>
                         </tbody>
                     </table>
@@ -258,7 +258,7 @@ export const blogContent: Record<string, {
                     The best tool depends on your specific workflow:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li><strong>Printing coaching notes:</strong> Printify Notes is the clear winner ‚Äî it's the only tool with dark PDF conversion</li>
+                    <li><strong>Printing coaching notes:</strong> Printify Notes is the clear winner ó it's the only tool with dark PDF conversion</li>
                     <li><strong>Converting Word to PDF:</strong> Smallpdf or iLovePDF work well for this</li>
                     <li><strong>Heavy daily usage on Windows:</strong> Install PDF24 for unlimited offline processing</li>
                     <li><strong>Professional/academic papers:</strong> Adobe Acrobat if budget allows, otherwise iLovePDF</li>
@@ -269,7 +269,7 @@ export const blogContent: Record<string, {
                     For most Indian students preparing for competitive exams, we recommend using <strong>Printify Notes</strong> as
                     your primary tool for printing-related tasks (dark PDF conversion, merging chapter notes, compressing
                     files for sharing), and keeping <strong>iLovePDF</strong> or <strong>PDF24</strong> as a backup for
-                    format conversions. This combination gives you the best of both worlds ‚Äî completely free, private,
+                    format conversions. This combination gives you the best of both worlds ó completely free, private,
                     and covering all your PDF needs.
                 </p>
             </>
@@ -285,27 +285,27 @@ export const blogContent: Record<string, {
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
-                    Printer ink is one of the most expensive liquids on the planet ‚Äî gram for gram, it can cost more than perfume or champagne.
+                    Printer ink is one of the most expensive liquids on the planet ó gram for gram, it can cost more than perfume or champagne.
                     For students printing hundreds of pages of coaching notes, textbooks, and practice papers each semester, ink costs
-                    can easily add up to ‚Çπ5,000‚Äì10,000 per year. The good news? With a few smart habits, you can reduce your ink
-                    usage by 60‚Äì80% without sacrificing readability. Here are 10 proven, practical tips.
+                    can easily add up to ?5,000ñ10,000 per year. The good news? With a few smart habits, you can reduce your ink
+                    usage by 60ñ80% without sacrificing readability. Here are 10 proven, practical tips.
                 </p>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">1. Convert Dark PDFs to Light Before Printing</h2>
                 <p className="text-muted-foreground mb-4">
                     This single tip can save more ink than all the others combined. When you print a PDF with a dark background
                     (like Physics Wallah, Unacademy, or Vedantu notes), your printer fills every dark pixel with ink. A page with
-                    a black background uses approximately 5√ó more ink than a white-background page with the same text.
+                    a black background uses approximately 5◊ more ink than a white-background page with the same text.
                 </p>
                 <p className="text-muted-foreground mb-6">
-                    The solution: use <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a> to invert the colors
+                    The solution: use <a href="/" className="text-[hsl(var(--accent-highlight))] hover:underline">Printify Notes</a> to invert the colors
                     before printing. Upload your dark PDF, enable "Invert Colors," and download a print-ready version with a white
-                    background and dark text. This one step alone can save ‚Çπ3,000‚Äì5,000 per year for a typical NEET or JEE student.
+                    background and dark text. This one step alone can save ?3,000ñ5,000 per year for a typical NEET or JEE student.
                 </p>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">2. Always Print in Grayscale for Text Content</h2>
                 <p className="text-muted-foreground mb-4">
-                    Color ink cartridges are significantly more expensive than black ink ‚Äî and most study content doesn't need color.
+                    Color ink cartridges are significantly more expensive than black ink ó and most study content doesn't need color.
                     Physics formulas, chemistry equations, and biology text all read perfectly in black and white.
                 </p>
                 <p className="text-muted-foreground mb-6">
@@ -316,7 +316,7 @@ export const blogContent: Record<string, {
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">3. Use Draft or Economy Mode for Study Copies</h2>
                 <p className="text-muted-foreground mb-4">
-                    Most inkjet and laser printers have a "Draft" or "Economy" print mode. This mode uses 30‚Äì50% less ink by
+                    Most inkjet and laser printers have a "Draft" or "Economy" print mode. This mode uses 30ñ50% less ink by
                     printing with a lighter density that's still perfectly readable for study purposes. You'll notice slightly
                     lighter text, but for notes you'll annotate with a pen anyway, this is completely acceptable.
                 </p>
@@ -328,7 +328,7 @@ export const blogContent: Record<string, {
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">4. Print 2 Pages Per Sheet (2-Up Layout)</h2>
                 <p className="text-muted-foreground mb-4">
-                    Printing two PDF pages on a single A4 sheet doesn't just save paper ‚Äî it also saves ink proportionally.
+                    Printing two PDF pages on a single A4 sheet doesn't just save paper ó it also saves ink proportionally.
                     Each page is printed at half size, so text and images require less ink. For coaching notes with normal font
                     sizes (10pt+), 2-up layout remains completely readable and halves your per-page ink cost.
                 </p>
@@ -346,13 +346,13 @@ export const blogContent: Record<string, {
                 <p className="text-muted-foreground mb-6">
                     For notes you type yourself, use: <strong>Garamond</strong> (saves ~24% vs Arial), <strong>Century Gothic</strong>
                     (saves ~30%), or <strong>Times New Roman</strong> (smaller ink footprint than sans-serif fonts at the same size).
-                    For coaching PDFs you download, this tip doesn't apply ‚Äî use the dark-to-light conversion instead.
+                    For coaching PDFs you download, this tip doesn't apply ó use the dark-to-light conversion instead.
                 </p>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">6. Remove Unnecessary Headers, Footers, and Cover Pages</h2>
                 <p className="text-muted-foreground mb-4">
                     Many coaching PDFs contain decorative covers, institution logos in every header, and colorful footers on each page.
-                    Over a 200-page document, these elements can account for 15‚Äì25% of total ink usage.
+                    Over a 200-page document, these elements can account for 15ñ25% of total ink usage.
                 </p>
                 <p className="text-muted-foreground mb-6">
                     Use Printify Notes' page selection feature to exclude cover pages, blank pages, and logo-heavy pages from your
@@ -364,7 +364,7 @@ export const blogContent: Record<string, {
                 <p className="text-muted-foreground mb-4">
                     After inverting a dark PDF, the background is white but text might print slightly gray, which actually uses
                     less ink. If you increase brightness too much (making the background overly white), the printer compensates by
-                    printing darker text ‚Äî increasing ink use. Keep brightness at 0 to +10% for optimal ink efficiency.
+                    printing darker text ó increasing ink use. Keep brightness at 0 to +10% for optimal ink efficiency.
                 </p>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">8. Always Preview Before Printing</h2>
@@ -374,7 +374,7 @@ export const blogContent: Record<string, {
                     correct layout (1-up vs 2-up). A single accidental duplicate print job at 100 pages wastes significant ink and paper.
                 </p>
                 <p className="text-muted-foreground mb-4">
-                    Also preview the converted PDF in Printify Notes before downloading ‚Äî check that diagrams look correct after
+                    Also preview the converted PDF in Printify Notes before downloading ó check that diagrams look correct after
                     color inversion, text is readable, and no pages are missing.
                 </p>
 
@@ -383,17 +383,17 @@ export const blogContent: Record<string, {
                     A poorly maintained printer uses more ink than needed and produces subpar results. Key maintenance tips:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li><strong>Clean print heads monthly</strong> (or when you notice streaky prints) ‚Äî clogged heads cause repeat printing</li>
-                    <li><strong>Don't let the printer sit idle for weeks</strong> ‚Äî ink dries in the nozzles, wasting a cleaning cycle's worth of ink</li>
-                    <li><strong>Keep the printer in a dust-free area</strong> ‚Äî dust causes paper jams and quality issues</li>
-                    <li><strong>Use original or high-quality compatible ink</strong> ‚Äî cheap refills can damage print heads, leading to costly repairs</li>
+                    <li><strong>Clean print heads monthly</strong> (or when you notice streaky prints) ó clogged heads cause repeat printing</li>
+                    <li><strong>Don't let the printer sit idle for weeks</strong> ó ink dries in the nozzles, wasting a cleaning cycle's worth of ink</li>
+                    <li><strong>Keep the printer in a dust-free area</strong> ó dust causes paper jams and quality issues</li>
+                    <li><strong>Use original or high-quality compatible ink</strong> ó cheap refills can damage print heads, leading to costly repairs</li>
                     <li><strong>Print at least one page per week</strong> to keep the nozzles clear</li>
                 </ul>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">10. Print Double-Sided (Duplex Printing)</h2>
                 <p className="text-muted-foreground mb-4">
                     Duplex printing cuts paper usage in half, which indirectly saves money on both paper and storage. While it
-                    doesn't directly reduce ink per page, it reduces the number of print jobs you run ‚Äî and every time you avoid
+                    doesn't directly reduce ink per page, it reduces the number of print jobs you run ó and every time you avoid
                     printing a fresh page, you save ink that would have been used for headers, footers, and page backgrounds.
                 </p>
                 <p className="text-muted-foreground mb-4">
@@ -407,17 +407,17 @@ export const blogContent: Record<string, {
                     Here's a realistic estimate of savings for a NEET student printing 5,000 pages per year:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li>Dark PDF conversion (Tip 1): Saves ~60% ink = ~‚Çπ3,000/year</li>
-                    <li>Grayscale mode (Tip 2): Saves ~40% color ink = ~‚Çπ800/year</li>
-                    <li>Draft mode (Tip 3): Saves ~40% overall = ~‚Çπ1,500/year</li>
-                    <li>2-up printing (Tip 4): Saves ~50% paper and proportional ink = ~‚Çπ500/year</li>
-                    <li><strong>Combined realistic savings: ‚Çπ4,000‚Äì6,000 per year</strong></li>
+                    <li>Dark PDF conversion (Tip 1): Saves ~60% ink = ~?3,000/year</li>
+                    <li>Grayscale mode (Tip 2): Saves ~40% color ink = ~?800/year</li>
+                    <li>Draft mode (Tip 3): Saves ~40% overall = ~?1,500/year</li>
+                    <li>2-up printing (Tip 4): Saves ~50% paper and proportional ink = ~?500/year</li>
+                    <li><strong>Combined realistic savings: ?4,000ñ6,000 per year</strong></li>
                 </ul>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">Conclusion</h2>
                 <p className="text-muted-foreground mb-4">
                     Saving ink is about building consistent habits. The biggest single impact comes from converting dark PDFs
-                    to light backgrounds using <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a> ‚Äî this
+                    to light backgrounds using <a href="/" className="text-[hsl(var(--accent-highlight))] hover:underline">Printify Notes</a> ó this
                     alone can offset months of ink costs. Combine it with grayscale printing and draft mode, and you'll spend
                     a fraction of what other students pay for the same study materials.
                 </p>
@@ -461,7 +461,7 @@ export const blogContent: Record<string, {
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">Step 2: Convert Using Printify Notes</h2>
                 <p className="text-muted-foreground mb-4">
-                    Open <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a> and upload your
+                    Open <a href="/" className="text-[hsl(var(--accent-highlight))] hover:underline">Printify Notes</a> and upload your
                     downloaded Unacademy PDF. The tool will render each slide as a preview.
                 </p>
 
@@ -507,8 +507,8 @@ export const blogContent: Record<string, {
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
-                    A student preparing for NEET or JEE prints an average of 3,000‚Äì8,000 pages per year. Across India's
-                    2+ million competitive exam aspirants, that's billions of pages annually ‚Äî a staggering environmental
+                    A student preparing for NEET or JEE prints an average of 3,000ñ8,000 pages per year. Across India's
+                    2+ million competitive exam aspirants, that's billions of pages annually ó a staggering environmental
                     cost. The good news: you can dramatically reduce your printing impact without compromising your
                     study quality. In fact, the same techniques that help the environment also save you significant money.
                 </p>
@@ -520,19 +520,19 @@ export const blogContent: Record<string, {
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
                     <li><strong>Paper:</strong> One tree produces about 8,333 sheets of A4 paper. A single NEET aspirant printing 5,000 pages uses more than half a tree per year</li>
                     <li><strong>Water:</strong> Producing one ton of paper requires approximately 10,000 liters of water</li>
-                    <li><strong>Ink:</strong> Standard printer cartridges contain plastic, metal, and chemical compounds ‚Äî over 350 million end up in landfills globally each year</li>
-                    <li><strong>Carbon:</strong> Running a typical inkjet printer for 1 hour uses about 30‚Äì40 watts of electricity, adding to your carbon footprint</li>
-                    <li><strong>Dark PDF waste:</strong> Printing a dark-background coaching PDF uses 4‚Äì5√ó more ink than a white-background version ‚Äî meaning 80% of the ink is unnecessary</li>
+                    <li><strong>Ink:</strong> Standard printer cartridges contain plastic, metal, and chemical compounds ó over 350 million end up in landfills globally each year</li>
+                    <li><strong>Carbon:</strong> Running a typical inkjet printer for 1 hour uses about 30ñ40 watts of electricity, adding to your carbon footprint</li>
+                    <li><strong>Dark PDF waste:</strong> Printing a dark-background coaching PDF uses 4ñ5◊ more ink than a white-background version ó meaning 80% of the ink is unnecessary</li>
                 </ul>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">1. Convert Dark PDFs ‚Äî The Highest-Impact Single Action</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">1. Convert Dark PDFs ó The Highest-Impact Single Action</h2>
                 <p className="text-muted-foreground mb-4">
                     The single most impactful thing you can do is stop printing dark-background PDFs directly.
                     Platforms like Physics Wallah, Unacademy, and Vedantu design their notes for screen viewing with
                     dark themes. These look great on your laptop but are an environmental disaster to print.
                 </p>
                 <p className="text-muted-foreground mb-6">
-                    Use <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a> to convert dark PDFs
+                    Use <a href="/" className="text-[hsl(var(--accent-highlight))] hover:underline">Printify Notes</a> to convert dark PDFs
                     to light backgrounds before printing. This reduces ink consumption by 60%, which means proportionally
                     fewer ink cartridges purchased, less plastic waste, and fewer harmful chemicals entering landfills.
                     If every NEET student in India did this, it would save an estimated 500,000+ ink cartridges per year.
@@ -558,14 +558,14 @@ export const blogContent: Record<string, {
                     at competitive prices:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li><strong>Classmate Recycled Paper</strong> (ITC) ‚Äî Available at major stationery stores, performs well for study notes</li>
-                    <li><strong>JK Eco Copier</strong> ‚Äî FSC-certified, similar performance to regular JK Copier at a small price premium</li>
-                    <li><strong>Look for the FSC (Forest Stewardship Council) label</strong> ‚Äî ensures paper comes from sustainably managed forests</li>
+                    <li><strong>Classmate Recycled Paper</strong> (ITC) ó Available at major stationery stores, performs well for study notes</li>
+                    <li><strong>JK Eco Copier</strong> ó FSC-certified, similar performance to regular JK Copier at a small price premium</li>
+                    <li><strong>Look for the FSC (Forest Stewardship Council) label</strong> ó ensures paper comes from sustainably managed forests</li>
                 </ul>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">4. Print Double-Sided (Duplex Printing)</h2>
                 <p className="text-muted-foreground mb-4">
-                    Duplex printing is perhaps the simplest habit with the most direct environmental impact ‚Äî it literally
+                    Duplex printing is perhaps the simplest habit with the most direct environmental impact ó it literally
                     cuts paper consumption in half. If you print 5,000 pages per year single-sided, switching to duplex
                     reduces that to 2,500 physical sheets. That's approximately 0.3 trees saved per year from one student's
                     change alone.
@@ -574,14 +574,14 @@ export const blogContent: Record<string, {
                     Enable auto-duplex in your printer settings:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li><strong>Epson L series:</strong> Printer Properties ‚Üí Paper/Quality ‚Üí Print on Both Sides</li>
-                    <li><strong>Canon PIXMA:</strong> Preferences ‚Üí Page Setup ‚Üí Two-Sided Printing</li>
-                    <li><strong>HP printers:</strong> Properties ‚Üí Finishing ‚Üí Print on Both Sides</li>
+                    <li><strong>Epson L series:</strong> Printer Properties ? Paper/Quality ? Print on Both Sides</li>
+                    <li><strong>Canon PIXMA:</strong> Preferences ? Page Setup ? Two-Sided Printing</li>
+                    <li><strong>HP printers:</strong> Properties ? Finishing ? Print on Both Sides</li>
                 </ul>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">5. Use Multi-Page Layouts (2-Up or 4-Up)</h2>
                 <p className="text-muted-foreground mb-4">
-                    Printing 2 pages per sheet doesn't just save paper ‚Äî it reduces ink usage proportionally and
+                    Printing 2 pages per sheet doesn't just save paper ó it reduces ink usage proportionally and
                     cuts your printing time in half (meaning less electricity consumed). For revision notes with
                     normal-sized fonts, 2-up printing is perfectly readable and typically preferred by toppers who
                     want compact, portable revision materials.
@@ -589,7 +589,7 @@ export const blogContent: Record<string, {
                 <p className="text-muted-foreground mb-4">
                     Use Printify Notes to prepare a 2-up layout before downloading, or configure it in your printer's
                     Page Layout settings. Combined with duplex printing, you can fit 4 original pages onto one sheet
-                    of paper ‚Äî a 75% reduction in paper usage.
+                    of paper ó a 75% reduction in paper usage.
                 </p>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">6. Properly Recycle Ink Cartridges</h2>
@@ -602,35 +602,35 @@ export const blogContent: Record<string, {
                     <li><strong>Epson Recycle:</strong> Epson service centers accept empty ink bottles from L-series printers</li>
                     <li><strong>Canon Trade-In:</strong> Some Canon dealers offer discounts when you return empty cartridges</li>
                     <li><strong>Local Refill Shops:</strong> Many local print shops refill cartridges, keeping them out of landfills for longer</li>
-                    <li><strong>Ink Tank Printers:</strong> Switching to an ink tank printer (Epson, Canon, HP) eliminates cartridge waste entirely ‚Äî they use refillable bottles</li>
+                    <li><strong>Ink Tank Printers:</strong> Switching to an ink tank printer (Epson, Canon, HP) eliminates cartridge waste entirely ó they use refillable bottles</li>
                 </ul>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">7. Print in Grayscale Mode</h2>
                 <p className="text-muted-foreground mb-4">
                     Color ink cartridges are filled with cyan, magenta, and yellow compounds that are more chemically
-                    complex to produce and recycle. For 90%+ of study content ‚Äî text, equations, formulas, circuit diagrams
-                    ‚Äî grayscale printing is identical in usefulness. Reserve color printing only for biology diagrams
+                    complex to produce and recycle. For 90%+ of study content ó text, equations, formulas, circuit diagrams
+                    ó grayscale printing is identical in usefulness. Reserve color printing only for biology diagrams
                     where color distinction is necessary for understanding.
                 </p>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">Your Eco-Friendly Printing Checklist</h2>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li>‚òë Convert dark PDFs with Printify Notes before every print job</li>
-                    <li>‚òë Print in grayscale unless color is essential</li>
-                    <li>‚òë Enable duplex printing as your default setting</li>
-                    <li>‚òë Use 2-up layout for theory notes and revision materials</li>
-                    <li>‚òë Select only necessary pages ‚Äî exclude covers and blank pages</li>
-                    <li>‚òë Recycle or refill ink cartridges instead of discarding</li>
-                    <li>‚òë Buy FSC-certified or recycled paper when available</li>
-                    <li>‚òë Turn off the printer (not just standby) when not in use for extended periods</li>
+                    <li>? Convert dark PDFs with Printify Notes before every print job</li>
+                    <li>? Print in grayscale unless color is essential</li>
+                    <li>? Enable duplex printing as your default setting</li>
+                    <li>? Use 2-up layout for theory notes and revision materials</li>
+                    <li>? Select only necessary pages ó exclude covers and blank pages</li>
+                    <li>? Recycle or refill ink cartridges instead of discarding</li>
+                    <li>? Buy FSC-certified or recycled paper when available</li>
+                    <li>? Turn off the printer (not just standby) when not in use for extended periods</li>
                 </ul>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">The Compound Effect</h2>
                 <p className="text-muted-foreground mb-4">
                     None of these tips require sacrifice. In fact, most of them also save you money:
-                    dark PDF conversion saves ‚Çπ3,000+/year, duplex printing cuts paper costs in half, and recycling
+                    dark PDF conversion saves ?3,000+/year, duplex printing cuts paper costs in half, and recycling
                     cartridges sometimes earns you discounts. You can study smarter, spend less, and tread lighter on
-                    the planet ‚Äî all at the same time.
+                    the planet ó all at the same time.
                 </p>
             </>
         ),
@@ -641,7 +641,7 @@ export const blogContent: Record<string, {
         dateISO: '2025-12-20',
         readTime: '10 min read',
         category: 'Guide',
-        description: 'Everything you need to know about printing coaching notes for NEET and JEE preparation. Covers Physics Wallah, Unacademy, Allen, Aakash ‚Äî with subject-wise tips and cost strategies.',
+        description: 'Everything you need to know about printing coaching notes for NEET and JEE preparation. Covers Physics Wallah, Unacademy, Allen, Aakash ó with subject-wise tips and cost strategies.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
@@ -803,7 +803,7 @@ export const blogContent: Record<string, {
                 <h2 className="text-2xl font-semibold mb-4 mt-8">Conclusion</h2>
                 <p className="text-muted-foreground mb-4">
                     Printed notes, when used correctly, can significantly boost your exam preparation. Use
-                    <a href="/" className="text-emerald-500 hover:underline"> Printify Notes</a> to convert your
+                    <a href="/" className="text-[hsl(var(--accent-highlight))] hover:underline"> Printify Notes</a> to convert your
                     coaching material to print-friendly format and start studying smarter today.
                 </p>
             </>
@@ -819,7 +819,7 @@ export const blogContent: Record<string, {
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
-                    CBSE and ICSE have fundamentally different philosophies ‚Äî CBSE is application-focused with
+                    CBSE and ICSE have fundamentally different philosophies ó CBSE is application-focused with
                     concise, NCERT-based content, while ICSE emphasizes depth, analysis, and broad subject coverage.
                     These differences directly impact how much you should print, what type of content deserves paper,
                     and how to organize your physical study materials most effectively.
@@ -848,8 +848,8 @@ export const blogContent: Record<string, {
 
                 <h3 className="text-xl font-medium mb-3 mt-6">Optional to Print</h3>
                 <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
-                    <li><strong>Reference books (HC Verma, SL Arora, etc.):</strong> These are thick ‚Äî print only the chapters or sections you find most difficult.</li>
-                    <li><strong>Sample papers from CBSE website:</strong> Print 2‚Äì3 per subject for timed practice, not all of them.</li>
+                    <li><strong>Reference books (HC Verma, SL Arora, etc.):</strong> These are thick ó print only the chapters or sections you find most difficult.</li>
+                    <li><strong>Sample papers from CBSE website:</strong> Print 2ñ3 per subject for timed practice, not all of them.</li>
                     <li><strong>DPPs (Daily Practice Problems) from coaching:</strong> Print if you're solving them by hand; digital if you're just reading solutions.</li>
                 </ul>
 
@@ -874,7 +874,7 @@ export const blogContent: Record<string, {
                 <h3 className="text-xl font-medium mb-3 mt-6">Optional to Print</h3>
                 <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
                     <li><strong>Reference material (S. Chand, Frank, etc.):</strong> Print the solved examples section of chapters you struggle with.</li>
-                    <li><strong>Internal assessment preparation materials:</strong> Project reports, assignments ‚Äî print final drafts before submission.</li>
+                    <li><strong>Internal assessment preparation materials:</strong> Project reports, assignments ó print final drafts before submission.</li>
                     <li><strong>History and Geography timelines:</strong> Print as wall charts for visual memory.</li>
                 </ul>
 
@@ -882,7 +882,7 @@ export const blogContent: Record<string, {
 
                 <h3 className="text-xl font-medium mb-3 mt-6">Mathematics</h3>
                 <p className="text-muted-foreground mb-4">
-                    Both boards: Print formula sheets (single page per chapter) and 5‚Äì10 solved examples per topic type.
+                    Both boards: Print formula sheets (single page per chapter) and 5ñ10 solved examples per topic type.
                     Leave large margins for your own working. For CBSE, focus on NCERT examples; for ICSE, include solved
                     examples from reference books. Practice papers must be printed and solved on paper to simulate exam conditions.
                 </p>
@@ -903,7 +903,7 @@ export const blogContent: Record<string, {
 
                 <h3 className="text-xl font-medium mb-3 mt-6">Biology</h3>
                 <p className="text-muted-foreground mb-4">
-                    Print diagrams in color ‚Äî cell structure, tissue types, plant and animal organs. Text-heavy content
+                    Print diagrams in color ó cell structure, tissue types, plant and animal organs. Text-heavy content
                     works in grayscale. For CBSE, NCERT diagrams are board-exam critical. For ICSE, ensure you have
                     printed practical observation tables and specimen identification guides.
                 </p>
@@ -916,11 +916,11 @@ export const blogContent: Record<string, {
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">Cost-Effective Printing Strategy for Both Boards</h2>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li>Use <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a> to convert any dark-background coaching PDFs ‚Äî saves 60% ink regardless of board</li>
+                    <li>Use <a href="/" className="text-[hsl(var(--accent-highlight))] hover:underline">Printify Notes</a> to convert any dark-background coaching PDFs ó saves 60% ink regardless of board</li>
                     <li>Print theory notes in 2-up layout (2 pages per sheet) to halve paper costs</li>
-                    <li>Keep diagrams at full size ‚Äî compressed diagrams lose important details</li>
+                    <li>Keep diagrams at full size ó compressed diagrams lose important details</li>
                     <li>Use grayscale for all text content; color only for biology diagrams and maps</li>
-                    <li>Buy paper in bulk (10-ream packs during sales) ‚Äî typically 20-25% cheaper per ream</li>
+                    <li>Buy paper in bulk (10-ream packs during sales) ó typically 20-25% cheaper per ream</li>
                     <li>Print previous year papers single-sided so you have space to write answers</li>
                 </ul>
 
@@ -1158,7 +1158,7 @@ export const blogContent: Record<string, {
         dateISO: '2026-01-12',
         readTime: '12 min read',
         category: 'Buying Guide',
-        description: 'Compare inkjet, ink tank, and laser printers for students in India. Canon G2020, Epson L3250, HP Smart Tank 580 ‚Äî cost per page, features, and 4-year total cost analysis. Save ‚Çπ50,000 with the right choice.',
+        description: 'Compare inkjet, ink tank, and laser printers for students in India. Canon G2020, Epson L3250, HP Smart Tank 580 ó cost per page, features, and 4-year total cost analysis. Save ?50,000 with the right choice.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
@@ -1188,15 +1188,15 @@ export const blogContent: Record<string, {
 
                 <h3 className="text-xl font-medium mb-3 mt-6">Budget Pick: Canon Pixma G2020</h3>
                 <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
-                    <li>Price: ‚Çπ12,000-13,000</li>
-                    <li>Cost per page: ‚Çπ0.15 (black), ‚Çπ0.25 (color)</li>
+                    <li>Price: ?12,000-13,000</li>
+                    <li>Cost per page: ?0.15 (black), ?0.25 (color)</li>
                     <li>Ink tank system with 6,000 page yield</li>
                     <li>Print + Scan + Copy</li>
                 </ul>
 
                 <h3 className="text-xl font-medium mb-3 mt-6">Best Value: Epson L3250</h3>
                 <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
-                    <li>Price: ‚Çπ15,000-16,000</li>
+                    <li>Price: ?15,000-16,000</li>
                     <li>WiFi connectivity included</li>
                     <li>Print from phone directly</li>
                     <li>7,500 page yield on black ink</li>
@@ -1204,7 +1204,7 @@ export const blogContent: Record<string, {
 
                 <h3 className="text-xl font-medium mb-3 mt-6">Heavy User: HP Smart Tank 580</h3>
                 <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
-                    <li>Price: ‚Çπ16,000-18,000</li>
+                    <li>Price: ?16,000-18,000</li>
                     <li>12,000 page black ink yield</li>
                     <li>WiFi and USB connectivity</li>
                     <li>Best for families with multiple students</li>
@@ -1215,9 +1215,9 @@ export const blogContent: Record<string, {
                     Assuming 5,000 pages per year (typical for a student):
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li><strong>Cartridge Inkjet:</strong> ‚Çπ8,000 printer + ‚Çπ60,000 ink = ‚Çπ68,000</li>
-                    <li><strong>Ink Tank:</strong> ‚Çπ15,000 printer + ‚Çπ3,000 ink = ‚Çπ18,000</li>
-                    <li><strong>Savings:</strong> ‚Çπ50,000 over 4 years!</li>
+                    <li><strong>Cartridge Inkjet:</strong> ?8,000 printer + ?60,000 ink = ?68,000</li>
+                    <li><strong>Ink Tank:</strong> ?15,000 printer + ?3,000 ink = ?18,000</li>
+                    <li><strong>Savings:</strong> ?50,000 over 4 years!</li>
                 </ul>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">Tips to Save Even More</h2>
@@ -1259,7 +1259,7 @@ export const blogContent: Record<string, {
                 <h2 className="text-2xl font-semibold mb-4 mt-8">Step 3: Convert for Printing</h2>
                 <p className="text-muted-foreground mb-4">
                     Vedantu notes often have dark or colorful backgrounds. Use
-                    <a href="/" className="text-emerald-500 hover:underline"> Printify Notes</a> to convert them:
+                    <a href="/" className="text-[hsl(var(--accent-highlight))] hover:underline"> Printify Notes</a> to convert them:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
                     <li>Upload your Vedantu PDF</li>
@@ -1370,7 +1370,7 @@ export const blogContent: Record<string, {
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">Cost-Effective Printing</h2>
                 <p className="text-muted-foreground mb-4">
-                    Use <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a> to convert
+                    Use <a href="/" className="text-[hsl(var(--accent-highlight))] hover:underline">Printify Notes</a> to convert
                     dark PDFs to printable format. This saves ink costs while giving you eye-friendly study materials.
                 </p>
             </>
@@ -1382,12 +1382,12 @@ export const blogContent: Record<string, {
         dateISO: '2026-08-05',
         readTime: '14 min read',
         category: 'Study Plan',
-        description: 'Phase-by-phase study plan for NEET 2027: Foundation (Aug‚ÄìDec 2026), Deep Practice (Jan‚ÄìApr 2027), Revision (May 2027). Includes subject-wise strategies, daily schedule, free resources, and printing tips.',
+        description: 'Phase-by-phase study plan for NEET 2027: Foundation (AugñDec 2026), Deep Practice (JanñApr 2027), Revision (May 2027). Includes subject-wise strategies, daily schedule, free resources, and printing tips.',
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
-                    NEET 2027 preparation requires a structured study plan that balances all three subjects ‚Äî Physics,
-                    Chemistry, and Biology ‚Äî while building both conceptual understanding and problem-solving speed.
+                    NEET 2027 preparation requires a structured study plan that balances all three subjects ó Physics,
+                    Chemistry, and Biology ó while building both conceptual understanding and problem-solving speed.
                     Whether you're starting early or looking to optimize your existing plan, this comprehensive guide
                     covers everything you need to know.
                 </p>
@@ -1400,60 +1400,60 @@ export const blogContent: Record<string, {
                     <li><strong>Total Questions:</strong> 200 (180 to attempt)</li>
                     <li><strong>Duration:</strong> 3 hours 20 minutes</li>
                     <li><strong>Marking:</strong> +4 for correct, -1 for incorrect</li>
-                    <li><strong>Subjects:</strong> Physics (45Q), Chemistry (45Q), Botany (45Q), Zoology (45Q) ‚Äî with 10 optional per subject</li>
+                    <li><strong>Subjects:</strong> Physics (45Q), Chemistry (45Q), Botany (45Q), Zoology (45Q) ó with 10 optional per subject</li>
                     <li><strong>Syllabus base:</strong> NCERT Class 11 and 12</li>
                 </ul>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">Phase 1: Foundation Building (August 2026 ‚Äì December 2026)</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Phase 1: Foundation Building (August 2026 ñ December 2026)</h2>
                 <p className="text-muted-foreground mb-4">
-                    The first phase focuses on building a rock-solid conceptual foundation. Don't rush through topics ‚Äî understanding
+                    The first phase focuses on building a rock-solid conceptual foundation. Don't rush through topics ó understanding
                     is more important than speed at this stage.
                 </p>
 
                 <h3 className="text-xl font-medium mb-3 mt-6">Physics Strategy</h3>
                 <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
-                    <li>Start with Mechanics (Class 11) ‚Äî it forms the base for everything else</li>
+                    <li>Start with Mechanics (Class 11) ó it forms the base for everything else</li>
                     <li>Focus on understanding derivations, not just memorizing formulas</li>
                     <li>Solve 20-30 numerical problems per chapter from HC Verma or DC Pandey</li>
-                    <li>Use NCERT as your primary textbook ‚Äî 70% of NEET Physics comes from NCERT</li>
+                    <li>Use NCERT as your primary textbook ó 70% of NEET Physics comes from NCERT</li>
                 </ul>
 
                 <h3 className="text-xl font-medium mb-3 mt-6">Chemistry Strategy</h3>
                 <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
-                    <li><strong>Physical Chemistry:</strong> Master the math ‚Äî mole concept, equilibrium, thermodynamics</li>
+                    <li><strong>Physical Chemistry:</strong> Master the math ó mole concept, equilibrium, thermodynamics</li>
                     <li><strong>Organic Chemistry:</strong> Focus on reaction mechanisms, not rote memorization</li>
-                    <li><strong>Inorganic Chemistry:</strong> Create tables and charts for comparison ‚Äî print these for wall display</li>
-                    <li>NCERT Chemistry is absolutely essential ‚Äî read line by line</li>
+                    <li><strong>Inorganic Chemistry:</strong> Create tables and charts for comparison ó print these for wall display</li>
+                    <li>NCERT Chemistry is absolutely essential ó read line by line</li>
                 </ul>
 
                 <h3 className="text-xl font-medium mb-3 mt-6">Biology Strategy</h3>
                 <ul className="list-disc list-inside text-muted-foreground mb-4 space-y-2">
-                    <li>Biology is the highest-scoring subject ‚Äî it should get 40% of your total study time</li>
+                    <li>Biology is the highest-scoring subject ó it should get 40% of your total study time</li>
                     <li>Read NCERT Biology 3 times minimum before the exam</li>
                     <li>Make your own diagram-heavy notes for each chapter</li>
-                    <li>Focus on Class 12 Biology chapters ‚Äî they carry more weightage</li>
+                    <li>Focus on Class 12 Biology chapters ó they carry more weightage</li>
                     <li>Print important diagrams in color for visual memory using Printify Notes</li>
                 </ul>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">Phase 2: Deep Practice (January 2027 ‚Äì April 2027)</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Phase 2: Deep Practice (January 2027 ñ April 2027)</h2>
                 <p className="text-muted-foreground mb-4">
                     This phase is about solving problems intensively and identifying weak areas.
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li>Solve previous year NEET papers (2015-2026) ‚Äî at least twice</li>
+                    <li>Solve previous year NEET papers (2015-2026) ó at least twice</li>
                     <li>Take topic-wise tests every week</li>
-                    <li>Maintain an error log ‚Äî write down every mistake and review weekly</li>
+                    <li>Maintain an error log ó write down every mistake and review weekly</li>
                     <li>Start taking full-length mock tests (3 per week minimum)</li>
                     <li>Print your error logs and important formulas for quick revision</li>
                 </ul>
 
-                <h2 className="text-2xl font-semibold mb-4 mt-8">Phase 3: Revision & Mock Tests (May 2027 ‚Äì Exam Day)</h2>
+                <h2 className="text-2xl font-semibold mb-4 mt-8">Phase 3: Revision & Mock Tests (May 2027 ñ Exam Day)</h2>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li>Full NCERT revision ‚Äî at least one complete read-through</li>
+                    <li>Full NCERT revision ó at least one complete read-through</li>
                     <li>One full-length mock test every day in the last 30 days</li>
                     <li>Revise your Quick Revision binder (printed formula sheets and key points)</li>
-                    <li>Focus on accuracy over speed ‚Äî the negative marking can be devastating</li>
-                    <li>Don't start new topics ‚Äî consolidate what you know</li>
+                    <li>Focus on accuracy over speed ó the negative marking can be devastating</li>
+                    <li>Don't start new topics ó consolidate what you know</li>
                 </ul>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">Free Resources for NEET 2027</h2>
@@ -1461,21 +1461,21 @@ export const blogContent: Record<string, {
                     You don't need expensive coaching to crack NEET. Here are the best free resources:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li><strong>NCERT Textbooks:</strong> Available free at ncert.nic.in ‚Äî your #1 resource</li>
-                    <li><strong>Physics Wallah (YouTube):</strong> Complete NEET syllabus covered ‚Äî download and print notes using <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a></li>
+                    <li><strong>NCERT Textbooks:</strong> Available free at ncert.nic.in ó your #1 resource</li>
+                    <li><strong>Physics Wallah (YouTube):</strong> Complete NEET syllabus covered ó download and print notes using <a href="/" className="text-[hsl(var(--accent-highlight))] hover:underline">Printify Notes</a></li>
                     <li><strong>Vedantu Free Classes:</strong> Live sessions with doubt clearing</li>
                     <li><strong>NTA Official Papers:</strong> Previous year papers at neet.nta.nic.in</li>
-                    <li><strong>Allen DLP Material:</strong> Shared in study groups ‚Äî convert dark PDFs before printing</li>
+                    <li><strong>Allen DLP Material:</strong> Shared in study groups ó convert dark PDFs before printing</li>
                 </ul>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">Daily Study Schedule (Recommended)</h2>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li><strong>6:00 ‚Äì 8:00 AM:</strong> Biology (fresh mind = better memorization)</li>
-                    <li><strong>8:30 ‚Äì 10:30 AM:</strong> Physics (numerical practice)</li>
-                    <li><strong>11:00 AM ‚Äì 1:00 PM:</strong> Chemistry</li>
-                    <li><strong>2:00 ‚Äì 3:30 PM:</strong> Practice problems (mixed)</li>
-                    <li><strong>4:00 ‚Äì 5:30 PM:</strong> Video lectures or doubt clearing</li>
-                    <li><strong>7:00 ‚Äì 9:00 PM:</strong> Revision of the day's topics</li>
+                    <li><strong>6:00 ñ 8:00 AM:</strong> Biology (fresh mind = better memorization)</li>
+                    <li><strong>8:30 ñ 10:30 AM:</strong> Physics (numerical practice)</li>
+                    <li><strong>11:00 AM ñ 1:00 PM:</strong> Chemistry</li>
+                    <li><strong>2:00 ñ 3:30 PM:</strong> Practice problems (mixed)</li>
+                    <li><strong>4:00 ñ 5:30 PM:</strong> Video lectures or doubt clearing</li>
+                    <li><strong>7:00 ñ 9:00 PM:</strong> Revision of the day's topics</li>
                     <li><strong>Total:</strong> 10-11 hours of focused study with breaks</li>
                 </ul>
 
@@ -1484,7 +1484,7 @@ export const blogContent: Record<string, {
                     Smart printing is a key part of effective preparation:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li>Use <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a> to convert dark coaching PDFs ‚Äî save 60% on ink</li>
+                    <li>Use <a href="/" className="text-[hsl(var(--accent-highlight))] hover:underline">Printify Notes</a> to convert dark coaching PDFs ó save 60% on ink</li>
                     <li>Print formula sheets and pin them on your study wall</li>
                     <li>Create a "Last 30 Days" revision binder with essential printed notes</li>
                     <li>Print previous year papers for timed practice (simulates real exam feel)</li>
@@ -1511,7 +1511,7 @@ export const blogContent: Record<string, {
         content: (
             <>
                 <p className="text-lg text-muted-foreground mb-6">
-                    The debate between digital PDFs and printed notes isn't just about personal preference ‚Äî there's
+                    The debate between digital PDFs and printed notes isn't just about personal preference ó there's
                     significant scientific research showing how each format affects learning, retention, and exam
                     performance differently. In this article, we examine the research and help you build an optimal
                     study strategy that leverages both formats.
@@ -1524,7 +1524,7 @@ export const blogContent: Record<string, {
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
                     <li><strong>Mueller & Oppenheimer (2014, Princeton):</strong> Students who took handwritten notes on paper performed significantly better on conceptual questions than those who typed. This became known as the "laptop problem" in education.</li>
                     <li><strong>Mangen et al. (2013, Stavanger University):</strong> Readers of printed text scored higher on reading comprehension tests compared to those reading the same text on screens, particularly for texts longer than one page.</li>
-                    <li><strong>Ackerman & Goldsmith (2011):</strong> Students studying on screens were more likely to engage in "shallow" processing ‚Äî skimming rather than deep reading ‚Äî leading to weaker recall.</li>
+                    <li><strong>Ackerman & Goldsmith (2011):</strong> Students studying on screens were more likely to engage in "shallow" processing ó skimming rather than deep reading ó leading to weaker recall.</li>
                     <li><strong>Delgado et al. (2018, Meta-analysis):</strong> A review of 54 studies involving 170,000+ participants confirmed a significant advantage for paper-based reading in comprehension tasks.</li>
                 </ul>
 
@@ -1534,7 +1534,7 @@ export const blogContent: Record<string, {
                 <p className="text-muted-foreground mb-4">
                     When you read printed text and annotate by hand, your brain processes the information more deeply.
                     The physical act of underlining, writing margin notes, and drawing arrows creates multiple neural
-                    pathways ‚Äî visual, motor, and spatial ‚Äî that reinforce memory. Digital interactions (scrolling,
+                    pathways ó visual, motor, and spatial ó that reinforce memory. Digital interactions (scrolling,
                     tapping) create fewer and weaker neural connections.
                 </p>
 
@@ -1582,7 +1582,7 @@ export const blogContent: Record<string, {
                     <li><strong>Active study (Print):</strong> Print key chapters, formulas, and diagrams. Annotate extensively by hand</li>
                     <li><strong>Quick reference (Digital):</strong> Keep all PDFs organized for quick searches during problem-solving</li>
                     <li><strong>Exam revision (Print):</strong> Use printed notes exclusively in the final 2-4 weeks. Print your "Quick Revision" sheets</li>
-                    <li><strong>Error logs (Print):</strong> Maintain a handwritten error log ‚Äî the act of writing reinforces correction</li>
+                    <li><strong>Error logs (Print):</strong> Maintain a handwritten error log ó the act of writing reinforces correction</li>
                 </ul>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">Cost-Effective Printing for Better Results</h2>
@@ -1590,11 +1590,11 @@ export const blogContent: Record<string, {
                     The biggest barrier to printing is cost. Here's how to make it affordable:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li>Use <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a> to convert dark coaching PDFs ‚Äî saves 60% on ink</li>
+                    <li>Use <a href="/" className="text-[hsl(var(--accent-highlight))] hover:underline">Printify Notes</a> to convert dark coaching PDFs ó saves 60% on ink</li>
                     <li>Print in grayscale for text-heavy content</li>
                     <li>Use 2 pages per sheet for revision notes</li>
-                    <li>Invest in an ink tank printer (‚Çπ15,000 upfront saves ‚Çπ50,000 over 4 years)</li>
-                    <li>Print selectively ‚Äî only chapters and topics you struggle with</li>
+                    <li>Invest in an ink tank printer (?15,000 upfront saves ?50,000 over 4 years)</li>
+                    <li>Print selectively ó only chapters and topics you struggle with</li>
                 </ul>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">Conclusion</h2>
@@ -1619,7 +1619,7 @@ export const blogContent: Record<string, {
                 <p className="text-lg text-muted-foreground mb-6">
                     The type of paper you use for printing study notes can significantly affect readability,
                     durability, and even your study experience. Most students use whatever paper is cheapest
-                    or most available ‚Äî but spending a few minutes understanding paper types can save you money
+                    or most available ó but spending a few minutes understanding paper types can save you money
                     and improve your study materials.
                 </p>
 
@@ -1629,10 +1629,10 @@ export const blogContent: Record<string, {
                     what matters for students:
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li><strong>60-70 GSM:</strong> Economy paper ‚Äî cheap but ink can bleed through. Best for draft printing or temporary notes</li>
-                    <li><strong>75-80 GSM:</strong> Standard paper ‚Äî the sweet spot for daily study notes. Good balance of cost, quality, and durability</li>
-                    <li><strong>90-100 GSM:</strong> Premium paper ‚Äî excellent for important notes you'll keep long-term. No show-through with duplex printing</li>
-                    <li><strong>120+ GSM:</strong> Card stock ‚Äî too thick for regular notes, but great for formula cards and flashcards</li>
+                    <li><strong>60-70 GSM:</strong> Economy paper ó cheap but ink can bleed through. Best for draft printing or temporary notes</li>
+                    <li><strong>75-80 GSM:</strong> Standard paper ó the sweet spot for daily study notes. Good balance of cost, quality, and durability</li>
+                    <li><strong>90-100 GSM:</strong> Premium paper ó excellent for important notes you'll keep long-term. No show-through with duplex printing</li>
+                    <li><strong>120+ GSM:</strong> Card stock ó too thick for regular notes, but great for formula cards and flashcards</li>
                 </ul>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">Paper Brightness and Whiteness</h2>
@@ -1641,7 +1641,7 @@ export const blogContent: Record<string, {
                 </p>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
                     <li><strong>Brightness:</strong> Measured on a scale of 1-100. Higher brightness (90+) means sharper contrast with black text. Ideal for text-heavy study notes</li>
-                    <li><strong>Whiteness (CIE):</strong> Affects how "white" the paper appears. Ultra-white papers (CIE 160+) look professional but can cause glare under direct light ‚Äî not ideal for long study sessions</li>
+                    <li><strong>Whiteness (CIE):</strong> Affects how "white" the paper appears. Ultra-white papers (CIE 160+) look professional but can cause glare under direct light ó not ideal for long study sessions</li>
                     <li><strong>Recommendation:</strong> For study notes, aim for brightness 90-96 with moderate whiteness. This gives clear text without eye strain</li>
                 </ul>
 
@@ -1683,17 +1683,17 @@ export const blogContent: Record<string, {
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">Popular Paper Brands in India for Students</h2>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li><strong>JK Copier (75 GSM):</strong> Most popular and widely available. Good quality for the price (‚Çπ250-300/ream)</li>
-                    <li><strong>BILT Matrix (70 GSM):</strong> Budget-friendly option. Suitable for everyday printing (‚Çπ200-250/ream)</li>
-                    <li><strong>ITC Classmate Paper (75 GSM):</strong> Reliable quality, widely stocked (‚Çπ260-310/ream)</li>
-                    <li><strong>JK Easy Copier (70 GSM):</strong> Economy option for bulk printing (‚Çπ190-230/ream)</li>
-                    <li><strong>HP Everyday Paper (80 GSM):</strong> Premium feel at a reasonable price (‚Çπ350-400/ream)</li>
+                    <li><strong>JK Copier (75 GSM):</strong> Most popular and widely available. Good quality for the price (?250-300/ream)</li>
+                    <li><strong>BILT Matrix (70 GSM):</strong> Budget-friendly option. Suitable for everyday printing (?200-250/ream)</li>
+                    <li><strong>ITC Classmate Paper (75 GSM):</strong> Reliable quality, widely stocked (?260-310/ream)</li>
+                    <li><strong>JK Easy Copier (70 GSM):</strong> Economy option for bulk printing (?190-230/ream)</li>
+                    <li><strong>HP Everyday Paper (80 GSM):</strong> Premium feel at a reasonable price (?350-400/ream)</li>
                 </ul>
 
                 <h2 className="text-2xl font-semibold mb-4 mt-8">Money-Saving Tips</h2>
                 <ul className="list-disc list-inside text-muted-foreground mb-6 space-y-2">
-                    <li>Buy paper in bulk (5-10 reams) during Amazon or Flipkart sales ‚Äî savings of 15-25%</li>
-                    <li>Use <a href="/" className="text-emerald-500 hover:underline">Printify Notes</a> to convert dark PDFs before printing ‚Äî this alone saves more money than any paper choice</li>
+                    <li>Buy paper in bulk (5-10 reams) during Amazon or Flipkart sales ó savings of 15-25%</li>
+                    <li>Use <a href="/" className="text-[hsl(var(--accent-highlight))] hover:underline">Printify Notes</a> to convert dark PDFs before printing ó this alone saves more money than any paper choice</li>
                     <li>Print duplex (both sides) on 80+ GSM paper to halve paper consumption</li>
                     <li>Use draft mode for practice papers to save both ink and extend paper life</li>
                     <li>Reuse one-side printed paper for rough work</li>

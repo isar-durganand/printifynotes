@@ -91,21 +91,21 @@ const ReviewPage: React.FC = () => {
         {/* Card */}
         <div className="rounded-2xl border border-border bg-card shadow-2xl overflow-hidden">
           {/* Top gradient bar */}
-          <div className="h-1.5 w-full bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-400" />
+          <div className="h-1.5 w-full bg-gradient-to-r from-[hsl(var(--accent-highlight))] via-[hsl(var(--accent-highlight)/0.8)] to-teal-400" />
 
           <div className="p-8 sm:p-10">
             {submitted ? (
               /* Success state */
               <div className="text-center py-6 space-y-4">
-                <div className="w-16 h-16 mx-auto rounded-full bg-emerald-500/15 flex items-center justify-center">
-                  <CheckCircle2 className="w-8 h-8 text-emerald-500" />
+                <div className="w-16 h-16 mx-auto rounded-full bg-[hsl(var(--accent-highlight))]/15 flex items-center justify-center">
+                  <CheckCircle2 className="w-8 h-8 text-[hsl(var(--accent-highlight))]" />
                 </div>
                 <h1 className="text-2xl font-bold">Thank You! 🎉</h1>
                 <p className="text-muted-foreground leading-relaxed">
                   Your review has been submitted successfully. It helps other students discover Printify Notes!
                 </p>
                 <Link to="/">
-                  <Button className="mt-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl">
+                  <Button className="mt-4 bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)] text-white rounded-xl">
                     Back to Home
                   </Button>
                 </Link>
@@ -114,8 +114,8 @@ const ReviewPage: React.FC = () => {
               <>
                 {/* Header */}
                 <div className="text-center mb-8">
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-emerald-500/10 mb-4">
-                    <Star className="w-7 h-7 text-emerald-500 fill-emerald-500/30" />
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[hsl(var(--accent-highlight))]/10 mb-4">
+                    <Star className="w-7 h-7 text-[hsl(var(--accent-highlight))] fill-[hsl(var(--accent-highlight)/0.25)]" />
                   </div>
                   <h1 className="text-2xl sm:text-3xl font-bold tracking-tight mb-2">
                     Leave a Review
@@ -148,7 +148,7 @@ const ReviewPage: React.FC = () => {
                 <Button
                   onClick={handleSubmit}
                   disabled={rating === 0 || submitting}
-                  className="w-full bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl h-11 font-semibold text-sm"
+                  className="w-full bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)] text-white rounded-xl h-11 font-semibold text-sm"
                 >
                   {submitting ? (
                     <Loader2 className="w-4 h-4 mr-2 animate-spin" />

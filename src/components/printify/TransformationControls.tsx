@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Settings, Sparkles, Sun, Contrast, Undo2, Redo2 } from 'lucide-react';
+import { Settings, Sliders, Sun, Contrast, Undo2, Redo2 } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
@@ -42,9 +42,8 @@ export function TransformationControls({ settings, onChange, onUndo, onRedo, can
   return (
     <div className="rounded-xl liquid-glass overflow-hidden">
       {/* Panel header */}
-      <div className="flex items-center gap-2.5 px-4 py-3 border-b border-white/[0.06] bg-white/[0.02] relative">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent pointer-events-none" />
-        <Settings className="w-4 h-4 text-emerald-400" />
+      <div className="flex items-center gap-2.5 px-4 py-3 border-b border-foreground/[0.06] bg-foreground/[0.02] relative">
+        <Settings className="w-4 h-4 text-[hsl(var(--accent-highlight))]" />
         <h3 className="font-semibold text-foreground text-sm tracking-tight relative z-10">Transformations</h3>
         {/* Undo / Redo buttons */}
         <div className="ml-auto flex items-center gap-1 relative z-10">
@@ -52,7 +51,7 @@ export function TransformationControls({ settings, onChange, onUndo, onRedo, can
             onClick={onUndo}
             disabled={!canUndo}
             title="Undo (Ctrl+Z)"
-            className="p-1.5 rounded-lg hover:bg-white/[0.06] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+            className="p-1.5 rounded-lg hover:bg-foreground/[0.06] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
           >
             <Undo2 className="w-3.5 h-3.5 text-muted-foreground" />
           </button>
@@ -116,7 +115,7 @@ export function TransformationControls({ settings, onChange, onUndo, onRedo, can
             onChange={(v) => updateSetting('contrast', v)}
           />
           <SliderRow
-            icon={Sparkles}
+            icon={Sliders}
             label="Edge Enhancement"
             value={settings.edgeEnhancement}
             min={0}
@@ -181,7 +180,7 @@ function SliderRow({
           <Icon className="w-3.5 h-3.5 text-muted-foreground" />
           <Label className="text-sm font-medium">{label}</Label>
         </div>
-        <span className="text-xs font-mono text-emerald-500 tabular-nums">{value}%</span>
+        <span className="text-xs font-mono text-[hsl(var(--accent-highlight))] tabular-nums">{value}%</span>
       </div>
       <Slider
         value={[value]}

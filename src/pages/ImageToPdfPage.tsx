@@ -28,15 +28,15 @@ const ImageToPdfPage: React.FC = () => {
                     <h2 className="text-xl font-semibold mb-4">How to Convert Images to PDF</h2>
                     <ol className="space-y-3 text-muted-foreground">
                         <li className="flex gap-3">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 text-white text-sm flex items-center justify-center">1</span>
+                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--accent-highlight))] text-white text-sm flex items-center justify-center">1</span>
                             <span>Drop or select your images (JPG, PNG, WebP)</span>
                         </li>
                         <li className="flex gap-3">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 text-white text-sm flex items-center justify-center">2</span>
+                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--accent-highlight))] text-white text-sm flex items-center justify-center">2</span>
                             <span>Choose page size (A4, Letter, A3, or fit to image)</span>
                         </li>
                         <li className="flex gap-3">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 text-white text-sm flex items-center justify-center">3</span>
+                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--accent-highlight))] text-white text-sm flex items-center justify-center">3</span>
                             <span>Drag to reorder, then click "Convert to PDF"</span>
                         </li>
                     </ol>
@@ -56,8 +56,8 @@ const ImageToPdfPage: React.FC = () => {
                             </p>
                         </div>
                         <div className="p-5 rounded-xl border bg-card">
-                            <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-3">
-                                <Shield className="w-5 h-5 text-emerald-500" />
+                            <div className="w-10 h-10 rounded-lg bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center mb-3">
+                                <Shield className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
                             </div>
                             <h3 className="font-semibold mb-2">100% Private</h3>
                             <p className="text-sm text-muted-foreground">
@@ -90,23 +90,23 @@ const ImageToPdfPage: React.FC = () => {
                     <h2 className="text-xl font-semibold mb-4">Popular Uses for Image to PDF</h2>
                     <ul className="space-y-3 text-muted-foreground">
                         <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
                             <span><strong>Photo Albums:</strong> Compile vacation photos, family pictures, or event memories into shareable PDF albums.</span>
                         </li>
                         <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
                             <span><strong>Document Scans:</strong> Convert scanned receipts, ID cards, or handwritten notes from photos to organized PDFs.</span>
                         </li>
                         <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
                             <span><strong>Assignments:</strong> Students can convert handwritten assignment photos into PDFs for easy submission.</span>
                         </li>
                         <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
                             <span><strong>Portfolios:</strong> Artists and designers can compile their work into professional PDF portfolios.</span>
                         </li>
                         <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
+                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
                             <span><strong>WhatsApp Images:</strong> Convert images received on WhatsApp into PDFs for archiving or printing.</span>
                         </li>
                     </ul>
@@ -181,7 +181,7 @@ const ImageToPdfPage: React.FC = () => {
                             India and most countries outside the US. Choose Letter if you're sharing with US-based recipients.
                             "Fit to Image" is perfect for photo albums where you want zero margins and the page sized exactly
                             to your image. For mixing portrait and landscape photos, consider converting them separately and
-                            then merging with our <a href="/tools/merge-pdf" className="text-emerald-500 hover:underline">PDF Merger</a>.
+                            then merging with our <a href="/tools/merge-pdf" className="text-[hsl(var(--accent-highlight))] hover:underline">PDF Merger</a>.
                         </p>
                         <p>
                             <strong className="text-foreground">Organizing Before Converting:</strong> Since the images appear in
@@ -192,14 +192,14 @@ const ImageToPdfPage: React.FC = () => {
                 </div>
 
                 {/* Tips */}
-                <div className="mt-12 p-6 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
-                    <h2 className="text-xl font-semibold mb-4 text-emerald-600 dark:text-emerald-400">💡 Pro Tips for Better PDFs</h2>
+                <div className="mt-12 p-6 rounded-xl bg-[hsl(var(--accent-highlight))]/5 border border-[hsl(var(--accent-highlight)/0.15)]">
+                    <h2 className="text-xl font-semibold mb-4 text-[hsl(var(--accent-highlight))] dark:text-[hsl(var(--accent-highlight))]">💡 Pro Tips for Better PDFs</h2>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                         <li>• For printed documents, use A4 or Letter size in portrait orientation.</li>
                         <li>• For photo albums or landscape images, select landscape orientation.</li>
                         <li>• Use "Fit to Image" if you want pages sized exactly to your images (no borders).</li>
                         <li>• Organize your images before uploading - they'll appear in the order you add them.</li>
-                        <li>• After creating your PDF, you can use our <a href="/tools/compress-pdf" className="text-emerald-500 hover:underline">PDF Compressor</a> to reduce the file size for easier sharing.</li>
+                        <li>• After creating your PDF, you can use our <a href="/tools/compress-pdf" className="text-[hsl(var(--accent-highlight))] hover:underline">PDF Compressor</a> to reduce the file size for easier sharing.</li>
                     </ul>
                 </div>
 
@@ -216,7 +216,7 @@ const ImageToPdfPage: React.FC = () => {
                             <p className="text-sm text-muted-foreground">Perfect for screenshots, graphics, and transparent images</p>
                         </div>
                         <div className="p-4 rounded-lg border bg-card text-center">
-                            <div className="text-2xl font-bold text-emerald-500 mb-1">WebP</div>
+                            <div className="text-2xl font-bold text-[hsl(var(--accent-highlight))] mb-1">WebP</div>
                             <p className="text-sm text-muted-foreground">Modern format with excellent compression from web</p>
                         </div>
                     </div>

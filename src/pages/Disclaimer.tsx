@@ -46,7 +46,7 @@ const Disclaimer = () => {
                         href="https://www.google.com/settings/ads"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-emerald-500 hover:underline"
+                        className="text-[hsl(var(--accent-highlight))] hover:underline"
                     >
                         Google Ads Settings
                     </a>. You may also visit{' '}
@@ -54,7 +54,7 @@ const Disclaimer = () => {
                         href="https://www.aboutads.info/choices/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-emerald-500 hover:underline"
+                        className="text-[hsl(var(--accent-highlight))] hover:underline"
                     >
                         www.aboutads.info/choices
                     </a>{' '}
@@ -150,13 +150,13 @@ const Disclaimer = () => {
                 </p>
                 <p className="text-muted-foreground mb-4">
                     Email:{' '}
-                    <a href="mailto:isardurganand@gmail.com" className="text-emerald-500 hover:underline">
+                    <a href="mailto:isardurganand@gmail.com" className="text-[hsl(var(--accent-highlight))] hover:underline">
                         isardurganand@gmail.com
                     </a>
                 </p>
                 <p className="text-muted-foreground">
                     You can also reach us via our{' '}
-                    <Link to="/contact" className="text-emerald-500 hover:underline">
+                    <Link to="/contact" className="text-[hsl(var(--accent-highlight))] hover:underline">
                         contact page
                     </Link>.
                 </p>

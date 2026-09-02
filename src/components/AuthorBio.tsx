@@ -32,7 +32,7 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({ publishDate, updateDate })
         >
             <div className="flex flex-col sm:flex-row items-start gap-4 p-6 rounded-2xl bg-card border border-border">
                 {/* Avatar */}
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center flex-shrink-0">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[hsl(var(--accent-highlight))] to-[hsl(var(--accent-highlight)/0.8)] flex items-center justify-center flex-shrink-0">
                     <span className="text-white text-xl font-bold" aria-hidden="true">DI</span>
                 </div>
 
@@ -42,7 +42,7 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({ publishDate, updateDate })
                         <h3 className="font-semibold text-foreground" itemProp="name">
                             Durganand Ishar
                         </h3>
-                        <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-500 font-medium w-fit">
+                        <span className="text-xs px-2.5 py-0.5 rounded-full bg-[hsl(var(--accent-highlight))]/10 text-[hsl(var(--accent-highlight))] font-medium w-fit">
                             Author & Developer
                         </span>
                     </div>
@@ -79,7 +79,7 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({ publishDate, updateDate })
                             href="https://www.linkedin.com/in/durganandishar/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-emerald-500 transition-all"
+                            className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--accent-highlight))] transition-all"
                             title="LinkedIn"
                             itemProp="sameAs"
                         >
@@ -89,7 +89,7 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({ publishDate, updateDate })
                             href="https://github.com/isar-durganand"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-emerald-500 transition-all"
+                            className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--accent-highlight))] transition-all"
                             title="GitHub"
                             itemProp="sameAs"
                         >
@@ -99,7 +99,7 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({ publishDate, updateDate })
                             href="https://x.com/Durganand_07"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-emerald-500 transition-all"
+                            className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--accent-highlight))] transition-all"
                             title="X (Twitter)"
                             itemProp="sameAs"
                         >

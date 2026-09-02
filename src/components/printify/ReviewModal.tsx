@@ -65,7 +65,7 @@ export function ReviewModal({ onClose }: ReviewModalProps) {
         className="relative w-full max-w-sm rounded-2xl border border-border bg-card shadow-2xl overflow-hidden"
       >
         {/* Top accent bar */}
-        <div className="h-1 w-full bg-gradient-to-r from-emerald-500 via-emerald-400 to-teal-400" />
+        <div className="h-1 w-full bg-[hsl(var(--accent-highlight))]" />
 
         {/* Close button */}
         <button
@@ -87,7 +87,7 @@ export function ReviewModal({ onClose }: ReviewModalProps) {
             <>
               {/* Header */}
               <div className="mb-5">
-                <p className="text-xs font-semibold text-emerald-500 uppercase tracking-widest mb-1">
+                <p className="text-xs font-semibold text-[hsl(var(--accent-highlight))] uppercase tracking-widest mb-1">
                   How did it go?
                 </p>
                 <h2 className="text-lg font-bold text-foreground leading-tight">
@@ -111,9 +111,9 @@ export function ReviewModal({ onClose }: ReviewModalProps) {
                     <Star
                       className="w-8 h-8 transition-colors duration-100"
                       style={{
-                        fill: star <= activeRating ? '#10b981' : 'transparent',
-                        stroke: star <= activeRating ? '#10b981' : 'currentColor',
-                        color: star <= activeRating ? '#10b981' : 'hsl(var(--muted-foreground))',
+                        fill: star <= activeRating ? 'hsl(var(--accent-highlight))' : 'transparent',
+                        stroke: star <= activeRating ? 'hsl(var(--accent-highlight))' : 'currentColor',
+                        color: star <= activeRating ? 'hsl(var(--accent-highlight))' : 'hsl(var(--muted-foreground))',
                       }}
                     />
                   </button>
@@ -123,7 +123,7 @@ export function ReviewModal({ onClose }: ReviewModalProps) {
               {/* Star label */}
               <p
                 className="text-sm font-medium mb-4 h-5 transition-all duration-150"
-                style={{ color: activeRating ? '#10b981' : 'transparent' }}
+                style={{ color: activeRating ? 'hsl(var(--accent-highlight))' : 'transparent' }}
               >
                 {activeRating ? starLabels[activeRating - 1] : '·'}
               </p>
@@ -144,7 +144,7 @@ export function ReviewModal({ onClose }: ReviewModalProps) {
                 <Button
                   onClick={handleSubmit}
                   disabled={rating === 0 || submitting}
-                  className="flex-1 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg"
+                  className="flex-1 bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)] text-white rounded-lg"
                   size="sm"
                 >
                   {submitting ? (

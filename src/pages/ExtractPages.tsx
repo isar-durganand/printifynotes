@@ -28,15 +28,15 @@ const ExtractPages: React.FC = () => {
                     <h2 className="text-xl font-semibold mb-4">How to Extract Pages</h2>
                     <ol className="space-y-3 text-muted-foreground">
                         <li className="flex gap-3">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 text-white text-sm flex items-center justify-center">1</span>
+                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--accent-highlight))] text-white text-sm flex items-center justify-center">1</span>
                             <span>Upload your PDF file</span>
                         </li>
                         <li className="flex gap-3">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 text-white text-sm flex items-center justify-center">2</span>
+                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--accent-highlight))] text-white text-sm flex items-center justify-center">2</span>
                             <span>Click pages to select/deselect or use range input (e.g., "1-5, 8, 10-12")</span>
                         </li>
                         <li className="flex gap-3">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-emerald-500 text-white text-sm flex items-center justify-center">3</span>
+                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--accent-highlight))] text-white text-sm flex items-center justify-center">3</span>
                             <span>Click "Extract Pages" to download selected pages as a new PDF</span>
                         </li>
                     </ol>
@@ -56,8 +56,8 @@ const ExtractPages: React.FC = () => {
                             </p>
                         </div>
                         <div className="p-5 rounded-xl border bg-card">
-                            <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-3">
-                                <Shield className="w-5 h-5 text-emerald-500" />
+                            <div className="w-10 h-10 rounded-lg bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center mb-3">
+                                <Shield className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
                             </div>
                             <h3 className="font-semibold mb-2">100% Private</h3>
                             <p className="text-sm text-muted-foreground">
@@ -153,7 +153,7 @@ const ExtractPages: React.FC = () => {
                         <div className="p-5 rounded-xl border bg-card">
                             <h3 className="font-semibold mb-2">Can I reorder the extracted pages?</h3>
                             <p className="text-sm text-muted-foreground">
-                                The extracted PDF keeps pages in their original order. If you need to reorder pages, first extract them, then use our <a href="/tools/merge-pdf" className="text-emerald-500 hover:underline">PDF Merger</a> to arrange them in your preferred order.
+                                The extracted PDF keeps pages in their original order. If you need to reorder pages, first extract them, then use our <a href="/tools/merge-pdf" className="text-[hsl(var(--accent-highlight))] hover:underline">PDF Merger</a> to arrange them in your preferred order.
                             </p>
                         </div>
                     </div>
@@ -190,14 +190,14 @@ const ExtractPages: React.FC = () => {
                 </div>
 
                 {/* Tips */}
-                <div className="mt-12 p-6 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
-                    <h2 className="text-xl font-semibold mb-4 text-emerald-600 dark:text-emerald-400">💡 Pro Tips for Extracting Pages</h2>
+                <div className="mt-12 p-6 rounded-xl bg-[hsl(var(--accent-highlight))]/5 border border-[hsl(var(--accent-highlight)/0.15)]">
+                    <h2 className="text-xl font-semibold mb-4 text-[hsl(var(--accent-highlight))] dark:text-[hsl(var(--accent-highlight))]">💡 Pro Tips for Extracting Pages</h2>
                     <ul className="space-y-2 text-sm text-muted-foreground">
                         <li>• Use page ranges like "1-10" for the first 10 pages or "15-" for page 15 to the end.</li>
                         <li>• Combine ranges: "1-5, 8, 12-15" extracts pages 1 through 5, page 8, and pages 12 through 15.</li>
                         <li>• Click "Select All" then deselect specific pages to quickly remove unwanted content.</li>
-                        <li>• After extracting, use our <a href="/tools/compress-pdf" className="text-emerald-500 hover:underline">PDF Compressor</a> if you need a smaller file size.</li>
-                        <li>• Need to combine extracted pages from multiple PDFs? Use our <a href="/tools/merge-pdf" className="text-emerald-500 hover:underline">PDF Merger</a>.</li>
+                        <li>• After extracting, use our <a href="/tools/compress-pdf" className="text-[hsl(var(--accent-highlight))] hover:underline">PDF Compressor</a> if you need a smaller file size.</li>
+                        <li>• Need to combine extracted pages from multiple PDFs? Use our <a href="/tools/merge-pdf" className="text-[hsl(var(--accent-highlight))] hover:underline">PDF Merger</a>.</li>
                     </ul>
                 </div>
             </div>

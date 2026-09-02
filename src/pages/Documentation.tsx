@@ -22,12 +22,12 @@ const Documentation = () => {
                 <h2 className="text-2xl font-semibold mb-6">Quick Start Guide</h2>
                 <div className="space-y-6">
                     <div className="flex items-start gap-4 p-6 rounded-xl bg-card border border-border">
-                        <div className="w-10 h-10 rounded-lg bg-emerald-500 flex items-center justify-center flex-shrink-0 text-white font-bold">
+                        <div className="w-10 h-10 rounded-lg bg-[hsl(var(--accent-highlight))] flex items-center justify-center flex-shrink-0 text-white font-bold">
                             1
                         </div>
                         <div>
                             <h3 className="font-semibold mb-2 flex items-center gap-2">
-                                <Upload className="w-4 h-4 text-emerald-500" />
+                                <Upload className="w-4 h-4 text-[hsl(var(--accent-highlight))]" />
                                 Upload Your PDF
                             </h3>
                             <p className="text-muted-foreground">
@@ -38,12 +38,12 @@ const Documentation = () => {
                     </div>
 
                     <div className="flex items-start gap-4 p-6 rounded-xl bg-card border border-border">
-                        <div className="w-10 h-10 rounded-lg bg-emerald-500 flex items-center justify-center flex-shrink-0 text-white font-bold">
+                        <div className="w-10 h-10 rounded-lg bg-[hsl(var(--accent-highlight))] flex items-center justify-center flex-shrink-0 text-white font-bold">
                             2
                         </div>
                         <div>
                             <h3 className="font-semibold mb-2 flex items-center gap-2">
-                                <Sliders className="w-4 h-4 text-emerald-500" />
+                                <Sliders className="w-4 h-4 text-[hsl(var(--accent-highlight))]" />
                                 Adjust Settings
                             </h3>
                             <p className="text-muted-foreground">
@@ -54,12 +54,12 @@ const Documentation = () => {
                     </div>
 
                     <div className="flex items-start gap-4 p-6 rounded-xl bg-card border border-border">
-                        <div className="w-10 h-10 rounded-lg bg-emerald-500 flex items-center justify-center flex-shrink-0 text-white font-bold">
+                        <div className="w-10 h-10 rounded-lg bg-[hsl(var(--accent-highlight))] flex items-center justify-center flex-shrink-0 text-white font-bold">
                             3
                         </div>
                         <div>
                             <h3 className="font-semibold mb-2 flex items-center gap-2">
-                                <Download className="w-4 h-4 text-emerald-500" />
+                                <Download className="w-4 h-4 text-[hsl(var(--accent-highlight))]" />
                                 Export & Print
                             </h3>
                             <p className="text-muted-foreground">
@@ -78,7 +78,7 @@ const Documentation = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="p-6 rounded-xl bg-card border border-border">
                         <h3 className="font-semibold mb-3 flex items-center gap-2">
-                            <Palette className="w-5 h-5 text-emerald-500" />
+                            <Palette className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
                             Color Inversion
                         </h3>
                         <p className="text-muted-foreground mb-4">
@@ -92,7 +92,7 @@ const Documentation = () => {
 
                     <div className="p-6 rounded-xl bg-card border border-border">
                         <h3 className="font-semibold mb-3 flex items-center gap-2">
-                            <FileText className="w-5 h-5 text-emerald-500" />
+                            <FileText className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
                             Grayscale Mode
                         </h3>
                         <p className="text-muted-foreground mb-4">
@@ -106,7 +106,7 @@ const Documentation = () => {
 
                     <div className="p-6 rounded-xl bg-card border border-border">
                         <h3 className="font-semibold mb-3 flex items-center gap-2">
-                            <Sliders className="w-5 h-5 text-emerald-500" />
+                            <Sliders className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
                             Brightness & Contrast
                         </h3>
                         <p className="text-muted-foreground mb-4">
@@ -120,7 +120,7 @@ const Documentation = () => {
 
                     <div className="p-6 rounded-xl bg-card border border-border">
                         <h3 className="font-semibold mb-3 flex items-center gap-2">
-                            <LayoutGrid className="w-5 h-5 text-emerald-500" />
+                            <LayoutGrid className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
                             Multi-Page Layouts
                         </h3>
                         <p className="text-muted-foreground mb-4">
@@ -156,7 +156,7 @@ const Documentation = () => {
             {/* FAQ */}
             <section className="mb-12">
                 <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
-                    <HelpCircle className="w-6 h-6 text-emerald-500" />
+                    <HelpCircle className="w-6 h-6 text-[hsl(var(--accent-highlight))]" />
                     Common Questions
                 </h2>
 
@@ -187,8 +187,8 @@ const Documentation = () => {
                 </div>
 
                 <p className="mt-6 text-muted-foreground">
-                    Have more questions? Check our <Link to="/#faq" className="text-emerald-500 hover:underline">FAQ section</Link> or{' '}
-                    <Link to="/contact" className="text-emerald-500 hover:underline">contact us</Link>.
+                    Have more questions? Check our <Link to="/#faq" className="text-[hsl(var(--accent-highlight))] hover:underline">FAQ section</Link> or{' '}
+                    <Link to="/contact" className="text-[hsl(var(--accent-highlight))] hover:underline">contact us</Link>.
                 </p>
             </section>
         </PageLayout>
