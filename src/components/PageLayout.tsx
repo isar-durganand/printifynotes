@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FileText, ArrowLeft, Home } from 'lucide-react';
+import { FileText, Home } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { Footer } from '@/components/landing/Footer';
 import { FloatingSocial } from '@/components/FloatingSocial';
@@ -163,20 +163,17 @@ export const PageLayout = ({
                 <header className="sticky top-0 z-40 py-3 sm:py-4 px-3 sm:px-4" role="banner">
                     <div className="max-w-4xl mx-auto">
                         <nav
-                            className="rounded-2xl px-3 sm:px-5 py-2.5 sm:py-3.5 liquid-glass-strong"
+                            className="rounded-2xl px-3 sm:px-5 py-2.5 sm:py-3.5 liquid-glass-elevated"
                             role="navigation"
                             aria-label="Page navigation"
                         >
-                            {/* Top highlight */}
-                            <div className="absolute inset-x-0 top-0 h-px rounded-t-2xl bg-gradient-to-r from-transparent via-white/[0.1] to-transparent pointer-events-none" />
-
                             <div className="relative z-10 flex items-center justify-between">
                                 <Link
                                     to="/"
                                     className="flex items-center gap-2 sm:gap-3 group"
                                     aria-label="Printify Notes - Go to homepage"
                                 >
-                                    <div className="p-1.5 sm:p-2 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-[0_0_16px_rgba(16,185,129,0.3)] transition-shadow duration-300 group-hover:shadow-[0_0_24px_rgba(16,185,129,0.5)]">
+                                    <div className="p-1.5 sm:p-2 rounded-xl bg-[hsl(var(--accent-highlight))] transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]">
                                         <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-white" aria-hidden="true" />
                                     </div>
                                     <div>
@@ -186,7 +183,7 @@ export const PageLayout = ({
                                 </Link>
                                 <Link
                                     to="/"
-                                    className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-all duration-300 px-3 py-2 rounded-xl hover:bg-white/[0.04]"
+                                    className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] px-3 py-2 rounded-xl hover:bg-foreground/[0.04]"
                                     aria-label="Go back to home page"
                                 >
                                     <Home className="w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true" />

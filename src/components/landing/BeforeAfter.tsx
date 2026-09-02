@@ -9,25 +9,20 @@ export const BeforeAfter = () => {
 
   return (
     <section className="section-padding relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-emerald-500/[0.025] rounded-full blur-[120px]" />
-      </div>
-
       <div className="container-wide relative z-10">
         {/* Section header */}
         <div
           ref={headerRef}
           className={`text-center mb-16 scroll-hidden ${headerVisible ? 'scroll-visible' : ''}`}
         >
-          <span className="glass-pill text-emerald-400 text-xs font-semibold tracking-widest uppercase mb-6">
-            See The Difference
+          <span className="glass-pill text-muted-foreground text-xs font-semibold tracking-widest uppercase mb-6">
+            The Difference
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-            Before & After
+            Before and After
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            See how Printify Notes transforms dark PDFs into print-ready documents.
+            Dark coaching notes become clean, printer-ready documents — instantly.
           </p>
         </div>
 
@@ -66,17 +61,17 @@ export const BeforeAfter = () => {
               </div>
             </div>
 
-            {/* Arrow indicator — glass circle */}
+            {/* Arrow indicator — clean glass circle */}
             <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-[0_0_24px_rgba(16,185,129,0.4)]">
-                <ArrowRight className="w-5 h-5 text-white" />
+              <div className="w-12 h-12 rounded-full flex items-center justify-center liquid-glass-elevated">
+                <ArrowRight className="w-5 h-5 text-foreground/70 relative z-10" />
               </div>
             </div>
 
             {/* Mobile arrow */}
             <div className="flex md:hidden justify-center -my-2">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center rotate-90 bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-[0_0_20px_rgba(16,185,129,0.3)]">
-                <ArrowRight className="w-4 h-4 text-white" />
+              <div className="w-10 h-10 rounded-full flex items-center justify-center rotate-90 liquid-glass-elevated">
+                <ArrowRight className="w-4 h-4 text-foreground/70 relative z-10" />
               </div>
             </div>
 
@@ -86,13 +81,10 @@ export const BeforeAfter = () => {
               className={`scroll-hidden-right ${afterVisible ? 'scroll-visible-x' : ''}`}
             >
               <div className="relative group">
-                <div className="relative liquid-glass rounded-2xl p-4 md:p-6 glow-border-emerald">
-                  {/* Subtle glare / reflection */}
-                  <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-emerald-400/[0.04] to-transparent rounded-tr-2xl pointer-events-none z-[1]" />
-
+                <div className="relative liquid-glass rounded-2xl p-4 md:p-6 border-[hsl(var(--accent-highlight)/0.2)]" style={{ borderColor: 'hsl(var(--accent-highlight) / 0.2)' }}>
                   <div className="flex items-center gap-2 mb-4 relative z-10">
-                    <Sun className="w-4 h-4 text-emerald-400" />
-                    <span className="text-sm font-medium text-emerald-400">After</span>
+                    <Sun className="w-4 h-4 text-[hsl(var(--accent-highlight))]" />
+                    <span className="text-sm font-medium text-[hsl(var(--accent-highlight))]">After</span>
                   </div>
                   {/* Mock light PDF */}
                   <div className="aspect-[4/3] rounded-xl bg-[#fafafa] p-4 md:p-6 font-mono text-xs overflow-hidden relative z-10">
@@ -109,7 +101,7 @@ export const BeforeAfter = () => {
                   </div>
                   <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground relative z-10">
                     <span>Clean background</span>
-                    <span className="text-emerald-400 font-medium">60% less ink</span>
+                    <span className="text-[hsl(var(--accent-highlight))] font-medium">60% less ink</span>
                   </div>
                 </div>
               </div>

@@ -64,22 +64,17 @@ export const FAQ = () => {
 
   return (
     <section className="section-padding relative" id="faq">
-      {/* Background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-1/4 left-1/3 w-[500px] h-[300px] bg-cyan-500/[0.015] rounded-full blur-[100px]" />
-      </div>
-
       <div className="container-tight relative z-10">
         {/* Section header */}
         <div
           ref={headerRef}
           className={`text-center mb-12 scroll-hidden ${headerVisible ? 'scroll-visible' : ''}`}
         >
-          <span className="glass-pill text-emerald-400 text-xs font-semibold tracking-widest uppercase mb-6">
+          <span className="glass-pill text-muted-foreground text-xs font-semibold tracking-widest uppercase mb-6">
             FAQ
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-            Frequently Asked Questions
+            Common Questions
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
             Everything you need to know about converting dark PDFs for printing —
@@ -97,7 +92,7 @@ export const FAQ = () => {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="liquid-glass rounded-xl px-6 border-none transition-all duration-300 data-[state=open]:shadow-[0_0_24px_rgba(16,185,129,0.06)] data-[state=open]:border-emerald-500/10"
+                className="liquid-glass rounded-xl px-6 border-none transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] data-[state=open]:shadow-[var(--glass-shadow-lg)]"
               >
                 <AccordionTrigger className="text-left hover:no-underline py-5">
                   <span className="font-medium">{faq.question}</span>

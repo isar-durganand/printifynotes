@@ -26,25 +26,17 @@ export const PrivacySection = () => {
 
   return (
     <section className="section-padding relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[400px] bg-emerald-500/[0.025] rounded-full blur-[120px]" />
-      </div>
-
       <div className="container-tight relative z-10">
         <div
           ref={sectionRef}
-          className={`liquid-glass-strong rounded-3xl p-8 md:p-12 lg:p-16 scroll-hidden-scale ${sectionVisible ? 'scroll-visible-scale' : ''}`}
+          className={`liquid-glass-elevated rounded-3xl p-8 md:p-12 lg:p-16 scroll-hidden-scale ${sectionVisible ? 'scroll-visible-scale' : ''}`}
         >
-          {/* Top highlight */}
-          <div className="absolute inset-x-0 top-0 h-px rounded-t-3xl bg-gradient-to-r from-transparent via-white/[0.12] to-transparent pointer-events-none" />
-
           <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16 relative z-10">
             {/* Left side - Main message */}
             <div className="flex-1 text-center lg:text-left">
-              <div className="glass-pill border-emerald-500/20 shadow-[0_4px_24px_rgba(16,185,129,0.08)] mb-6">
-                <Shield className="w-4 h-4 text-emerald-400" />
-                <span className="text-sm text-emerald-400 font-medium">Privacy First</span>
+              <div className="glass-pill mb-6">
+                <Shield className="w-4 h-4 text-[hsl(var(--accent-highlight))]" />
+                <span className="text-sm text-muted-foreground font-medium">Privacy First</span>
               </div>
 
               <h2 className="text-3xl sm:text-4xl font-bold mb-4 tracking-tight">
@@ -54,8 +46,9 @@ export const PrivacySection = () => {
               </h2>
 
               <p className="text-muted-foreground mb-6 max-w-md mx-auto lg:mx-0 leading-relaxed">
-                Unlike online converters, Printify Notes processes everything in your browser.
-                Your sensitive documents never leave your device.
+                Unlike online converters that upload your files to a server, Printify Notes
+                processes everything right here in your browser. Your sensitive documents
+                never leave your device.
               </p>
             </div>
 
@@ -93,10 +86,10 @@ const PrivacyFeature = ({
   index: number;
 }) => (
   <div
-    className={`flex items-start gap-4 p-4 rounded-xl liquid-glass-subtle scroll-hidden-right ${isVisible ? 'scroll-visible-x' : ''} stagger-${index + 1} transition-all duration-300 hover:bg-white/[0.04]`}
+    className={`flex items-start gap-4 p-4 rounded-xl liquid-glass-recessed scroll-hidden-right ${isVisible ? 'scroll-visible-x' : ''} stagger-${index + 1} transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-foreground/[0.03]`}
   >
-    <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 bg-white/[0.04] border border-white/[0.08]">
-      <Icon className="w-5 h-5 text-emerald-400" />
+    <div className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 bg-foreground/[0.04] border border-foreground/[0.06]">
+      <Icon className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
     </div>
     <div>
       <h4 className="font-semibold mb-1">{title}</h4>

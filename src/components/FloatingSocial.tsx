@@ -39,14 +39,14 @@ export const FloatingSocial = () => {
     return (
         <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
             {/* Social links - show when open */}
-            <div className={`flex flex-col gap-2 transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
+            <div className={`flex flex-col gap-2 transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
                 {socialLinks.map((social, index) => (
                     <a
                         key={social.name}
                         href={social.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`w-12 h-12 rounded-xl flex items-center justify-center text-foreground transition-all duration-300 ${social.color} hover:text-white hover:scale-110 bg-white/[0.04] backdrop-blur-xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.3)]`}
+                        className={`w-12 h-12 rounded-xl flex items-center justify-center text-foreground transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${social.color} hover:text-white hover:scale-[1.08] liquid-glass-elevated`}
                         title={`Follow on ${social.name}`}
                         style={{ transitionDelay: isOpen ? `${index * 50}ms` : '0ms' }}
                     >
@@ -55,12 +55,12 @@ export const FloatingSocial = () => {
                 ))}
             </div>
 
-            {/* Toggle button — liquid glass */}
+            {/* Toggle button — glass both states */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-400 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${isOpen
-                        ? 'bg-white/[0.06] backdrop-blur-xl border border-white/[0.1] text-foreground shadow-[0_8px_32px_rgba(0,0,0,0.3)] rotate-90'
-                        : 'bg-gradient-to-br from-emerald-400 to-emerald-600 text-white shadow-[0_8px_32px_rgba(16,185,129,0.3)] rotate-0'
+                className={`w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpen
+                        ? 'liquid-glass-elevated text-foreground rotate-90'
+                        : 'bg-[hsl(var(--accent-highlight))] text-white rotate-0 border-t border-l border-white/20 border-b border-r border-black/5'
                     }`}
                 aria-label={isOpen ? 'Close social links' : 'Open social links'}
             >

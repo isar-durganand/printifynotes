@@ -41,16 +41,13 @@ export const Footer = () => {
   return (
     <footer className="py-6 sm:py-8 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="rounded-2xl sm:rounded-3xl liquid-glass-strong p-6 sm:p-8 md:p-12">
-          {/* Top highlight */}
-          <div className="absolute inset-x-0 top-0 h-px rounded-t-3xl bg-gradient-to-r from-transparent via-white/[0.1] to-transparent pointer-events-none" />
-
+        <div className="rounded-2xl sm:rounded-3xl liquid-glass-elevated p-6 sm:p-8 md:p-12">
           <div className="relative z-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-10">
               {/* Logo and tagline */}
               <div className="col-span-2 md:col-span-1">
                 <Link to="/" className="flex items-center gap-3 mb-4 group">
-                  <div className="p-2 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-[0_0_16px_rgba(16,185,129,0.3)] transition-shadow duration-300 group-hover:shadow-[0_0_24px_rgba(16,185,129,0.5)]">
+                  <div className="p-2 rounded-xl bg-[hsl(var(--accent-highlight))] transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]">
                     <FileText className="w-5 h-5 text-white" />
                   </div>
                   <span className="text-lg font-semibold">Printify Notes</span>
@@ -58,7 +55,7 @@ export const Footer = () => {
                 <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                   Transform dark PDFs into print-ready documents. Free, private, and eco-friendly.
                 </p>
-                {/* Social links — frosted glass circles */}
+                {/* Social links */}
                 <div className="flex items-center gap-2.5">
                   {socialLinks.map((social) => (
                     <a
@@ -66,7 +63,7 @@ export const Footer = () => {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-9 h-9 rounded-xl flex items-center justify-center text-muted-foreground transition-all duration-300 bg-white/[0.04] border border-white/[0.06] hover:text-white hover:bg-emerald-500/20 hover:border-emerald-500/30 hover:shadow-[0_0_16px_rgba(16,185,129,0.15)]"
+                      className="w-9 h-9 rounded-xl flex items-center justify-center text-muted-foreground transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] bg-foreground/[0.04] border border-foreground/[0.06] hover:text-foreground hover:bg-foreground/[0.08] hover:scale-[1.05]"
                       title={social.name}
                     >
                       <social.icon />
@@ -154,8 +151,9 @@ export const Footer = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/donate" className="hover:text-rose-400 transition-colors duration-200 flex items-center gap-1">
-                      ❤️ Donate
+                    <Link to="/donate" className="hover:text-rose-400 transition-colors duration-200 flex items-center gap-1.5">
+                      <Heart className="w-3 h-3 text-rose-400 fill-rose-400" />
+                      Donate
                     </Link>
                   </li>
                 </ul>
@@ -163,7 +161,7 @@ export const Footer = () => {
             </div>
 
             {/* Bottom bar */}
-            <div className="pt-6 sm:pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
+            <div className="pt-6 sm:pt-8 border-t border-foreground/[0.06] flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
               <p>© {currentYear} Printify Notes. All rights reserved.</p>
               <p className="flex items-center gap-1 flex-wrap justify-center">
                 Made with <Heart className="w-4 h-4 text-destructive fill-destructive" /> by{' '}
@@ -171,7 +169,7 @@ export const Footer = () => {
                   href="https://www.linkedin.com/in/durganandishar/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-emerald-400 hover:underline font-medium"
+                  className="text-[hsl(var(--accent-highlight))] hover:underline font-medium"
                 >
                   Durganand Ishar
                 </a>

@@ -16,9 +16,8 @@ function StarDisplay({ rating, size = 'sm' }: { rating: number; size?: 'sm' | 'l
           key={star}
           className={cls}
           style={{
-            fill: star <= Math.round(rating) ? '#10b981' : 'transparent',
-            stroke: star <= Math.round(rating) ? '#10b981' : 'hsl(var(--muted-foreground))',
-            filter: star <= Math.round(rating) ? 'drop-shadow(0 0 3px rgba(16, 185, 129, 0.3))' : 'none',
+            fill: star <= Math.round(rating) ? 'hsl(var(--accent-highlight))' : 'transparent',
+            stroke: star <= Math.round(rating) ? 'hsl(var(--accent-highlight))' : 'hsl(var(--muted-foreground))',
           }}
         />
       ))}
@@ -83,11 +82,11 @@ export function ReviewsSection() {
       <div className="container-tight">
         {/* Section header */}
         <div className="text-center mb-10 sm:mb-14">
-          <span className="glass-pill text-emerald-400 text-xs font-semibold tracking-widest uppercase mb-6">
+          <span className="glass-pill text-muted-foreground text-xs font-semibold tracking-widest uppercase mb-6">
             Community
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight">
-            What Users Say
+            What Students Say
           </h2>
           <p className="text-muted-foreground max-w-lg mx-auto text-sm sm:text-base leading-relaxed">
             Real reviews from students and educators who've used Printify Notes.
@@ -116,13 +115,13 @@ export function ReviewsSection() {
               <div key={i} className="rounded-xl liquid-glass p-5 animate-pulse">
                 <div className="flex gap-1 mb-3">
                   {[...Array(5)].map((__, j) => (
-                    <div key={j} className="w-4 h-4 rounded-full bg-white/[0.06]" />
+                    <div key={j} className="w-4 h-4 rounded-full bg-foreground/[0.06]" />
                   ))}
                 </div>
                 <div className="space-y-2">
-                  <div className="h-3 bg-white/[0.06] rounded w-full" />
-                  <div className="h-3 bg-white/[0.06] rounded w-4/5" />
-                  <div className="h-3 bg-white/[0.06] rounded w-2/3" />
+                  <div className="h-3 bg-foreground/[0.06] rounded w-full" />
+                  <div className="h-3 bg-foreground/[0.06] rounded w-4/5" />
+                  <div className="h-3 bg-foreground/[0.06] rounded w-2/3" />
                 </div>
               </div>
             ))}
@@ -136,7 +135,7 @@ export function ReviewsSection() {
               {visibleReviews.map((review) => (
                 <div
                   key={review.id}
-                  className="group liquid-glass-interactive prismatic-border rounded-xl p-5"
+                  className="group liquid-glass-interactive rounded-xl p-5"
                 >
                   <div className="flex items-start justify-between mb-3 relative z-10">
                     <StarDisplay rating={review.rating} />
@@ -150,8 +149,8 @@ export function ReviewsSection() {
 
                   {/* Existing Reply Display */}
                   {review.reply && (
-                    <div className="mt-4 pt-3 border-t border-white/[0.08] relative z-10">
-                      <div className="flex items-center gap-1.5 mb-1.5 text-emerald-400">
+                    <div className="mt-4 pt-3 border-t border-foreground/[0.06] relative z-10">
+                      <div className="flex items-center gap-1.5 mb-1.5 text-[hsl(var(--accent-highlight))]">
                         <Reply className="w-3.5 h-3.5" />
                         <span className="text-xs font-semibold tracking-wide">Developer Reply</span>
                       </div>
@@ -163,7 +162,7 @@ export function ReviewsSection() {
 
                   {/* Admin Reply UI */}
                   {isAdmin && !review.reply && (
-                    <div className="mt-4 pt-3 border-t border-white/[0.08] relative z-10">
+                    <div className="mt-4 pt-3 border-t border-foreground/[0.06] relative z-10">
                       {replyingTo === review.id ? (
                         <div className="space-y-2">
                           <textarea
@@ -171,13 +170,13 @@ export function ReviewsSection() {
                             value={replyText}
                             onChange={(e) => setReplyText(e.target.value)}
                             placeholder="Type your reply..."
-                            className="w-full text-sm bg-white/[0.04] border border-white/[0.1] rounded-lg p-2 text-foreground focus:outline-none focus:border-emerald-500/50 resize-none h-20 placeholder:text-muted-foreground/50"
+                            className="w-full text-sm bg-foreground/[0.03] border border-foreground/[0.08] rounded-lg p-2 text-foreground focus:outline-none focus:border-[hsl(var(--accent-highlight)/0.5)] resize-none h-20 placeholder:text-muted-foreground/50"
                           />
                           <div className="flex justify-end gap-2">
                             <Button
                               size="sm"
                               variant="outline"
-                              className="h-7 text-xs px-2 border-white/[0.1] hover:bg-white/[0.05]"
+                              className="h-7 text-xs px-2 border-foreground/[0.08] hover:bg-foreground/[0.04]"
                               onClick={() => {
                                 setReplyingTo(null);
                                 setReplyText('');
@@ -188,7 +187,7 @@ export function ReviewsSection() {
                             </Button>
                             <Button
                               size="sm"
-                              className="h-7 text-xs px-2 bg-emerald-500 hover:bg-emerald-600 text-white"
+                              className="h-7 text-xs px-2 bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)] text-white"
                               onClick={() => handleReplySubmit(review.id)}
                               disabled={submitting || !replyText.trim()}
                             >
@@ -199,7 +198,7 @@ export function ReviewsSection() {
                       ) : (
                         <button
                           onClick={() => handleReplyClick(review.id)}
-                          className="flex items-center gap-1.5 text-xs text-emerald-500 hover:text-emerald-400 font-medium transition-colors"
+                          className="flex items-center gap-1.5 text-xs text-[hsl(var(--accent-highlight))] hover:text-[hsl(var(--accent-highlight)/0.8)] font-medium transition-colors"
                         >
                           <Reply className="w-3.5 h-3.5" /> Reply to Review
                         </button>
@@ -216,7 +215,7 @@ export function ReviewsSection() {
                 <Button
                   variant="outline"
                   onClick={() => setShowAll((v) => !v)}
-                  className="gap-2 rounded-xl border-white/[0.08] bg-white/[0.03] backdrop-blur-md hover:border-emerald-500/30 hover:text-emerald-400 hover:bg-white/[0.05] transition-all duration-300"
+                  className="gap-2 rounded-xl border-foreground/[0.08] bg-foreground/[0.02] backdrop-blur-md hover:bg-foreground/[0.04] transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
                 >
                   {showAll ? (
                     <>
