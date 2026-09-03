@@ -47,7 +47,7 @@ export const DEFAULT_TRANSFORMATIONS: TransformationSettings = {
 export const DEFAULT_COMBINE_SETTINGS: CombineSettings = {
   pagesPerSheet: 1,
   orientation: 'portrait',
-  marginSize: 'medium',
+  marginSize: 'small',
   spacing: 'small',
   pageBorder: false,
 };
