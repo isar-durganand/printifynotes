@@ -26,8 +26,7 @@ export function useUndoRedo<T>(initial: T): UndoRedoState<T> {
       return [...base, newState];
     });
     setCursor((prev) => {
-      const trimmedLen = Math.min(prev + 1, MAX_HISTORY);
-      return trimmedLen;
+      return Math.min(prev + 1, MAX_HISTORY - 1);
     });
   }, [cursor]);
 
