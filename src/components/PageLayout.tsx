@@ -4,6 +4,7 @@ import { FileText, Home } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { Footer } from '@/components/landing/Footer';
 import { FloatingSocial } from '@/components/FloatingSocial';
+import { IOSRubberBand } from '@/components/IOSRubberBand';
 
 interface PageLayoutProps {
     title: string;
@@ -163,8 +164,6 @@ export const PageLayout = ({
                     {JSON.stringify(breadcrumbSchema)}
                 </script>
             </Helmet>
-
-import { IOSRubberBand } from '@/components/IOSRubberBand';
 
             <IOSRubberBand>
                 <div className="min-h-screen bg-background text-foreground flex flex-col justify-between">

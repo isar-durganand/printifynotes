@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { PageThumbnail } from './PageThumbnail';
 import { PagePreviewModal } from './PagePreviewModal';
 import type { PageData, TransformationSettings } from '@/types/printify';
+import { DEFAULT_TRANSFORMATIONS } from '@/types/printify';
 
 interface PageGalleryProps {
   pages: PageData[];
@@ -11,7 +12,8 @@ interface PageGalleryProps {
   onPagesChange: (pages: PageData[]) => void;
 }
 
-export function PageGallery({ pages, transformations, onPagesChange }: PageGalleryProps) {
+export function PageGallery({ pages, transformations = DEFAULT_TRANSFORMATIONS, onPagesChange }: PageGalleryProps) {
+  const safeTransformations = transformations || DEFAULT_TRANSFORMATIONS;
   const [previewPage, setPreviewPage] = useState<PageData | null>(null);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
 
@@ -82,7 +84,7 @@ export function PageGallery({ pages, transformations, onPagesChange }: PageGalle
           <PageThumbnail
             key={page.id}
             page={page}
-            transformations={transformations}
+            transformations={safeTransformations}
             onToggleSelect={() => handleToggleSelect(page.id)}
             onPreview={() => setPreviewPage(page)}
             isDragging={draggedIndex === index}
@@ -99,7 +101,7 @@ export function PageGallery({ pages, transformations, onPagesChange }: PageGalle
       {previewPage && (
         <PagePreviewModal
           page={previewPage}
-          transformations={transformations}
+          transformations={safeTransformations}
           onClose={() => setPreviewPage(null)}
         />
       )}

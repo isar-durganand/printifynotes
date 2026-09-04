@@ -4,6 +4,7 @@ import { Switch } from '@/components/ui/switch';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
 import type { TransformationSettings } from '@/types/printify';
+import { DEFAULT_TRANSFORMATIONS } from '@/types/printify';
 
 interface TransformationControlsProps {
   settings: TransformationSettings;
@@ -14,12 +15,21 @@ interface TransformationControlsProps {
   canRedo: boolean;
 }
 
-export function TransformationControls({ settings, onChange, onUndo, onRedo, canUndo, canRedo }: TransformationControlsProps) {
+export function TransformationControls({
+  settings = DEFAULT_TRANSFORMATIONS,
+  onChange,
+  onUndo,
+  onRedo,
+  canUndo,
+  canRedo,
+}: TransformationControlsProps) {
+  const currentSettings = settings || DEFAULT_TRANSFORMATIONS;
+
   const updateSetting = <K extends keyof TransformationSettings>(
     key: K,
     value: TransformationSettings[K]
   ) => {
-    onChange({ ...settings, [key]: value });
+    onChange({ ...currentSettings, [key]: value });
   };
 
   // Keyboard shortcuts: Ctrl+Z = undo, Ctrl+Y / Ctrl+Shift+Z = redo
@@ -73,21 +83,21 @@ export function TransformationControls({ settings, onChange, onUndo, onRedo, can
             id="invert"
             label="Invert Colors"
             description="Flip dark → light"
-            checked={settings.invertColors}
+            checked={currentSettings.invertColors ?? true}
             onCheckedChange={(v) => updateSetting('invertColors', v)}
           />
           <ToggleRow
             id="whiteBg"
             label="Force White Background"
             description="Snap near-white pixels to pure white"
-            checked={settings.forceWhiteBackground}
+            checked={currentSettings.forceWhiteBackground ?? true}
             onCheckedChange={(v) => updateSetting('forceWhiteBackground', v)}
           />
           <ToggleRow
             id="grayscale"
             label="Grayscale"
             description="Maximum ink savings"
-            checked={settings.grayscale}
+            checked={currentSettings.grayscale ?? false}
             onCheckedChange={(v) => updateSetting('grayscale', v)}
           />
         </div>
@@ -99,7 +109,7 @@ export function TransformationControls({ settings, onChange, onUndo, onRedo, can
           <SliderRow
             icon={Sun}
             label="Brightness"
-            value={settings.brightness}
+            value={currentSettings.brightness ?? 100}
             min={50}
             max={150}
             step={5}
@@ -108,7 +118,7 @@ export function TransformationControls({ settings, onChange, onUndo, onRedo, can
           <SliderRow
             icon={Contrast}
             label="Contrast"
-            value={settings.contrast}
+            value={currentSettings.contrast ?? 110}
             min={50}
             max={150}
             step={5}
@@ -117,7 +127,7 @@ export function TransformationControls({ settings, onChange, onUndo, onRedo, can
           <SliderRow
             icon={Sliders}
             label="Edge Enhancement"
-            value={settings.edgeEnhancement}
+            value={currentSettings.edgeEnhancement ?? 30}
             min={0}
             max={100}
             step={10}
@@ -173,6 +183,8 @@ function SliderRow({
   onChange: (v: number) => void;
   hint?: string;
 }) {
+  const safeValue = typeof value === 'number' && !isNaN(value) ? value : min;
+
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between">
@@ -180,11 +192,15 @@ function SliderRow({
           <Icon className="w-3.5 h-3.5 text-muted-foreground" />
           <Label className="text-sm font-medium tracking-tight">{label}</Label>
         </div>
-        <span className="text-xs font-mono font-semibold text-accent tabular-nums">{value}%</span>
+        <span className="text-xs font-mono font-semibold text-accent tabular-nums">{safeValue}%</span>
       </div>
       <Slider
-        value={[value]}
-        onValueChange={([v]) => onChange(v)}
+        value={[safeValue]}
+        onValueChange={([v]) => {
+          if (typeof v === 'number' && !isNaN(v)) {
+            onChange(v);
+          }
+        }}
         min={min}
         max={max}
         step={step}
@@ -193,4 +209,3 @@ function SliderRow({
     </div>
   );
 }
-

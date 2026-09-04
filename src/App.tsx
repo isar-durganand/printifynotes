@@ -24,6 +24,7 @@ import ThankYou from "./pages/ThankYou";
 import Disclaimer from "./pages/Disclaimer";
 import ReviewPage from "./pages/ReviewPage";
 import { CookieConsent } from "./components/CookieConsent";
+import { PageTransition } from "./components/PageTransition";
 
 const queryClient = new QueryClient();
 
@@ -50,8 +51,6 @@ const ScrollToTop = () => {
 
   return null;
 };
-
-import { PageTransition } from "./components/PageTransition";
 
 const AnimatedRoutes = () => {
   const location = useLocation();

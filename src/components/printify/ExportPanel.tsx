@@ -7,6 +7,7 @@ import { Switch } from '@/components/ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { jsPDF } from 'jspdf';
 import type { PageData, TransformationSettings, CombineSettings } from '@/types/printify';
+import { DEFAULT_TRANSFORMATIONS } from '@/types/printify';
 import { applyTransformations } from '@/lib/imageTransformations';
 import { ReviewModal } from '@/components/printify/ReviewModal';
 
@@ -21,10 +22,11 @@ interface ExportPanelProps {
 
 export function ExportPanel({
   pages,
-  transformations,
+  transformations = DEFAULT_TRANSFORMATIONS,
   combineSettings,
   onReset,
 }: ExportPanelProps) {
+  const safeTransformations = transformations || DEFAULT_TRANSFORMATIONS;
   const [isExporting, setIsExporting] = useState(false);
   const [progress, setProgress] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
@@ -73,7 +75,7 @@ export function ExportPanel({
       for (let i = 0; i < selectedPages.length; i++) {
         const transformed = await applyTransformations(
           selectedPages[i].originalImage,
-          transformations
+          safeTransformations
         );
         transformedImages.push(transformed);
         setProgress(Math.round(((i + 1) / selectedPages.length) * 50));

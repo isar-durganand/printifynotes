@@ -1,4 +1,5 @@
 import type { TransformationSettings } from '@/types/printify';
+import { DEFAULT_TRANSFORMATIONS } from '@/types/printify';
 
 // Convolution kernel for edge enhancement (sharpening)
 function applyConvolution(
@@ -39,16 +40,16 @@ function applyConvolution(
     }
   }
   
-  // Copy output back to data
-  for (let i = 0; i < data.length; i++) {
-    data[i] = output[i];
-  }
+  // Fast copy output back to data
+  data.set(output);
 }
 
 export async function applyTransformations(
   imageDataUrl: string,
-  settings: TransformationSettings
+  settings: TransformationSettings = DEFAULT_TRANSFORMATIONS
 ): Promise<string> {
+  const s = settings || DEFAULT_TRANSFORMATIONS;
+
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.onload = () => {
@@ -70,6 +71,11 @@ export async function applyTransformations(
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const data = imageData.data;
 
+      const brightnessFactor = (s.brightness ?? 100) / 100;
+      const contrastVal = s.contrast ?? 100;
+      const contrastFactor = (contrastVal / 100 - 0.5) * 2;
+      const intercept = 128 * (1 - (1 + contrastFactor));
+
       // Process each pixel
       for (let i = 0; i < data.length; i += 4) {
         let r = data[i];
@@ -77,7 +83,7 @@ export async function applyTransformations(
         let b = data[i + 2];
 
         // Invert colors
-        if (settings.invertColors) {
+        if (s.invertColors) {
           r = 255 - r;
           g = 255 - g;
           b = 255 - b;
@@ -87,15 +93,12 @@ export async function applyTransformations(
         const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
 
         // Force white background (convert dark areas to white)
-        if (settings.forceWhiteBackground) {
-          // If the pixel is close to white after inversion (was dark before), make it pure white
+        if (s.forceWhiteBackground) {
           if (luminance > 240) {
             r = 255;
             g = 255;
             b = 255;
-          }
-          // If it's very dark after inversion (was very light before, like text), make it darker
-          if (luminance < 30) {
+          } else if (luminance < 30) {
             r = Math.min(r, 20);
             g = Math.min(g, 20);
             b = Math.min(b, 20);
@@ -103,20 +106,17 @@ export async function applyTransformations(
         }
 
         // Apply brightness
-        const brightnessFactor = settings.brightness / 100;
         r = r * brightnessFactor;
         g = g * brightnessFactor;
         b = b * brightnessFactor;
 
         // Apply contrast
-        const contrastFactor = (settings.contrast / 100 - 0.5) * 2;
-        const intercept = 128 * (1 - (1 + contrastFactor));
         r = r * (1 + contrastFactor) + intercept;
         g = g * (1 + contrastFactor) + intercept;
         b = b * (1 + contrastFactor) + intercept;
 
         // Grayscale
-        if (settings.grayscale) {
+        if (s.grayscale) {
           const gray = 0.299 * r + 0.587 * g + 0.114 * b;
           r = gray;
           g = gray;
@@ -130,19 +130,17 @@ export async function applyTransformations(
       }
 
       // Apply edge enhancement (sharpening) if enabled
-      if (settings.edgeEnhancement > 0) {
-        // Unsharp mask kernel for edge enhancement
+      if (s.edgeEnhancement && s.edgeEnhancement > 0) {
         const sharpenKernel = [
           0, -1, 0,
           -1, 5, -1,
           0, -1, 0
         ];
-        const strength = settings.edgeEnhancement / 100;
+        const strength = s.edgeEnhancement / 100;
         applyConvolution(imageData, sharpenKernel, strength);
       }
 
       ctx.putImageData(imageData, 0, 0);
-      // Use JPEG with 85% quality for much smaller file size
       resolve(canvas.toDataURL('image/jpeg', 0.85));
     };
 
@@ -153,35 +151,100 @@ export async function applyTransformations(
 
 export function getTransformationPreview(
   imageDataUrl: string,
-  settings: TransformationSettings,
+  settings: TransformationSettings = DEFAULT_TRANSFORMATIONS,
   maxSize: number = 200
 ): Promise<string> {
-  return new Promise((resolve, reject) => {
+  const s = settings || DEFAULT_TRANSFORMATIONS;
+
+  return new Promise((resolve) => {
     const img = new Image();
-    img.onload = async () => {
-      // Create a smaller preview for performance
-      const scale = Math.min(maxSize / img.width, maxSize / img.height, 1);
-      const canvas = document.createElement('canvas');
-      canvas.width = img.width * scale;
-      canvas.height = img.height * scale;
-
-      const ctx = canvas.getContext('2d');
-      if (!ctx) {
-        reject(new Error('Could not get canvas context'));
-        return;
-      }
-
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      const previewDataUrl = canvas.toDataURL('image/jpeg', 0.7);
-      
+    img.onload = () => {
       try {
-        const transformed = await applyTransformations(previewDataUrl, settings);
-        resolve(transformed);
-      } catch (error) {
-        reject(error);
+        // Create a smaller preview canvas directly
+        const scale = Math.min(maxSize / img.width, maxSize / img.height, 1);
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.max(1, Math.round(img.width * scale));
+        canvas.height = Math.max(1, Math.round(img.height * scale));
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          resolve(imageDataUrl);
+          return;
+        }
+
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        
+        // Directly process pixels on the scaled canvas without redundant encoding/re-decoding
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+
+        const brightnessFactor = (s.brightness ?? 100) / 100;
+        const contrastVal = s.contrast ?? 100;
+        const contrastFactor = (contrastVal / 100 - 0.5) * 2;
+        const intercept = 128 * (1 - (1 + contrastFactor));
+
+        for (let i = 0; i < data.length; i += 4) {
+          let r = data[i];
+          let g = data[i + 1];
+          let b = data[i + 2];
+
+          if (s.invertColors) {
+            r = 255 - r;
+            g = 255 - g;
+            b = 255 - b;
+          }
+
+          const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+
+          if (s.forceWhiteBackground) {
+            if (luminance > 240) {
+              r = 255;
+              g = 255;
+              b = 255;
+            } else if (luminance < 30) {
+              r = Math.min(r, 20);
+              g = Math.min(g, 20);
+              b = Math.min(b, 20);
+            }
+          }
+
+          r = r * brightnessFactor;
+          g = g * brightnessFactor;
+          b = b * brightnessFactor;
+
+          r = r * (1 + contrastFactor) + intercept;
+          g = g * (1 + contrastFactor) + intercept;
+          b = b * (1 + contrastFactor) + intercept;
+
+          if (s.grayscale) {
+            const gray = 0.299 * r + 0.587 * g + 0.114 * b;
+            r = gray;
+            g = gray;
+            b = gray;
+          }
+
+          data[i] = Math.max(0, Math.min(255, r));
+          data[i + 1] = Math.max(0, Math.min(255, g));
+          data[i + 2] = Math.max(0, Math.min(255, b));
+        }
+
+        if (s.edgeEnhancement && s.edgeEnhancement > 0) {
+          const sharpenKernel = [
+            0, -1, 0,
+            -1, 5, -1,
+            0, -1, 0
+          ];
+          const strength = s.edgeEnhancement / 100;
+          applyConvolution(imageData, sharpenKernel, strength);
+        }
+
+        ctx.putImageData(imageData, 0, 0);
+        resolve(canvas.toDataURL('image/jpeg', 0.75));
+      } catch (e) {
+        resolve(imageDataUrl);
       }
     };
-    img.onerror = () => reject(new Error('Failed to load image'));
+    img.onerror = () => resolve(imageDataUrl);
     img.src = imageDataUrl;
   });
 }

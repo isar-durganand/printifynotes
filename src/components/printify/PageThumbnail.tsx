@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Check, Eye, GripVertical } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import type { PageData, TransformationSettings } from '@/types/printify';
+import { DEFAULT_TRANSFORMATIONS } from '@/types/printify';
 import { getTransformationPreview } from '@/lib/imageTransformations';
 
 interface PageThumbnailProps {
@@ -20,7 +21,7 @@ interface PageThumbnailProps {
 
 export function PageThumbnail({
   page,
-  transformations,
+  transformations = DEFAULT_TRANSFORMATIONS,
   onToggleSelect,
   onPreview,
   isDragging,
@@ -29,29 +30,35 @@ export function PageThumbnail({
   const [previewImage, setPreviewImage] = useState<string>(page.originalImage);
   const [isLoadingPreview, setIsLoadingPreview] = useState(false);
 
+  const safeTransformations = transformations || DEFAULT_TRANSFORMATIONS;
+
   useEffect(() => {
     let cancelled = false;
     setIsLoadingPreview(true);
 
-    getTransformationPreview(page.originalImage, transformations, 150)
-      .then((preview) => {
-        if (!cancelled) {
-          setPreviewImage(preview);
-          setIsLoadingPreview(false);
-        }
-      })
-      .catch(() => {
-        if (!cancelled) {
-          setIsLoadingPreview(false);
-        }
-      });
+    // Debounce preview computation by 75ms to keep slider dragging silky-smooth
+    const timer = setTimeout(() => {
+      getTransformationPreview(page.originalImage, safeTransformations, 150)
+        .then((preview) => {
+          if (!cancelled) {
+            setPreviewImage(preview);
+            setIsLoadingPreview(false);
+          }
+        })
+        .catch(() => {
+          if (!cancelled) {
+            setIsLoadingPreview(false);
+          }
+        });
+    }, 75);
 
     return () => {
       cancelled = true;
+      clearTimeout(timer);
     };
-  }, [page.originalImage, transformations]);
+  }, [page.originalImage, safeTransformations]);
 
-    return (
+  return (
     <div
       {...dragHandleProps}
       onClick={onToggleSelect}
@@ -116,4 +123,3 @@ export function PageThumbnail({
     </div>
   );
 }
-
