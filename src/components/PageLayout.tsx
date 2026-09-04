@@ -14,6 +14,9 @@ interface PageLayoutProps {
     schemaType?: 'Article' | 'WebPage' | 'FAQPage' | 'HowTo' | 'SoftwareApplication';
     datePublished?: string;
     dateModified?: string;
+    hideDefaultTitle?: boolean;
+    noProse?: boolean;
+    maxWidth?: string;
     children: React.ReactNode;
 }
 
@@ -26,6 +29,9 @@ export const PageLayout = ({
     schemaType = 'WebPage',
     datePublished,
     dateModified,
+    hideDefaultTitle = false,
+    noProse = false,
+    maxWidth = 'max-w-4xl',
     children
 }: PageLayoutProps) => {
     const location = useLocation();
@@ -235,21 +241,23 @@ export const PageLayout = ({
 
                 {/* Main Content with Schema markup */}
                 <main
-                    className="container mx-auto px-4 py-8 sm:py-12 max-w-4xl"
+                    className={`container mx-auto px-4 py-8 sm:py-12 ${maxWidth}`}
                     role="main"
                     id="main-content"
                 >
                     <article itemScope itemType={`https://schema.org/${schemaType}`}>
-                        <h1
-                            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8"
-                            itemProp="headline"
-                        >
-                            {title}
-                        </h1>
+                        {!hideDefaultTitle && (
+                            <h1
+                                className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8"
+                                itemProp="headline"
+                            >
+                                {title}
+                            </h1>
+                        )}
                         <meta itemProp="description" content={seoDescription} />
                         <meta itemProp="url" content={fullUrl} />
                         <div
-                            className="prose prose-invert max-w-none prose-sm sm:prose-base"
+                            className={noProse ? "" : "prose prose-invert max-w-none prose-sm sm:prose-base"}
                             itemProp="articleBody"
                         >
                             {children}

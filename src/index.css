@@ -686,3 +686,74 @@
 .stagger-4 { transition-delay: 320ms; }
 .stagger-5 { transition-delay: 400ms; }
 .stagger-6 { transition-delay: 480ms; }
+
+/* ═══════════════════════════════════════════════════ */
+/* LIQUID GLASS & IPHONE-GRADE MOTION UTILITIES        */
+/* ═══════════════════════════════════════════════════ */
+
+@keyframes float-heart-up {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(0.6) rotate(0deg);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-55px) scale(1.1) rotate(-12deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-110px) scale(0.9) rotate(16deg);
+  }
+}
+
+.animate-float-heart {
+  animation: float-heart-up 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes liquid-glow {
+  0%, 100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.12) translate(15px, -15px);
+    opacity: 0.7;
+  }
+}
+
+.animate-liquid-glow {
+  animation: liquid-glow 8s ease-in-out infinite alternate;
+}
+
+.ios-glass-card {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-top: 1px solid var(--glass-border-top);
+  border-left: 1px solid var(--glass-border-top);
+  border-bottom: 1px solid var(--glass-border-bottom);
+  border-right: 1px solid var(--glass-border-bottom);
+  box-shadow: var(--glass-shadow-lg);
+  border-radius: 1.5rem;
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 400ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ios-glass-card:hover {
+  background: var(--glass-bg-elevated);
+  box-shadow: 0 16px 48px -12px rgba(0, 0, 0, 0.28), 0 0 0 1px var(--glass-border-top);
+  transform: translateY(-3px);
+}
+
+.ios-tap-spring {
+  transition: transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ios-tap-spring:active {
+  transform: scale(0.96);
+}
