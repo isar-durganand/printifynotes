@@ -20,44 +20,44 @@ export const HeroSection = () => {
       <div className="gradient-mesh" />
 
       <div className="container-tight relative z-10 text-center">
-        {/* Main heading — extreme typographic contrast */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.08] mb-6 opacity-0 animate-fade-in delay-100 tracking-tight">
-          <span className="bg-gradient-to-b from-foreground via-foreground to-foreground/50 bg-clip-text text-transparent">
+        {/* Main heading — strict iOS typographic hierarchy & tight tracking */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.08] mb-6 opacity-0 animate-fade-in delay-100 tracking-[-0.022em]">
+          <span className="text-foreground">
             Your dark PDFs,
           </span>
           <br />
-          <span className="bg-gradient-to-b from-foreground via-foreground to-foreground/50 bg-clip-text text-transparent">
+          <span className="text-muted-foreground">
             ready for paper.
           </span>
         </h1>
 
-        {/* Subheading — clear, human, SEO-rich */}
-        <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 opacity-0 animate-fade-in delay-200 leading-relaxed">
+        {/* Subheading — clear, human, generous line-height */}
+        <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 opacity-0 animate-fade-in delay-200 leading-relaxed font-normal">
           Convert dark-background lecture notes from PW, Unacademy, Vedantu, and other coaching platforms
           into clean, ink-saving PDFs — right in your browser. No uploads, no signups.
         </p>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 opacity-0 animate-fade-in delay-300">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 mb-14 opacity-0 animate-fade-in delay-300">
           <button
             onClick={scrollToUpload}
-            className="btn-glass-primary flex items-center gap-2"
+            className="btn-glass-primary flex items-center justify-center gap-2 text-base px-7 py-3.5 rounded-xl bg-[#007AFF] hover:bg-[#007AFF]/90 text-white shadow-md active:scale-[0.96] transition-all"
           >
-            Start Converting — It's Free
+            Start Converting — It&apos;s Free
             <ArrowDown className="w-4 h-4" />
           </button>
           <button
             onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
-            className="btn-glass-outline flex items-center gap-2"
+            className="btn-glass-outline flex items-center justify-center gap-2 text-base px-6 py-3.5 rounded-xl active:scale-[0.96] transition-all"
           >
             See How It Works
           </button>
         </div>
 
         {/* Trust signals — clean, minimal glass chips */}
-        <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4 opacity-0 animate-fade-in delay-400">
+        <div className="flex flex-wrap items-center justify-center gap-2.5 md:gap-3.5 opacity-0 animate-fade-in delay-400">
           <TrustBadge text="100% Private — No Data Leaves Your Device" />
-          <TrustBadge text="Instant Processing" />
+          <TrustBadge text="Instant In-Browser Engine" />
           <TrustBadge text="No Account Needed" />
         </div>
 

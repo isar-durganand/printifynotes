@@ -92,12 +92,12 @@ export const FAQ = () => {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="liquid-glass rounded-xl px-6 border-none transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] data-[state=open]:shadow-[var(--glass-shadow-lg)]"
+                className="rounded-2xl bg-card/90 backdrop-blur-xl px-6 border border-border/80 transition-all duration-300 hover:border-foreground/20 data-[state=open]:border-[#007AFF]/40 shadow-sm"
               >
-                <AccordionTrigger className="text-left hover:no-underline py-5">
-                  <span className="font-medium">{faq.question}</span>
+                <AccordionTrigger className="text-left hover:no-underline py-5 ios-press active:scale-[0.98] transition-transform">
+                  <span className="font-semibold text-foreground text-sm sm:text-base tracking-tight">{faq.question}</span>
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
+                <AccordionContent className="text-muted-foreground pb-5 leading-relaxed text-xs sm:text-sm">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

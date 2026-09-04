@@ -160,35 +160,41 @@ const Blog = () => {
             keywords="printify notes blog, print pw notes tutorial, save ink printing, unacademy notes printing guide, neet jee study material printing"
         >
             <section className="mb-12">
-                <p className="text-lg text-muted-foreground mb-8">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#007AFF]/10 text-[#007AFF] text-xs font-semibold tracking-wide uppercase mb-3">
+                    Guides & Tutorials
+                </div>
+                <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3 text-foreground">
+                    Printify Notes Blog
+                </h1>
+                <p className="text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed">
                     Tips, tutorials, and guides to help you print study materials efficiently.
                     Learn how to save ink, convert dark PDFs, and optimize your printing workflow.
                 </p>
             </section>
 
             {/* Featured Post */}
-            <section className="mb-12">
-                <h2 className="text-xl font-semibold mb-6">Featured Article</h2>
+            <section className="mb-14">
+                <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-5 text-foreground">Featured Article</h2>
                 <Link
                     to={`/blog/${blogPosts[0].slug}`}
-                    className="block p-6 md:p-8 rounded-2xl bg-card border border-border hover:border-[hsl(var(--accent-highlight))]/50 transition-colors group"
+                    className="block p-6 sm:p-8 md:p-10 rounded-[28px] bg-card hairline-border shadow-sm hover:border-[#007AFF]/40 hover:shadow-md transition-all duration-200 active:scale-[0.98] group"
                 >
-                    <span className="inline-block px-3 py-1 rounded-full bg-[hsl(var(--accent-highlight))]/10 text-[hsl(var(--accent-highlight))] text-sm font-medium mb-4">
+                    <span className="inline-block px-3 py-1 rounded-full bg-[#007AFF]/10 text-[#007AFF] text-xs font-semibold tracking-wide mb-4">
                         {blogPosts[0].category}
                     </span>
-                    <h3 className="text-2xl md:text-3xl font-bold mb-4 group-hover:text-[hsl(var(--accent-highlight))] transition-colors">
+                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-3 group-hover:text-[#007AFF] transition-colors text-foreground">
                         {blogPosts[0].title}
                     </h3>
-                    <p className="text-muted-foreground mb-6">
+                    <p className="text-muted-foreground mb-6 text-sm sm:text-base leading-relaxed">
                         {blogPosts[0].excerpt}
                     </p>
-                    <div className="flex items-center gap-6 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-6 text-xs sm:text-sm text-muted-foreground">
                         <span className="flex items-center gap-2">
-                            <Calendar className="w-4 h-4" />
+                            <Calendar className="w-4 h-4 text-[#007AFF]" />
                             {blogPosts[0].date}
                         </span>
                         <span className="flex items-center gap-2">
-                            <Clock className="w-4 h-4" />
+                            <Clock className="w-4 h-4 text-[#007AFF]" />
                             {blogPosts[0].readTime}
                         </span>
                     </div>
@@ -197,30 +203,30 @@ const Blog = () => {
 
             {/* All Posts */}
             <section>
-                <h2 className="text-xl font-semibold mb-6">All Articles</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-5 text-foreground">All Articles</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     {blogPosts.slice(1).map((post) => (
                         <Link
                             key={post.slug}
                             to={`/blog/${post.slug}`}
-                            className="block p-6 rounded-2xl bg-card border border-border hover:border-[hsl(var(--accent-highlight))]/50 transition-colors group"
+                            className="block p-6 sm:p-7 rounded-[24px] bg-card hairline-border shadow-sm hover:border-[#007AFF]/40 hover:shadow-md transition-all duration-200 active:scale-[0.98] group"
                         >
                             <div className="flex items-center gap-2 mb-3">
-                                <Tag className="w-4 h-4 text-[hsl(var(--accent-highlight))]" />
-                                <span className="text-sm text-[hsl(var(--accent-highlight))]">{post.category}</span>
+                                <Tag className="w-3.5 h-3.5 text-[#007AFF]" />
+                                <span className="text-xs font-semibold text-[#007AFF]">{post.category}</span>
                             </div>
-                            <h3 className="text-lg font-semibold mb-3 group-hover:text-[hsl(var(--accent-highlight))] transition-colors line-clamp-2">
+                            <h3 className="text-lg font-bold tracking-tight mb-2.5 group-hover:text-[#007AFF] transition-colors line-clamp-2 text-foreground">
                                 {post.title}
                             </h3>
-                            <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                            <p className="text-muted-foreground text-sm mb-4 line-clamp-2 leading-relaxed">
                                 {post.excerpt}
                             </p>
-                            <div className="flex items-center justify-between text-sm text-muted-foreground">
-                                <span className="flex items-center gap-2">
-                                    <Clock className="w-4 h-4" />
+                            <div className="flex items-center justify-between text-xs sm:text-sm text-muted-foreground pt-3 border-t border-black/[0.06] dark:border-white/[0.08]">
+                                <span className="flex items-center gap-1.5">
+                                    <Clock className="w-3.5 h-3.5 text-muted-foreground" />
                                     {post.readTime}
                                 </span>
-                                <span className="flex items-center gap-1 text-[hsl(var(--accent-highlight))] group-hover:gap-2 transition-all">
+                                <span className="flex items-center gap-1 text-[#007AFF] font-medium group-hover:gap-2 transition-all">
                                     Read <ArrowRight className="w-4 h-4" />
                                 </span>
                             </div>
@@ -230,17 +236,17 @@ const Blog = () => {
             </section>
 
             {/* Explore Tools CTA */}
-            <section className="mt-16 p-8 rounded-2xl bg-[hsl(var(--accent-highlight))]/10 border border-[hsl(var(--accent-highlight)/0.15)] text-center">
-                <h2 className="text-2xl font-bold mb-4">Ready to Try Our Tools?</h2>
-                <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+            <section className="mt-16 p-8 sm:p-10 rounded-[32px] bg-[#007AFF]/5 hairline-border border-[#007AFF]/20 text-center shadow-sm">
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3 text-foreground">Ready to Try Our Tools?</h2>
+                <p className="text-muted-foreground mb-6 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
                     Put these tips into practice with our free PDF tools. Convert dark PDFs,
                     merge files, compress documents, and more — all in your browser.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                    <Link to="/" className="px-6 py-3 rounded-xl bg-[hsl(var(--accent-highlight))] text-white font-medium hover:bg-[hsl(var(--accent-highlight)/0.9)] transition-colors">
+                    <Link to="/" className="px-6 py-3 rounded-[12px] bg-[#007AFF] text-white font-semibold hover:bg-[#007AFF]/90 active:scale-[0.96] transition-all shadow-md shadow-[#007AFF]/20 text-sm">
                         Try Dark PDF Converter
                     </Link>
-                    <Link to="/tools" className="px-6 py-3 rounded-xl bg-background border border-border text-foreground font-medium hover:border-[hsl(var(--accent-highlight))] transition-colors">
+                    <Link to="/tools" className="px-6 py-3 rounded-[12px] bg-card hairline-border text-foreground font-semibold hover:border-[#007AFF]/50 active:scale-[0.96] transition-all text-sm">
                         View All Tools
                     </Link>
                 </div>

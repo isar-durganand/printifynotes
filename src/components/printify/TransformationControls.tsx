@@ -40,18 +40,18 @@ export function TransformationControls({ settings, onChange, onUndo, onRedo, can
   }, [onUndo, onRedo]);
 
   return (
-    <div className="rounded-xl liquid-glass overflow-hidden">
+    <div className="rounded-[24px] bg-card/80 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.1] shadow-sm overflow-hidden">
       {/* Panel header */}
-      <div className="flex items-center gap-2.5 px-4 py-3 border-b border-foreground/[0.06] bg-foreground/[0.02] relative">
-        <Settings className="w-4 h-4 text-[hsl(var(--accent-highlight))]" />
+      <div className="flex items-center gap-2.5 px-5 py-3.5 border-b border-black/[0.08] dark:border-white/[0.1] bg-foreground/[0.02] relative">
+        <Settings className="w-4 h-4 text-accent" />
         <h3 className="font-semibold text-foreground text-sm tracking-tight relative z-10">Transformations</h3>
         {/* Undo / Redo buttons */}
-        <div className="ml-auto flex items-center gap-1 relative z-10">
+        <div className="ml-auto flex items-center gap-1.5 relative z-10">
           <button
             onClick={onUndo}
             disabled={!canUndo}
             title="Undo (Ctrl+Z)"
-            className="p-1.5 rounded-lg hover:bg-foreground/[0.06] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+            className="p-1.5 rounded-[10px] hover:bg-foreground/[0.06] active:scale-[0.92] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
           >
             <Undo2 className="w-3.5 h-3.5 text-muted-foreground" />
           </button>
@@ -59,16 +59,16 @@ export function TransformationControls({ settings, onChange, onUndo, onRedo, can
             onClick={onRedo}
             disabled={!canRedo}
             title="Redo (Ctrl+Y)"
-            className="p-1.5 rounded-lg hover:bg-white/[0.06] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+            className="p-1.5 rounded-[10px] hover:bg-foreground/[0.06] active:scale-[0.92] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
           >
             <Redo2 className="w-3.5 h-3.5 text-muted-foreground" />
           </button>
         </div>
       </div>
 
-      <div className="p-4 space-y-5">
+      <div className="p-5 space-y-5">
         {/* Toggle switches */}
-        <div className="space-y-3">
+        <div className="space-y-3.5">
           <ToggleRow
             id="invert"
             label="Invert Colors"
@@ -92,7 +92,7 @@ export function TransformationControls({ settings, onChange, onUndo, onRedo, can
           />
         </div>
 
-        <div className="border-t border-border/60" />
+        <div className="border-t border-black/[0.06] dark:border-white/[0.08]" />
 
         {/* Sliders */}
         <div className="space-y-4">
@@ -146,7 +146,7 @@ function ToggleRow({
   return (
     <div className="flex items-center justify-between gap-3">
       <div className="min-w-0">
-        <Label htmlFor={id} className="text-sm font-medium cursor-pointer">{label}</Label>
+        <Label htmlFor={id} className="text-sm font-semibold cursor-pointer tracking-tight">{label}</Label>
         <p className="text-xs text-muted-foreground mt-0.5">{description}</p>
       </div>
       <Switch id={id} checked={checked} onCheckedChange={onCheckedChange} />
@@ -178,9 +178,9 @@ function SliderRow({
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-1.5">
           <Icon className="w-3.5 h-3.5 text-muted-foreground" />
-          <Label className="text-sm font-medium">{label}</Label>
+          <Label className="text-sm font-medium tracking-tight">{label}</Label>
         </div>
-        <span className="text-xs font-mono text-[hsl(var(--accent-highlight))] tabular-nums">{value}%</span>
+        <span className="text-xs font-mono font-semibold text-accent tabular-nums">{value}%</span>
       </div>
       <Slider
         value={[value]}
@@ -193,3 +193,4 @@ function SliderRow({
     </div>
   );
 }
+

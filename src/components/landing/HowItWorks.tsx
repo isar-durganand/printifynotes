@@ -93,17 +93,17 @@ const StepCard = ({
       </div>
     )}
 
-    <div className="feature-card text-center md:text-left group">
+    <div className="feature-card text-center md:text-left group ios-press">
       {/* Icon with oversized step number */}
-      <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] bg-foreground/[0.04] border border-foreground/[0.06] group-hover:bg-foreground/[0.06] group-hover:scale-[1.04]">
-        <Icon className="w-7 h-7 text-foreground/70 group-hover:text-foreground transition-colors duration-[400ms]" />
-        <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-[hsl(var(--accent-highlight))] text-white text-xs font-bold flex items-center justify-center">
+      <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6 transition-all duration-300 bg-[#007AFF]/10 border border-[#007AFF]/20 group-hover:scale-[1.04] group-hover:bg-[#007AFF]/15">
+        <Icon className="w-7 h-7 text-[#007AFF]" />
+        <span className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-[#007AFF] text-white text-xs font-bold flex items-center justify-center shadow-sm">
           {step}
         </span>
       </div>
 
-      <h3 className="text-xl font-semibold mb-3 relative z-10">{title}</h3>
-      <p className="text-muted-foreground text-sm leading-relaxed relative z-10">{description}</p>
+      <h3 className="text-xl font-bold mb-3 tracking-tight text-foreground">{title}</h3>
+      <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
     </div>
   </div>
 );

@@ -19,23 +19,23 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
   };
 
   return (
-    <div className="rounded-xl liquid-glass overflow-hidden">
-      <div className="flex items-center gap-2.5 px-4 py-3 border-b border-foreground/[0.06] bg-foreground/[0.02] relative">
-        <LayoutGrid className="w-4 h-4 text-[hsl(var(--accent-highlight))]" />
+    <div className="rounded-[24px] bg-card/80 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.1] shadow-sm overflow-hidden">
+      <div className="flex items-center gap-2.5 px-5 py-3.5 border-b border-black/[0.08] dark:border-white/[0.1] bg-foreground/[0.02] relative">
+        <LayoutGrid className="w-4 h-4 text-accent" />
         <h3 className="font-semibold text-foreground text-sm tracking-tight relative z-10">Layout Options</h3>
       </div>
 
-      <div className="p-4 space-y-4">
+      <div className="p-5 space-y-4">
         <div className="space-y-2">
-          <Label className="text-sm">Pages per Sheet</Label>
+          <Label className="text-sm font-semibold tracking-tight">Pages per Sheet</Label>
           <Select
             value={settings.pagesPerSheet.toString()}
             onValueChange={(value) => updateSetting('pagesPerSheet', parseInt(value) as 1 | 2 | 3 | 4)}
           >
-            <SelectTrigger>
+            <SelectTrigger className="rounded-[12px]">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="rounded-[16px]">
               <SelectItem value="1">1 page</SelectItem>
               <SelectItem value="2">2 pages</SelectItem>
               <SelectItem value="3">3 pages</SelectItem>
@@ -45,15 +45,15 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
         </div>
 
         <div className="space-y-2">
-          <Label className="text-sm">Orientation</Label>
+          <Label className="text-sm font-semibold tracking-tight">Orientation</Label>
           <Select
             value={settings.orientation}
             onValueChange={(value) => updateSetting('orientation', value as 'portrait' | 'landscape')}
           >
-            <SelectTrigger>
+            <SelectTrigger className="rounded-[12px]">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="rounded-[16px]">
               <SelectItem value="portrait">Portrait</SelectItem>
               <SelectItem value="landscape">Landscape</SelectItem>
             </SelectContent>
@@ -61,15 +61,15 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
         </div>
 
         <div className="space-y-2">
-          <Label className="text-sm">Margins</Label>
+          <Label className="text-sm font-semibold tracking-tight">Margins</Label>
           <Select
             value={settings.marginSize}
             onValueChange={(value) => updateSetting('marginSize', value as 'small' | 'medium' | 'large')}
           >
-            <SelectTrigger>
+            <SelectTrigger className="rounded-[12px]">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="rounded-[16px]">
               <SelectItem value="small">Small</SelectItem>
               <SelectItem value="medium">Medium</SelectItem>
               <SelectItem value="large">Large</SelectItem>
@@ -78,15 +78,15 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
         </div>
 
         <div className="space-y-2">
-          <Label className="text-sm">Spacing</Label>
+          <Label className="text-sm font-semibold tracking-tight">Spacing</Label>
           <Select
             value={settings.spacing}
             onValueChange={(value) => updateSetting('spacing', value as 'none' | 'small' | 'medium')}
           >
-            <SelectTrigger>
+            <SelectTrigger className="rounded-[12px]">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="rounded-[16px]">
               <SelectItem value="none">None</SelectItem>
               <SelectItem value="small">Small</SelectItem>
               <SelectItem value="medium">Medium</SelectItem>
@@ -94,10 +94,10 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
           </Select>
         </div>
 
-        {/* Page Border toggle — only useful when combining multiple pages */}
+        {/* Page Border toggle */}
         <div className="flex items-center justify-between gap-3 pt-1">
           <div className="min-w-0">
-            <Label htmlFor="pageBorder" className="text-sm font-medium cursor-pointer">
+            <Label htmlFor="pageBorder" className="text-sm font-semibold cursor-pointer tracking-tight">
               Page Border
             </Label>
             <p className="text-xs text-muted-foreground mt-0.5">Thin border around each page</p>
@@ -112,3 +112,4 @@ export function CombineOptions({ settings, onChange }: CombineOptionsProps) {
     </div>
   );
 }
+

@@ -8,16 +8,16 @@ const DEFAULT_VISIBLE = 4;
 
 // Renders filled stars for a given rating
 function StarDisplay({ rating, size = 'sm' }: { rating: number; size?: 'sm' | 'lg' }) {
-  const cls = size === 'lg' ? 'w-6 h-6' : 'w-4 h-4';
+  const cls = size === 'lg' ? 'w-5 h-5' : 'w-4 h-4';
   return (
     <div className="flex items-center gap-0.5">
       {[1, 2, 3, 4, 5].map((star) => (
         <Star
           key={star}
-          className={cls}
+          className={`${cls} transition-colors`}
           style={{
-            fill: star <= Math.round(rating) ? 'hsl(var(--accent-highlight))' : 'transparent',
-            stroke: star <= Math.round(rating) ? 'hsl(var(--accent-highlight))' : 'hsl(var(--muted-foreground))',
+            fill: star <= Math.round(rating) ? '#007AFF' : 'transparent',
+            stroke: star <= Math.round(rating) ? '#007AFF' : 'hsl(var(--muted-foreground))',
           }}
         />
       ))}
@@ -82,10 +82,10 @@ export function ReviewsSection() {
       <div className="container-tight">
         {/* Section header */}
         <div className="text-center mb-10 sm:mb-14">
-          <span className="glass-pill text-muted-foreground text-xs font-semibold tracking-widest uppercase mb-6">
-            Community
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent/10 border border-accent/20 mb-5">
+            <span className="text-xs font-semibold uppercase tracking-wider text-accent">Community</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-[-0.022em]">
             What Students Say
           </h2>
           <p className="text-muted-foreground max-w-lg mx-auto text-sm sm:text-base leading-relaxed">
@@ -96,7 +96,7 @@ export function ReviewsSection() {
         {/* Aggregate stats */}
         {!loading && totalReviews > 0 && (
           <div className="flex flex-col items-center gap-2 mb-10">
-            <div className="text-5xl font-extrabold text-foreground tracking-tight">
+            <div className="text-5xl font-extrabold text-foreground tracking-[-0.022em]">
               {averageRating.toFixed(1)}
             </div>
             <StarDisplay rating={averageRating} size="lg" />
@@ -112,7 +112,7 @@ export function ReviewsSection() {
         {loading && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[...Array(DEFAULT_VISIBLE)].map((_, i) => (
-              <div key={i} className="rounded-xl liquid-glass p-5 animate-pulse">
+              <div key={i} className="rounded-[24px] bg-card p-5 border border-black/[0.08] dark:border-white/[0.1] animate-pulse">
                 <div className="flex gap-1 mb-3">
                   {[...Array(5)].map((__, j) => (
                     <div key={j} className="w-4 h-4 rounded-full bg-foreground/[0.06]" />
@@ -135,7 +135,7 @@ export function ReviewsSection() {
               {visibleReviews.map((review) => (
                 <div
                   key={review.id}
-                  className="group liquid-glass-interactive rounded-xl p-5"
+                  className="group rounded-[24px] p-5 bg-card/80 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.1] shadow-sm transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.01] active:scale-[0.98]"
                 >
                   <div className="flex items-start justify-between mb-3 relative z-10">
                     <StarDisplay rating={review.rating} />
@@ -149,8 +149,8 @@ export function ReviewsSection() {
 
                   {/* Existing Reply Display */}
                   {review.reply && (
-                    <div className="mt-4 pt-3 border-t border-foreground/[0.06] relative z-10">
-                      <div className="flex items-center gap-1.5 mb-1.5 text-[hsl(var(--accent-highlight))]">
+                    <div className="mt-4 pt-3 border-t border-black/[0.06] dark:border-white/[0.08] relative z-10">
+                      <div className="flex items-center gap-1.5 mb-1.5 text-accent">
                         <Reply className="w-3.5 h-3.5" />
                         <span className="text-xs font-semibold tracking-wide">Developer Reply</span>
                       </div>
@@ -162,7 +162,7 @@ export function ReviewsSection() {
 
                   {/* Admin Reply UI */}
                   {isAdmin && !review.reply && (
-                    <div className="mt-4 pt-3 border-t border-foreground/[0.06] relative z-10">
+                    <div className="mt-4 pt-3 border-t border-black/[0.06] dark:border-white/[0.08] relative z-10">
                       {replyingTo === review.id ? (
                         <div className="space-y-2">
                           <textarea
@@ -170,13 +170,13 @@ export function ReviewsSection() {
                             value={replyText}
                             onChange={(e) => setReplyText(e.target.value)}
                             placeholder="Type your reply..."
-                            className="w-full text-sm bg-foreground/[0.03] border border-foreground/[0.08] rounded-lg p-2 text-foreground focus:outline-none focus:border-[hsl(var(--accent-highlight)/0.5)] resize-none h-20 placeholder:text-muted-foreground/50"
+                            className="w-full text-sm bg-foreground/[0.03] border border-foreground/[0.08] rounded-[12px] p-2.5 text-foreground focus:outline-none focus:border-accent resize-none h-20 placeholder:text-muted-foreground/50"
                           />
                           <div className="flex justify-end gap-2">
                             <Button
                               size="sm"
                               variant="outline"
-                              className="h-7 text-xs px-2 border-foreground/[0.08] hover:bg-foreground/[0.04]"
+                              className="h-8 text-xs px-2.5 rounded-[10px]"
                               onClick={() => {
                                 setReplyingTo(null);
                                 setReplyText('');
@@ -187,7 +187,7 @@ export function ReviewsSection() {
                             </Button>
                             <Button
                               size="sm"
-                              className="h-7 text-xs px-2 bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)] text-white"
+                              className="h-8 text-xs px-2.5 rounded-[10px] bg-accent hover:bg-accent/90 text-accent-foreground"
                               onClick={() => handleReplySubmit(review.id)}
                               disabled={submitting || !replyText.trim()}
                             >
@@ -198,7 +198,7 @@ export function ReviewsSection() {
                       ) : (
                         <button
                           onClick={() => handleReplyClick(review.id)}
-                          className="flex items-center gap-1.5 text-xs text-[hsl(var(--accent-highlight))] hover:text-[hsl(var(--accent-highlight)/0.8)] font-medium transition-colors"
+                          className="flex items-center gap-1.5 text-xs text-accent hover:underline font-medium transition-colors"
                         >
                           <Reply className="w-3.5 h-3.5" /> Reply to Review
                         </button>
@@ -215,7 +215,7 @@ export function ReviewsSection() {
                 <Button
                   variant="outline"
                   onClick={() => setShowAll((v) => !v)}
-                  className="gap-2 rounded-xl border-foreground/[0.08] bg-foreground/[0.02] backdrop-blur-md hover:bg-foreground/[0.04] transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                  className="gap-2 rounded-[14px] border-black/[0.08] dark:border-white/[0.1] bg-background/80 backdrop-blur-md hover:bg-foreground/[0.04] transition-all duration-[400ms] active:scale-[0.96]"
                 >
                   {showAll ? (
                     <>
@@ -236,7 +236,7 @@ export function ReviewsSection() {
 
         {/* Empty state */}
         {!loading && totalReviews === 0 && (
-          <div className="text-center py-12 rounded-xl liquid-glass border-dashed">
+          <div className="text-center py-12 rounded-[24px] bg-card/60 backdrop-blur-xl border border-dashed border-black/[0.1] dark:border-white/[0.1]">
             <MessageSquare className="w-10 h-10 text-muted-foreground/40 mx-auto mb-3" />
             <p className="text-muted-foreground text-sm">No reviews yet.</p>
             <p className="text-muted-foreground/60 text-xs mt-1">
@@ -257,3 +257,4 @@ export function ReviewsSection() {
     </section>
   );
 }
+

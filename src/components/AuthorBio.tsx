@@ -26,23 +26,23 @@ interface AuthorBioProps {
 export const AuthorBio: React.FC<AuthorBioProps> = ({ publishDate, updateDate }) => {
     return (
         <div
-            className="mt-12 pt-8 border-t border-border"
+            className="mt-12 pt-8 border-t border-black/[0.08] dark:border-white/[0.1]"
             itemScope
             itemType="https://schema.org/Person"
         >
-            <div className="flex flex-col sm:flex-row items-start gap-4 p-6 rounded-2xl bg-card border border-border">
+            <div className="flex flex-col sm:flex-row items-start gap-4 p-6 sm:p-7 rounded-[26px] bg-card hairline-border shadow-sm">
                 {/* Avatar */}
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[hsl(var(--accent-highlight))] to-[hsl(var(--accent-highlight)/0.8)] flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-xl font-bold" aria-hidden="true">DI</span>
+                <div className="w-16 h-16 rounded-[18px] bg-gradient-to-br from-[#007AFF] to-[#0051D5] flex items-center justify-center flex-shrink-0 shadow-md shadow-[#007AFF]/20">
+                    <span className="text-white text-xl font-bold tracking-tight" aria-hidden="true">DI</span>
                 </div>
 
                 {/* Info */}
                 <div className="flex-1">
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
-                        <h3 className="font-semibold text-foreground" itemProp="name">
+                        <h3 className="font-bold tracking-tight text-foreground text-base" itemProp="name">
                             Durganand Ishar
                         </h3>
-                        <span className="text-xs px-2.5 py-0.5 rounded-full bg-[hsl(var(--accent-highlight))]/10 text-[hsl(var(--accent-highlight))] font-medium w-fit">
+                        <span className="text-xs px-2.5 py-0.5 rounded-full bg-[#007AFF]/10 text-[#007AFF] font-semibold w-fit">
                             Author & Developer
                         </span>
                     </div>
@@ -79,7 +79,7 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({ publishDate, updateDate })
                             href="https://www.linkedin.com/in/durganandishar/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--accent-highlight))] transition-all"
+                            className="w-8 h-8 rounded-full bg-black/[0.04] dark:bg-white/[0.08] hairline-border flex items-center justify-center text-muted-foreground hover:text-[#007AFF] hover:border-[#007AFF]/40 active:scale-[0.96] transition-all"
                             title="LinkedIn"
                             itemProp="sameAs"
                         >
@@ -89,7 +89,7 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({ publishDate, updateDate })
                             href="https://github.com/isar-durganand"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--accent-highlight))] transition-all"
+                            className="w-8 h-8 rounded-full bg-black/[0.04] dark:bg-white/[0.08] hairline-border flex items-center justify-center text-muted-foreground hover:text-[#007AFF] hover:border-[#007AFF]/40 active:scale-[0.96] transition-all"
                             title="GitHub"
                             itemProp="sameAs"
                         >
@@ -99,7 +99,7 @@ export const AuthorBio: React.FC<AuthorBioProps> = ({ publishDate, updateDate })
                             href="https://x.com/Durganand_07"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-[hsl(var(--accent-highlight))] transition-all"
+                            className="w-8 h-8 rounded-full bg-black/[0.04] dark:bg-white/[0.08] hairline-border flex items-center justify-center text-muted-foreground hover:text-[#007AFF] hover:border-[#007AFF]/40 active:scale-[0.96] transition-all"
                             title="X (Twitter)"
                             itemProp="sameAs"
                         >

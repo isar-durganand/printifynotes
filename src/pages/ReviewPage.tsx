@@ -12,28 +12,28 @@ function StarPicker({ rating, onChange }: { rating: number; onChange: (r: number
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center justify-center gap-2">
+      <div className="flex items-center justify-center gap-2.5">
         {[1, 2, 3, 4, 5].map((star) => (
           <button
             key={star}
             onClick={() => onChange(star)}
             onMouseEnter={() => setHover(star)}
             onMouseLeave={() => setHover(0)}
-            className="p-1 transition-transform hover:scale-125 focus:outline-none"
+            className="p-1 transition-transform hover:scale-115 active:scale-95 focus:outline-none"
           >
             <Star
-              className="w-10 h-10 transition-colors duration-100"
+              className="w-9 h-9 transition-colors duration-150"
               style={{
-                fill: star <= active ? '#10b981' : 'transparent',
-                stroke: star <= active ? '#10b981' : 'hsl(var(--muted-foreground))',
+                fill: star <= active ? '#007AFF' : 'transparent',
+                stroke: star <= active ? '#007AFF' : 'hsl(var(--muted-foreground)/0.4)',
               }}
             />
           </button>
         ))}
       </div>
       <p
-        className="text-center text-base font-semibold transition-all duration-150 h-6"
-        style={{ color: active ? '#10b981' : 'transparent' }}
+        className="text-center text-sm font-semibold transition-all duration-150 h-5"
+        style={{ color: active ? '#007AFF' : 'transparent' }}
       >
         {active ? labels[active - 1] : '·'}
       </p>
@@ -60,14 +60,14 @@ const ReviewPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center px-4 py-12 relative overflow-hidden">
-      {/* Background orbs */}
+    <div className="min-h-screen bg-[#F2F2F7] dark:bg-black text-foreground flex flex-col items-center justify-center px-4 py-12 relative overflow-hidden font-sans">
+      {/* Background glow */}
       <div
         className="fixed pointer-events-none"
         style={{
           inset: 0,
           background:
-            'radial-gradient(ellipse 60% 50% at 20% 30%, rgba(16,185,129,0.12) 0%, transparent 60%), radial-gradient(ellipse 40% 60% at 80% 70%, rgba(59,130,246,0.08) 0%, transparent 60%)',
+            'radial-gradient(ellipse 60% 50% at 20% 30%, rgba(0,122,255,0.08) 0%, transparent 60%), radial-gradient(ellipse 40% 60% at 80% 70%, rgba(0,122,255,0.05) 0%, transparent 60%)',
         }}
       />
 
@@ -75,37 +75,37 @@ const ReviewPage: React.FC = () => {
         className="relative w-full max-w-lg"
         style={{
           opacity: visible ? 1 : 0,
-          transform: visible ? 'translateY(0)' : 'translateY(32px)',
+          transform: visible ? 'translateY(0)' : 'translateY(24px)',
           transition: 'opacity 500ms ease, transform 500ms cubic-bezier(0.16,1,0.3,1)',
         }}
       >
         {/* Back link */}
         <Link
           to="/"
-          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground active:scale-[0.96] transition-all mb-6"
         >
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowLeft className="w-4 h-4 text-[#007AFF]" />
           Back to Printify Notes
         </Link>
 
         {/* Card */}
-        <div className="rounded-2xl border border-border bg-card shadow-2xl overflow-hidden">
-          {/* Top gradient bar */}
-          <div className="h-1.5 w-full bg-gradient-to-r from-[hsl(var(--accent-highlight))] via-[hsl(var(--accent-highlight)/0.8)] to-teal-400" />
+        <div className="rounded-[32px] bg-white dark:bg-[#1C1C1E] hairline-border shadow-2xl overflow-hidden">
+          {/* Top hairline accent */}
+          <div className="h-1 w-full bg-gradient-to-r from-[#007AFF] via-[#0A84FF] to-[#0051D5]" />
 
           <div className="p-8 sm:p-10">
             {submitted ? (
               /* Success state */
               <div className="text-center py-6 space-y-4">
-                <div className="w-16 h-16 mx-auto rounded-full bg-[hsl(var(--accent-highlight))]/15 flex items-center justify-center">
-                  <CheckCircle2 className="w-8 h-8 text-[hsl(var(--accent-highlight))]" />
+                <div className="w-16 h-16 mx-auto rounded-[20px] bg-[#007AFF]/10 flex items-center justify-center shadow-sm">
+                  <CheckCircle2 className="w-8 h-8 text-[#007AFF]" />
                 </div>
-                <h1 className="text-2xl font-bold">Thank You! 🎉</h1>
-                <p className="text-muted-foreground leading-relaxed">
+                <h1 className="text-2xl font-bold tracking-tight text-foreground">Thank You! 🎉</h1>
+                <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mx-auto">
                   Your review has been submitted successfully. It helps other students discover Printify Notes!
                 </p>
                 <Link to="/">
-                  <Button className="mt-4 bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)] text-white rounded-xl">
+                  <Button className="mt-4 bg-[#007AFF] hover:bg-[#007AFF]/90 text-white rounded-[12px] font-semibold active:scale-[0.96] transition-transform shadow-md shadow-[#007AFF]/20 px-6">
                     Back to Home
                   </Button>
                 </Link>
@@ -114,10 +114,10 @@ const ReviewPage: React.FC = () => {
               <>
                 {/* Header */}
                 <div className="text-center mb-8">
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[hsl(var(--accent-highlight))]/10 mb-4">
-                    <Star className="w-7 h-7 text-[hsl(var(--accent-highlight))] fill-[hsl(var(--accent-highlight)/0.25)]" />
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-[18px] bg-[#007AFF]/10 mb-4 shadow-sm">
+                    <Star className="w-7 h-7 text-[#007AFF] fill-[#007AFF]/20" />
                   </div>
-                  <h1 className="text-2xl sm:text-3xl font-bold tracking-tight mb-2">
+                  <h1 className="text-2xl sm:text-3xl font-bold tracking-tight mb-2 text-foreground">
                     Leave a Review
                   </h1>
                   <p className="text-muted-foreground text-sm leading-relaxed max-w-sm mx-auto">
@@ -131,15 +131,15 @@ const ReviewPage: React.FC = () => {
                 </div>
 
                 {/* Comment */}
-                <div className="space-y-1 mb-6">
-                  <label className="text-sm font-medium text-foreground">
-                    Your review <span className="text-muted-foreground font-normal">(optional)</span>
+                <div className="space-y-1.5 mb-6">
+                  <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Your review <span className="font-normal text-muted-foreground/60">(optional)</span>
                   </label>
                   <Textarea
                     placeholder="Tell us what you loved, or what we can improve..."
                     value={comment}
                     onChange={(e) => setComment(e.target.value.slice(0, 500))}
-                    className="resize-none h-28 text-sm"
+                    className="resize-none h-28 text-sm rounded-[12px] bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.08] dark:border-white/[0.1] focus:border-[#007AFF] focus:ring-2 focus:ring-[#007AFF]/20"
                   />
                   <p className="text-xs text-muted-foreground text-right">{comment.length}/500</p>
                 </div>
@@ -148,7 +148,7 @@ const ReviewPage: React.FC = () => {
                 <Button
                   onClick={handleSubmit}
                   disabled={rating === 0 || submitting}
-                  className="w-full bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)] text-white rounded-xl h-11 font-semibold text-sm"
+                  className="w-full bg-[#007AFF] hover:bg-[#007AFF]/90 text-white rounded-[12px] h-12 font-semibold text-sm shadow-md shadow-[#007AFF]/20 active:scale-[0.96] transition-transform"
                 >
                   {submitting ? (
                     <Loader2 className="w-4 h-4 mr-2 animate-spin" />

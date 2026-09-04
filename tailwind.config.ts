@@ -14,7 +14,18 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "system-ui", "-apple-system", "sans-serif"],
+        sans: [
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "SF Pro Display",
+          "SF Pro Text",
+          "SF Pro",
+          "system-ui",
+          "sans-serif"
+        ],
+      },
+      letterSpacing: {
+        "tight-ios": "-0.022em",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -22,6 +33,8 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        "ios-blue": "#007AFF",
+        "ios-blue-dark": "#0A84FF",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -69,6 +82,10 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        "ios-btn": "12px",
+        "ios-card": "24px",
+        "ios-card-lg": "32px",
+        "ios-sheet": "32px",
       },
       keyframes: {
         "accordion-down": {

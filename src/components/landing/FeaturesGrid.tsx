@@ -119,15 +119,15 @@ const LargeFeatureCard = ({
   index: number;
 }) => (
   <div
-    className={`feature-card group scroll-hidden-scale ${isVisible ? 'scroll-visible-scale' : ''} stagger-${index + 1}`}
+    className={`feature-card group scroll-hidden-scale ios-press ${isVisible ? 'scroll-visible-scale' : ''} stagger-${index + 1}`}
   >
     <div className="flex items-start gap-5 relative z-10">
       {/* Icon */}
-      <div className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 bg-foreground/[0.04] border border-foreground/[0.06] transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:bg-foreground/[0.06] group-hover:scale-[1.04]">
-        <Icon className="w-7 h-7 text-foreground/70 group-hover:text-foreground transition-colors duration-[400ms]" />
+      <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl flex items-center justify-center shrink-0 bg-[#007AFF]/10 border border-[#007AFF]/20 transition-all duration-300 group-hover:scale-[1.04] group-hover:bg-[#007AFF]/15">
+        <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-[#007AFF]" />
       </div>
       <div>
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
+        <h3 className="text-lg sm:text-xl font-semibold mb-2 tracking-tight text-foreground">{title}</h3>
         <p className="text-muted-foreground text-sm leading-relaxed">{description}</p>
       </div>
     </div>
@@ -148,12 +148,12 @@ const CompactFeatureCard = ({
   index: number;
 }) => (
   <div
-    className={`feature-card group scroll-hidden-scale ${isVisible ? 'scroll-visible-scale' : ''} stagger-${index + 1}`}
+    className={`feature-card group scroll-hidden-scale ios-press ${isVisible ? 'scroll-visible-scale' : ''} stagger-${index + 1}`}
   >
-    <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 relative z-10 bg-foreground/[0.04] border border-foreground/[0.06] transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:bg-foreground/[0.06] group-hover:scale-[1.04]">
-      <Icon className="w-5 h-5 text-foreground/70 group-hover:text-foreground transition-colors duration-[400ms]" />
+    <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 relative z-10 bg-[#007AFF]/10 border border-[#007AFF]/20 transition-all duration-300 group-hover:scale-[1.04] group-hover:bg-[#007AFF]/15">
+      <Icon className="w-5 h-5 text-[#007AFF]" />
     </div>
-    <h3 className="text-base font-semibold mb-1.5 relative z-10">{title}</h3>
+    <h3 className="text-base font-semibold mb-1.5 relative z-10 tracking-tight text-foreground">{title}</h3>
     <p className="text-muted-foreground text-sm leading-relaxed relative z-10">{description}</p>
   </div>
 );

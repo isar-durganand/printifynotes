@@ -77,13 +77,13 @@ export function UploadZone({ onFileSelect, onFilesSelect, isLoading, progress }:
 
   if (isLoading) {
     return (
-      <div className="rounded-xl liquid-glass p-10">
+      <div className="rounded-[24px] bg-card/80 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.1] p-10">
         <div className="flex flex-col items-center gap-5 relative z-10">
-          <div className="p-4 rounded-xl bg-[hsl(var(--accent-highlight)/0.08)] border border-[hsl(var(--accent-highlight)/0.15)]">
-            <FileText className="w-8 h-8 text-[hsl(var(--accent-highlight))] animate-pulse" />
+          <div className="p-4 rounded-[18px] bg-accent/10 border border-accent/20">
+            <FileText className="w-8 h-8 text-accent animate-pulse" />
           </div>
           <div className="w-full max-w-sm space-y-3">
-            <Progress value={progress} className="h-1.5" />
+            <Progress value={progress} className="h-2" />
             <p className="text-sm text-center text-muted-foreground">
               Processing… {progress}%
             </p>
@@ -100,12 +100,12 @@ export function UploadZone({ onFileSelect, onFilesSelect, isLoading, progress }:
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         className={`
-          relative rounded-xl border-2 border-dashed transition-all duration-300 cursor-pointer
+          relative rounded-[24px] border-2 border-dashed transition-all duration-300 cursor-pointer
           ${isDragging
-            ? 'border-[hsl(var(--accent-highlight)/0.4)] bg-[hsl(var(--accent-highlight)/0.04)]'
+            ? 'border-accent bg-accent/5 scale-[1.01]'
             : typeError
               ? 'border-destructive/50 bg-destructive/[0.04]'
-              : 'border-foreground/[0.1] bg-foreground/[0.02] hover:border-foreground/[0.18] hover:bg-foreground/[0.03]'
+              : 'border-black/[0.1] dark:border-white/[0.12] bg-card/60 backdrop-blur-xl hover:border-accent/40 hover:bg-card/80'
           }
         `}
       >
@@ -117,45 +117,45 @@ export function UploadZone({ onFileSelect, onFilesSelect, isLoading, progress }:
           className="hidden"
           id="pdf-upload"
         />
-        <label htmlFor="pdf-upload" className="cursor-pointer block p-10">
+        <label htmlFor="pdf-upload" className="cursor-pointer block p-10 sm:p-14">
           <div className="flex flex-col items-center gap-4 text-center">
             {/* Icon area */}
             <div className={`
-              p-4 rounded-xl border transition-all duration-300
+              p-4.5 rounded-[20px] transition-all duration-300
               ${isDragging
-                ? 'border-[hsl(var(--accent-highlight)/0.2)] bg-[hsl(var(--accent-highlight)/0.06)]'
-                : 'border-foreground/[0.08] bg-foreground/[0.04]'
+                ? 'border border-accent/30 bg-accent/15 scale-110'
+                : 'border border-black/[0.06] dark:border-white/[0.08] bg-foreground/[0.04]'
               }
             `}>
               {isDragging
-                ? <Upload className="w-7 h-7 text-[hsl(var(--accent-highlight))]" />
-                : <Upload className="w-7 h-7 text-muted-foreground" />
+                ? <Upload className="w-8 h-8 text-accent" />
+                : <Upload className="w-8 h-8 text-muted-foreground" />
               }
             </div>
 
             {/* Text */}
             <div>
-              <p className="text-base font-semibold text-foreground mb-1">
-                {isDragging ? 'Release to upload' : 'Drop your file here'}
+              <p className="text-lg font-bold text-foreground mb-1 tracking-tight">
+                {isDragging ? 'Release to upload' : 'Drop your notes or PDF here'}
               </p>
               <p className="text-sm text-muted-foreground">
                 or{' '}
-                <span className="text-foreground font-medium underline underline-offset-2">
-                  click to browse
+                <span className="text-accent font-semibold underline underline-offset-2">
+                  browse files
                 </span>
               </p>
             </div>
 
             {/* Accepted file type chips */}
-            <div className="flex items-center gap-2 flex-wrap justify-center">
+            <div className="flex items-center gap-2 flex-wrap justify-center pt-2">
               {FILE_CHIPS.map((type) => (
                 <span
                   key={type}
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-foreground/[0.04] border border-foreground/[0.06] text-xs font-medium text-muted-foreground"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-[10px] bg-background/80 border border-black/[0.06] dark:border-white/[0.08] text-xs font-semibold text-muted-foreground"
                 >
                   {type === 'PDF'
-                    ? <FileText className="w-3 h-3" />
-                    : <Image className="w-3 h-3" />
+                    ? <FileText className="w-3.5 h-3.5 text-accent" />
+                    : <Image className="w-3.5 h-3.5 text-accent" />
                   }
                   {type}
                 </span>
@@ -167,9 +167,9 @@ export function UploadZone({ onFileSelect, onFilesSelect, isLoading, progress }:
 
       {/* Error message */}
       {typeError && (
-        <div className="flex items-center gap-2 px-3 py-2.5 rounded-lg border border-destructive/40 bg-destructive/10">
+        <div className="flex items-center gap-2.5 px-4 py-3 rounded-[14px] border border-destructive/30 bg-destructive/10">
           <AlertCircle className="w-4 h-4 text-destructive shrink-0" />
-          <p className="text-sm text-destructive">
+          <p className="text-sm text-destructive font-medium">
             Unsupported file type. Please use PDF, JPG, PNG, or WEBP.
           </p>
         </div>
@@ -177,3 +177,4 @@ export function UploadZone({ onFileSelect, onFilesSelect, isLoading, progress }:
     </div>
   );
 }
+

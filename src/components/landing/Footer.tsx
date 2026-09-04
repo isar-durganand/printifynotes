@@ -41,16 +41,16 @@ export const Footer = () => {
   return (
     <footer className="py-6 sm:py-8 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="rounded-2xl sm:rounded-3xl liquid-glass-elevated p-6 sm:p-8 md:p-12">
+        <div className="rounded-[28px] sm:rounded-[32px] bg-card/80 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.1] shadow-sm p-6 sm:p-8 md:p-12">
           <div className="relative z-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-8 sm:mb-10">
               {/* Logo and tagline */}
               <div className="col-span-2 md:col-span-1">
-                <Link to="/" className="flex items-center gap-3 mb-4 group">
-                  <div className="p-2 rounded-xl bg-[hsl(var(--accent-highlight))] transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]">
-                    <FileText className="w-5 h-5 text-white" />
+                <Link to="/" className="flex items-center gap-3 mb-4 group active:scale-[0.97] transition-transform duration-200">
+                  <div className="p-2.5 rounded-[12px] bg-accent text-accent-foreground shadow-sm">
+                    <FileText className="w-5 h-5" />
                   </div>
-                  <span className="text-lg font-semibold">Printify Notes</span>
+                  <span className="text-lg font-bold tracking-tight">Printify Notes</span>
                 </Link>
                 <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                   Transform dark PDFs into print-ready documents. Free, private, and eco-friendly.
@@ -63,7 +63,7 @@ export const Footer = () => {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-9 h-9 rounded-xl flex items-center justify-center text-muted-foreground transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] bg-foreground/[0.04] border border-foreground/[0.06] hover:text-foreground hover:bg-foreground/[0.08] hover:scale-[1.05]"
+                      className="w-9 h-9 rounded-[10px] flex items-center justify-center text-muted-foreground transition-all duration-200 bg-foreground/[0.04] border border-black/[0.06] dark:border-white/[0.08] hover:text-foreground hover:bg-foreground/[0.08] active:scale-[0.94]"
                       title={social.name}
                     >
                       <social.icon />
@@ -74,8 +74,8 @@ export const Footer = () => {
 
               {/* Product */}
               <div>
-                <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Product</h4>
-                <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-muted-foreground">
+                <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base tracking-tight">Product</h4>
+                <ul className="space-y-2 sm:space-y-2.5 text-xs sm:text-sm text-muted-foreground">
                   <li>
                     <ScrollLink to="/#how-it-works" className="hover:text-foreground transition-colors duration-200">
                       How It Works
@@ -101,8 +101,8 @@ export const Footer = () => {
 
               {/* Resources */}
               <div>
-                <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Resources</h4>
-                <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-muted-foreground">
+                <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base tracking-tight">Resources</h4>
+                <ul className="space-y-2 sm:space-y-2.5 text-xs sm:text-sm text-muted-foreground">
                   <li>
                     <Link to="/blog" className="hover:text-foreground transition-colors duration-200">
                       Blog
@@ -123,8 +123,8 @@ export const Footer = () => {
 
               {/* Company */}
               <div>
-                <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Company</h4>
-                <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-muted-foreground">
+                <h4 className="font-semibold mb-3 sm:mb-4 text-sm sm:text-base tracking-tight">Company</h4>
+                <ul className="space-y-2 sm:space-y-2.5 text-xs sm:text-sm text-muted-foreground">
                   <li>
                     <Link to="/about" className="hover:text-foreground transition-colors duration-200">
                       About Us
@@ -151,8 +151,8 @@ export const Footer = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/donate" className="hover:text-rose-400 transition-colors duration-200 flex items-center gap-1.5">
-                      <Heart className="w-3 h-3 text-rose-400 fill-rose-400" />
+                    <Link to="/donate" className="hover:text-accent transition-colors duration-200 flex items-center gap-1.5 font-medium">
+                      <Heart className="w-3.5 h-3.5 text-red-500 fill-red-500" />
                       Donate
                     </Link>
                   </li>
@@ -161,15 +161,15 @@ export const Footer = () => {
             </div>
 
             {/* Bottom bar */}
-            <div className="pt-6 sm:pt-8 border-t border-foreground/[0.06] flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
+            <div className="pt-6 sm:pt-8 border-t border-black/[0.08] dark:border-white/[0.1] flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
               <p>© {currentYear} Printify Notes. All rights reserved.</p>
               <p className="flex items-center gap-1 flex-wrap justify-center">
-                Made with <Heart className="w-4 h-4 text-destructive fill-destructive" /> by{' '}
+                Made with <Heart className="w-4 h-4 text-red-500 fill-red-500" /> by{' '}
                 <a
                   href="https://www.linkedin.com/in/durganandishar/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[hsl(var(--accent-highlight))] hover:underline font-medium"
+                  className="text-accent hover:underline font-medium"
                 >
                   Durganand Ishar
                 </a>
@@ -181,3 +181,4 @@ export const Footer = () => {
     </footer>
   );
 };
+

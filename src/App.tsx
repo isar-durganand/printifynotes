@@ -51,6 +51,38 @@ const ScrollToTop = () => {
   return null;
 };
 
+import { PageTransition } from "./components/PageTransition";
+
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  return (
+    <PageTransition>
+      <Routes location={location}>
+        <Route path="/" element={<Index />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route path="/docs" element={<Documentation />} />
+        <Route path="/tools" element={<Tools />} />
+        <Route path="/tools/merge-pdf" element={<MergePdf />} />
+        <Route path="/tools/image-to-pdf" element={<ImageToPdfPage />} />
+        <Route path="/tools/compress-pdf" element={<CompressPdf />} />
+        <Route path="/tools/extract-pages" element={<ExtractPages />} />
+        <Route path="/donate" element={<Donate />} />
+        <Route path="/thank-you" element={<ThankYou />} />
+        <Route path="/disclaimer" element={<Disclaimer />} />
+        <Route path="/review" element={<ReviewPage />} />
+        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </PageTransition>
+  );
+};
+
 const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
@@ -59,28 +91,8 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/privacy" element={<PrivacyPolicy />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/docs" element={<Documentation />} />
-            <Route path="/tools" element={<Tools />} />
-            <Route path="/tools/merge-pdf" element={<MergePdf />} />
-            <Route path="/tools/image-to-pdf" element={<ImageToPdfPage />} />
-            <Route path="/tools/compress-pdf" element={<CompressPdf />} />
-            <Route path="/tools/extract-pages" element={<ExtractPages />} />
-            <Route path="/donate" element={<Donate />} />
-            <Route path="/thank-you" element={<ThankYou />} />
-            <Route path="/disclaimer" element={<Disclaimer />} />
-            <Route path="/review" element={<ReviewPage />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        <CookieConsent />
+          <AnimatedRoutes />
+          <CookieConsent />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

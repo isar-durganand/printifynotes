@@ -58,20 +58,20 @@ export function PageGallery({ pages, transformations, onPagesChange }: PageGalle
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm font-medium text-muted-foreground">
           {selectedCount} of {pages.length} selected
         </p>
-        <div className="flex gap-2">
-          <Button variant="ghost" size="sm" onClick={handleSelectAll}>
-            <CheckSquare className="w-4 h-4 mr-1" />
+        <div className="flex gap-1.5">
+          <Button variant="ghost" size="sm" onClick={handleSelectAll} className="rounded-[10px] active:scale-[0.94] text-xs font-semibold">
+            <CheckSquare className="w-3.5 h-3.5 mr-1 text-accent" />
             All
           </Button>
-          <Button variant="ghost" size="sm" onClick={handleDeselectAll}>
-            <Square className="w-4 h-4 mr-1" />
+          <Button variant="ghost" size="sm" onClick={handleDeselectAll} className="rounded-[10px] active:scale-[0.94] text-xs font-semibold">
+            <Square className="w-3.5 h-3.5 mr-1" />
             None
           </Button>
-          <Button variant="ghost" size="sm" onClick={handleResetOrder}>
-            <RotateCcw className="w-4 h-4 mr-1" />
+          <Button variant="ghost" size="sm" onClick={handleResetOrder} className="rounded-[10px] active:scale-[0.94] text-xs font-semibold">
+            <RotateCcw className="w-3.5 h-3.5 mr-1" />
             Reset
           </Button>
         </div>
@@ -106,3 +106,4 @@ export function PageGallery({ pages, transformations, onPagesChange }: PageGalle
     </div>
   );
 }
+

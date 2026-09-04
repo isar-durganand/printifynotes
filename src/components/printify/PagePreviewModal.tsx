@@ -44,43 +44,62 @@ export function PagePreviewModal({ page, transformations, onClose }: PagePreview
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-background/80 flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xl flex items-end sm:items-center justify-center p-0 sm:p-4 animate-fade-in"
       onClick={handleBackdropClick}
     >
-      <div className="bg-card border border-border rounded-lg max-w-3xl w-full max-h-[90vh] overflow-hidden">
-        <div className="flex items-center justify-between p-3 border-b border-border">
-          <div className="flex items-center gap-3">
-            <span className="text-sm font-medium">Page {page.pageNumber}</span>
-            <div className="flex gap-1">
-              <Button
-                size="sm"
-                variant={showOriginal ? 'secondary' : 'default'}
+      <div className="bg-card/95 backdrop-blur-2xl border-t sm:border border-border/80 rounded-t-[32px] sm:rounded-[32px] max-w-3xl w-full max-h-[92vh] overflow-hidden shadow-2xl flex flex-col ios-bottom-sheet">
+        {/* iOS Handlebar on mobile */}
+        <div className="ios-handlebar sm:hidden" onClick={onClose} />
+
+        <div className="flex items-center justify-between p-4 border-b border-border/80">
+          <div className="flex items-center gap-4">
+            <span className="text-sm font-semibold tracking-tight">Page {page.pageNumber}</span>
+            {/* iOS Segmented Control */}
+            <div className="flex p-1 rounded-xl bg-foreground/[0.06] border border-border/60">
+              <button
+                type="button"
+                className={`px-3 py-1 text-xs font-semibold rounded-lg transition-all ios-press active:scale-[0.96] ${
+                  !showOriginal
+                    ? 'bg-[#007AFF] text-white shadow-sm'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
                 onClick={() => setShowOriginal(false)}
               >
                 Transformed
-              </Button>
-              <Button
-                size="sm"
-                variant={showOriginal ? 'default' : 'secondary'}
+              </button>
+              <button
+                type="button"
+                className={`px-3 py-1 text-xs font-semibold rounded-lg transition-all ios-press active:scale-[0.96] ${
+                  showOriginal
+                    ? 'bg-[#007AFF] text-white shadow-sm'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
                 onClick={() => setShowOriginal(true)}
               >
                 Original
-              </Button>
+              </button>
             </div>
           </div>
-          <Button size="icon" variant="ghost" onClick={onClose}>
+          <button
+            onClick={onClose}
+            className="p-2 rounded-full text-muted-foreground hover:text-foreground hover:bg-foreground/[0.06] transition-all ios-press active:scale-[0.96]"
+            aria-label="Close preview"
+          >
             <X className="w-4 h-4" />
-          </Button>
+          </button>
         </div>
 
-        <div className="p-4 flex items-center justify-center bg-muted max-h-[70vh] overflow-auto">
+        <div className="p-4 sm:p-6 flex items-center justify-center bg-background/50 max-h-[75vh] overflow-auto">
           {isLoading && !showOriginal ? (
-            <div className="text-muted-foreground text-sm">Loading...</div>
+            <div className="text-muted-foreground text-sm flex items-center gap-2">
+              <span className="w-4 h-4 border-2 border-[#007AFF] border-t-transparent rounded-full animate-spin" />
+              Processing page...
+            </div>
           ) : (
             <img
               src={showOriginal ? page.originalImage : (transformedImage || page.originalImage)}
               alt={`Page ${page.pageNumber}`}
-              className="max-w-full max-h-full object-contain"
+              className="max-w-full max-h-[68vh] object-contain rounded-xl shadow-md border border-border/40"
             />
           )}
         </div>

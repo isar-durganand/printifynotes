@@ -114,17 +114,17 @@ const PrimaryUseCaseCard = ({
   index: number;
 }) => (
   <article
-    className={`feature-card group text-center scroll-hidden ${isVisible ? 'scroll-visible' : ''} stagger-${index + 1}`}
+    className={`feature-card group text-center scroll-hidden ios-press ${isVisible ? 'scroll-visible' : ''} stagger-${index + 1}`}
   >
-    <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5 relative z-10 bg-foreground/[0.04] border border-foreground/[0.06] transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:bg-foreground/[0.06] group-hover:scale-[1.04]">
-      <Icon className="w-7 h-7 text-foreground/70 group-hover:text-foreground transition-colors duration-[400ms]" />
+    <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5 relative z-10 bg-[#007AFF]/10 border border-[#007AFF]/20 transition-all duration-300 group-hover:scale-[1.04] group-hover:bg-[#007AFF]/15">
+      <Icon className="w-7 h-7 text-[#007AFF]" />
     </div>
-    <h3 className="text-lg font-semibold mb-2 relative z-10">{title}</h3>
+    <h3 className="text-lg font-bold mb-2 relative z-10 tracking-tight text-foreground">{title}</h3>
     <p className="text-muted-foreground text-sm leading-relaxed relative z-10 mb-4">{description}</p>
     {/* Platform tags */}
     <div className="flex flex-wrap justify-center gap-1.5 relative z-10">
       {platforms.map(p => (
-        <span key={p} className="text-[11px] px-2 py-0.5 rounded-md bg-foreground/[0.04] text-muted-foreground font-medium">
+        <span key={p} className="text-[11px] px-2.5 py-1 rounded-full bg-foreground/[0.04] border border-border/60 text-muted-foreground font-medium">
           {p}
         </span>
       ))}
@@ -146,13 +146,13 @@ const SecondaryUseCaseCard = ({
   index: number;
 }) => (
   <div
-    className={`feature-card group flex items-center gap-4 scroll-hidden ${isVisible ? 'scroll-visible' : ''} stagger-${index + 1}`}
+    className={`feature-card group flex items-center gap-4 scroll-hidden ios-press ${isVisible ? 'scroll-visible' : ''} stagger-${index + 1}`}
   >
-    <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 relative z-10 bg-foreground/[0.04] border border-foreground/[0.06] transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]">
-      <Icon className="w-5 h-5 text-foreground/70 group-hover:text-foreground transition-colors duration-[400ms]" />
+    <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 relative z-10 bg-[#007AFF]/10 border border-[#007AFF]/20 transition-all duration-300 group-hover:scale-[1.04]">
+      <Icon className="w-5 h-5 text-[#007AFF]" />
     </div>
     <div className="relative z-10">
-      <span className="text-sm font-semibold">{label}</span>
+      <span className="text-sm font-semibold tracking-tight text-foreground">{label}</span>
       <p className="text-muted-foreground text-xs">{text}</p>
     </div>
   </div>

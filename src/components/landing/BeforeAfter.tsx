@@ -34,44 +34,44 @@ export const BeforeAfter = () => {
               ref={beforeRef}
               className={`scroll-hidden-left ${beforeVisible ? 'scroll-visible-x' : ''}`}
             >
-              <div className="relative group">
-                <div className="relative liquid-glass rounded-2xl p-4 md:p-6">
+              <div className="relative group ios-press">
+                <div className="relative ios-glass-card rounded-[24px] p-5 md:p-6 border border-border/80">
                   <div className="flex items-center gap-2 mb-4 relative z-10">
                     <Moon className="w-4 h-4 text-muted-foreground" />
-                    <span className="text-sm font-medium text-muted-foreground">Before</span>
+                    <span className="text-sm font-semibold text-muted-foreground">Original Coaching Slide</span>
                   </div>
                   {/* Mock dark PDF */}
-                  <div className="aspect-[4/3] rounded-xl bg-[#1a1a2e] p-4 md:p-6 font-mono text-xs overflow-hidden relative z-10">
+                  <div className="aspect-[4/3] rounded-xl bg-[#0d0d12] border border-white/5 p-4 md:p-6 font-mono text-xs overflow-hidden relative z-10 shadow-inner">
                     <div className="space-y-2 text-[#e0e0e0]">
-                      <div className="text-[#9d4edd] font-bold">// Dark Mode Lecture Notes</div>
-                      <div className="h-2 bg-[#444] rounded w-3/4" />
-                      <div className="h-2 bg-[#444] rounded w-full" />
-                      <div className="h-2 bg-[#444] rounded w-5/6" />
-                      <div className="h-2 bg-[#444] rounded w-2/3" />
-                      <div className="mt-4 text-[#00d9ff]">function example() {'{'}</div>
-                      <div className="pl-4 text-[#98c379]">"Impossible to print"</div>
-                      <div className="text-[#00d9ff]">{'}'}</div>
+                      <div className="text-[#a78bfa] font-bold">// Dark Mode Lecture Notes</div>
+                      <div className="h-2 bg-[#2d2d3a] rounded w-3/4" />
+                      <div className="h-2 bg-[#2d2d3a] rounded w-full" />
+                      <div className="h-2 bg-[#2d2d3a] rounded w-5/6" />
+                      <div className="h-2 bg-[#2d2d3a] rounded w-2/3" />
+                      <div className="mt-4 text-[#38bdf8]">function example() {'{'}</div>
+                      <div className="pl-4 text-[#4ade80]">"Wastes toner & money"</div>
+                      <div className="text-[#38bdf8]">{'}'}</div>
                     </div>
                   </div>
                   <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground relative z-10">
-                    <span>Dark background</span>
-                    <span className="text-destructive">High ink usage</span>
+                    <span>Pitch-black background</span>
+                    <span className="text-rose-400 font-medium">₹2–3 per page wasted</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Arrow indicator — clean glass circle */}
+            {/* Arrow indicator — clean iOS glass circle */}
             <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center liquid-glass-elevated">
-                <ArrowRight className="w-5 h-5 text-foreground/70 relative z-10" />
+              <div className="w-11 h-11 rounded-full flex items-center justify-center bg-card/95 backdrop-blur-xl border border-border/80 shadow-md">
+                <ArrowRight className="w-4 h-4 text-[#007AFF] relative z-10" />
               </div>
             </div>
 
             {/* Mobile arrow */}
             <div className="flex md:hidden justify-center -my-2">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center rotate-90 liquid-glass-elevated">
-                <ArrowRight className="w-4 h-4 text-foreground/70 relative z-10" />
+              <div className="w-10 h-10 rounded-full flex items-center justify-center rotate-90 bg-card/95 backdrop-blur-xl border border-border/80 shadow-md">
+                <ArrowRight className="w-4 h-4 text-[#007AFF] relative z-10" />
               </div>
             </div>
 
@@ -80,28 +80,28 @@ export const BeforeAfter = () => {
               ref={afterRef}
               className={`scroll-hidden-right ${afterVisible ? 'scroll-visible-x' : ''}`}
             >
-              <div className="relative group">
-                <div className="relative liquid-glass rounded-2xl p-4 md:p-6 border-[hsl(var(--accent-highlight)/0.2)]" style={{ borderColor: 'hsl(var(--accent-highlight) / 0.2)' }}>
+              <div className="relative group ios-press">
+                <div className="relative ios-glass-card rounded-[24px] p-5 md:p-6 border border-[#007AFF]/30">
                   <div className="flex items-center gap-2 mb-4 relative z-10">
-                    <Sun className="w-4 h-4 text-[hsl(var(--accent-highlight))]" />
-                    <span className="text-sm font-medium text-[hsl(var(--accent-highlight))]">After</span>
+                    <Sun className="w-4 h-4 text-[#007AFF]" />
+                    <span className="text-sm font-semibold text-[#007AFF]">Converted with Printify</span>
                   </div>
                   {/* Mock light PDF */}
-                  <div className="aspect-[4/3] rounded-xl bg-[#fafafa] p-4 md:p-6 font-mono text-xs overflow-hidden relative z-10">
+                  <div className="aspect-[4/3] rounded-xl bg-[#ffffff] border border-black/10 p-4 md:p-6 font-mono text-xs overflow-hidden relative z-10 shadow-sm">
                     <div className="space-y-2 text-[#1a1a2e]">
-                      <div className="text-[#6b21a8] font-bold">// Print-Ready Notes</div>
-                      <div className="h-2 bg-[#ddd] rounded w-3/4" />
-                      <div className="h-2 bg-[#ddd] rounded w-full" />
-                      <div className="h-2 bg-[#ddd] rounded w-5/6" />
-                      <div className="h-2 bg-[#ddd] rounded w-2/3" />
-                      <div className="mt-4 text-[#0369a1]">function example() {'{'}</div>
-                      <div className="pl-4 text-[#16a34a]">"Perfect for printing!"</div>
-                      <div className="text-[#0369a1]">{'}'}</div>
+                      <div className="text-[#7c3aed] font-bold">// Clean Printable Notes</div>
+                      <div className="h-2 bg-[#e5e5ea] rounded w-3/4" />
+                      <div className="h-2 bg-[#e5e5ea] rounded w-full" />
+                      <div className="h-2 bg-[#e5e5ea] rounded w-5/6" />
+                      <div className="h-2 bg-[#e5e5ea] rounded w-2/3" />
+                      <div className="mt-4 text-[#0284c7]">function example() {'{'}</div>
+                      <div className="pl-4 text-[#16a34a]">"Crisp, high contrast"</div>
+                      <div className="text-[#0284c7]">{'}'}</div>
                     </div>
                   </div>
                   <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground relative z-10">
-                    <span>Clean background</span>
-                    <span className="text-[hsl(var(--accent-highlight))] font-medium">60% less ink</span>
+                    <span>Pure white background</span>
+                    <span className="text-emerald-500 font-semibold">Saves 60% ink</span>
                   </div>
                 </div>
               </div>

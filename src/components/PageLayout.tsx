@@ -164,113 +164,119 @@ export const PageLayout = ({
                 </script>
             </Helmet>
 
-            <div className="min-h-screen bg-background text-foreground">
-                {/* Header with improved accessibility */}
-                <header className="sticky top-0 z-40 py-3 sm:py-4 px-3 sm:px-4" role="banner">
-                    <div className="max-w-4xl mx-auto">
-                        <nav
-                            className="rounded-2xl px-3 sm:px-5 py-2.5 sm:py-3.5 liquid-glass-elevated"
-                            role="navigation"
-                            aria-label="Page navigation"
-                        >
-                            <div className="relative z-10 flex items-center justify-between">
-                                <Link
-                                    to="/"
-                                    className="flex items-center gap-2 sm:gap-3 group"
-                                    aria-label="Printify Notes - Go to homepage"
+import { IOSRubberBand } from '@/components/IOSRubberBand';
+
+            <IOSRubberBand>
+                <div className="min-h-screen bg-background text-foreground flex flex-col justify-between">
+                    <div>
+                        {/* Header with improved accessibility and iOS Blur */}
+                        <header className="sticky top-0 z-40 py-2 sm:py-3 px-3 sm:px-4 bg-background/80 backdrop-blur-2xl border-b border-foreground/[0.08]" role="banner">
+                            <div className="max-w-4xl mx-auto">
+                                <nav
+                                    className="rounded-2xl px-3 sm:px-5 py-2 sm:py-2.5 bg-card/60 backdrop-blur-md border border-border/80"
+                                    role="navigation"
+                                    aria-label="Page navigation"
                                 >
-                                    <div className="p-1.5 sm:p-2 rounded-xl bg-[hsl(var(--accent-highlight))] transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]">
-                                        <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-white" aria-hidden="true" />
+                                    <div className="relative z-10 flex items-center justify-between">
+                                        <Link
+                                            to="/"
+                                            className="flex items-center gap-2.5 sm:gap-3 group ios-press active:scale-[0.96] transition-transform"
+                                            aria-label="Printify Notes - Go to homepage"
+                                        >
+                                            <div className="p-1.5 sm:p-2 rounded-xl bg-[#007AFF] text-white shadow-sm transition-transform duration-200 group-hover:scale-[1.05]">
+                                                <FileText className="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true" />
+                                            </div>
+                                            <div>
+                                                <span className="text-base sm:text-lg font-semibold text-foreground tracking-tight">Printify Notes</span>
+                                                <p className="text-xs text-muted-foreground hidden sm:block">Free PDF Tools</p>
+                                            </div>
+                                        </Link>
+                                        <Link
+                                            to="/"
+                                            className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-all duration-200 px-3 py-2 rounded-xl hover:bg-foreground/[0.04] ios-press active:scale-[0.96]"
+                                            aria-label="Go back to home page"
+                                        >
+                                            <Home className="w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true" />
+                                            <span className="hidden xs:inline">Home</span>
+                                        </Link>
                                     </div>
-                                    <div>
-                                        <span className="text-base sm:text-lg font-semibold text-foreground">Printify Notes</span>
-                                        <p className="text-xs text-muted-foreground hidden sm:block">Free PDF Tools</p>
-                                    </div>
-                                </Link>
-                                <Link
-                                    to="/"
-                                    className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] px-3 py-2 rounded-xl hover:bg-foreground/[0.04]"
-                                    aria-label="Go back to home page"
-                                >
-                                    <Home className="w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true" />
-                                    <span className="hidden xs:inline">Home</span>
-                                </Link>
+                                </nav>
                             </div>
-                        </nav>
+
+                            {/* Breadcrumb Navigation */}
+                            <nav
+                                className="max-w-4xl mx-auto mt-2 px-2"
+                                aria-label="Breadcrumb"
+                            >
+                                <ol className="flex items-center gap-2 text-xs text-muted-foreground flex-wrap" itemScope itemType="https://schema.org/BreadcrumbList">
+                                    {generateBreadcrumbs().map((crumb, index, arr) => (
+                                        <li
+                                            key={crumb.position}
+                                            className="flex items-center gap-2"
+                                            itemProp="itemListElement"
+                                            itemScope
+                                            itemType="https://schema.org/ListItem"
+                                        >
+                                            {index === arr.length - 1 ? (
+                                                <span
+                                                    className="text-foreground font-medium"
+                                                    itemProp="name"
+                                                >
+                                                    {crumb.name}
+                                                </span>
+                                            ) : (
+                                                <>
+                                                    <Link
+                                                        to={crumb.item.replace('https://www.printifynotes.in', '')}
+                                                        className="hover:text-[#007AFF] transition-colors"
+                                                        itemProp="item"
+                                                    >
+                                                        <span itemProp="name">{crumb.name}</span>
+                                                    </Link>
+                                                    <span aria-hidden="true">/</span>
+                                                </>
+                                            )}
+                                            <meta itemProp="position" content={String(crumb.position)} />
+                                        </li>
+                                    ))}
+                                </ol>
+                            </nav>
+                        </header>
+
+                        {/* Main Content with Schema markup */}
+                        <main
+                            className={`container mx-auto px-4 py-8 sm:py-12 ${maxWidth}`}
+                            role="main"
+                            id="main-content"
+                        >
+                            <article itemScope itemType={`https://schema.org/${schemaType}`}>
+                                {!hideDefaultTitle && (
+                                    <h1
+                                        className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 sm:mb-8 tracking-[-0.022em] leading-tight"
+                                        itemProp="headline"
+                                    >
+                                        {title}
+                                    </h1>
+                                )}
+                                <meta itemProp="description" content={seoDescription} />
+                                <meta itemProp="url" content={fullUrl} />
+                                <div
+                                    className={noProse ? "" : "prose prose-invert max-w-none prose-sm sm:prose-base"}
+                                    itemProp="articleBody"
+                                >
+                                    {children}
+                                </div>
+                            </article>
+                        </main>
                     </div>
 
-                    {/* Breadcrumb Navigation */}
-                    <nav
-                        className="max-w-4xl mx-auto mt-3 px-2"
-                        aria-label="Breadcrumb"
-                    >
-                        <ol className="flex items-center gap-2 text-xs text-muted-foreground flex-wrap" itemScope itemType="https://schema.org/BreadcrumbList">
-                            {generateBreadcrumbs().map((crumb, index, arr) => (
-                                <li
-                                    key={crumb.position}
-                                    className="flex items-center gap-2"
-                                    itemProp="itemListElement"
-                                    itemScope
-                                    itemType="https://schema.org/ListItem"
-                                >
-                                    {index === arr.length - 1 ? (
-                                        <span
-                                            className="text-foreground font-medium"
-                                            itemProp="name"
-                                        >
-                                            {crumb.name}
-                                        </span>
-                                    ) : (
-                                        <>
-                                            <Link
-                                                to={crumb.item.replace('https://www.printifynotes.in', '')}
-                                                className="hover:text-foreground transition-colors"
-                                                itemProp="item"
-                                            >
-                                                <span itemProp="name">{crumb.name}</span>
-                                            </Link>
-                                            <span aria-hidden="true">/</span>
-                                        </>
-                                    )}
-                                    <meta itemProp="position" content={String(crumb.position)} />
-                                </li>
-                            ))}
-                        </ol>
-                    </nav>
-                </header>
+                    {/* Footer */}
+                    <Footer />
 
-                {/* Main Content with Schema markup */}
-                <main
-                    className={`container mx-auto px-4 py-8 sm:py-12 ${maxWidth}`}
-                    role="main"
-                    id="main-content"
-                >
-                    <article itemScope itemType={`https://schema.org/${schemaType}`}>
-                        {!hideDefaultTitle && (
-                            <h1
-                                className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8"
-                                itemProp="headline"
-                            >
-                                {title}
-                            </h1>
-                        )}
-                        <meta itemProp="description" content={seoDescription} />
-                        <meta itemProp="url" content={fullUrl} />
-                        <div
-                            className={noProse ? "" : "prose prose-invert max-w-none prose-sm sm:prose-base"}
-                            itemProp="articleBody"
-                        >
-                            {children}
-                        </div>
-                    </article>
-                </main>
-
-                {/* Footer */}
-                <Footer />
-
-                {/* Floating Social */}
-                <FloatingSocial />
-            </div>
+                    {/* Floating Social */}
+                    <FloatingSocial />
+                </div>
+            </IOSRubberBand>
         </>
     );
 };

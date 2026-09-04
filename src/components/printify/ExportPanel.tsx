@@ -274,27 +274,27 @@ export function ExportPanel({
 
   return (
     <>
-    <div className="rounded-xl liquid-glass overflow-hidden">
-      <div className="flex items-center gap-2.5 px-4 py-3 border-b border-foreground/[0.06] bg-foreground/[0.02] relative">
-        <Download className="w-4 h-4 text-[hsl(var(--accent-highlight))]" />
+    <div className="rounded-[24px] bg-card/80 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.1] shadow-sm overflow-hidden">
+      <div className="flex items-center gap-2.5 px-5 py-3.5 border-b border-black/[0.08] dark:border-white/[0.1] bg-foreground/[0.02] relative">
+        <Download className="w-4 h-4 text-accent" />
         <div>
           <h3 className="font-semibold text-foreground text-sm tracking-tight relative z-10">Export PDF</h3>
         </div>
-        <span className="ml-auto text-xs text-muted-foreground relative z-10">
+        <span className="ml-auto text-xs text-muted-foreground font-medium relative z-10">
           {selectedPages.length} / {pages.length} pages
         </span>
       </div>
 
-      <div className="p-4 space-y-4">
+      <div className="p-5 space-y-4">
 
       {/* Export Quality */}
       <div className="space-y-2">
-        <Label className="text-sm">Export Quality</Label>
+        <Label className="text-sm font-semibold tracking-tight">Export Quality</Label>
         <Select value={exportQuality} onValueChange={(v) => setExportQuality(v as ExportQuality)}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger className="w-full rounded-[12px]">
             <SelectValue />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="rounded-[16px]">
             <SelectItem value="medium">Medium (smaller file)</SelectItem>
             <SelectItem value="high">High (balanced)</SelectItem>
             <SelectItem value="very-high">Very High (best quality)</SelectItem>
@@ -305,7 +305,7 @@ export function ExportPanel({
       {/* Page Numbers Toggle */}
       <div className="flex items-center justify-between gap-3 pt-1">
         <div className="min-w-0">
-          <Label htmlFor="page-numbers-toggle" className="text-sm font-medium cursor-pointer flex items-center gap-1.5">
+          <Label htmlFor="page-numbers-toggle" className="text-sm font-semibold cursor-pointer flex items-center gap-1.5 tracking-tight">
             <Hash className="w-3.5 h-3.5 text-muted-foreground" />
             Page Numbers
           </Label>
@@ -325,14 +325,14 @@ export function ExportPanel({
           <div className="w-10 h-10 mx-auto rounded-full bg-success/20 flex items-center justify-center">
             <FileCheck className="w-5 h-5 text-success" />
           </div>
-          <p className="font-medium text-foreground text-sm">Export Complete!</p>
+          <p className="font-semibold text-foreground text-sm tracking-tight">Export Complete!</p>
           <div className="flex gap-2 justify-center">
-            <Button variant="outline" size="sm" onClick={onReset}>
-              <RefreshCw className="w-4 h-4 mr-1" />
+            <Button variant="outline" size="sm" onClick={onReset} className="rounded-[12px] active:scale-[0.96]">
+              <RefreshCw className="w-4 h-4 mr-1.5" />
               New
             </Button>
-            <Button size="sm" onClick={() => setIsComplete(false)}>
-              <Download className="w-4 h-4 mr-1" />
+            <Button size="sm" onClick={() => setIsComplete(false)} className="rounded-[12px] bg-accent hover:bg-accent/90 text-accent-foreground active:scale-[0.96]">
+              <Download className="w-4 h-4 mr-1.5" />
               Again
             </Button>
           </div>
@@ -348,7 +348,7 @@ export function ExportPanel({
         <Button
           onClick={handleExport}
           disabled={selectedPages.length === 0}
-          className="w-full rounded-xl bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)] text-white border-t border-l border-white/20 border-b border-r border-black/5 shadow-[0_4px_20px_rgba(var(--accent-rgb),0.2)] hover:shadow-[0_8px_32px_rgba(var(--accent-rgb),0.25)] transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+          className="w-full rounded-[14px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow-sm transition-all duration-200 active:scale-[0.96]"
           size="sm"
         >
           <Download className="w-4 h-4 mr-2" />
@@ -369,3 +369,4 @@ export function ExportPanel({
   </>
   );
 }
+

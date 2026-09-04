@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageLayout } from '@/components/PageLayout';
 import { PdfCompressor } from '@/components/tools/PdfCompressor';
-import { Shield, Zap, Check, Gauge, FileText, Mail } from 'lucide-react';
+import { Shield, Zap, Check, Gauge, Mail } from 'lucide-react';
 
 const CompressPdf: React.FC = () => {
     return (
@@ -11,11 +11,14 @@ const CompressPdf: React.FC = () => {
             keywords="compress pdf, reduce pdf size, pdf compressor free, compress pdf online, reduce pdf file size, shrink pdf, pdf size reducer, compress pdf without losing quality, free pdf compressor india, small pdf alternative"
         >
             <div className="max-w-4xl mx-auto">
-                <div className="text-center mb-8">
-                    <h1 className="text-3xl sm:text-4xl font-bold mb-4">
+                <div className="text-center mb-10">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#007AFF]/10 text-[#007AFF] text-xs font-semibold tracking-wide uppercase mb-3">
+                        PDF Compressor
+                    </div>
+                    <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3 text-foreground">
                         Compress PDF Online - Fast & Free
                     </h1>
-                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                    <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                         Reduce your PDF file size while maintaining quality. Perfect for email attachments
                         and faster file sharing. All processing happens in your browser.
                     </p>
@@ -24,61 +27,61 @@ const CompressPdf: React.FC = () => {
                 <PdfCompressor />
 
                 {/* How to use */}
-                <div className="mt-12 p-6 rounded-xl bg-muted/50">
-                    <h2 className="text-xl font-semibold mb-4">How to Compress PDF</h2>
-                    <ol className="space-y-3 text-muted-foreground">
-                        <li className="flex gap-3">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--accent-highlight))] text-white text-sm flex items-center justify-center">1</span>
+                <div className="mt-14 p-6 sm:p-8 rounded-[28px] bg-card hairline-border shadow-sm">
+                    <h2 className="text-xl font-bold tracking-tight mb-5 text-foreground">How to Compress PDF</h2>
+                    <ol className="space-y-3.5 text-muted-foreground text-sm leading-relaxed">
+                        <li className="flex items-center gap-3">
+                            <span className="flex-shrink-0 w-7 h-7 rounded-[9px] bg-[#007AFF] text-white text-xs font-bold flex items-center justify-center shadow-sm">1</span>
                             <span>Upload your PDF file</span>
                         </li>
-                        <li className="flex gap-3">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--accent-highlight))] text-white text-sm flex items-center justify-center">2</span>
+                        <li className="flex items-center gap-3">
+                            <span className="flex-shrink-0 w-7 h-7 rounded-[9px] bg-[#007AFF] text-white text-xs font-bold flex items-center justify-center shadow-sm">2</span>
                             <span>Adjust quality slider (lower = smaller file)</span>
                         </li>
-                        <li className="flex gap-3">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--accent-highlight))] text-white text-sm flex items-center justify-center">3</span>
+                        <li className="flex items-center gap-3">
+                            <span className="flex-shrink-0 w-7 h-7 rounded-[9px] bg-[#007AFF] text-white text-xs font-bold flex items-center justify-center shadow-sm">3</span>
                             <span>Click "Compress PDF" and download the result</span>
                         </li>
                     </ol>
                 </div>
 
                 {/* Benefits Section */}
-                <div className="mt-12">
-                    <h2 className="text-2xl font-bold mb-6 text-center">Why Use Our PDF Compressor?</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div className="p-5 rounded-xl border bg-card">
-                            <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center mb-3">
-                                <Gauge className="w-5 h-5 text-orange-500" />
+                <div className="mt-14">
+                    <h2 className="text-2xl font-bold tracking-tight mb-6 text-center text-foreground">Why Use Our PDF Compressor?</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="p-6 rounded-[24px] bg-card hairline-border shadow-sm">
+                            <div className="w-11 h-11 rounded-[14px] bg-[#007AFF]/10 flex items-center justify-center mb-3.5">
+                                <Gauge className="w-5 h-5 text-[#007AFF]" />
                             </div>
-                            <h3 className="font-semibold mb-2">Up to 80% Smaller</h3>
-                            <p className="text-sm text-muted-foreground">
+                            <h3 className="font-bold tracking-tight mb-2 text-foreground">Up to 80% Smaller</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 Dramatically reduce PDF file sizes. A 10MB PDF can become 2MB while still looking great on screen and in print.
                             </p>
                         </div>
-                        <div className="p-5 rounded-xl border bg-card">
-                            <div className="w-10 h-10 rounded-lg bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center mb-3">
-                                <Shield className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
+                        <div className="p-6 rounded-[24px] bg-card hairline-border shadow-sm">
+                            <div className="w-11 h-11 rounded-[14px] bg-[#007AFF]/10 flex items-center justify-center mb-3.5">
+                                <Shield className="w-5 h-5 text-[#007AFF]" />
                             </div>
-                            <h3 className="font-semibold mb-2">100% Private</h3>
-                            <p className="text-sm text-muted-foreground">
+                            <h3 className="font-bold tracking-tight mb-2 text-foreground">100% Private</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 Your files are compressed entirely in your browser. We never upload, store, or access your documents. Complete privacy guaranteed.
                             </p>
                         </div>
-                        <div className="p-5 rounded-xl border bg-card">
-                            <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-3">
-                                <Zap className="w-5 h-5 text-blue-500" />
+                        <div className="p-6 rounded-[24px] bg-card hairline-border shadow-sm">
+                            <div className="w-11 h-11 rounded-[14px] bg-[#007AFF]/10 flex items-center justify-center mb-3.5">
+                                <Zap className="w-5 h-5 text-[#007AFF]" />
                             </div>
-                            <h3 className="font-semibold mb-2">Instant Processing</h3>
-                            <p className="text-sm text-muted-foreground">
+                            <h3 className="font-bold tracking-tight mb-2 text-foreground">Instant Processing</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 No waiting for server uploads. Compression happens instantly on your device, even for large PDF files.
                             </p>
                         </div>
-                        <div className="p-5 rounded-xl border bg-card">
-                            <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center mb-3">
-                                <Mail className="w-5 h-5 text-purple-500" />
+                        <div className="p-6 rounded-[24px] bg-card hairline-border shadow-sm">
+                            <div className="w-11 h-11 rounded-[14px] bg-[#007AFF]/10 flex items-center justify-center mb-3.5">
+                                <Mail className="w-5 h-5 text-[#007AFF]" />
                             </div>
-                            <h3 className="font-semibold mb-2">Email Ready</h3>
-                            <p className="text-sm text-muted-foreground">
+                            <h3 className="font-bold tracking-tight mb-2 text-foreground">Email Ready</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 Get files under email attachment limits. Perfect for sending contracts, reports, and documents via email.
                             </p>
                         </div>
@@ -86,59 +89,59 @@ const CompressPdf: React.FC = () => {
                 </div>
 
                 {/* Use Cases */}
-                <div className="mt-12 p-6 rounded-xl border bg-card">
-                    <h2 className="text-xl font-semibold mb-4">When to Compress PDFs</h2>
-                    <ul className="space-y-3 text-muted-foreground">
-                        <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
-                            <span><strong>Email Attachments:</strong> Most email providers limit attachments to 10-25MB. Compress large PDFs to send via Gmail, Outlook, or Yahoo Mail.</span>
+                <div className="mt-14 p-6 sm:p-8 rounded-[28px] bg-card hairline-border shadow-sm">
+                    <h2 className="text-xl font-bold tracking-tight mb-5 text-foreground">When to Compress PDFs</h2>
+                    <ul className="space-y-3.5 text-muted-foreground text-sm leading-relaxed">
+                        <li className="flex items-start gap-3">
+                            <Check className="w-5 h-5 text-[#007AFF] flex-shrink-0 mt-0.5" />
+                            <span><strong className="text-foreground">Email Attachments:</strong> Most email providers limit attachments to 10-25MB. Compress large PDFs to send via Gmail, Outlook, or Yahoo Mail.</span>
                         </li>
-                        <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
-                            <span><strong>Website Uploads:</strong> Reduce PDF size for faster uploads to job portals, college applications, and government forms.</span>
+                        <li className="flex items-start gap-3">
+                            <Check className="w-5 h-5 text-[#007AFF] flex-shrink-0 mt-0.5" />
+                            <span><strong className="text-foreground">Website Uploads:</strong> Reduce PDF size for faster uploads to job portals, college applications, and government forms.</span>
                         </li>
-                        <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
-                            <span><strong>Cloud Storage:</strong> Save space on Google Drive, Dropbox, or OneDrive by compressing PDFs before uploading.</span>
+                        <li className="flex items-start gap-3">
+                            <Check className="w-5 h-5 text-[#007AFF] flex-shrink-0 mt-0.5" />
+                            <span><strong className="text-foreground">Cloud Storage:</strong> Save space on Google Drive, Dropbox, or OneDrive by compressing PDFs before uploading.</span>
                         </li>
-                        <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
-                            <span><strong>Mobile Sharing:</strong> Smaller files are easier to share via WhatsApp, Telegram, or other messaging apps.</span>
+                        <li className="flex items-start gap-3">
+                            <Check className="w-5 h-5 text-[#007AFF] flex-shrink-0 mt-0.5" />
+                            <span><strong className="text-foreground">Mobile Sharing:</strong> Smaller files are easier to share via WhatsApp, Telegram, or other messaging apps.</span>
                         </li>
                     </ul>
                 </div>
 
                 {/* FAQ Section */}
-                <div className="mt-12">
-                    <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
-                    <div className="space-y-4">
-                        <div className="p-5 rounded-xl border bg-card">
-                            <h3 className="font-semibold mb-2">How much can I reduce my PDF size?</h3>
-                            <p className="text-sm text-muted-foreground">
+                <div className="mt-14">
+                    <h2 className="text-2xl font-bold tracking-tight mb-6 text-foreground">Frequently Asked Questions</h2>
+                    <div className="space-y-3.5">
+                        <div className="p-5 sm:p-6 rounded-[22px] bg-card hairline-border shadow-sm">
+                            <h3 className="font-bold tracking-tight mb-2 text-foreground">How much can I reduce my PDF size?</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 The compression ratio depends on your PDF content. PDFs with many images typically compress well (50-80% reduction), while text-heavy documents may see less reduction (10-30%). Our tool adjusts image quality to achieve optimal file size.
                             </p>
                         </div>
-                        <div className="p-5 rounded-xl border bg-card">
-                            <h3 className="font-semibold mb-2">Will compression reduce PDF quality?</h3>
-                            <p className="text-sm text-muted-foreground">
+                        <div className="p-5 sm:p-6 rounded-[22px] bg-card hairline-border shadow-sm">
+                            <h3 className="font-bold tracking-tight mb-2 text-foreground">Will compression reduce PDF quality?</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 You control the quality vs size tradeoff using the quality slider. At high quality settings, the difference is barely noticeable. At lower quality settings, you'll see more compression artifacts in images but get smaller files. Text remains sharp at all settings.
                             </p>
                         </div>
-                        <div className="p-5 rounded-xl border bg-card">
-                            <h3 className="font-semibold mb-2">Is there a file size limit?</h3>
-                            <p className="text-sm text-muted-foreground">
+                        <div className="p-5 sm:p-6 rounded-[22px] bg-card hairline-border shadow-sm">
+                            <h3 className="font-bold tracking-tight mb-2 text-foreground">Is there a file size limit?</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 Since compression happens in your browser, there's no server-side limit. The practical limit depends on your device's memory. Most modern devices can handle PDFs up to 100MB or more.
                             </p>
                         </div>
-                        <div className="p-5 rounded-xl border bg-card">
-                            <h3 className="font-semibold mb-2">Are my files secure?</h3>
-                            <p className="text-sm text-muted-foreground">
+                        <div className="p-5 sm:p-6 rounded-[22px] bg-card hairline-border shadow-sm">
+                            <h3 className="font-bold tracking-tight mb-2 text-foreground">Are my files secure?</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 Yes! Your PDF files are never uploaded to any server. All compression happens locally in your browser using JavaScript. Your documents never leave your device - this is the most secure way to compress PDFs online.
                             </p>
                         </div>
-                        <div className="p-5 rounded-xl border bg-card">
-                            <h3 className="font-semibold mb-2">Can I compress password-protected PDFs?</h3>
-                            <p className="text-sm text-muted-foreground">
+                        <div className="p-5 sm:p-6 rounded-[22px] bg-card hairline-border shadow-sm">
+                            <h3 className="font-bold tracking-tight mb-2 text-foreground">Can I compress password-protected PDFs?</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 Currently, our tool works best with unprotected PDFs. If your PDF has a password, you'll need to remove the protection first. The compressed output will not have password protection.
                             </p>
                         </div>
@@ -146,9 +149,9 @@ const CompressPdf: React.FC = () => {
                 </div>
 
                 {/* Understanding Compression */}
-                <div className="mt-12 p-6 rounded-xl border bg-card">
-                    <h2 className="text-xl font-semibold mb-4">Understanding PDF Compression</h2>
-                    <div className="space-y-4 text-sm text-muted-foreground">
+                <div className="mt-14 p-6 sm:p-8 rounded-[28px] bg-card hairline-border shadow-sm">
+                    <h2 className="text-xl font-bold tracking-tight mb-4 text-foreground">Understanding PDF Compression</h2>
+                    <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
                         <p>
                             PDF files can become large primarily because of embedded images. A scanned document, for example,
                             stores each page as a high-resolution image, which can easily make a 10-page PDF grow to 50MB or more.
@@ -181,57 +184,57 @@ const CompressPdf: React.FC = () => {
                 </div>
 
                 {/* Tips */}
-                <div className="mt-12 p-6 rounded-xl border border-[hsl(var(--accent-highlight)/0.15)] bg-[hsl(var(--accent-highlight))]/5">
-                    <h2 className="text-xl font-semibold text-[hsl(var(--accent-highlight))] dark:text-[hsl(var(--accent-highlight))] mb-4">💡 Pro Tips for PDF Compression</h2>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
+                <div className="mt-14 p-6 sm:p-8 rounded-[28px] hairline-border border-[#007AFF]/20 bg-[#007AFF]/5 shadow-sm">
+                    <h2 className="text-xl font-bold text-[#007AFF] mb-4">💡 Pro Tips for PDF Compression</h2>
+                    <ul className="space-y-2.5 text-sm text-muted-foreground leading-relaxed">
                         <li>• PDFs with lots of high-resolution images compress better than text-heavy documents.</li>
                         <li>• If your PDF is already optimized, you may see minimal size reduction.</li>
                         <li>• For best results, start with the highest quality setting and reduce gradually until you reach your target size.</li>
                         <li>• Scanned documents often have large file sizes - compression works great on these!</li>
-                        <li>• After compressing, use our <a href="/tools/merge-pdf" className="text-[hsl(var(--accent-highlight))] hover:underline">PDF Merger</a> to combine multiple compressed files if needed.</li>
+                        <li>• After compressing, use our <a href="/tools/merge-pdf" className="text-[#007AFF] font-medium hover:underline">PDF Merger</a> to combine multiple compressed files if needed.</li>
                     </ul>
                 </div>
 
                 {/* Comparison */}
-                <div className="mt-12 p-6 rounded-xl bg-muted/50">
-                    <h2 className="text-xl font-semibold mb-4">Before & After Compression</h2>
-                    <p className="text-muted-foreground mb-4">
+                <div className="mt-14 p-6 sm:p-8 rounded-[28px] bg-card hairline-border shadow-sm">
+                    <h2 className="text-xl font-bold tracking-tight mb-2 text-foreground">Before & After Compression</h2>
+                    <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
                         Here's what you can expect when compressing different types of PDFs:
                     </p>
                     <div className="overflow-x-auto">
                         <table className="w-full text-sm">
                             <thead>
-                                <tr className="border-b">
-                                    <th className="text-left py-2 px-3">Document Type</th>
-                                    <th className="text-left py-2 px-3">Original Size</th>
-                                    <th className="text-left py-2 px-3">Compressed</th>
-                                    <th className="text-left py-2 px-3">Reduction</th>
+                                <tr className="border-b border-black/[0.08] dark:border-white/[0.1] text-foreground font-semibold">
+                                    <th className="text-left py-2.5 px-3">Document Type</th>
+                                    <th className="text-left py-2.5 px-3">Original Size</th>
+                                    <th className="text-left py-2.5 px-3">Compressed</th>
+                                    <th className="text-left py-2.5 px-3">Reduction</th>
                                 </tr>
                             </thead>
-                            <tbody className="text-muted-foreground">
-                                <tr className="border-b">
-                                    <td className="py-2 px-3">Scanned Notes</td>
-                                    <td className="py-2 px-3">15 MB</td>
-                                    <td className="py-2 px-3">3 MB</td>
-                                    <td className="py-2 px-3 text-[hsl(var(--accent-highlight))]">80%</td>
-                                </tr>
-                                <tr className="border-b">
-                                    <td className="py-2 px-3">Photo Album</td>
-                                    <td className="py-2 px-3">25 MB</td>
-                                    <td className="py-2 px-3">6 MB</td>
-                                    <td className="py-2 px-3 text-[hsl(var(--accent-highlight))]">76%</td>
-                                </tr>
-                                <tr className="border-b">
-                                    <td className="py-2 px-3">Presentation</td>
-                                    <td className="py-2 px-3">8 MB</td>
-                                    <td className="py-2 px-3">2.5 MB</td>
-                                    <td className="py-2 px-3 text-[hsl(var(--accent-highlight))]">69%</td>
+                            <tbody className="text-muted-foreground text-sm divide-y divide-black/[0.05] dark:divide-white/[0.05]">
+                                <tr>
+                                    <td className="py-2.5 px-3 text-foreground font-medium">Scanned Notes</td>
+                                    <td className="py-2.5 px-3">15 MB</td>
+                                    <td className="py-2.5 px-3">3 MB</td>
+                                    <td className="py-2.5 px-3 text-[#007AFF] font-bold">80%</td>
                                 </tr>
                                 <tr>
-                                    <td className="py-2 px-3">Text Document</td>
-                                    <td className="py-2 px-3">2 MB</td>
-                                    <td className="py-2 px-3">1.5 MB</td>
-                                    <td className="py-2 px-3 text-[hsl(var(--accent-highlight))]">25%</td>
+                                    <td className="py-2.5 px-3 text-foreground font-medium">Photo Album</td>
+                                    <td className="py-2.5 px-3">25 MB</td>
+                                    <td className="py-2.5 px-3">6 MB</td>
+                                    <td className="py-2.5 px-3 text-[#007AFF] font-bold">76%</td>
+                                </tr>
+                                <tr>
+                                    <td className="py-2.5 px-3 text-foreground font-medium">Presentation</td>
+                                    <td className="py-2.5 px-3">8 MB</td>
+                                    <td className="py-2.5 px-3">2.5 MB</td>
+                                    <td className="py-2.5 px-3 text-[#007AFF] font-bold">69%</td>
+                                </tr>
+                                <tr>
+                                    <td className="py-2.5 px-3 text-foreground font-medium">Text Document</td>
+                                    <td className="py-2.5 px-3">2 MB</td>
+                                    <td className="py-2.5 px-3">1.5 MB</td>
+                                    <td className="py-2.5 px-3 text-[#007AFF] font-bold">25%</td>
                                 </tr>
                             </tbody>
                         </table>

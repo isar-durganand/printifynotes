@@ -51,33 +51,33 @@ export function PageThumbnail({
     };
   }, [page.originalImage, transformations]);
 
-  return (
+    return (
     <div
       {...dragHandleProps}
       onClick={onToggleSelect}
       className={`
-        relative group rounded-lg border overflow-hidden transition-all cursor-pointer
+        relative group rounded-[18px] border overflow-hidden transition-all duration-200 cursor-pointer active:scale-[0.97]
         ${page.isSelected 
-          ? 'border-primary ring-2 ring-primary bg-primary/5' 
-          : 'border-border hover:border-muted-foreground/50'}
+          ? 'border-accent ring-2 ring-accent bg-accent/5' 
+          : 'border-black/[0.08] dark:border-white/[0.1] hover:border-black/20 dark:hover:border-white/25'}
         ${isDragging ? 'opacity-50 scale-95' : ''}
       `}
     >
       {/* Selection overlay */}
       <div className={`absolute inset-0 z-10 pointer-events-none transition-colors ${
-        page.isSelected ? 'bg-primary/10' : ''
+        page.isSelected ? 'bg-accent/10' : ''
       }`} />
 
       {/* Selection indicator */}
-      <div className={`absolute top-2 right-2 z-20 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
+      <div className={`absolute top-2.5 right-2.5 z-20 w-5 h-5 rounded-full border flex items-center justify-center transition-all ${
         page.isSelected 
-          ? 'bg-primary border-primary' 
-          : 'bg-background/80 border-muted-foreground/40 group-hover:border-muted-foreground'
+          ? 'bg-accent border-accent text-accent-foreground' 
+          : 'bg-background/80 border-black/20 dark:border-white/30 backdrop-blur-md group-hover:border-accent'
       }`}>
-        {page.isSelected && <Check className="w-4 h-4 text-primary-foreground" />}
+        {page.isSelected && <Check className="w-3 h-3 stroke-[3]" />}
       </div>
 
-      <div className="aspect-[3/4] bg-muted">
+      <div className="aspect-[3/4] bg-muted/50">
         <img
           src={previewImage}
           alt={`Page ${page.pageNumber}`}
@@ -86,9 +86,9 @@ export function PageThumbnail({
       </div>
 
       {/* Drag handle */}
-      <div className="absolute top-2 left-2 z-20">
+      <div className="absolute top-2.5 left-2.5 z-20">
         <div 
-          className="p-1 rounded bg-background/80 cursor-grab active:cursor-grabbing"
+          className="p-1 rounded-[6px] bg-background/80 backdrop-blur-md cursor-grab active:cursor-grabbing border border-black/[0.06] dark:border-white/[0.08]"
           onClick={(e) => e.stopPropagation()}
         >
           <GripVertical className="w-3 h-3 text-muted-foreground" />
@@ -96,23 +96,24 @@ export function PageThumbnail({
       </div>
 
       {/* Preview button */}
-      <div className="absolute bottom-8 right-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
+      <div className="absolute bottom-8 right-2.5 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
         <Button
           size="icon"
           variant="secondary"
-          className="w-7 h-7"
+          className="w-7 h-7 rounded-[8px] bg-background/80 backdrop-blur-md border border-black/[0.06] dark:border-white/[0.08]"
           onClick={(e) => {
             e.stopPropagation();
             onPreview();
           }}
         >
-          <Eye className="w-4 h-4" />
+          <Eye className="w-3.5 h-3.5 text-accent" />
         </Button>
       </div>
 
-      <div className="absolute bottom-0 inset-x-0 p-1.5 bg-background/90 text-center">
-        <span className="text-xs font-medium text-muted-foreground">Page {page.pageNumber}</span>
+      <div className="absolute bottom-0 inset-x-0 py-1 px-2 bg-background/90 backdrop-blur-md border-t border-black/[0.06] dark:border-white/[0.08] text-center">
+        <span className="text-[11px] font-semibold text-muted-foreground tracking-tight">Page {page.pageNumber}</span>
       </div>
     </div>
   );
 }
+

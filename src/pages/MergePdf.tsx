@@ -11,11 +11,14 @@ const MergePdf: React.FC = () => {
             keywords="merge pdf, combine pdf, pdf merger free, merge pdf online, join pdf files, combine pdf files free, pdf combiner, merge pdf without watermark, free pdf merger india, student pdf tools"
         >
             <div className="max-w-4xl mx-auto">
-                <div className="text-center mb-8">
-                    <h1 className="text-3xl sm:text-4xl font-bold mb-4">
+                <div className="text-center mb-10">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#007AFF]/10 text-[#007AFF] text-xs font-semibold tracking-wide uppercase mb-3">
+                        PDF Merger
+                    </div>
+                    <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-3 text-foreground">
                         Merge PDF Files Online - Free & Secure
                     </h1>
-                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                    <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                         Combine multiple PDFs into a single document in seconds. Drag to reorder before merging.
                         All processing happens in your browser - files never leave your device.
                     </p>
@@ -24,61 +27,61 @@ const MergePdf: React.FC = () => {
                 <PdfMerger />
 
                 {/* How to use */}
-                <div className="mt-12 p-6 rounded-xl bg-muted/50">
-                    <h2 className="text-xl font-semibold mb-4">How to Merge PDFs</h2>
-                    <ol className="space-y-3 text-muted-foreground">
-                        <li className="flex gap-3">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--accent-highlight))] text-white text-sm flex items-center justify-center">1</span>
+                <div className="mt-14 p-6 sm:p-8 rounded-[28px] bg-card hairline-border shadow-sm">
+                    <h2 className="text-xl font-bold tracking-tight mb-5 text-foreground">How to Merge PDFs</h2>
+                    <ol className="space-y-3.5 text-muted-foreground text-sm leading-relaxed">
+                        <li className="flex items-center gap-3">
+                            <span className="flex-shrink-0 w-7 h-7 rounded-[9px] bg-[#007AFF] text-white text-xs font-bold flex items-center justify-center shadow-sm">1</span>
                             <span>Drop or select multiple PDF files</span>
                         </li>
-                        <li className="flex gap-3">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--accent-highlight))] text-white text-sm flex items-center justify-center">2</span>
+                        <li className="flex items-center gap-3">
+                            <span className="flex-shrink-0 w-7 h-7 rounded-[9px] bg-[#007AFF] text-white text-xs font-bold flex items-center justify-center shadow-sm">2</span>
                             <span>Drag to reorder files as needed</span>
                         </li>
-                        <li className="flex gap-3">
-                            <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[hsl(var(--accent-highlight))] text-white text-sm flex items-center justify-center">3</span>
+                        <li className="flex items-center gap-3">
+                            <span className="flex-shrink-0 w-7 h-7 rounded-[9px] bg-[#007AFF] text-white text-xs font-bold flex items-center justify-center shadow-sm">3</span>
                             <span>Click "Merge PDFs" to combine and download</span>
                         </li>
                     </ol>
                 </div>
 
                 {/* Benefits Section */}
-                <div className="mt-12">
-                    <h2 className="text-2xl font-bold mb-6 text-center">Why Use Our PDF Merger?</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div className="p-5 rounded-xl border bg-card">
-                            <div className="w-10 h-10 rounded-lg bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center mb-3">
-                                <Shield className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
+                <div className="mt-14">
+                    <h2 className="text-2xl font-bold tracking-tight mb-6 text-center text-foreground">Why Use Our PDF Merger?</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="p-6 rounded-[24px] bg-card hairline-border shadow-sm">
+                            <div className="w-11 h-11 rounded-[14px] bg-[#007AFF]/10 flex items-center justify-center mb-3.5">
+                                <Shield className="w-5 h-5 text-[#007AFF]" />
                             </div>
-                            <h3 className="font-semibold mb-2">100% Private & Secure</h3>
-                            <p className="text-sm text-muted-foreground">
+                            <h3 className="font-bold tracking-tight mb-2 text-foreground">100% Private & Secure</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 Your files are processed entirely in your browser. We never upload, store, or access your documents. Your data stays on your device.
                             </p>
                         </div>
-                        <div className="p-5 rounded-xl border bg-card">
-                            <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-3">
-                                <Zap className="w-5 h-5 text-blue-500" />
+                        <div className="p-6 rounded-[24px] bg-card hairline-border shadow-sm">
+                            <div className="w-11 h-11 rounded-[14px] bg-[#007AFF]/10 flex items-center justify-center mb-3.5">
+                                <Zap className="w-5 h-5 text-[#007AFF]" />
                             </div>
-                            <h3 className="font-semibold mb-2">Lightning Fast</h3>
-                            <p className="text-sm text-muted-foreground">
+                            <h3 className="font-bold tracking-tight mb-2 text-foreground">Lightning Fast</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 No server uploads means instant processing. Merge large PDF files in seconds without waiting for uploads or downloads from remote servers.
                             </p>
                         </div>
-                        <div className="p-5 rounded-xl border bg-card">
-                            <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center mb-3">
-                                <FileText className="w-5 h-5 text-purple-500" />
+                        <div className="p-6 rounded-[24px] bg-card hairline-border shadow-sm">
+                            <div className="w-11 h-11 rounded-[14px] bg-[#007AFF]/10 flex items-center justify-center mb-3.5">
+                                <FileText className="w-5 h-5 text-[#007AFF]" />
                             </div>
-                            <h3 className="font-semibold mb-2">No File Limits</h3>
-                            <p className="text-sm text-muted-foreground">
+                            <h3 className="font-bold tracking-tight mb-2 text-foreground">No File Limits</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 Unlike other online tools, we don't limit file size or number of pages. Merge as many PDFs as you need, completely free.
                             </p>
                         </div>
-                        <div className="p-5 rounded-xl border bg-card">
-                            <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center mb-3">
-                                <Check className="w-5 h-5 text-orange-500" />
+                        <div className="p-6 rounded-[24px] bg-card hairline-border shadow-sm">
+                            <div className="w-11 h-11 rounded-[14px] bg-[#007AFF]/10 flex items-center justify-center mb-3.5">
+                                <Check className="w-5 h-5 text-[#007AFF]" />
                             </div>
-                            <h3 className="font-semibold mb-2">No Signup Required</h3>
-                            <p className="text-sm text-muted-foreground">
+                            <h3 className="font-bold tracking-tight mb-2 text-foreground">No Signup Required</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 Start merging immediately. No account creation, no email verification, no hidden fees. Just upload and merge your PDFs.
                             </p>
                         </div>
@@ -86,59 +89,59 @@ const MergePdf: React.FC = () => {
                 </div>
 
                 {/* Use Cases */}
-                <div className="mt-12 p-6 rounded-xl border bg-card">
-                    <h2 className="text-xl font-semibold mb-4">Common Uses for PDF Merging</h2>
-                    <ul className="space-y-3 text-muted-foreground">
-                        <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
-                            <span><strong>Students:</strong> Combine lecture notes, assignments, and study materials into organized documents for exam preparation.</span>
+                <div className="mt-14 p-6 sm:p-8 rounded-[28px] bg-card hairline-border shadow-sm">
+                    <h2 className="text-xl font-bold tracking-tight mb-5 text-foreground">Common Uses for PDF Merging</h2>
+                    <ul className="space-y-3.5 text-muted-foreground text-sm leading-relaxed">
+                        <li className="flex items-start gap-3">
+                            <Check className="w-5 h-5 text-[#007AFF] flex-shrink-0 mt-0.5" />
+                            <span><strong className="text-foreground">Students:</strong> Combine lecture notes, assignments, and study materials into organized documents for exam preparation.</span>
                         </li>
-                        <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
-                            <span><strong>Professionals:</strong> Merge contracts, reports, and presentations for client submissions or archiving.</span>
+                        <li className="flex items-start gap-3">
+                            <Check className="w-5 h-5 text-[#007AFF] flex-shrink-0 mt-0.5" />
+                            <span><strong className="text-foreground">Professionals:</strong> Merge contracts, reports, and presentations for client submissions or archiving.</span>
                         </li>
-                        <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
-                            <span><strong>Job Seekers:</strong> Combine resume, cover letter, and certificates into a single application document.</span>
+                        <li className="flex items-start gap-3">
+                            <Check className="w-5 h-5 text-[#007AFF] flex-shrink-0 mt-0.5" />
+                            <span><strong className="text-foreground">Job Seekers:</strong> Combine resume, cover letter, and certificates into a single application document.</span>
                         </li>
-                        <li className="flex items-start gap-2">
-                            <Check className="w-5 h-5 text-[hsl(var(--accent-highlight))] flex-shrink-0 mt-0.5" />
-                            <span><strong>Teachers:</strong> Compile worksheets, lesson plans, and resources into comprehensive teaching materials.</span>
+                        <li className="flex items-start gap-3">
+                            <Check className="w-5 h-5 text-[#007AFF] flex-shrink-0 mt-0.5" />
+                            <span><strong className="text-foreground">Teachers:</strong> Compile worksheets, lesson plans, and resources into comprehensive teaching materials.</span>
                         </li>
                     </ul>
                 </div>
 
                 {/* FAQ Section */}
-                <div className="mt-12">
-                    <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
-                    <div className="space-y-4">
-                        <div className="p-5 rounded-xl border bg-card">
-                            <h3 className="font-semibold mb-2">Is this PDF merger really free?</h3>
-                            <p className="text-sm text-muted-foreground">
+                <div className="mt-14">
+                    <h2 className="text-2xl font-bold tracking-tight mb-6 text-foreground">Frequently Asked Questions</h2>
+                    <div className="space-y-3.5">
+                        <div className="p-5 sm:p-6 rounded-[22px] bg-card hairline-border shadow-sm">
+                            <h3 className="font-bold tracking-tight mb-2 text-foreground">Is this PDF merger really free?</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 Yes, our PDF merger is 100% free with no hidden costs. There are no premium tiers, no watermarks on merged files, and no limits on usage. We believe quality PDF tools should be accessible to everyone.
                             </p>
                         </div>
-                        <div className="p-5 rounded-xl border bg-card">
-                            <h3 className="font-semibold mb-2">Are my PDF files secure?</h3>
-                            <p className="text-sm text-muted-foreground">
+                        <div className="p-5 sm:p-6 rounded-[22px] bg-card hairline-border shadow-sm">
+                            <h3 className="font-bold tracking-tight mb-2 text-foreground">Are my PDF files secure?</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 Absolutely. Your files never leave your device. All PDF processing happens locally in your browser using JavaScript. We don't have servers that receive, store, or process your documents. This is the most secure way to handle sensitive documents online.
                             </p>
                         </div>
-                        <div className="p-5 rounded-xl border bg-card">
-                            <h3 className="font-semibold mb-2">What is the maximum file size I can merge?</h3>
-                            <p className="text-sm text-muted-foreground">
+                        <div className="p-5 sm:p-6 rounded-[22px] bg-card hairline-border shadow-sm">
+                            <h3 className="font-bold tracking-tight mb-2 text-foreground">What is the maximum file size I can merge?</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 Since processing happens in your browser, the limit depends on your device's available memory. Modern computers and phones can typically handle files up to 100MB+ each. For very large files, we recommend merging in batches.
                             </p>
                         </div>
-                        <div className="p-5 rounded-xl border bg-card">
-                            <h3 className="font-semibold mb-2">Can I reorder pages before merging?</h3>
-                            <p className="text-sm text-muted-foreground">
+                        <div className="p-5 sm:p-6 rounded-[22px] bg-card hairline-border shadow-sm">
+                            <h3 className="font-bold tracking-tight mb-2 text-foreground">Can I reorder pages before merging?</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 Yes! After uploading your PDF files, you can drag and drop to reorder them before merging. This ensures your final merged document has pages in exactly the order you want.
                             </p>
                         </div>
-                        <div className="p-5 rounded-xl border bg-card">
-                            <h3 className="font-semibold mb-2">Does merging affect PDF quality?</h3>
-                            <p className="text-sm text-muted-foreground">
+                        <div className="p-5 sm:p-6 rounded-[22px] bg-card hairline-border shadow-sm">
+                            <h3 className="font-bold tracking-tight mb-2 text-foreground">Does merging affect PDF quality?</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 No, merging PDFs does not reduce quality. The original content, images, and formatting of each PDF are preserved exactly as they were. The merged file combines all pages without any compression or quality loss.
                             </p>
                         </div>
@@ -146,9 +149,9 @@ const MergePdf: React.FC = () => {
                 </div>
 
                 {/* Understanding PDF Merging */}
-                <div className="mt-12 p-6 rounded-xl border bg-card">
-                    <h2 className="text-xl font-semibold mb-4">How Does PDF Merging Work?</h2>
-                    <div className="space-y-4 text-sm text-muted-foreground">
+                <div className="mt-14 p-6 sm:p-8 rounded-[28px] bg-card hairline-border shadow-sm">
+                    <h2 className="text-xl font-bold tracking-tight mb-4 text-foreground">How Does PDF Merging Work?</h2>
+                    <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
                         <p>
                             PDF (Portable Document Format) files are structured documents that contain pages, fonts, images, and metadata.
                             When you merge PDFs, the process involves reading the internal structure of each PDF and combining their page
@@ -175,12 +178,12 @@ const MergePdf: React.FC = () => {
                 </div>
 
                 {/* Educational Content */}
-                <div className="mt-12 p-6 rounded-xl bg-[hsl(var(--accent-highlight))]/5 border border-[hsl(var(--accent-highlight)/0.15)]">
-                    <h2 className="text-xl font-semibold mb-4 text-[hsl(var(--accent-highlight))] dark:text-[hsl(var(--accent-highlight))]">Pro Tips for Merging PDFs</h2>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
+                <div className="mt-14 p-6 sm:p-8 rounded-[28px] hairline-border border-[#007AFF]/20 bg-[#007AFF]/5 shadow-sm">
+                    <h2 className="text-xl font-bold mb-4 text-[#007AFF]">💡 Pro Tips for Merging PDFs</h2>
+                    <ul className="space-y-2.5 text-sm text-muted-foreground leading-relaxed">
                         <li>• Organize your files in the order you want before selecting them for faster merging.</li>
-                        <li>• For very large documents, consider compressing individual PDFs first using our <a href="/tools/compress-pdf" className="text-[hsl(var(--accent-highlight))] hover:underline">PDF Compressor</a>.</li>
-                        <li>• If you only need specific pages, use our <a href="/tools/extract-pages" className="text-[hsl(var(--accent-highlight))] hover:underline">PDF Page Extractor</a> first.</li>
+                        <li>• For very large documents, consider compressing individual PDFs first using our <a href="/tools/compress-pdf" className="text-[#007AFF] font-medium hover:underline">PDF Compressor</a>.</li>
+                        <li>• If you only need specific pages, use our <a href="/tools/extract-pages" className="text-[#007AFF] font-medium hover:underline">PDF Page Extractor</a> first.</li>
                         <li>• The merged PDF maintains all hyperlinks, bookmarks, and interactive elements from the original files.</li>
                     </ul>
                 </div>

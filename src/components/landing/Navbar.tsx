@@ -27,27 +27,27 @@ export const Navbar = () => {
     const isActive = (path: string) => location.pathname === path;
 
     return (
-        <header className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-4xl px-4">
+        <header className="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300">
             <nav
                 className={`
-                    rounded-2xl px-5 py-3.5 transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]
+                    w-full transition-all duration-300
                     ${isScrolled
-                        ? 'liquid-glass-elevated'
-                        : 'liquid-glass'
+                        ? 'bg-background/80 backdrop-blur-2xl border-b border-foreground/[0.08] shadow-sm py-3'
+                        : 'bg-background/40 backdrop-blur-md border-b border-transparent py-4'
                     }
                 `}
             >
-                <div className="relative z-10 flex items-center justify-between">
+                <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
                     {/* Logo */}
-                    <Link to="/" className="flex items-center gap-2.5 group">
-                        <div className="p-1.5 rounded-xl bg-[hsl(var(--accent-highlight))] transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]">
-                            <FileText className="w-4 h-4 text-white" />
+                    <Link to="/" className="flex items-center gap-2.5 group ios-press active:scale-[0.96] transition-transform">
+                        <div className="p-2 rounded-xl bg-[#007AFF] text-white shadow-sm transition-transform duration-200 group-hover:scale-[1.05]">
+                            <FileText className="w-4 h-4" />
                         </div>
-                        <span className="font-semibold text-foreground tracking-tight">Printify Notes</span>
+                        <span className="font-semibold text-foreground tracking-tight text-base sm:text-lg">Printify Notes</span>
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center gap-1">
+                    <div className="hidden md:flex items-center gap-1.5">
                         <NavItem to="/about" label="About" active={isActive('/about')} />
                         <NavItem
                             to="/tools"
@@ -63,7 +63,7 @@ export const Navbar = () => {
                         <NavItem to="/contact" label="Contact" active={isActive('/contact')} />
                         <Link
                             to="/donate"
-                            className={`text-sm px-3 py-2 rounded-xl transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center gap-1.5 ${isActive('/donate') ? 'text-rose-400 bg-rose-400/10' : 'text-rose-400/80 hover:text-rose-400 hover:bg-rose-400/5'}`}
+                            className={`text-sm px-3 py-2 rounded-xl transition-all duration-200 flex items-center gap-1.5 ios-press active:scale-[0.96] ${isActive('/donate') ? 'text-rose-500 bg-rose-500/10 font-medium' : 'text-muted-foreground hover:text-rose-500 hover:bg-rose-500/5'}`}
                         >
                             <Heart className="w-3.5 h-3.5 fill-current" />
                             Donate
@@ -71,7 +71,7 @@ export const Navbar = () => {
 
                         <div className="ml-2">
                             <ScrollLink to="/#upload-section">
-                                <Button size="sm" className="rounded-xl px-5 bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)] transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.03] border-t border-l border-white/20 border-b border-r border-black/5">
+                                <Button size="sm" className="rounded-xl px-5 bg-[#007AFF] hover:bg-[#007AFF]/90 shadow-sm active:scale-[0.96] transition-all">
                                     Convert PDF
                                 </Button>
                             </ScrollLink>
@@ -79,18 +79,18 @@ export const Navbar = () => {
                     </div>
 
                     {/* Theme toggle + Mobile Menu Button */}
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-2">
                         {/* Theme toggle */}
                         <button
                             onClick={toggleTheme}
-                            className="p-2.5 rounded-xl text-muted-foreground hover:text-foreground hover:bg-foreground/[0.05] transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                            className="p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-foreground/[0.05] transition-all duration-200 ios-press active:scale-[0.96]"
                             aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
                             title={theme === 'dark' ? 'Light mode' : 'Dark mode'}
                         >
                             <div className="relative w-4 h-4">
                                 {theme === 'dark'
-                                    ? <Sun className="w-4 h-4 transition-transform duration-500 rotate-0" />
-                                    : <Moon className="w-4 h-4 transition-transform duration-500 rotate-0" />
+                                    ? <Sun className="w-4 h-4 transition-transform duration-300" />
+                                    : <Moon className="w-4 h-4 transition-transform duration-300" />
                                 }
                             </div>
                         </button>
@@ -98,7 +98,7 @@ export const Navbar = () => {
                         {/* Mobile Menu Button */}
                         <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
-                            className="md:hidden p-2.5 rounded-xl text-muted-foreground hover:text-foreground hover:bg-foreground/[0.05] transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                            className="md:hidden p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-foreground/[0.05] transition-all duration-200 ios-press active:scale-[0.96]"
                             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
                             aria-expanded={isMenuOpen}
                         >
@@ -108,16 +108,16 @@ export const Navbar = () => {
                 </div>
             </nav>
 
-            {/* Mobile Menu — glass dropdown */}
+            {/* Mobile Menu — iOS Sheet-style dropdown */}
             <div
-                className={`md:hidden mt-2 transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] origin-top ${
+                className={`md:hidden px-4 transition-all duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] origin-top ${
                     isMenuOpen
-                        ? 'opacity-100 scale-y-100 translate-y-0'
-                        : 'opacity-0 scale-y-95 -translate-y-2 pointer-events-none'
+                        ? 'opacity-100 scale-100 translate-y-2'
+                        : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
                 }`}
             >
-                <div className="rounded-2xl liquid-glass-elevated px-4 py-4">
-                    <div className="relative z-10 flex flex-col gap-1">
+                <div className="rounded-[24px] bg-card/95 backdrop-blur-2xl border border-border/80 p-4 shadow-2xl">
+                    <div className="flex flex-col gap-1">
                         <MobileNavItem to="/about" label="About" active={isActive('/about')} />
                         <MobileNavItem
                             to="/tools"
@@ -133,14 +133,14 @@ export const Navbar = () => {
                         <MobileNavItem to="/contact" label="Contact" active={isActive('/contact')} />
                         <Link
                             to="/donate"
-                            className={`text-sm py-2.5 px-3 rounded-xl transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center gap-1.5 ${isActive('/donate') ? 'text-rose-400 bg-rose-400/10' : 'text-rose-400/80 hover:text-rose-400 hover:bg-rose-400/5'}`}
+                            className={`text-sm py-2.5 px-3 rounded-xl transition-all duration-200 flex items-center gap-1.5 ios-press active:scale-[0.96] ${isActive('/donate') ? 'text-rose-500 bg-rose-500/10 font-medium' : 'text-muted-foreground hover:text-rose-500 hover:bg-rose-500/5'}`}
                         >
                             <Heart className="w-3.5 h-3.5 fill-current" />
                             Donate
                         </Link>
-                        <div className="pt-2 border-t border-foreground/[0.06] mt-1">
+                        <div className="pt-2 border-t border-border/80 mt-1">
                             <ScrollLink to="/#upload-section">
-                                <Button size="sm" className="rounded-xl w-full bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)] border-t border-l border-white/20 border-b border-r border-black/5">
+                                <Button size="sm" className="rounded-xl w-full bg-[#007AFF] hover:bg-[#007AFF]/90 active:scale-[0.96]">
                                     Convert PDF
                                 </Button>
                             </ScrollLink>
@@ -156,20 +156,20 @@ export const Navbar = () => {
 const NavItem = ({ to, label, active, badge }: { to: string; label: string; active: boolean; badge?: string }) => (
     <Link
         to={to}
-        className={`relative text-sm px-3 py-2 rounded-xl transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center gap-1.5
+        className={`relative text-sm px-3 py-2 rounded-xl transition-all duration-200 flex items-center gap-1.5 ios-press active:scale-[0.96]
             ${active
-                ? 'text-[hsl(var(--accent-highlight))] bg-[hsl(var(--accent-highlight)/0.08)]'
+                ? 'text-[#007AFF] bg-[#007AFF]/10 font-medium'
                 : 'text-muted-foreground hover:text-foreground hover:bg-foreground/[0.04]'
             }`}
     >
-        {active && (
-            <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[hsl(var(--accent-highlight))]" />
-        )}
         {label}
         {badge && (
-            <span className="px-1.5 py-0.5 text-[10px] font-semibold bg-foreground/10 text-foreground/70 rounded-full">
+            <span className="px-1.5 py-0.5 text-[10px] font-semibold bg-[#007AFF]/15 text-[#007AFF] rounded-full">
                 {badge}
             </span>
+        )}
+        {active && (
+            <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#007AFF]" />
         )}
     </Link>
 );
@@ -178,15 +178,15 @@ const NavItem = ({ to, label, active, badge }: { to: string; label: string; acti
 const MobileNavItem = ({ to, label, active, badge }: { to: string; label: string; active: boolean; badge?: string }) => (
     <Link
         to={to}
-        className={`text-sm py-2.5 px-3 rounded-xl transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center gap-1.5
+        className={`text-sm py-2.5 px-3 rounded-xl transition-all duration-200 flex items-center gap-1.5 ios-press active:scale-[0.96]
             ${active
-                ? 'text-[hsl(var(--accent-highlight))] bg-[hsl(var(--accent-highlight)/0.08)]'
+                ? 'text-[#007AFF] bg-[#007AFF]/10 font-medium'
                 : 'text-muted-foreground hover:text-foreground hover:bg-foreground/[0.04]'
             }`}
     >
         {label}
         {badge && (
-            <span className="px-1.5 py-0.5 text-[10px] font-semibold bg-foreground/10 text-foreground/70 rounded-full">
+            <span className="px-1.5 py-0.5 text-[10px] font-semibold bg-[#007AFF]/15 text-[#007AFF] rounded-full">
                 {badge}
             </span>
         )}

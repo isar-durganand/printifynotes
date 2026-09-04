@@ -26,11 +26,12 @@ export const FloatingCTA = () => {
     >
       <button
         onClick={scrollToUpload}
-        className="flex items-center gap-3 px-10 py-4 rounded-2xl text-base font-semibold text-white bg-[hsl(var(--accent-highlight))] border-t border-l border-white/20 border-b border-r border-black/5 shadow-[0_8px_32px_rgba(var(--accent-rgb),0.2),0_2px_6px_rgba(0,0,0,0.1)] hover:shadow-[0_12px_40px_rgba(var(--accent-rgb),0.25),0_4px_10px_rgba(0,0,0,0.1)] hover:translate-y-[-2px] hover:scale-[1.02] transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+        className="flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm font-semibold text-accent-foreground bg-accent shadow-[0_8px_30px_rgba(0,122,255,0.35)] hover:shadow-[0_10px_35px_rgba(0,122,255,0.45)] hover:scale-[1.01] active:scale-[0.96] transition-all duration-200"
       >
-        <ArrowUp className="w-5 h-5" />
+        <ArrowUp className="w-4 h-4" />
         Start Converting
       </button>
     </div>
   );
 };
+

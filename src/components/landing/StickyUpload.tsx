@@ -61,10 +61,10 @@ export const StickyUpload = ({ onFileSelect, onFilesSelect, isLoading, progress 
     if (isLoading) {
         return (
             <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:block">
-                <div className="w-72 rounded-2xl liquid-glass-elevated p-6">
+                <div className="w-72 rounded-[24px] bg-card/90 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.1] shadow-lg p-6">
                     <div className="flex flex-col items-center gap-4 relative z-10">
-                        <div className="p-3 rounded-xl bg-[hsl(var(--accent-highlight)/0.1)] border border-[hsl(var(--accent-highlight)/0.15)]">
-                            <FileText className="w-8 h-8 text-[hsl(var(--accent-highlight))] animate-pulse" />
+                        <div className="p-3 rounded-[16px] bg-accent/10 border border-accent/20">
+                            <FileText className="w-8 h-8 text-accent animate-pulse" />
                         </div>
                         <div className="w-full space-y-2">
                             <Progress value={progress} className="h-2" />
@@ -85,18 +85,11 @@ export const StickyUpload = ({ onFileSelect, onFilesSelect, isLoading, progress 
                 onDragLeave={handleDragLeave}
                 onDrop={handleDrop}
                 className={`
-                    w-72 rounded-2xl transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]
-                    ${isDragging
-                        ? 'liquid-glass-elevated scale-[1.02]'
-                        : 'liquid-glass-elevated'
-                    }
+                    w-72 rounded-[24px] transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]
+                    bg-card/90 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.1] shadow-lg
+                    ${isDragging ? 'scale-[1.02] border-accent shadow-accent/20' : 'hover:shadow-xl'}
                 `}
             >
-                {/* Accent border on drag */}
-                {isDragging && (
-                    <div className="absolute inset-0 rounded-2xl border-2 border-[hsl(var(--accent-highlight)/0.3)] pointer-events-none z-20" />
-                )}
-
                 <input
                     type="file"
                     accept=".pdf,.jpg,.jpeg,.png,.webp,.gif"
@@ -108,22 +101,22 @@ export const StickyUpload = ({ onFileSelect, onFilesSelect, isLoading, progress 
                 <label htmlFor="sticky-pdf-upload" className="cursor-pointer block p-6 relative z-10">
                     <div className="flex flex-col items-center gap-4">
                         {/* Label */}
-                        <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Quick Convert</span>
+                        <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">Quick Convert</span>
 
                         {/* Upload icon */}
                         <div className={`
-                            p-4 rounded-2xl transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]
+                            p-4 rounded-[18px] transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]
                             ${isDragging
-                                ? 'bg-[hsl(var(--accent-highlight)/0.08)] border border-[hsl(var(--accent-highlight)/0.15)]'
-                                : 'bg-foreground/[0.04] border border-foreground/[0.06]'
+                                ? 'bg-accent/15 border border-accent/30'
+                                : 'bg-foreground/[0.04] border border-black/[0.06] dark:border-white/[0.08]'
                             }
                         `}>
-                            <Upload className={`w-8 h-8 transition-colors duration-[400ms] ${isDragging ? 'text-[hsl(var(--accent-highlight))]' : 'text-muted-foreground'}`} />
+                            <Upload className={`w-8 h-8 transition-colors duration-[400ms] ${isDragging ? 'text-accent' : 'text-muted-foreground'}`} />
                         </div>
 
                         {/* Text */}
                         <div className="text-center">
-                            <p className="font-medium text-foreground mb-1">
+                            <p className="font-semibold text-foreground mb-1 text-[15px] tracking-tight">
                                 Drop your file here
                             </p>
                             <p className="text-xs text-muted-foreground">
@@ -132,7 +125,7 @@ export const StickyUpload = ({ onFileSelect, onFilesSelect, isLoading, progress 
                         </div>
 
                         {/* CTA Button */}
-                        <button className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-[hsl(var(--accent-highlight))] text-white border-t border-l border-white/20 border-b border-r border-black/5 transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.02]">
+                        <button className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-[12px] text-sm font-semibold bg-accent text-accent-foreground shadow-sm transition-all duration-200 active:scale-[0.96]">
                             Select File
                             <ArrowRight className="w-4 h-4" />
                         </button>
@@ -142,3 +135,4 @@ export const StickyUpload = ({ onFileSelect, onFilesSelect, isLoading, progress 
         </div>
     );
 };
+

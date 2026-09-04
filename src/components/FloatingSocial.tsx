@@ -39,28 +39,28 @@ export const FloatingSocial = () => {
     return (
         <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
             {/* Social links - show when open */}
-            <div className={`flex flex-col gap-2 transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
+            <div className={`flex flex-col gap-2 transition-all duration-300 ease-[cubic-bezier(0.19,1,0.22,1)] ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
                 {socialLinks.map((social, index) => (
                     <a
                         key={social.name}
                         href={social.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`w-12 h-12 rounded-xl flex items-center justify-center text-foreground transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${social.color} hover:text-white hover:scale-[1.08] liquid-glass-elevated`}
+                        className={`w-12 h-12 rounded-2xl flex items-center justify-center text-foreground transition-all duration-200 ${social.color} hover:text-white hover:scale-[1.05] active:scale-[0.96] bg-card/95 backdrop-blur-xl border border-border/80 shadow-md`}
                         title={`Follow on ${social.name}`}
-                        style={{ transitionDelay: isOpen ? `${index * 50}ms` : '0ms' }}
+                        style={{ transitionDelay: isOpen ? `${index * 40}ms` : '0ms' }}
                     >
                         <social.icon />
                     </a>
                 ))}
             </div>
 
-            {/* Toggle button — glass both states */}
+            {/* Toggle button — iOS FAB */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className={`w-14 h-14 rounded-xl flex items-center justify-center transition-all duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpen
-                        ? 'liquid-glass-elevated text-foreground rotate-90'
-                        : 'bg-[hsl(var(--accent-highlight))] text-white rotate-0 border-t border-l border-white/20 border-b border-r border-black/5'
+                className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-300 ios-press active:scale-[0.96] shadow-xl ${isOpen
+                        ? 'bg-card/95 backdrop-blur-xl border border-border/80 text-foreground rotate-90'
+                        : 'bg-[#007AFF] text-white rotate-0 shadow-[#007AFF]/30 border border-white/20'
                     }`}
                 aria-label={isOpen ? 'Close social links' : 'Open social links'}
             >

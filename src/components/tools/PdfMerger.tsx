@@ -122,100 +122,99 @@ export const PdfMerger: React.FC = () => {
         <>
         <div className="space-y-6">
             {/* Upload Zone */}
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Upload className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
-                        Upload PDFs
-                    </CardTitle>
-                    <CardDescription>
-                        Drag and drop multiple PDF files or click to browse
-                    </CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <div
-                        onDrop={handleDrop}
-                        onDragOver={handleDragOver}
-                        className="border-2 border-dashed border-border rounded-xl p-8 text-center hover:border-[hsl(var(--accent-highlight)/0.4)] transition-colors cursor-pointer"
-                    >
-                        <input
-                            type="file"
-                            multiple
-                            accept=".pdf"
-                            onChange={(e) => handleFileSelect(e.target.files)}
-                            className="hidden"
-                            id="pdf-upload"
-                        />
-                        <label htmlFor="pdf-upload" className="cursor-pointer">
-                            <Plus className="w-12 h-12 mx-auto text-muted-foreground mb-4" />
-                            <p className="text-muted-foreground">
-                                Drop PDF files here or <span className="text-[hsl(var(--accent-highlight))]">browse</span>
-                            </p>
-                        </label>
-                    </div>
-                </CardContent>
-            </Card>
+            <div className="rounded-[28px] bg-card/80 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.1] p-6 sm:p-8 shadow-sm">
+                <div className="flex items-center gap-2.5 mb-2">
+                    <Upload className="w-5 h-5 text-accent" />
+                    <h3 className="font-bold text-lg tracking-tight">Upload PDFs</h3>
+                </div>
+                <p className="text-sm text-muted-foreground mb-6">
+                    Drag and drop multiple PDF files or click to browse
+                </p>
+
+                <div
+                    onDrop={handleDrop}
+                    onDragOver={handleDragOver}
+                    className="border-2 border-dashed border-black/[0.1] dark:border-white/[0.12] rounded-[20px] p-8 text-center hover:border-accent/40 hover:bg-accent/5 transition-all cursor-pointer"
+                >
+                    <input
+                        type="file"
+                        multiple
+                        accept=".pdf"
+                        onChange={(e) => handleFileSelect(e.target.files)}
+                        className="hidden"
+                        id="pdf-upload"
+                    />
+                    <label htmlFor="pdf-upload" className="cursor-pointer block">
+                        <div className="w-12 h-12 rounded-[16px] bg-accent/10 flex items-center justify-center mx-auto mb-3 text-accent">
+                            <Plus className="w-6 h-6" />
+                        </div>
+                        <p className="text-sm text-muted-foreground font-medium">
+                            Drop PDF files here or <span className="text-accent underline underline-offset-2">browse</span>
+                        </p>
+                    </label>
+                </div>
+            </div>
 
             {/* File List */}
             {files.length > 0 && (
-                <Card>
-                    <CardHeader>
-                        <CardTitle>Selected Files ({files.length})</CardTitle>
-                        <CardDescription>
+                <div className="rounded-[28px] bg-card/80 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.1] p-6 sm:p-8 shadow-sm">
+                    <div className="mb-5">
+                        <h3 className="font-bold text-lg tracking-tight">Selected Files ({files.length})</h3>
+                        <p className="text-sm text-muted-foreground">
                             Drag to reorder • Total: {totalPages} pages
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        <div className="space-y-2">
-                            {files.map((file, index) => (
-                                <div
-                                    key={file.id}
-                                    draggable
-                                    onDragStart={() => handleDragStart(index)}
-                                    onDragEnd={handleDragEnd}
-                                    onDragOver={(e) => handleDragOverItem(e, index)}
-                                    className={`flex items-center gap-3 p-3 rounded-lg border bg-card hover:bg-accent/50 transition-colors ${draggedIndex === index ? 'opacity-50' : ''
-                                        }`}
-                                >
-                                    <GripVertical className="w-4 h-4 text-muted-foreground cursor-grab" />
-                                    <FileText className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
-                                    <div className="flex-1 min-w-0">
-                                        <p className="text-sm font-medium truncate">{file.name}</p>
-                                        <p className="text-xs text-muted-foreground">{file.pageCount} pages</p>
-                                    </div>
-                                    <Button
-                                        variant="ghost"
-                                        size="icon"
-                                        onClick={() => removeFile(file.id)}
-                                        className="text-muted-foreground hover:text-destructive"
-                                    >
-                                        <Trash2 className="w-4 h-4" />
-                                    </Button>
-                                </div>
-                            ))}
-                        </div>
+                        </p>
+                    </div>
 
-                        <div className="mt-6 flex gap-3">
-                            <Button
-                                onClick={mergePdfs}
-                                disabled={files.length < 2 || isProcessing}
-                                className="flex-1 bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)]"
+                    <div className="space-y-2.5">
+                        {files.map((file, index) => (
+                            <div
+                                key={file.id}
+                                draggable
+                                onDragStart={() => handleDragStart(index)}
+                                onDragEnd={handleDragEnd}
+                                onDragOver={(e) => handleDragOverItem(e, index)}
+                                className={`flex items-center gap-3 p-3.5 rounded-[16px] border border-black/[0.06] dark:border-white/[0.08] bg-background/60 backdrop-blur-md hover:bg-foreground/[0.03] transition-colors ${draggedIndex === index ? 'opacity-50' : ''}`}
                             >
-                                <Download className="w-4 h-4 mr-2" />
-                                {isProcessing ? 'Merging...' : `Merge ${files.length} PDFs`}
-                            </Button>
-                            <Button
-                                variant="outline"
-                                onClick={() => setFiles([])}
-                            >
-                                Clear All
-                            </Button>
-                        </div>
-                    </CardContent>
-                </Card>
+                                <GripVertical className="w-4 h-4 text-muted-foreground cursor-grab shrink-0" />
+                                <FileText className="w-5 h-5 text-accent shrink-0" />
+                                <div className="flex-1 min-w-0">
+                                    <p className="text-sm font-semibold truncate tracking-tight">{file.name}</p>
+                                    <p className="text-xs text-muted-foreground">{file.pageCount} pages</p>
+                                </div>
+                                <Button
+                                    variant="ghost"
+                                    size="icon"
+                                    onClick={() => removeFile(file.id)}
+                                    className="w-8 h-8 rounded-[10px] text-muted-foreground hover:text-destructive active:scale-[0.92]"
+                                >
+                                    <Trash2 className="w-4 h-4" />
+                                </Button>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className="mt-6 flex gap-3">
+                        <Button
+                            onClick={mergePdfs}
+                            disabled={files.length < 2 || isProcessing}
+                            className="flex-1 rounded-[14px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow-sm active:scale-[0.96]"
+                        >
+                            <Download className="w-4 h-4 mr-2" />
+                            {isProcessing ? 'Merging...' : `Merge ${files.length} PDFs`}
+                        </Button>
+                        <Button
+                            variant="outline"
+                            onClick={() => setFiles([])}
+                            className="rounded-[14px] border-black/[0.08] dark:border-white/[0.1] active:scale-[0.96]"
+                        >
+                            Clear All
+                        </Button>
+                    </div>
+                </div>
             )}
         </div>
         {showReview && <ReviewModal onClose={() => setShowReview(false)} />}
     </>
     );
 };
+

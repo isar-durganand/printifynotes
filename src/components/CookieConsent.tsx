@@ -38,35 +38,33 @@ export const CookieConsent: React.FC = () => {
 
     return (
         <div
-            className={`fixed bottom-0 left-0 right-0 z-[9999] transition-all duration-300 ease-out ${
-                animating ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
+            className={`fixed bottom-4 left-0 right-0 z-[9999] px-4 transition-all duration-400 ease-[cubic-bezier(0.19,1,0.22,1)] ${
+                animating ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0 pointer-events-none'
             }`}
             role="dialog"
             aria-label="Cookie consent"
             aria-describedby="cookie-consent-description"
         >
-            <div className="max-w-4xl mx-auto p-4">
-                <div className="rounded-2xl bg-card/95 backdrop-blur-xl border border-border shadow-2xl shadow-black/30 p-4 sm:p-6">
+            <div className="max-w-3xl mx-auto">
+                <div className="rounded-[24px] bg-card/95 backdrop-blur-2xl border border-border/80 shadow-2xl p-4 sm:p-5">
                     <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
                         {/* Icon */}
-                        <div className="w-10 h-10 rounded-xl bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center flex-shrink-0">
-                            <Cookie className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
+                        <div className="w-10 h-10 rounded-xl bg-[#007AFF]/10 text-[#007AFF] flex items-center justify-center flex-shrink-0">
+                            <Cookie className="w-5 h-5" />
                         </div>
 
                         {/* Text */}
                         <div className="flex-1" id="cookie-consent-description">
-                            <p className="text-sm text-foreground font-medium mb-1">
-                                We use cookies to improve your experience
+                            <p className="text-sm text-foreground font-semibold mb-0.5 tracking-tight">
+                                We respect your privacy
                             </p>
                             <p className="text-xs text-muted-foreground leading-relaxed">
-                                We use essential cookies for site functionality and analytics cookies (Google Analytics)
-                                to understand how you use our site. We also use advertising cookies (Google AdSense)
-                                to show relevant ads. You can accept or reject non-essential cookies.{' '}
+                                We use essential cookies for site functionality and analytics to understand usage. All PDF operations remain 100% in your browser. You can customize preferences anytime.{' '}
                                 <Link
                                     to="/privacy"
-                                    className="text-[hsl(var(--accent-highlight))] hover:underline"
+                                    className="text-[#007AFF] hover:underline"
                                 >
-                                    Read our Privacy Policy
+                                    Privacy Policy
                                 </Link>
                             </p>
                         </div>
@@ -75,14 +73,14 @@ export const CookieConsent: React.FC = () => {
                         <div className="flex items-center gap-2 flex-shrink-0 w-full sm:w-auto">
                             <button
                                 onClick={handleReject}
-                                className="flex-1 sm:flex-none px-4 py-2 text-xs sm:text-sm rounded-xl border border-border text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
+                                className="flex-1 sm:flex-none px-4 py-2 text-xs sm:text-sm rounded-xl border border-border/80 text-muted-foreground hover:text-foreground hover:bg-foreground/[0.04] transition-all ios-press active:scale-[0.96]"
                                 aria-label="Reject non-essential cookies"
                             >
-                                Reject
+                                Decline
                             </button>
                             <button
                                 onClick={handleAccept}
-                                className="flex-1 sm:flex-none px-4 py-2 text-xs sm:text-sm rounded-xl bg-[hsl(var(--accent-highlight))] text-white hover:bg-[hsl(var(--accent-highlight)/0.9)] transition-colors font-medium"
+                                className="flex-1 sm:flex-none px-4 py-2 text-xs sm:text-sm rounded-xl bg-[#007AFF] text-white hover:bg-[#007AFF]/90 shadow-sm transition-all font-medium ios-press active:scale-[0.96]"
                                 aria-label="Accept all cookies"
                             >
                                 Accept All

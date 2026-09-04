@@ -173,144 +173,144 @@ export const PdfCompressor: React.FC = () => {
         <>
         <div className="space-y-6">
             {/* Upload Zone */}
-            <Card>
-                <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                        <Gauge className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
-                        Compress PDF
-                    </CardTitle>
-                    <CardDescription>
-                        Reduce PDF file size by re-encoding at your chosen quality level
-                    </CardDescription>
-                </CardHeader>
-                <CardContent>
-                    {!file ? (
-                        <div
-                            onDrop={handleDrop}
-                            onDragOver={handleDragOver}
-                            className="border-2 border-dashed border-border rounded-xl p-8 text-center hover:border-[hsl(var(--accent-highlight)/0.4)] transition-colors cursor-pointer"
-                        >
-                            <input
-                                type="file"
-                                accept=".pdf"
-                                onChange={(e) => handleFileSelect(e.target.files?.[0] || null)}
-                                className="hidden"
-                                id="compress-upload"
+            <div className="rounded-[28px] bg-card/80 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.1] p-6 sm:p-8 shadow-sm">
+                <div className="flex items-center gap-2.5 mb-2">
+                    <Gauge className="w-5 h-5 text-accent" />
+                    <h3 className="font-bold text-lg tracking-tight">Compress PDF</h3>
+                </div>
+                <p className="text-sm text-muted-foreground mb-6">
+                    Reduce PDF file size by re-encoding at your chosen quality level
+                </p>
+
+                {!file ? (
+                    <div
+                        onDrop={handleDrop}
+                        onDragOver={handleDragOver}
+                        className="border-2 border-dashed border-black/[0.1] dark:border-white/[0.12] rounded-[20px] p-8 text-center hover:border-accent/40 hover:bg-accent/5 transition-all cursor-pointer"
+                    >
+                        <input
+                            type="file"
+                            accept=".pdf"
+                            onChange={(e) => handleFileSelect(e.target.files?.[0] || null)}
+                            className="hidden"
+                            id="compress-upload"
+                        />
+                        <label htmlFor="compress-upload" className="cursor-pointer block">
+                            <div className="w-12 h-12 rounded-[16px] bg-accent/10 flex items-center justify-center mx-auto mb-3 text-accent">
+                                <Upload className="w-6 h-6" />
+                            </div>
+                            <p className="text-sm text-muted-foreground font-medium">
+                                Drop a PDF here or <span className="text-accent underline underline-offset-2">browse</span>
+                            </p>
+                        </label>
+                    </div>
+                ) : (
+                    <div className="space-y-5">
+                        <div className="flex items-center gap-3 p-4 rounded-[16px] border border-black/[0.06] dark:border-white/[0.08] bg-background/60 backdrop-blur-md">
+                            <FileText className="w-8 h-8 text-accent shrink-0" />
+                            <div className="flex-1 min-w-0">
+                                <p className="font-semibold text-sm truncate tracking-tight">{file.name}</p>
+                                <p className="text-xs text-muted-foreground">
+                                    Original size: {formatSize(file.size)}
+                                </p>
+                            </div>
+                            <Button variant="ghost" size="sm" onClick={reset} className="rounded-[10px] text-xs font-semibold active:scale-[0.94]">
+                                Change
+                            </Button>
+                        </div>
+
+                        {/* Quality Slider */}
+                        <div className="space-y-3 pt-2">
+                            <div className="flex items-center justify-between">
+                                <Label className="text-sm font-semibold tracking-tight">Compression Quality</Label>
+                                <span className="text-xs font-mono font-bold text-accent tabular-nums">{quality[0]}%</span>
+                            </div>
+                            <Slider
+                                value={quality}
+                                onValueChange={(v) => { setQuality(v); setResult(null); setCompressedBlob(null); }}
+                                min={10}
+                                max={95}
+                                step={5}
+                                className="w-full"
                             />
-                            <label htmlFor="compress-upload" className="cursor-pointer">
-                                <Upload className="w-12 h-12 mx-auto text-muted-foreground mb-4" />
-                                <p className="text-muted-foreground">
-                                    Drop a PDF here or <span className="text-[hsl(var(--accent-highlight))]">browse</span>
-                                </p>
-                            </label>
+                            <div className="flex justify-between text-[11px] text-muted-foreground">
+                                <span>Maximum Compression</span>
+                                <span>Best Quality</span>
+                            </div>
+                            <p className="text-xs text-muted-foreground">
+                                Lower quality = smaller file size. Recommended: 50–70% for study notes.
+                            </p>
                         </div>
-                    ) : (
-                        <div className="space-y-4">
-                            <div className="flex items-center gap-3 p-4 rounded-lg border bg-card">
-                                <FileText className="w-8 h-8 text-[hsl(var(--accent-highlight))]" />
-                                <div className="flex-1 min-w-0">
-                                    <p className="font-medium truncate">{file.name}</p>
-                                    <p className="text-sm text-muted-foreground">
-                                        Original size: {formatSize(file.size)}
-                                    </p>
+
+                        {/* Progress */}
+                        {isProcessing && (
+                            <div className="space-y-2 pt-2">
+                                <Progress value={progress} className="w-full h-2" />
+                                <p className="text-sm text-center text-muted-foreground font-medium">
+                                    Compressing... {progress}%
+                                </p>
+                            </div>
+                        )}
+
+                        {/* Result */}
+                        {result && (
+                            <div className="p-4 rounded-[16px] bg-accent/10 border border-accent/20 space-y-2">
+                                <div className="flex items-center justify-between text-sm">
+                                    <span className="text-muted-foreground">Original Size</span>
+                                    <span className="font-medium">{formatSize(result.originalSize)}</span>
                                 </div>
-                                <Button variant="ghost" size="sm" onClick={reset}>
-                                    Change
+                                <div className="flex items-center justify-between text-sm">
+                                    <span className="text-muted-foreground">Compressed Size</span>
+                                    <span className="font-bold text-accent">{formatSize(result.compressedSize)}</span>
+                                </div>
+                                <div className="flex items-center justify-between pt-2 border-t border-accent/20">
+                                    <span className="text-sm font-semibold">Space Saved</span>
+                                    <span className="font-bold text-accent text-base">{result.savings}%</span>
+                                </div>
+                            </div>
+                        )}
+
+                        {result?.savings === 0 && (
+                            <div className="flex items-start gap-2.5 p-3.5 rounded-[14px] bg-yellow-500/10 border border-yellow-500/20">
+                                <AlertCircle className="w-4 h-4 text-yellow-500 shrink-0 mt-0.5" />
+                                <p className="text-xs sm:text-sm text-yellow-600 dark:text-yellow-400 font-medium">
+                                    The compressed file is similar in size. Try a lower quality setting for more savings.
+                                </p>
+                            </div>
+                        )}
+
+                        {/* Actions */}
+                        <div className="flex gap-3 pt-2">
+                            {!result ? (
+                                <Button
+                                    onClick={compressPdf}
+                                    disabled={isProcessing}
+                                    className="flex-1 rounded-[14px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow-sm active:scale-[0.96]"
+                                >
+                                    <Gauge className="w-4 h-4 mr-2" />
+                                    {isProcessing ? 'Compressing...' : 'Compress PDF'}
                                 </Button>
-                            </div>
-
-                            {/* Quality Slider */}
-                            <div className="space-y-3">
-                                <div className="flex items-center justify-between">
-                                    <Label>Compression Quality</Label>
-                                    <span className="text-sm text-muted-foreground">{quality[0]}%</span>
-                                </div>
-                                <Slider
-                                    value={quality}
-                                    onValueChange={(v) => { setQuality(v); setResult(null); setCompressedBlob(null); }}
-                                    min={10}
-                                    max={95}
-                                    step={5}
-                                    className="w-full"
-                                />
-                                <div className="flex justify-between text-xs text-muted-foreground">
-                                    <span>Maximum Compression (smallest file)</span>
-                                    <span>Best Quality (larger file)</span>
-                                </div>
-                                <p className="text-xs text-muted-foreground italic">
-                                    Lower quality = smaller file size. Recommended: 50–70% for study notes.
-                                </p>
-                            </div>
-
-                            {/* Progress */}
-                            {isProcessing && (
-                                <div className="space-y-2">
-                                    <Progress value={progress} className="w-full" />
-                                    <p className="text-sm text-center text-muted-foreground">
-                                        Compressing... {progress}%
-                                    </p>
-                                </div>
-                            )}
-
-                            {/* Result */}
-                            {result && (
-                                <div className="p-4 rounded-lg bg-[hsl(var(--accent-highlight))]/10 border border-[hsl(var(--accent-highlight)/0.15)]">
-                                    <div className="flex items-center justify-between mb-2">
-                                        <span className="text-sm">Original Size</span>
-                                        <span className="font-medium">{formatSize(result.originalSize)}</span>
-                                    </div>
-                                    <div className="flex items-center justify-between mb-2">
-                                        <span className="text-sm">Compressed Size</span>
-                                        <span className="font-medium text-[hsl(var(--accent-highlight))]">{formatSize(result.compressedSize)}</span>
-                                    </div>
-                                    <div className="flex items-center justify-between pt-2 border-t border-[hsl(var(--accent-highlight)/0.15)]">
-                                        <span className="text-sm font-medium">Space Saved</span>
-                                        <span className="font-bold text-[hsl(var(--accent-highlight))]">{result.savings}%</span>
-                                    </div>
-                                </div>
-                            )}
-
-                            {result?.savings === 0 && (
-                                <div className="flex items-start gap-2 p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
-                                    <AlertCircle className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
-                                    <p className="text-sm text-yellow-600 dark:text-yellow-400">
-                                        The compressed file is similar in size. Try a lower quality setting for more savings.
-                                    </p>
-                                </div>
-                            )}
-
-                            {/* Actions */}
-                            <div className="flex gap-3">
-                                {!result ? (
+                            ) : (
+                                <>
                                     <Button
-                                        onClick={compressPdf}
-                                        disabled={isProcessing}
-                                        className="flex-1 bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)]"
+                                        onClick={downloadCompressed}
+                                        className="flex-1 rounded-[14px] bg-accent hover:bg-accent/90 text-accent-foreground font-semibold shadow-sm active:scale-[0.96]"
                                     >
-                                        <Gauge className="w-4 h-4 mr-2" />
-                                        {isProcessing ? 'Compressing...' : 'Compress PDF'}
+                                        <Download className="w-4 h-4 mr-2" />
+                                        Download Compressed
                                     </Button>
-                                ) : (
-                                    <>
-                                        <Button
-                                            onClick={downloadCompressed}
-                                            className="flex-1 bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)]"
-                                        >
-                                            <Download className="w-4 h-4 mr-2" />
-                                            Download Compressed
-                                        </Button>
-                                        <Button variant="outline" onClick={reset}>
-                                            Start Over
-                                        </Button>
-                                    </>
-                                )}
-                            </div>
+                                    <Button variant="outline" onClick={reset} className="rounded-[14px] border-black/[0.08] dark:border-white/[0.1] active:scale-[0.96]">
+                                        Start Over
+                                    </Button>
+                                </>
+                            )}
                         </div>
-                    )}
-                </CardContent>
-            </Card>
+                    </div>
+                )}
+            </div>
         </div>
         {showReview && <ReviewModal onClose={() => setShowReview(false)} />}
     </>
     );
 };
+

@@ -13,8 +13,13 @@ const About = () => {
         >
             {/* Hero Section */}
             <section className="mb-12 text-center">
-                <h1 className="text-3xl sm:text-4xl font-bold mb-4">About Printify Notes</h1>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#007AFF]/10 text-[#007AFF] text-xs font-semibold tracking-wide uppercase mb-3">
+                    Our Mission
+                </div>
+                <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4 text-foreground">
+                    About Printify Notes
+                </h1>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                     Printify Notes is a free, privacy-focused tool designed to help students and professionals
                     convert dark-background PDF documents into print-friendly formats. Our mission is simple:
                     make printing study materials affordable and eco-friendly.
@@ -22,20 +27,20 @@ const About = () => {
             </section>
 
             {/* Our Story */}
-            <section className="mb-16">
-                <h2 className="text-2xl font-semibold mb-6">Our Story</h2>
-                <div className="p-6 rounded-2xl bg-card border border-border">
-                    <p className="text-muted-foreground mb-4">
+            <section className="mb-14">
+                <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-5 text-foreground">Our Story</h2>
+                <div className="p-6 sm:p-8 rounded-[28px] bg-card hairline-border shadow-sm">
+                    <p className="text-muted-foreground mb-4 leading-relaxed">
                         As students ourselves, we faced a common frustration: coaching platforms like Physics Wallah,
                         Unacademy, and Vedantu provide excellent study materials, but their dark-themed PDFs waste
                         enormous amounts of ink when printed. A single chapter could cost ₹50-100 in ink alone!
                     </p>
-                    <p className="text-muted-foreground mb-4">
+                    <p className="text-muted-foreground mb-4 leading-relaxed">
                         We searched for solutions but found that most PDF tools either required uploading files to servers
                         (raising privacy concerns) or charged premium fees for basic features. That's when we decided to
                         build something better.
                     </p>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground leading-relaxed">
                         We created Printify Notes to solve this problem. Our tool runs entirely in your browser,
                         ensuring your study materials remain private while you save money on ink and help the environment.
                         Since launch, we've helped thousands of students print their notes more affordably.
@@ -44,34 +49,44 @@ const About = () => {
             </section>
 
             {/* Meet the Creator */}
-            <section className="mb-16">
-                <h2 className="text-2xl font-semibold mb-6">Meet the Creator</h2>
-                <div className="p-6 rounded-2xl bg-card border border-border">
-                    <div className="flex flex-col sm:flex-row items-start gap-5 mb-5">
-                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[hsl(var(--accent-highlight))] to-[hsl(var(--accent-highlight)/0.8)] flex items-center justify-center flex-shrink-0">
-                            <span className="text-white text-2xl font-bold">DI</span>
+            <section className="mb-14">
+                <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-5 text-foreground">Meet the Creator</h2>
+                <div className="p-6 sm:p-8 rounded-[28px] bg-card hairline-border shadow-sm">
+                    <div className="flex flex-col sm:flex-row items-start gap-5 mb-6">
+                        <div className="w-20 h-20 rounded-[22px] bg-gradient-to-br from-[#007AFF] to-[#0051D5] flex items-center justify-center flex-shrink-0 shadow-md shadow-[#007AFF]/20">
+                            <span className="text-white text-2xl font-bold tracking-tight">DI</span>
                         </div>
                         <div>
-                            <h3 className="text-xl font-semibold mb-1">Durganand Ishar</h3>
-                            <p className="text-sm text-[hsl(var(--accent-highlight))] font-medium mb-1">Founder & Developer, Printify Notes</p>
+                            <h3 className="text-xl font-bold tracking-tight mb-1 text-foreground">Durganand Ishar</h3>
+                            <p className="text-sm text-[#007AFF] font-medium mb-1">Founder & Developer, Printify Notes</p>
                             <p className="text-sm text-muted-foreground">BTech CSE (First Year) · Manav Rachna International Institute of Research and Studies (MRIIRS), Faridabad</p>
-                            <div className="flex items-center gap-3 mt-3">
-                                <a href="https://www.linkedin.com/in/durganandishar/" target="_blank" rel="noopener noreferrer"
-                                    className="text-xs px-3 py-1.5 rounded-full bg-secondary border border-border text-muted-foreground hover:text-[hsl(var(--accent-highlight))] hover:border-[hsl(var(--accent-highlight))] transition-colors">
+                            <div className="flex items-center gap-2.5 mt-3.5">
+                                <a
+                                    href="https://www.linkedin.com/in/durganandishar/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-xs font-medium px-3.5 py-1.5 rounded-full bg-black/[0.04] dark:bg-white/[0.08] hairline-border text-foreground hover:text-[#007AFF] hover:border-[#007AFF]/40 active:scale-[0.96] transition-all"
+                                >
                                     LinkedIn
                                 </a>
-                                <a href="https://github.com/isar-durganand" target="_blank" rel="noopener noreferrer"
-                                    className="text-xs px-3 py-1.5 rounded-full bg-secondary border border-border text-muted-foreground hover:text-[hsl(var(--accent-highlight))] hover:border-[hsl(var(--accent-highlight))] transition-colors">
+                                <a
+                                    href="https://github.com/isar-durganand"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-xs font-medium px-3.5 py-1.5 rounded-full bg-black/[0.04] dark:bg-white/[0.08] hairline-border text-foreground hover:text-[#007AFF] hover:border-[#007AFF]/40 active:scale-[0.96] transition-all"
+                                >
                                     GitHub
                                 </a>
-                                <a href="mailto:isardurganand@gmail.com"
-                                    className="text-xs px-3 py-1.5 rounded-full bg-secondary border border-border text-muted-foreground hover:text-[hsl(var(--accent-highlight))] hover:border-[hsl(var(--accent-highlight))] transition-colors">
+                                <a
+                                    href="mailto:isardurganand@gmail.com"
+                                    className="text-xs font-medium px-3.5 py-1.5 rounded-full bg-black/[0.04] dark:bg-white/[0.08] hairline-border text-foreground hover:text-[#007AFF] hover:border-[#007AFF]/40 active:scale-[0.96] transition-all"
+                                >
                                     Email
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div className="space-y-3 text-muted-foreground text-sm leading-relaxed">
+                    <div className="space-y-3.5 text-muted-foreground text-sm leading-relaxed border-t border-black/[0.08] dark:border-white/[0.1] pt-5">
                         <p>
                             Durganand built Printify Notes out of personal necessity. As a student preparing for competitive
                             exams, he constantly faced the same problem: downloading lecture notes from Physics Wallah and
@@ -93,26 +108,25 @@ const About = () => {
                 </div>
             </section>
 
-
             {/* Mission and Values */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-                <div className="p-6 rounded-2xl bg-card border border-border">
-                    <div className="w-12 h-12 rounded-xl bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center mb-4">
-                        <Target className="w-6 h-6 text-[hsl(var(--accent-highlight))]" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-14">
+                <div className="p-6 sm:p-7 rounded-[28px] bg-card hairline-border shadow-sm">
+                    <div className="w-12 h-12 rounded-[14px] bg-[#007AFF]/10 flex items-center justify-center mb-4">
+                        <Target className="w-6 h-6 text-[#007AFF]" />
                     </div>
-                    <h3 className="text-xl font-semibold mb-2">Our Mission</h3>
-                    <p className="text-muted-foreground">
+                    <h3 className="text-lg font-bold tracking-tight mb-2 text-foreground">Our Mission</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
                         To make study material printing accessible, affordable, and environmentally responsible
                         for every student in India and beyond. We believe quality tools should be free and private.
                     </p>
                 </div>
 
-                <div className="p-6 rounded-2xl bg-card border border-border">
-                    <div className="w-12 h-12 rounded-xl bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center mb-4">
-                        <Heart className="w-6 h-6 text-[hsl(var(--accent-highlight))]" />
+                <div className="p-6 sm:p-7 rounded-[28px] bg-card hairline-border shadow-sm">
+                    <div className="w-12 h-12 rounded-[14px] bg-[#007AFF]/10 flex items-center justify-center mb-4">
+                        <Heart className="w-6 h-6 text-[#007AFF]" />
                     </div>
-                    <h3 className="text-xl font-semibold mb-2">Our Values</h3>
-                    <p className="text-muted-foreground">
+                    <h3 className="text-lg font-bold tracking-tight mb-2 text-foreground">Our Values</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
                         Privacy first, student-focused, and always free. We believe quality tools should be
                         accessible to everyone, regardless of their financial situation.
                     </p>
@@ -120,52 +134,52 @@ const About = () => {
             </div>
 
             {/* What Makes Us Different */}
-            <section className="mb-16">
-                <h2 className="text-2xl font-semibold mb-6">What Makes Us Different</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="flex items-start gap-4 p-5 rounded-xl border bg-card">
-                        <div className="w-10 h-10 rounded-lg bg-[hsl(var(--accent-highlight))]/10 flex items-center justify-center flex-shrink-0">
-                            <Shield className="w-5 h-5 text-[hsl(var(--accent-highlight))]" />
+            <section className="mb-14">
+                <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-5 text-foreground">What Makes Us Different</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="flex items-start gap-4 p-5 sm:p-6 rounded-[24px] bg-card hairline-border shadow-sm">
+                        <div className="w-11 h-11 rounded-[14px] bg-[#007AFF]/10 flex items-center justify-center flex-shrink-0">
+                            <Shield className="w-5 h-5 text-[#007AFF]" />
                         </div>
                         <div>
-                            <h4 className="font-medium mb-2">100% Browser-Based</h4>
-                            <p className="text-sm text-muted-foreground">
+                            <h4 className="font-semibold text-foreground mb-1.5">100% Browser-Based</h4>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 Your PDFs never leave your device. All processing happens locally using JavaScript.
                                 Unlike other tools that upload your files to servers, we respect your privacy completely.
                             </p>
                         </div>
                     </div>
-                    <div className="flex items-start gap-4 p-5 rounded-xl border bg-card">
-                        <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                            <Users className="w-5 h-5 text-blue-500" />
+                    <div className="flex items-start gap-4 p-5 sm:p-6 rounded-[24px] bg-card hairline-border shadow-sm">
+                        <div className="w-11 h-11 rounded-[14px] bg-[#007AFF]/10 flex items-center justify-center flex-shrink-0">
+                            <Users className="w-5 h-5 text-[#007AFF]" />
                         </div>
                         <div>
-                            <h4 className="font-medium mb-2">Built for Students</h4>
-                            <p className="text-sm text-muted-foreground">
+                            <h4 className="font-semibold text-foreground mb-1.5">Built for Students</h4>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 Optimized for NEET, JEE, and board exam preparation materials from all major
                                 coaching platforms. We understand what students need.
                             </p>
                         </div>
                     </div>
-                    <div className="flex items-start gap-4 p-5 rounded-xl border bg-card">
-                        <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                            <Code className="w-5 h-5 text-purple-500" />
+                    <div className="flex items-start gap-4 p-5 sm:p-6 rounded-[24px] bg-card hairline-border shadow-sm">
+                        <div className="w-11 h-11 rounded-[14px] bg-[#007AFF]/10 flex items-center justify-center flex-shrink-0">
+                            <Code className="w-5 h-5 text-[#007AFF]" />
                         </div>
                         <div>
-                            <h4 className="font-medium mb-2">No Account Required</h4>
-                            <p className="text-sm text-muted-foreground">
+                            <h4 className="font-semibold text-foreground mb-1.5">No Account Required</h4>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 Just open and use. No registration, no email verification, no login walls.
                                 We believe tools should be accessible without barriers.
                             </p>
                         </div>
                     </div>
-                    <div className="flex items-start gap-4 p-5 rounded-xl border bg-card">
-                        <div className="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center flex-shrink-0">
-                            <Leaf className="w-5 h-5 text-orange-500" />
+                    <div className="flex items-start gap-4 p-5 sm:p-6 rounded-[24px] bg-card hairline-border shadow-sm">
+                        <div className="w-11 h-11 rounded-[14px] bg-[#007AFF]/10 flex items-center justify-center flex-shrink-0">
+                            <Leaf className="w-5 h-5 text-[#007AFF]" />
                         </div>
                         <div>
-                            <h4 className="font-medium mb-2">Eco-Friendly</h4>
-                            <p className="text-sm text-muted-foreground">
+                            <h4 className="font-semibold text-foreground mb-1.5">Eco-Friendly</h4>
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                                 By converting dark PDFs to light backgrounds, you save up to 60% on ink.
                                 This reduces plastic waste from ink cartridges and saves money.
                             </p>
@@ -175,9 +189,9 @@ const About = () => {
             </section>
 
             {/* Technology Section */}
-            <section className="mb-16 p-8 rounded-2xl bg-muted/50">
-                <h2 className="text-2xl font-semibold mb-6">How Our Technology Works</h2>
-                <div className="space-y-4 text-muted-foreground">
+            <section className="mb-14 p-6 sm:p-8 rounded-[28px] bg-card hairline-border shadow-sm">
+                <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-5 text-foreground">How Our Technology Works</h2>
+                <div className="space-y-4 text-muted-foreground text-sm leading-relaxed">
                     <p>
                         <strong className="text-foreground">Client-Side Processing:</strong> When you upload a PDF to Printify Notes,
                         the file is processed entirely within your web browser using modern JavaScript APIs. The file is read into
@@ -198,17 +212,17 @@ const About = () => {
             </section>
 
             {/* Supported Platforms */}
-            <section className="mb-16">
-                <h2 className="text-2xl font-semibold mb-6">Supported Platforms</h2>
-                <p className="text-muted-foreground mb-4">
+            <section className="mb-14">
+                <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-4 text-foreground">Supported Platforms</h2>
+                <p className="text-muted-foreground mb-4 text-sm">
                     Printify Notes works with PDF notes from all major educational platforms including:
                 </p>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2.5">
                     {['Physics Wallah', 'Unacademy', 'Vedantu', 'BYJU\'S', 'Allen Digital', 'Aakash',
                         'Motion', 'Competishun', 'Etoos', 'Mohit Tyagi', 'Aman Dhattarwal', 'Apni Kaksha'].map((platform) => (
                             <span
                                 key={platform}
-                                className="px-4 py-2 rounded-full bg-secondary text-sm text-muted-foreground border"
+                                className="px-3.5 py-1.5 rounded-full bg-black/[0.04] dark:bg-white/[0.06] text-xs font-medium text-foreground hairline-border shadow-none"
                             >
                                 {platform}
                             </span>
@@ -217,50 +231,50 @@ const About = () => {
             </section>
 
             {/* What We Offer */}
-            <section className="mb-16">
-                <h2 className="text-2xl font-semibold mb-6">What We Offer</h2>
+            <section className="mb-14">
+                <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-5 text-foreground">What We Offer</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="p-6 rounded-xl border bg-card">
-                        <h3 className="font-semibold text-[hsl(var(--accent-highlight))] mb-2">Dark PDF Conversion</h3>
-                        <p className="text-sm text-muted-foreground">Convert dark-background coaching PDFs to print-friendly, light-background format. Designed to help students save ink when printing notes from platforms like Physics Wallah, Unacademy, and Vedantu.</p>
+                    <div className="p-6 rounded-[24px] bg-card hairline-border shadow-sm">
+                        <h3 className="font-semibold text-[#007AFF] mb-2">Dark PDF Conversion</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">Convert dark-background coaching PDFs to print-friendly, light-background format. Designed to help students save ink when printing notes from platforms like Physics Wallah, Unacademy, and Vedantu.</p>
                     </div>
-                    <div className="p-6 rounded-xl border bg-card">
-                        <h3 className="font-semibold text-blue-500 mb-2">Complete PDF Toolkit</h3>
-                        <p className="text-sm text-muted-foreground">Merge multiple PDFs, compress large files for email, extract specific pages, and convert images to PDF — all free, all processed locally in your browser.</p>
+                    <div className="p-6 rounded-[24px] bg-card hairline-border shadow-sm">
+                        <h3 className="font-semibold text-[#007AFF] mb-2">Complete PDF Toolkit</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">Merge multiple PDFs, compress large files for email, extract specific pages, and convert images to PDF — all free, all processed locally in your browser.</p>
                     </div>
-                    <div className="p-6 rounded-xl border bg-card">
-                        <h3 className="font-semibold text-purple-500 mb-2">Privacy by Design</h3>
-                        <p className="text-sm text-muted-foreground">Every tool runs entirely in your browser. Your files are never uploaded to any server. When you close the tab, all data is gone — true privacy protection.</p>
+                    <div className="p-6 rounded-[24px] bg-card hairline-border shadow-sm">
+                        <h3 className="font-semibold text-[#007AFF] mb-2">Privacy by Design</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">Every tool runs entirely in your browser. Your files are never uploaded to any server. When you close the tab, all data is gone — true privacy protection.</p>
                     </div>
-                    <div className="p-6 rounded-xl border bg-card">
-                        <h3 className="font-semibold text-orange-500 mb-2">Ink & Paper Savings</h3>
-                        <p className="text-sm text-muted-foreground">By converting dark backgrounds to light, students can significantly reduce ink usage when printing. Combined with our multi-page layouts, you save both ink and paper.</p>
+                    <div className="p-6 rounded-[24px] bg-card hairline-border shadow-sm">
+                        <h3 className="font-semibold text-[#007AFF] mb-2">Ink & Paper Savings</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">By converting dark backgrounds to light, students can significantly reduce ink usage when printing. Combined with our multi-page layouts, you save both ink and paper.</p>
                     </div>
                 </div>
             </section>
 
             {/* FAQ Section */}
-            <section className="mb-16">
-                <h2 className="text-2xl font-semibold mb-6">Frequently Asked Questions</h2>
-                <div className="space-y-4">
-                    <div className="p-5 rounded-xl border bg-card">
-                        <h3 className="font-semibold mb-2">Who created Printify Notes?</h3>
-                        <p className="text-sm text-muted-foreground">
+            <section className="mb-14">
+                <h2 className="text-xl sm:text-2xl font-semibold tracking-tight mb-5 text-foreground">Frequently Asked Questions</h2>
+                <div className="space-y-3.5">
+                    <div className="p-5 sm:p-6 rounded-[22px] bg-card hairline-border shadow-sm">
+                        <h3 className="font-semibold text-foreground mb-2">Who created Printify Notes?</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
                             Printify Notes was created by Durganand Ishar, a student and developer who wanted to solve
                             the problem of expensive printing for dark-themed study materials. The project started as a
                             personal tool and grew into a full-featured platform serving thousands of students.
                         </p>
                     </div>
-                    <div className="p-5 rounded-xl border bg-card">
-                        <h3 className="font-semibold mb-2">Is Printify Notes really free?</h3>
-                        <p className="text-sm text-muted-foreground">
+                    <div className="p-5 sm:p-6 rounded-[22px] bg-card hairline-border shadow-sm">
+                        <h3 className="font-semibold text-foreground mb-2">Is Printify Notes really free?</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
                             Yes, completely free. There are no hidden charges, premium tiers, or paid features.
                             We believe educational tools should be accessible to everyone.
                         </p>
                     </div>
-                    <div className="p-5 rounded-xl border bg-card">
-                        <h3 className="font-semibold mb-2">How do you sustain the project?</h3>
-                        <p className="text-sm text-muted-foreground">
+                    <div className="p-5 sm:p-6 rounded-[22px] bg-card hairline-border shadow-sm">
+                        <h3 className="font-semibold text-foreground mb-2">How do you sustain the project?</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
                             We keep costs minimal by processing everything in your browser (no expensive servers needed)
                             and display non-intrusive advertisements to cover hosting costs.
                         </p>
@@ -269,17 +283,17 @@ const About = () => {
             </section>
 
             {/* Contact CTA */}
-            <section className="p-8 rounded-2xl bg-[hsl(var(--accent-highlight))]/5 border border-[hsl(var(--accent-highlight)/0.15)] text-center">
-                <h2 className="text-2xl font-semibold mb-4">Get in Touch</h2>
-                <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+            <section className="p-8 sm:p-10 rounded-[32px] bg-[#007AFF]/5 hairline-border border-[#007AFF]/20 text-center shadow-sm">
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3 text-foreground">Get in Touch</h2>
+                <p className="text-muted-foreground mb-6 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
                     Have feedback or suggestions? We'd love to hear from you! Reach out at{' '}
-                    <a href="mailto:isardurganand@gmail.com" className="text-[hsl(var(--accent-highlight))] hover:underline">
+                    <a href="mailto:isardurganand@gmail.com" className="text-[#007AFF] font-medium hover:underline">
                         isardurganand@gmail.com
                     </a>
                     {' '}or use our contact form.
                 </p>
                 <Link to="/contact">
-                    <Button className="bg-[hsl(var(--accent-highlight))] hover:bg-[hsl(var(--accent-highlight)/0.9)]">
+                    <Button className="rounded-[12px] bg-[#007AFF] hover:bg-[#007AFF]/90 text-white font-semibold px-6 py-2.5 h-auto active:scale-[0.96] transition-transform shadow-md shadow-[#007AFF]/20">
                         Contact Us
                         <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
